@@ -176,3 +176,180 @@
     line-height: 29px;
     color: #FF705C;
 }
+.view-all-btn Button{
+    margin-top: 50px;
+    padding: 10px 40px;
+    background: #212121;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    color: #FFFFFF;
+}
+
+/* be exclusive section */
+.beexclusiveWrapper{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 250px;
+}
+.beexclusiveWrapper .imageTextSection{
+    height: 700px;
+    padding-top: 0;
+}
+.beexclusiveWrapper .imageSection{
+    padding-left: 0;
+}
+.beexclusiveWrapper .imageSection img{
+    width: 100%;
+    height: 100%;
+    background: #EEEEEE;
+}
+.beexclusiveWrapper .imageTextSection img{
+    height: 100%;
+    width: 100%;
+}
+.exclusiveText{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 39px !important;
+    line-height: 50px !important;
+    color: #616161;
+
+}
+.beexeclusiveText{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 61px !important;
+    line-height: 70px !important;
+    color: #212121;
+
+}
+.subtextexeclusive{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 140% !important;
+    color: #424242;
+
+}
+.beexclusiveWrapper .textSection1{
+    display: flex;
+    height: 100%;
+    background-color: #EEEEEE;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 215px 70px;
+    gap: 10px;
+}
+.subtextexeclusive{
+    text-align: left;
+}
+
+/* checkout new arrivals section */
+.newarrivalsWrapper{
+    padding: 50px 250px;
+}
+.newArrivalsGrid{
+    display: flex;
+}
+.newArrivalsTitle{
+    margin-bottom: 50px !important;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 39px !important;
+    line-height: 56px !important;
+    color: #212121;
+    margin-top: 20px;
+}
+.newArrivalsItem{
+    width: 389px;
+    height: 650px;
+}
+.newArrivalsItem img{
+    height: 650px;
+    width: 100%;
+}
+
+/* shop by category section */
+.categoryOption{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.categoryOption a{
+    text-decoration: none;
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 36px;
+    color: #757575;
+}
+.activeCategoryOption{
+    color: #212121 !important;
+    border-bottom: 1px solid #757575;
+}
+.categoryList{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.categoryList a{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    text-decoration: none;
+    color: #000000;
+}
+.activeCategoryListOption{
+    padding: 14px 24px;
+    background: #E0E0E0;
+}
+.imageBox{
+    width: 389px;
+    height: 389px;
+}
+.imageBox .img12{
+    height: 100%;
+    object-fit: scale-down;
+}
+
+/* country lights section */
+.countrylightImagesWrapper{
+    padding: 50px 250px;
+}
+.countryurbenimages{
+    width: 782px;
+    height: 782px;
+    display: flex;
+}
+.countryurbenimages img{
+    width: 666px;
+    height: 782px;
+    object-fit: contain;
+}
+
+/* summer section */
+.summarImageWrapper{
+    padding: 50px 250px;
+    margin-top: 50px;
+}
+.summarImageWrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
