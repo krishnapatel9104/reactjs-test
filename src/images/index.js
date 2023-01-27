@@ -37,6 +37,26 @@ import watches from "./watches.png";
 import goggles from "./goggles.png";
 import hats from "./hats.png";
 import Imagemen from "./Imagemen.png";
+import cardimg1 from "./cardimg1.png";
+import cardimg2 from "./cardimg2.png";
+import cardimg3 from "./cardimg3.png";
+import cardimg4 from "./cardimg4.png";
+import cardimg5 from "./cardimg5.png";
+import cardimg6 from "./cardimg6.png";
+import arrow from "./arrow.png";
+import view from "./view.png";
+import share from "./share.png";
+import fb from "./fb.png";
+import instagram from "./instagram.png";
+import footersliderimage from "./footersliderimage.png";
+import madewithbyicon from "./madewithbyicon.png";
+import twitter from "./twitter.png";
+import youtube from "./youtube.png";
+import overlay from "./overlay.png";
+import vectorleftwhite from "./vectorleftwhite.png";
+import vectorrightwhite from "./vectorrightwhite.png";
+import arrowwhite from "./arrowwhite.png";
+import catgeorymenuimg from "./catgeorymenuimg.png";
 
 export const ImageConfig = {
     headerback: headerback,
@@ -78,4 +98,24 @@ export const ImageConfig = {
     goggles: goggles,
     hats: hats,
     imagemen: Imagemen,
+    cardimg1: cardimg1,
+    cardimg2: cardimg2,
+    cardimg3: cardimg3,
+    cardimg4: cardimg4,
+    cardimg5: cardimg5,
+    cardimg6: cardimg6,
+    view: view,
+    arrow: arrow,
+    share: share,
+    fb: fb,
+    instagram: instagram,
+    footersliderimage: footersliderimage,
+    twitter: twitter,
+    youtube: youtube,
+    madewithbyicon: madewithbyicon,
+    overlay: overlay,
+    vectorleftwhite: vectorleftwhite,
+    vectorrightwhite: vectorrightwhite,
+    arrowwhite: arrowwhite,
+    catgeorymenuimg: catgeorymenuimg,
 };
