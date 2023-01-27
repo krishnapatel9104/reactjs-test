@@ -57,6 +57,25 @@ import vectorleftwhite from "./vectorleftwhite.png";
 import vectorrightwhite from "./vectorrightwhite.png";
 import arrowwhite from "./arrowwhite.png";
 import catgeorymenuimg from "./catgeorymenuimg.png";
+import categoryoverlay from "./categoryoverlay.png";
+import womenproduct1 from "./womenproduct1.png";
+import womenproduct2 from "./womenproduct2.png";
+import womenproduct3 from "./womenproduct3.png";
+import womenproduct4 from "./womenproduct4.png";
+import womenproduct5 from "./womenproduct5.png";
+import womenproduct6 from "./womenproduct6.png";
+import womenproduct7 from "./womenproduct7.png";
+import womenproduct8 from "./womenproduct8.png";
+import womenproduct9 from "./womenproduct9.png";
+import womenproductcart from "./womenproductcart.png";
+import whitelike from "./whitelike.png";
+import blackdress1 from "./blackdress1.png";
+import blackdress2 from "./blackdress2.png";
+import blackdress3 from "./blackdress3.png";
+import blackdress4 from "./blackdress4.png";
+import blackdress5 from "./blackdress5.png";
+import star from "./star.png";
+import graystar from "./graystar.png";
 
 export const ImageConfig = {
     headerback: headerback,
@@ -118,4 +137,23 @@ export const ImageConfig = {
     vectorrightwhite: vectorrightwhite,
     arrowwhite: arrowwhite,
     catgeorymenuimg: catgeorymenuimg,
+    categoryoverlay: categoryoverlay,
+    womenproductcart: womenproductcart,
+    womenproduct1: womenproduct1,
+    womenproduct2: womenproduct2,
+    womenproduct3: womenproduct3,
+    womenproduct4: womenproduct4,
+    womenproduct5: womenproduct5,
+    womenproduct6: womenproduct6,
+    womenproduct7: womenproduct7,
+    womenproduct8: womenproduct8,
+    womenproduct9: womenproduct9,
+    whitelike: whitelike,
+    blackdress1: blackdress1,
+    blackdress2: blackdress2,
+    blackdress3: blackdress3,
+    blackdress4: blackdress4,
+    blackdress5: blackdress5,
+    star: star,
+    graystar: graystar,
 };

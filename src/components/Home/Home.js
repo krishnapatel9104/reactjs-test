@@ -4,48 +4,24 @@ import "./style.css";
 import { ImageConfig } from "../../images/index";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import Navbar from "../Navbar/Navbar";
-
 export const Home = () => {
     const productList = [
-        {
-            id: "1",
-            name: "Clothes",
-        },
-        {
-            id: "2",
-            name: "Bags",
-        },
-        {
-            id: "3",
-            name: "Accessories",
-        },
-        {
-            id: "4",
-            name: "Shoes",
-        },
-        {
-            id: "5",
-            name: "Beauty",
-        },
-        {
-            id: "6",
-            name: "Denim",
-        },
-        {
-            id: "7",
-            name: "Coats & Jackets",
-        },
+        "Clothes",
+        "Bags",
+        "Accessories",
+        "Shoes",
+        "Beauty",
+        "Denim",
+        "Coats & Jackets",
     ];
     const [toggleCategory, setToggleCategory] = useState(1);
     const [isOpen, setIsOpen] = useState(false);
     const openCategory = (event) => {
-        console.log("func called", toggleCategory, isOpen);
         event.preventDefault();
         setIsOpen((prev) => !prev.isOpen);
         if (toggleCategory === 1) setToggleCategory(0.5);
         else setToggleCategory(1);
     };
-    console.log("func called outside", toggleCategory, isOpen);
 
     useEffect(() => {
         document.getElementById("mainWrapper").style.opacity = toggleCategory;
@@ -65,12 +41,13 @@ export const Home = () => {
                                     </Typography>
                                     {productList.map((product, index) => {
                                         return (
-                                            <Typography
+                                            <a
                                                 className="categoryitem"
                                                 key={index}
+                                                href={"/categorydetails"}
                                             >
-                                                {product.name}
-                                            </Typography>
+                                                {product}
+                                            </a>
                                         );
                                     })}
                                 </Box>
@@ -80,12 +57,13 @@ export const Home = () => {
                                     </Typography>
                                     {productList.map((product, index) => {
                                         return (
-                                            <Typography
+                                            <a
                                                 className="categoryitem"
                                                 key={index}
+                                                href={" "}
                                             >
-                                                {product.name}
-                                            </Typography>
+                                                {product}
+                                            </a>
                                         );
                                     })}
                                 </Box>
@@ -95,12 +73,13 @@ export const Home = () => {
                                     </Typography>
                                     {productList.map((product, index) => {
                                         return (
-                                            <Typography
+                                            <a
                                                 className="categoryitem"
                                                 key={index}
+                                                href={" "}
                                             >
-                                                {product.name}
-                                            </Typography>
+                                                {product}
+                                            </a>
                                         );
                                     })}
                                 </Box>
@@ -196,11 +175,6 @@ export const Home = () => {
                                     className="img12"
                                 />
                             </Box>
-                            {/* <img
-                            src={ImageConfig.shandle}
-                            alt="shandle"
-                            style={{ marginBottom: "50px", height: "197px" }}
-                        /> */}
                             <Typography className="itemname">
                                 Flat Hill Slingback
                             </Typography>
@@ -254,7 +228,6 @@ export const Home = () => {
                                     className="img12"
                                 />
                             </Box>
-                            {/* <img src={ImageConfig.purse} alt="shandle" /> */}
                             <Typography className="itemname">
                                 Brown Leathered Wallet
                             </Typography>
@@ -281,7 +254,6 @@ export const Home = () => {
                                     className="img12"
                                 />
                             </Box>
-                            {/* <img src={ImageConfig.watch} alt="shandle" /> */}
                             <Typography className="itemname">
                                 Silverside Wristwatch
                             </Typography>

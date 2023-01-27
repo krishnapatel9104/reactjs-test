@@ -565,7 +565,7 @@
 .categoryWrapper{
     background-color: white;
     position: absolute;
-    top: 15%;
+    top: 7%;
     text-align: left;
     z-index: 1;
     color: black;
@@ -617,4 +617,10 @@
     font-size: 16px !important;
     line-height: 19px !important;
     color: #8E8E93;
+    text-decoration: none;
 }
+
+/* swiper section */
+/* .swiper-slide{
+    display: flex;
+} */

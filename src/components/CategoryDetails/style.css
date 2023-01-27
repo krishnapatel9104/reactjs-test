@@ -1,0 +1,182 @@
+.filtersidebar{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.filterproductsection{
+    width: 70%;
+}
+.filtersection{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+.filterheading{
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 700 !important;
+    font-size: 25px !important;
+    line-height: 25px !important;
+    color: #212121;
+}
+.categorydetailwrapper{
+    margin-top: 150px;
+}   
+.categorydetailsection{
+    padding: 0 290px;
+    display: flex;
+    gap: 60px;
+}
+.filterproductsection .rightsideheading p{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 72px;
+    text-align: center;
+    color: #212121;
+}
+.filterproductsection .totalresult{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    line-height: 29px !important    ;
+    letter-spacing: 0.02em;
+    color: #4B5563;
+}
+.rightsideheading{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+.filterheading{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 23px !important;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #1F2937;
+    margin-bottom: 10px !important;
+}
+.filteritem{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    line-height: 29px !important;
+    letter-spacing: 0.02em;
+    color: #1F2937;
+}
+.rangetxt{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: 0.02em;
+    color: #4B5563;
+}
+.rangepricefilter{
+    display: flex;
+    justify-content: space-between;
+}
+.pricerangevalue{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: 0.02em;
+    color: #1F2937;
+}
+.sliderpricerange{
+    color: #EB5757 !important;
+}
+.moreoption{
+    margin-top: 20px !important;
+}
+.productListSection img{
+    width: 100%;
+    object-fit: contain;
+}
+.productname{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 23px !important;
+    color: #000000;
+}
+.carticon{
+    height: 22px;
+    width: 32px;
+}
+.productprice{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    line-height: 41px !important;
+    color: #1B2437;
+    align-items: flex-start;
+}
+.productlistdesc{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.productlistdesc p{
+    width: 80%;
+}
+.productlistdesc img{
+    width: 20%;
+}
+.newArrival{
+    background-color: #111827;
+    width: fit-content;
+    padding: 2px 10px;
+    position: absolute;
+    top: 0%;
+}
+.newArrival p{
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+.likeiconsection img{
+    width: 25px;
+    height: 22px;
+}
+.likeiconsection{
+    background: rgba(0, 0, 0, 0.3);
+    width: fit-content;
+    padding: 5px 8px;
+    position: absolute;
+    padding-top: 10px;
+    top: 3%;
+    left: 85.5%;
+}
+.paginationsection{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+.MuiButtonBase-root{
+    background-color: #D1D5DB;
+}
+.MuiPagination-ul> li:first-child > button{
+    background-color: #D1D5DB;
+}
+.MuiPagination-ul>li:last-child > button{
+    background-color: #1F2937;
+    color: white;
+}
