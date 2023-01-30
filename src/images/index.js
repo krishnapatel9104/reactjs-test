@@ -76,6 +76,15 @@ import blackdress4 from "./blackdress4.png";
 import blackdress5 from "./blackdress5.png";
 import star from "./star.png";
 import graystar from "./graystar.png";
+import currentstep from "./currentstep.png";
+import prevstep from "./prevstep.png";
+import nextstep from "./nextstep.png";
+import searchgrayicon from "./searchgrayicon.png";
+import paymenticon1 from "./paymenticon1.png";
+import paymenticon2 from "./paymenticon2.png";
+import paymenticon3 from "./paymenticon3.png";
+import visa from "./visa.png";
+import visaangle from "./visaangle.png";
 
 export const ImageConfig = {
     headerback: headerback,
@@ -156,4 +165,13 @@ export const ImageConfig = {
     blackdress5: blackdress5,
     star: star,
     graystar: graystar,
+    currentstep: currentstep,
+    prevstep: prevstep,
+    nextstep: nextstep,
+    searchgrayicon: searchgrayicon,
+    paymenticon1: paymenticon1,
+    paymenticon2: paymenticon2,
+    paymenticon3: paymenticon3,
+    visa: visa,
+    visaangle: visaangle,
 };

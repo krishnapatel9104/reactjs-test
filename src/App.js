@@ -1,9 +1,12 @@
 import React from "react";
 import "./App.css";
-import { Home } from "./components/Home/Home";
+import { Home } from "./components/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CategroyDetails } from "./components/CategoryDetails/CategroyDetails";
+import { CategroyDetails } from "./components/CategroyDetails";
 import { ItemDetailView } from "./components/ItemDetailView/ItemDetailView";
+import { Shipping } from "./components/Shipping/Shipping";
+import { Checkout } from "./components/Checkout/Checkout";
+import { ConfirmationPage } from "./components/ConfirmationPage";
 
 function App() {
     return (
@@ -12,6 +15,12 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/categorydetails" element={<CategroyDetails />} />
                 <Route path="/itemdetailview" element={<ItemDetailView />} />
+                <Route path="/shipping" element={<Shipping />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route
+                    path="/confirmationpage"
+                    element={<ConfirmationPage />}
+                />
             </Routes>
         </BrowserRouter>
     );

@@ -3,7 +3,7 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import "./style.css";
 import { ImageConfig } from "../../images/index";
@@ -13,6 +13,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
     Navigation,
     Scrollbar,
@@ -20,11 +21,29 @@ import {
     Mousewheel,
     Keyboard,
 } from "swiper";
-
+import { setUserSelectedProductList } from "./../redux/userSelectedProductListSlice";
+import { useDispatch, useSelector } from "react-redux";
 export const ItemDetailView = () => {
     const [value, setValue] = React.useState("1");
     const handleChange = (event, newValue) => {
         setValue(newValue);
+    };
+    const navigate = useNavigate();
+    const { state } = useLocation();
+    const dispatch = useDispatch();
+    const changeSizeHandler = (size) => {
+        console.log("size : ", size);
+        setProductDetail({ ...productDetail, size: size });
+    };
+    const [productDetail, setProductDetail] = useState(state.productDetail);
+
+    const reduxProductDetail = useSelector(
+        (state) => state.userSelectedProductLists.userSelectedProductLists
+    );
+    console.log("reduxProductDetail : ", reduxProductDetail);
+    const handleShopNow = () => {
+        dispatch(setUserSelectedProductList(productDetail));
+        navigate("/shipping");
     };
     return (
         <>
@@ -46,29 +65,22 @@ export const ItemDetailView = () => {
                             ]}
                             className="mySwiper"
                         >
-                            <SwiperSlide>
-                                <img
-                                    src={ImageConfig.blackdress1}
-                                    alt="likeicon"
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img
-                                    src={ImageConfig.blackdress1}
-                                    alt="likeicon"
-                                />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img
-                                    src={ImageConfig.blackdress1}
-                                    alt="likeicon"
-                                />
-                            </SwiperSlide>
+                            {[1, 2, 3, 4, 5].map((item) => {
+                                return (
+                                    <>
+                                        <SwiperSlide>
+                                            <img
+                                                src={productDetail.imageSource}
+                                                alt="likeicon"
+                                            />
+                                        </SwiperSlide>
+                                    </>
+                                );
+                            })}
                         </Swiper>
                         <Box className="diffangleimage">
                             <Swiper
                                 slidesPerView={5}
-                                centeredSlides={false}
                                 slidesPerGroupSkip={1}
                                 grabCursor={true}
                                 keyboard={{
@@ -85,54 +97,20 @@ export const ItemDetailView = () => {
                                 ]}
                                 className="mySwiper"
                             >
-                                <SwiperSlide>
-                                    <img
-                                        src={ImageConfig.blackdress1}
-                                        alt="likeicon"
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img
-                                        src={ImageConfig.blackdress2}
-                                        alt="likeicon"
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img
-                                        src={ImageConfig.blackdress3}
-                                        alt="likeicon"
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img
-                                        src={ImageConfig.blackdress4}
-                                        alt="likeicon"
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img
-                                        src={ImageConfig.blackdress5}
-                                        alt="likeicon"
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img
-                                        src={ImageConfig.blackdress5}
-                                        alt="likeicon"
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img
-                                        src={ImageConfig.blackdress4}
-                                        alt="likeicon"
-                                    />
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <img
-                                        src={ImageConfig.blackdress2}
-                                        alt="likeicon"
-                                    />
-                                </SwiperSlide>
+                                {productDetail.imageDifferentAngle.map(
+                                    (item) => {
+                                        return (
+                                            <>
+                                                <SwiperSlide>
+                                                    <img
+                                                        src={item}
+                                                        alt="likeicon"
+                                                    />
+                                                </SwiperSlide>
+                                            </>
+                                        );
+                                    }
+                                )}
                             </Swiper>
                         </Box>
                     </Box>
@@ -162,23 +140,36 @@ export const ItemDetailView = () => {
                             </Button>
                         </Box>
                         <Typography className="producttitle">
-                            Black Valentinodress with tulle
+                            {productDetail.productName}
                         </Typography>
                         <Box className="reviewsection">
                             <Box className="reviewicons">
-                                {[1, 2, 3, 4].map((review, index) => {
-                                    return (
-                                        <img
-                                            src={ImageConfig.star}
-                                            alt="likeicon"
-                                            key={index}
-                                        />
-                                    );
-                                })}
-                                <img
-                                    src={ImageConfig.graystar}
-                                    alt="likeicon"
-                                />
+                                {Array.from(
+                                    Array(productDetail.reviewRate),
+                                    (e, index) => {
+                                        return (
+                                            <img
+                                                src={ImageConfig.star}
+                                                alt="likeicon"
+                                                key={index}
+                                            />
+                                        );
+                                    }
+                                )}
+                                {Array.from(
+                                    Array(
+                                        5 - parseInt(productDetail.reviewRate)
+                                    ),
+                                    (e, index) => {
+                                        return (
+                                            <img
+                                                src={ImageConfig.graystar}
+                                                alt="likeicon"
+                                                key={index}
+                                            />
+                                        );
+                                    }
+                                )}
                             </Box>
                             <Box className="noofreview">132 reviews</Box>
                         </Box>
@@ -226,19 +217,50 @@ export const ItemDetailView = () => {
                                     </Typography>
                                 </Box>
                                 <Box className="optionlistvalue">
-                                    <Box className="sizebox">XS</Box>
-                                    <Box className="sizebox activeoptionlistvalue">
+                                    <Button
+                                        className={`${
+                                            productDetail.size === "XS"
+                                                ? "activeoptionlistvalue sizebox"
+                                                : "sizebox"
+                                        }`}
+                                        onClick={(e) => changeSizeHandler("XS")}
+                                    >
+                                        XS
+                                    </Button>
+                                    <Button
+                                        className={`${
+                                            productDetail.size === "S"
+                                                ? "activeoptionlistvalue sizebox"
+                                                : "sizebox"
+                                        }`}
+                                        onClick={(e) => changeSizeHandler("S")}
+                                    >
                                         S
-                                    </Box>
-                                    <Box className="sizebox">M</Box>
+                                    </Button>
+                                    <Button
+                                        className={`${
+                                            productDetail.size === "M"
+                                                ? "activeoptionlistvalue sizebox"
+                                                : "sizebox"
+                                        }`}
+                                        onClick={(e) => changeSizeHandler("M")}
+                                    >
+                                        M
+                                    </Button>
                                 </Box>
                             </Box>
                             <Box className="colorsection">
                                 <Typography>Color</Typography>
                                 <Box className="coloroption">
-                                    <Box className="coloroption1"></Box>
-                                    <Box className="coloroption2"></Box>
-                                    <Box className="coloroption3"></Box>
+                                    <Box className="coloroption1">
+                                        <Button></Button>
+                                    </Box>
+                                    <Box className="coloroption2">
+                                        <Button></Button>
+                                    </Box>
+                                    <Box className="coloroption3">
+                                        <Button></Button>
+                                    </Box>
                                 </Box>
                             </Box>
                         </Box>
@@ -251,10 +273,14 @@ export const ItemDetailView = () => {
                                 marginTop: "20px",
                             }}
                         >
-                            $ 131.95
+                            $ {productDetail.productPrice}
                         </Typography>
                         <Box className="btns">
-                            <Button variant="contained" className="shopnowbtn">
+                            <Button
+                                variant="contained"
+                                className="shopnowbtn"
+                                onClick={(e) => handleShopNow(productDetail)}
+                            >
                                 Shop Now
                             </Button>
                             <Button
