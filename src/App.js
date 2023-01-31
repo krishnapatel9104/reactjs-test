@@ -17,10 +17,7 @@ function App() {
                 <Route path="/itemdetailview" element={<ItemDetailView />} />
                 <Route path="/shipping" element={<Shipping />} />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route
-                    path="/confirmationpage"
-                    element={<ConfirmationPage />}
-                />
+                <Route path="/confirmation" element={<ConfirmationPage />} />
             </Routes>
         </BrowserRouter>
     );

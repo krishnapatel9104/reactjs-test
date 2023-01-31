@@ -13,6 +13,7 @@ import { ImageConfig } from "../../images";
 import { StepperComp } from "../common/StepperComp";
 import { YourOrder } from "../common/YourOrder";
 import { setUserDetails } from "../redux/userDetailsSlice";
+import { updateUserSelectedProductList } from "../redux/userSelectedProductListSlice";
 
 export const Shipping = () => {
     const navigate = useNavigate();
@@ -28,11 +29,11 @@ export const Shipping = () => {
         address: "",
         zipCode: "",
     });
+
     const productDetails = useSelector(
         (state) => state.userSelectedProductLists.userSelectedProductLists
     );
-    // const user = useSelector((state) => state.userAllDetails.userDetail);
-    // console.log("reduxProductDetail shipping & USERDETAIL : ", productDetails);
+    const [productData, setProductData] = useState(productDetails);
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === "First Name")
@@ -59,8 +60,9 @@ export const Shipping = () => {
             });
     };
     const handleClick = () => {
-        console.log("procedd to payment clicked : ", userData);
         dispatch(setUserDetails(userData));
+        dispatch(updateUserSelectedProductList(productData));
+        navigate("/checkout");
     };
     return (
         <Box
@@ -404,7 +406,10 @@ export const Shipping = () => {
                     paddingTop: "40px",
                 }}
             >
-                <YourOrder productDetails={productDetails} />
+                <YourOrder
+                    productDetails={productData}
+                    setProductDetails={setProductData}
+                />
             </Box>
         </Box>
     );

@@ -9,12 +9,50 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ImageConfig } from "../../images";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StepperComp } from "../common/StepperComp";
 import { YourOrder } from "../common/YourOrder";
+import { useDispatch, useSelector } from "react-redux";
+import { setPaymentDetails } from "../redux/paymentDetailsSlice";
+import { updateUserSelectedProductList } from "../redux/userSelectedProductListSlice";
 
 export const Checkout = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [paymentData, setPaymentData] = useState({
+        paymentMethod: "creditcard",
+        cardName: "",
+        cardNumber: "",
+        expiration: "",
+        cvvCode: "",
+    });
+    const reduxProductDetail = useSelector(
+        (state) => state.userSelectedProductLists.userSelectedProductLists
+    );
+    const [productData, setProductData] = useState(reduxProductDetail);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        if (name === "paymentMethod")
+            setPaymentData({ ...paymentData, paymentMethod: value });
+        if (name === "cardName")
+            setPaymentData({ ...paymentData, cardName: value });
+        if (name === "cardNumber")
+            setPaymentData({ ...paymentData, cardNumber: value });
+        if (name === "expiration")
+            setPaymentData({ ...paymentData, expiration: value });
+        if (name === "cvvCode")
+            setPaymentData({ ...paymentData, cvvCode: value });
+    };
+    useEffect(() => {
+        console.log("checkout useeffect : ", productData);
+    }, [productData]);
+
+    const handleClick = () => {
+        dispatch(setPaymentDetails(paymentData));
+        dispatch(updateUserSelectedProductList(productData));
+        navigate("/confirmation");
+    };
     return (
         <Box
             sx={{
@@ -49,14 +87,15 @@ export const Checkout = () => {
                     </Typography>
                     <RadioGroup
                         aria-labelledby="demo-radio-buttons-group-label"
-                        defaultValue="creditcard"
-                        name="radio-buttons-group"
+                        name="paymentMethod"
                         sx={{
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
                             gap: "50px",
                         }}
+                        onChange={handleChange}
+                        value={paymentData.paymentMethod}
                     >
                         <Box>
                             <FormControlLabel
@@ -108,20 +147,22 @@ export const Checkout = () => {
                         <Input
                             placeholder="Enter Name Card"
                             inputProps={""}
-                            name="enternamecard"
+                            name="cardName"
                             sx={{
                                 width: "80%",
                             }}
+                            onChange={handleChange}
                         />
                     </Box>
                     <Box sx={{ marginTop: "50px", position: "relative" }}>
                         <Input
                             placeholder="Card Number"
                             inputProps={""}
-                            name="cardnumber"
+                            name="cardNumber"
                             sx={{
                                 width: "80%",
                             }}
+                            onChange={handleChange}
                         />
                         <img
                             src={ImageConfig.visa}
@@ -154,11 +195,13 @@ export const Checkout = () => {
                             placeholder="Expiration"
                             inputProps={""}
                             name="expiration"
+                            onChange={handleChange}
                         />
                         <Input
                             placeholder="CVV Code"
                             inputProps={""}
-                            name="cvvcode"
+                            name="cvvCode"
+                            onChange={handleChange}
                         />
                     </Box>
                     <Box
@@ -226,7 +269,7 @@ export const Checkout = () => {
                                 textTransform: "inherit",
                                 backgroundColor: "#111827",
                             }}
-                            onClick={() => navigate("/confirmationpage")}
+                            onClick={handleClick}
                         >
                             Confirm Payment of: $131.95
                         </Button>
@@ -240,7 +283,10 @@ export const Checkout = () => {
                     paddingTop: "40px",
                 }}
             >
-                <YourOrder />
+                <YourOrder
+                    productDetails={productData}
+                    setProductDetails={setProductData}
+                />
             </Box>
         </Box>
     );

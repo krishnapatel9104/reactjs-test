@@ -1,9 +1,21 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { ImageConfig } from "../../images/index";
 import "./style.css";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
+    const navigate = useNavigate();
+    const productDetails = useSelector(
+        (state) => state.userSelectedProductLists.userSelectedProductLists
+    );
+    const handleClick = () => {
+        navigate("/shipping", {
+            state: { productDetail: productDetails },
+        });
+    };
+    console.log("productCount : ", productDetails?.length);
     return (
         <>
             <Box className={"navWrapper"}>
@@ -29,11 +41,36 @@ const Navbar = (props) => {
                         alt={"call"}
                         className={"icon"}
                     />
-                    <img
-                        src={ImageConfig.cart}
-                        alt={"cart"}
-                        className={"icon"}
-                    />
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                        }}
+                        onClick={handleClick}
+                    >
+                        <img
+                            src={ImageConfig.cart}
+                            alt={"cart"}
+                            className={"icon"}
+                            style={{ position: "relative" }}
+                        />
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                top: "25%",
+                                backgroundColor: "red",
+                                left: "76%",
+                                borderRadius: "41px",
+                                width: "20px",
+                                textAlign: "center",
+                            }}
+                        >
+                            <Typography sx={{ color: "white" }}>
+                                {productDetails?.length}
+                            </Typography>
+                        </Box>
+                    </Box>
                     <img
                         src={ImageConfig.search}
                         alt={"search"}

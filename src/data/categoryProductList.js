@@ -1,7 +1,8 @@
-import { ImageConfig } from "../../src/images/index";
+import { ImageConfig } from "../images/index";
 
 export const categoryProductList = [
     {
+        id: 1,
         imageSource: ImageConfig.womenproduct1,
         productName: "Louis Vouiton active wear",
         productPrice: 715,
@@ -25,6 +26,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 2,
         imageSource: ImageConfig.womenproduct2,
         productName: "Shiny dress Givenchy",
         productPrice: 1610,
@@ -48,6 +50,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 3,
         imageSource: ImageConfig.womenproduct3,
         productName: "Dolce&Gabbana Dress",
         productPrice: 715,
@@ -71,6 +74,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 4,
         imageSource: ImageConfig.womenproduct4,
         productName: "Elegant dress Dries van Noten",
         productPrice: 715,
@@ -94,6 +98,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 5,
         imageSource: ImageConfig.womenproduct5,
         productName: "Women's white jacket",
         productPrice: 715,
@@ -117,6 +122,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 6,
         imageSource: ImageConfig.womenproduct6,
         productName: "Black Valentino dress with tulle",
         productPrice: 715,
@@ -140,6 +146,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 7,
         imageSource: ImageConfig.womenproduct7,
         productName: "Women's black vest Gucci",
         productPrice: 715,
@@ -163,6 +170,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 8,
         imageSource: ImageConfig.womenproduct8,
         productName: "Red dress Valentino",
         productPrice: 715,
@@ -186,6 +194,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 9,
         imageSource: ImageConfig.womenproduct9,
         productName: "Shiny dress Givenchy",
         productPrice: 715,
@@ -209,6 +218,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 10,
         imageSource: ImageConfig.womenproduct7,
         productName: "Women's black vest Gucci",
         productPrice: 715,
@@ -232,6 +242,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 11,
         imageSource: ImageConfig.womenproduct8,
         productName: "Red dress Valentino",
         productPrice: 715,
@@ -255,6 +266,7 @@ export const categoryProductList = [
         ],
     },
     {
+        id: 12,
         imageSource: ImageConfig.womenproduct9,
         productName: "Shiny dress Givenchy",
         productPrice: 715,

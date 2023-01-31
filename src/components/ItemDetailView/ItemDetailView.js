@@ -45,6 +45,10 @@ export const ItemDetailView = () => {
         dispatch(setUserSelectedProductList(productDetail));
         navigate("/shipping");
     };
+    const handleAddToCart = () => {
+        dispatch(setUserSelectedProductList(productDetail));
+        // navigate("/shipping");
+    };
     return (
         <>
             <Box className="itemdetailviewwrapper">
@@ -279,13 +283,14 @@ export const ItemDetailView = () => {
                             <Button
                                 variant="contained"
                                 className="shopnowbtn"
-                                onClick={(e) => handleShopNow(productDetail)}
+                                onClick={handleShopNow}
                             >
                                 Shop Now
                             </Button>
                             <Button
                                 variant="contained"
                                 className="addtocartbtn"
+                                onClick={handleAddToCart}
                             >
                                 Add to cart
                             </Button>

@@ -1,19 +1,64 @@
 import { Box, Button, MenuItem, Select, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import DeleteOutlineSharpIcon from "@mui/icons-material/DeleteOutlineSharp";
 import RemoveSharpIcon from "@mui/icons-material/RemoveSharp";
 import AddSharpIcon from "@mui/icons-material/AddSharp";
 import { useSelector } from "react-redux";
 
 export const YourOrder = (props) => {
-    const [colour, setColour] = useState("Red");
-    const [size, setSize] = useState("Medium");
     const colourList = ["Red", "Pink", "Yellow", "Black"];
-    const sizeList = ["Medium", "Large", "Small", "Extra small"];
+    const sizeList = ["M", "L", "S", "XS"];
     let total = 0;
     const otherDetails = useSelector(
         (state) => state.userSelectedProductLists.otherDetails
     );
+    const handleClick = (e, order) => {
+        props.setProductDetails(
+            props.productDetails.filter((product) => product.id !== order.id)
+        );
+    };
+    const handleQuantityChange = (identifier, order) => {
+        if (identifier === "add") {
+            props.setProductDetails(
+                props.productDetails.map((product) => {
+                    return product.id === order.id
+                        ? { ...product, quantity: product.quantity + 1 }
+                        : product;
+                })
+            );
+        }
+        if (identifier === "less") {
+            props.setProductDetails(
+                props.productDetails.map((product) => {
+                    return product.id === order.id
+                        ? { ...product, quantity: product.quantity - 1 }
+                        : product;
+                })
+            );
+        }
+    };
+    const handleChange = (e, order) => {
+        const { name, value } = e.target;
+        if (name === "size") {
+            props.setProductDetails(
+                props.productDetails.map((product) => {
+                    return product.id === order.id
+                        ? { ...product, size: value }
+                        : product;
+                })
+            );
+        }
+        if (name === "colour") {
+            props.setProductDetails(
+                props.productDetails.map((product) => {
+                    return product.id === order.id
+                        ? { ...product, color: value }
+                        : product;
+                })
+            );
+        }
+    };
+    console.log("updated props.productdetails : ", props.productDetails);
     return (
         <Box
             sx={{
@@ -31,7 +76,7 @@ export const YourOrder = (props) => {
                 Your Order
             </Typography>
             {props.productDetails.map((order) => {
-                total = order.quantity * order.productPrice;
+                total += order.quantity * order.productPrice;
                 return (
                     <>
                         <Box
@@ -50,8 +95,13 @@ export const YourOrder = (props) => {
                             >
                                 {order.productName}
                             </Box>
-                            <Box sx={{ color: "red" }}>
-                                <DeleteOutlineSharpIcon />
+                            <Box>
+                                <Button
+                                    sx={{ color: "red" }}
+                                    onClick={(e) => handleClick(order)}
+                                >
+                                    <DeleteOutlineSharpIcon />
+                                </Button>
                             </Box>
                         </Box>
                         <Box
@@ -107,6 +157,10 @@ export const YourOrder = (props) => {
                                             minWidth: 0,
                                             padding: 0,
                                         }}
+                                        name="less"
+                                        onClick={(e) =>
+                                            handleQuantityChange("less", order)
+                                        }
                                     >
                                         <RemoveSharpIcon />
                                     </Button>
@@ -118,6 +172,10 @@ export const YourOrder = (props) => {
                                             minWidth: 0,
                                             padding: 0,
                                         }}
+                                        name="add"
+                                        onClick={(e) =>
+                                            handleQuantityChange("add", order)
+                                        }
                                     >
                                         <AddSharpIcon />
                                     </Button>
@@ -145,10 +203,9 @@ export const YourOrder = (props) => {
                                     <Select
                                         labelId="demo-multiple-name-label"
                                         id="demo-multiple-name"
-                                        value={size}
-                                        onChange={(e) =>
-                                            setSize(e.target.value)
-                                        }
+                                        name="size"
+                                        value={order.size}
+                                        onChange={(e) => handleChange(e, order)}
                                         sx={{ width: "170px" }}
                                     >
                                         {sizeList.map((s) => (
@@ -176,10 +233,9 @@ export const YourOrder = (props) => {
                                     <Select
                                         labelId="demo-multiple-name-label"
                                         id="demo-multiple-name"
-                                        value={colour}
-                                        onChange={(e) =>
-                                            setColour(e.target.value)
-                                        }
+                                        name="colour"
+                                        value={order.color}
+                                        onChange={(e) => handleChange(e, order)}
                                         sx={{ width: "170px" }}
                                     >
                                         {colourList.map((color) => (
