@@ -16,26 +16,8 @@ import { useNavigate } from "react-router-dom";
 import { usePagination } from "../common/Pagination";
 
 export const CategroyDetails = () => {
-    // const [mainCategoryFilter, setMainCategoryFilter] = useState([
-    //     {
-    //         value: "Women",
-    //         isChecked: false,
-    //     },
-    //     {
-    //         value: "Ladies",
-    //         isChecked: false,
-    //     },
-    //     {
-    //         value: "Girls",
-    //         isChecked: false,
-    //     },
-    //     {
-    //         value: "Babies",
-    //         isChecked: false,
-    //     },
-    // ]);
-    const maincategoryfilter = ["Women", "Ladies", "Girls", "Babies"];
-    const brandfilter = [
+    const maincategoryfilterList = ["women", "Ladies", "Girls", "Babies"];
+    const brandfilterList = [
         "H&M",
         "Mark & Spencer",
         "Victoria’s Secret",
@@ -48,109 +30,145 @@ export const CategroyDetails = () => {
         "Dolce & Gabbana",
         "Zara",
     ];
-    const categoryfilter = [
+    const categoryfilterList = [
         "Dresses",
         "Tops",
         "Lingerie & Lounge Wear",
         "Blouse",
         "Vintage",
     ];
-    const sizefilter = ["Medium", "Large", "Plus Size", "Sexy Plus Size"];
-    // let filterArray = {
-    //     filters: [],
-    //     price: [100, 300],
-    //     brand: [],
-    //     category: [],
-    //     size: [],
-    // };
-    // const [filtersArray, setFiltersArray] = useState({
-    //     filters: [],
-    //     price: [100, 300],
-    //     brand: [],
-    //     category: [],
-    //     size: [],
-    // });
-    const handleChangeFilter = (e) => {
-        // let array1 = [];
-        // const { name, value, checked } = e.target;
-        // console.log("filter : ", name, value, checked);
-        // if (checked)
-        //     mainCategoryFilter.find((v) => v.value === value).isChecked = true;
-        // console.log("maindat : ", mainCategoryFilter);
-        // setMainCategoryFilter(mainCategoryFilter);
-        // mainCategoryFilter.map((e) => {
-        //     if (e.isChecked) array1.push(e.value);
-        // });
-        // console.log("array1 : ", array1);
-    };
-    // console.log("procedd data : ", categoryProductList);
-    // const handleChangeFilter = (e) => {
-    //     const { name, value, checked } = e.target;
-    //     console.log("filter : ", name, value, checked);
-    //     // console.log("AAAAAAAAAAAAA : ", e.target.value, categoryProductList);
-    //     // categoryProductList.map((a) => {
-    //     //     console.log("loop : ", a);
-    //     //     if (checked) {
+    const sizefilterList = ["Medium", "Large", "Plus Size", "Sexy Plus Size"];
+    const [allFiltersArray, setAllFiltersArray] = useState({
+        mainFilter: [],
+        brandFitler: [],
+        categoryFilter: [],
+        sizeFilter: [],
+        priceFilters: [100, 300],
+    });
 
-    //     //     }
-    //     // })
-    //     const { filters, brand, category, size } = filterArray;
-    //     // if (name === "filter" && checked) {
-    //     //     filterArray = [...filterArray.filters,value]
-    //     // }else {
-    //     //     filterArray = ((filterArray.filters).filter((f) => f !== value))
-    //     // }
-    //     console.log("AAAAAAAAAAAAA : ", filterArray);
-
-    //     // if (name === "price") {
-    //     //     console.log("value price : ", value);
-    //     //     setFiltersArray({ price: value });
-    //     // }
-    //     // if (name === "brand" && checked) {
-    //     //     setFiltersArray({ brand: [...brand, value] });
-    //     // }else {
-    //     //     setFiltersArray((filtersArray.brand).filter((f) => f !== value))
-    //     // }
-    //     // if (name === "category" && checked) {
-    //     //     setFiltersArray({ category: [...category, value] });
-    //     // }else {
-    //     //     setFiltersArray((filtersArray.category).filter((f) => f !== value))
-    //     // }
-    //     // if (name === "size" && checked) {
-    //     //     setFiltersArray({ size: [...size, value] });
-    //     // }else {
-    //     //     setFiltersArray((filtersArray.category).filter((f) => f !== value))
-    //     // }
-    // };
     const navigate = useNavigate();
-    const [value, setValue] = useState([100, 300]);
+    const [temp, setTemp] = useState([]);
     const [page, setPage] = useState(1);
     const PER_PAGE = 9;
     const count = Math.ceil(categoryProductList.length / PER_PAGE);
-    const showCategoryProductList = usePagination(
-        categoryProductList,
-        PER_PAGE
-    );
+    const handleChangeFilter = (e) => {
+        const { name, value, checked } = e.target;
+        // mainCategoryFilter
+        if (name === "filter" && checked) {
+            let newArray = {
+                ...allFiltersArray,
+                mainFilter: [...allFiltersArray.mainFilter, value],
+            };
+            setAllFiltersArray(newArray);
+        } else if (name === "filter" && !checked) {
+            let newArray = {
+                ...allFiltersArray,
+                mainFilter: allFiltersArray.mainFilter.filter(
+                    (v) => v !== value
+                ),
+            };
+            setAllFiltersArray(newArray);
+        }
 
-    // useEffect(() => {
-    //   console.log("filtersArray : ",filterArray);
-    // }, [filterArray]);
+        //brand
+        if (name === "brand" && checked) {
+            let newArray = {
+                ...allFiltersArray,
+                brandFitler: [...allFiltersArray.brandFitler, value],
+            };
+            setAllFiltersArray(newArray);
+        } else if (name === "brand" && !checked) {
+            let newArray = {
+                ...allFiltersArray,
+                brandFitler: allFiltersArray.brandFitler.filter(
+                    (v) => v !== value
+                ),
+            };
+            setAllFiltersArray(newArray);
+        }
 
+        //category
+        if (name === "category" && checked) {
+            let newArray = {
+                ...allFiltersArray,
+                categoryFilter: [...allFiltersArray.categoryFilter, value],
+            };
+            setAllFiltersArray(newArray);
+        } else if (name === "category" && !checked) {
+            let newArray = {
+                ...allFiltersArray,
+                categoryFilter: allFiltersArray.categoryFilter.filter(
+                    (v) => v !== value
+                ),
+            };
+            setAllFiltersArray(newArray);
+        }
+
+        //size
+        if (name === "size" && checked) {
+            let newArray = {
+                ...allFiltersArray,
+                sizeFilter: [...allFiltersArray.sizeFilter, value],
+            };
+            setAllFiltersArray(newArray);
+        } else if (name === "size" && !checked) {
+            let newArray = {
+                ...allFiltersArray,
+                sizeFilter: allFiltersArray.sizeFilter.filter(
+                    (v) => v !== value
+                ),
+            };
+            setAllFiltersArray(newArray);
+        }
+
+        //price
+        if (name === "price") {
+            let newArray = {
+                ...allFiltersArray,
+                priceFilters: value,
+            };
+            setAllFiltersArray(newArray);
+        }
+    };
     const handleChangePagination = (e, p) => {
         setPage(p);
         showCategoryProductList.jump(p);
     };
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-    function valuetext(value) {
-        return `$${value}`;
-    }
     const handleProductClick = (productDetail) => {
         navigate("/itemdetailview", {
             state: { productDetail: productDetail },
         });
     };
+
+    useEffect(() => {
+        let newProductList = categoryProductList.filter((product) => {
+            if (
+                allFiltersArray.mainFilter.includes(
+                    product.filter.toLowerCase()
+                ) ||
+                allFiltersArray.brandFitler.includes(
+                    product.brand.toLowerCase()
+                ) ||
+                allFiltersArray.categoryFilter.includes(
+                    product.category.toLowerCase()
+                ) ||
+                allFiltersArray.sizeFilter.includes(
+                    product.size.toLowerCase()
+                ) ||
+                (product.productPrice >= allFiltersArray.priceFilters[0] &&
+                    product.productPrice <= allFiltersArray.priceFilters[1])
+            ) {
+                return product;
+            }
+        });
+        setTemp(newProductList);
+    }, [allFiltersArray]);
+
+    const showCategoryProductList = usePagination(
+        temp.length ? temp : categoryProductList,
+        PER_PAGE
+    );
+
     return (
         <>
             <Box
@@ -249,7 +267,8 @@ export const CategroyDetails = () => {
                                         color: "#1F2937",
                                     }}
                                 >
-                                    ${value[0]}-${value[1]}
+                                    ${allFiltersArray.priceFilters[0]}-$
+                                    {allFiltersArray.priceFilters[1]}
                                 </Typography>
                             </Box>
                             <Slider
@@ -257,12 +276,11 @@ export const CategroyDetails = () => {
                                 sx={{
                                     color: "#EB5757",
                                 }}
-                                value={value}
-                                onChange={handleChange}
+                                value={allFiltersArray.priceFilters}
+                                onChange={(e) => handleChangeFilter(e)}
                                 valueLabelDisplay="auto"
                                 aria-labelledby="range-slider"
-                                getAriaValueText={valuetext}
-                                max={500}
+                                max={2000}
                                 min={1}
                                 name="price"
                             />
@@ -284,7 +302,7 @@ export const CategroyDetails = () => {
                             >
                                 FILTERS
                             </Typography>
-                            {maincategoryfilter.map((filter, index) => {
+                            {maincategoryfilterList.map((filter, index) => {
                                 return (
                                     <FormGroup
                                         // className="filteritem"
@@ -302,12 +320,14 @@ export const CategroyDetails = () => {
                                             key={index}
                                             control={
                                                 <Checkbox
-                                                    value={filter}
+                                                    value={filter.toLowerCase()}
                                                     name={"filter"}
                                                 />
                                             }
                                             label={filter}
-                                            onChange={handleChangeFilter}
+                                            onChange={(e) =>
+                                                handleChangeFilter(e)
+                                            }
                                         />
                                     </FormGroup>
                                 );
@@ -330,7 +350,7 @@ export const CategroyDetails = () => {
                             >
                                 BRANDS
                             </Typography>
-                            {brandfilter.map((filter, index) => {
+                            {brandfilterList.map((filter, index) => {
                                 return (
                                     <>
                                         {index < 10 ? (
@@ -350,13 +370,13 @@ export const CategroyDetails = () => {
                                                     key={index}
                                                     control={
                                                         <Checkbox
-                                                            value={filter}
+                                                            value={filter.toLowerCase()}
                                                             name={"brand"}
                                                         />
                                                     }
                                                     label={filter}
-                                                    onChange={
-                                                        handleChangeFilter
+                                                    onChange={(e) =>
+                                                        handleChangeFilter(e)
                                                     }
                                                 />
                                             </FormGroup>
@@ -366,7 +386,7 @@ export const CategroyDetails = () => {
                                     </>
                                 );
                             })}
-                            {brandfilter.length > 10 ? (
+                            {brandfilterList.length > 10 ? (
                                 <Typography className="moreoption">
                                     +10 more
                                 </Typography>
@@ -391,7 +411,7 @@ export const CategroyDetails = () => {
                             >
                                 CATEGORIES
                             </Typography>
-                            {categoryfilter.map((filter, index) => {
+                            {categoryfilterList.map((filter, index) => {
                                 return (
                                     <>
                                         {index < 4 ? (
@@ -411,13 +431,13 @@ export const CategroyDetails = () => {
                                                     key={index}
                                                     control={
                                                         <Checkbox
-                                                            value={filter}
+                                                            value={filter.toLowerCase()}
                                                             name={"category"}
                                                         />
                                                     }
                                                     label={filter}
-                                                    onChange={
-                                                        handleChangeFilter
+                                                    onChange={(e) =>
+                                                        handleChangeFilter(e)
                                                     }
                                                 />
                                             </FormGroup>
@@ -427,7 +447,7 @@ export const CategroyDetails = () => {
                                     </>
                                 );
                             })}
-                            {categoryfilter.length > 4 ? (
+                            {categoryfilterList.length > 4 ? (
                                 <Typography
                                     // className="moreoption"
                                     sx={{
@@ -457,7 +477,7 @@ export const CategroyDetails = () => {
                             >
                                 SIZE
                             </Typography>
-                            {sizefilter.map((filter, index) => {
+                            {sizefilterList.map((filter, index) => {
                                 return (
                                     <FormGroup
                                         // className="filteritem"
@@ -475,12 +495,14 @@ export const CategroyDetails = () => {
                                             key={index}
                                             control={
                                                 <Checkbox
-                                                    value={filter}
+                                                    value={filter.toLowerCase()}
                                                     name={"size"}
                                                 />
                                             }
                                             label={filter}
-                                            onChange={handleChangeFilter}
+                                            onChange={(e) =>
+                                                handleChangeFilter(e)
+                                            }
                                         />
                                     </FormGroup>
                                 );
@@ -538,174 +560,6 @@ export const CategroyDetails = () => {
                             }}
                         >
                             <Grid container columnSpacing={2}>
-                                {/* {Object.keys(showCategoryProductList).map(
-                                    (fitler) => {
-                                        showCategoryProductList[fitler].map(
-                                            (product, index) => {
-                                                console.log(
-                                                    "product : ",
-                                                    product
-                                                );
-                                                return (
-                                                    <Grid
-                                                        key={index}
-                                                        item
-                                                        sm={4}
-                                                        sx={{
-                                                            position:
-                                                                "relative",
-                                                        }}
-                                                    >
-                                                        <img
-                                                            src={
-                                                                product.imageSource
-                                                            }
-                                                            alt="productimg"
-                                                            width="100%"
-                                                            key={index}
-                                                            onClick={(e) =>
-                                                                handleProductClick(
-                                                                    product
-                                                                )
-                                                            }
-                                                        />
-                                                        {product.isNewArrival && (
-                                                            <Box
-                                                                // className="newArrival"
-                                                                sx={{
-                                                                    backgroundColor:
-                                                                        "#111827",
-                                                                    width: "fit-content",
-                                                                    padding:
-                                                                        "2px 10px",
-                                                                    position:
-                                                                        "absolute",
-                                                                    top: "0%",
-                                                                }}
-                                                            >
-                                                                <Typography
-                                                                    sx={{
-                                                                        fontFamily:
-                                                                            "Jost",
-                                                                        fontStyle:
-                                                                            "normal",
-                                                                        fontWeight:
-                                                                            "400",
-                                                                        fontSize:
-                                                                            "12px",
-                                                                        lineHeight:
-                                                                            "17px",
-                                                                        color: "#FFFFFF",
-                                                                    }}
-                                                                >
-                                                                    New Arrivals
-                                                                </Typography>
-                                                            </Box>
-                                                        )}
-                                                        <Box
-                                                            // className="likeiconsection"
-                                                            sx={{
-                                                                background:
-                                                                    "rgba(0, 0, 0, 0.3)",
-                                                                width: "fit-content",
-                                                                padding:
-                                                                    "5px 8px",
-                                                                position:
-                                                                    "absolute",
-                                                                paddingTop:
-                                                                    "10px",
-                                                                top: "3%",
-                                                                left: "85.5%",
-                                                            }}
-                                                        >
-                                                            <img
-                                                                src={
-                                                                    ImageConfig.whitelike
-                                                                }
-                                                                alt="productimg"
-                                                                width="25px"
-                                                                height="22px"
-                                                            />
-                                                        </Box>
-                                                        <Box
-                                                            sx={{
-                                                                padding: "10px",
-                                                            }}
-                                                        >
-                                                            <Box
-                                                                // className="productlistdesc"
-                                                                sx={{
-                                                                    display:
-                                                                        "flex",
-                                                                    justifyContent:
-                                                                        "space-between",
-                                                                    alignItems:
-                                                                        "flex-end",
-                                                                }}
-                                                            >
-                                                                <Typography
-                                                                    // className="productname"
-                                                                    sx={{
-                                                                        width: "80%",
-                                                                        fontFamily:
-                                                                            "Inter",
-                                                                        fontStyle:
-                                                                            "normal",
-                                                                        fontWeight:
-                                                                            "400",
-                                                                        fontSize:
-                                                                            "18px",
-                                                                        lineHeight:
-                                                                            "23px",
-                                                                        color: "#000000",
-                                                                    }}
-                                                                >
-                                                                    {
-                                                                        product.productName
-                                                                    }
-                                                                </Typography>
-                                                                <img
-                                                                    src={
-                                                                        ImageConfig.womenproductcart
-                                                                    }
-                                                                    alt="productimg"
-                                                                    // className="carticon"
-                                                                    // width="20%"
-                                                                    height="22px"
-                                                                    width="32px"
-                                                                />
-                                                            </Box>
-                                                            <Typography
-                                                                // className="productprice"
-                                                                sx={{
-                                                                    width: "80%",
-                                                                    fontFamily:
-                                                                        "Inter",
-                                                                    fontStyle:
-                                                                        "normal",
-                                                                    fontWeight:
-                                                                        "400",
-                                                                    fontSize:
-                                                                        "20px",
-                                                                    lineHeight:
-                                                                        "41px",
-                                                                    color: "#1B2437",
-                                                                    alignItems:
-                                                                        "flex-start",
-                                                                }}
-                                                            >
-                                                                ${" "}
-                                                                {
-                                                                    product.productPrice
-                                                                }
-                                                            </Typography>
-                                                        </Box>
-                                                    </Grid>
-                                                );
-                                            }
-                                        );
-                                    }
-                                )} */}
                                 {showCategoryProductList
                                     .currentData()
                                     .map((product, index) => {
