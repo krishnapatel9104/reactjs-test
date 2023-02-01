@@ -26,15 +26,12 @@ export const userSelectedProductListSlice = createSlice({
     initialState: initialState,
     reducers: {
         setUserSelectedProductList: (state, action) => {
-            console.log("acgtion called : ", action.payload);
             let alreadyExist = state.userSelectedProductLists.findIndex(
                 (product) => {
                     return product.id === action.payload.id;
                 }
             );
-            console.log("find index : ", alreadyExist);
             if (alreadyExist === -1) {
-                console.log("now add obj new one ");
                 return {
                     ...state,
                     userSelectedProductLists:

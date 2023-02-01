@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
-import { ImageConfig } from "../images/index";
+import { ImageConfig } from "../../images/index";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import Navbar from "./Navbar/Navbar";
-import { bestDealProductDetails } from "./../data/bestDeal";
-import { shopByCategoryList } from "./../data/shopByCategoryList";
-import { bestSellerProductDetails } from "./../data/bestSeller";
+import Navbar from "../Navbar/Navbar";
+import { bestDealProductDetails } from "../../data/bestDeal";
+import { shopByCategoryList } from "../../data/shopByCategoryList";
+import { bestSellerProductDetails } from "../../data/bestSeller";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 

@@ -8,14 +8,12 @@ import { useNavigate } from "react-router-dom";
 const Navbar = (props) => {
     const navigate = useNavigate();
     const productDetails = useSelector(
-        (state) => state.userSelectedProductLists.userSelectedProductLists
-    );
+        (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists);
     const handleClick = () => {
         navigate("/shipping", {
             state: { productDetail: productDetails },
         });
     };
-    console.log("productCount : ", productDetails?.length);
     return (
         <>
             <Box className={"navWrapper"}>

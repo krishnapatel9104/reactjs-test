@@ -6,13 +6,14 @@ import AddSharpIcon from "@mui/icons-material/AddSharp";
 import { useSelector } from "react-redux";
 
 export const YourOrder = (props) => {
+    console.log("YOUR ORDER : ", props);
     const colourList = ["Red", "Pink", "Yellow", "Black"];
     const sizeList = ["M", "L", "S", "XS"];
     let total = 0;
     const otherDetails = useSelector(
-        (state) => state.userSelectedProductLists.otherDetails
+        (state) => state.rootReducer.userSelectedProductListSlice.otherDetails
     );
-    const handleClick = (e, order) => {
+    const handleClick = (order) => {
         props.setProductDetails(
             props.productDetails.filter((product) => product.id !== order.id)
         );
@@ -58,7 +59,6 @@ export const YourOrder = (props) => {
             );
         }
     };
-    console.log("updated props.productdetails : ", props.productDetails);
     return (
         <Box
             sx={{
@@ -98,7 +98,7 @@ export const YourOrder = (props) => {
                             <Box>
                                 <Button
                                     sx={{ color: "red" }}
-                                    onClick={(e) => handleClick(order)}
+                                    onClick={() => handleClick(order)}
                                 >
                                     <DeleteOutlineSharpIcon />
                                 </Button>
@@ -308,8 +308,12 @@ export const YourOrder = (props) => {
                     }}
                 >
                     <Typography>${total}</Typography>
-                    <Typography>${otherDetails.Shipping}</Typography>
-                    <Typography>${otherDetails.vatAndTax}</Typography>
+                    <Typography>
+                        ${total !== 0 ? otherDetails.Shipping : 0}
+                    </Typography>
+                    <Typography>
+                        ${total !== 0 ? otherDetails.vatAndTax : 0}
+                    </Typography>
                     <Typography
                         sx={{
                             color: "#616161",
@@ -319,7 +323,11 @@ export const YourOrder = (props) => {
                         }}
                     >
                         $
-                        {total + otherDetails.Shipping + otherDetails.vatAndTax}
+                        {total !== 0
+                            ? total +
+                              otherDetails.Shipping +
+                              otherDetails.vatAndTax
+                            : 0}
                     </Typography>
                 </Box>
             </Box>

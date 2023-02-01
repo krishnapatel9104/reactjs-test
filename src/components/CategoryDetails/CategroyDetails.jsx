@@ -8,14 +8,32 @@ import {
     Slider,
     Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import Navbar from "./Navbar/Navbar";
-import { ImageConfig } from "../images/index";
-import { categoryProductList } from "../data/categoryProductList";
+import React, { useEffect, useState } from "react";
+import Navbar from "../Navbar/Navbar";
+import { ImageConfig } from "../../images/index";
+import { categoryProductList } from "../../data/categoryProductList";
 import { useNavigate } from "react-router-dom";
-import { usePagination } from "./common/Pagination";
+import { usePagination } from "../common/Pagination";
 
 export const CategroyDetails = () => {
+    // const [mainCategoryFilter, setMainCategoryFilter] = useState([
+    //     {
+    //         value: "Women",
+    //         isChecked: false,
+    //     },
+    //     {
+    //         value: "Ladies",
+    //         isChecked: false,
+    //     },
+    //     {
+    //         value: "Girls",
+    //         isChecked: false,
+    //     },
+    //     {
+    //         value: "Babies",
+    //         isChecked: false,
+    //     },
+    // ]);
     const maincategoryfilter = ["Women", "Ladies", "Girls", "Babies"];
     const brandfilter = [
         "H&M",
@@ -38,34 +56,72 @@ export const CategroyDetails = () => {
         "Vintage",
     ];
     const sizefilter = ["Medium", "Large", "Plus Size", "Sexy Plus Size"];
-    // const [filterArray, setFilterArray] = useState({
-    //     filter: [],
+    // let filterArray = {
+    //     filters: [],
+    //     price: [100, 300],
+    //     brand: [],
+    //     category: [],
+    //     size: [],
+    // };
+    // const [filtersArray, setFiltersArray] = useState({
+    //     filters: [],
     //     price: [100, 300],
     //     brand: [],
     //     category: [],
     //     size: [],
     // });
     const handleChangeFilter = (e) => {
-        const { name, value, checked } = e.target;
-        console.log("name value checked : ", name, value, checked);
-        // const { filter, brand, category, size } = filterArray;
-        // if (name === "filter" && checked) {
-        //     setFilterArray({ filter: [...filter, value] });
-        // }
-        // if (name === "price") {
-        //     console.log("value price : ", value);
-        //     setFilterArray({ price: value });
-        // }
-        // if (name === "brand") {
-        //     setFilterArray({ brand: [...brand, value] });
-        // }
-        // if (name === "category") {
-        //     setFilterArray({ category: [...category, value] });
-        // }
-        // if (name === "size") {
-        //     setFilterArray({ size: [...size, value] });
-        // }
+        // let array1 = [];
+        // const { name, value, checked } = e.target;
+        // console.log("filter : ", name, value, checked);
+        // if (checked)
+        //     mainCategoryFilter.find((v) => v.value === value).isChecked = true;
+        // console.log("maindat : ", mainCategoryFilter);
+        // setMainCategoryFilter(mainCategoryFilter);
+        // mainCategoryFilter.map((e) => {
+        //     if (e.isChecked) array1.push(e.value);
+        // });
+        // console.log("array1 : ", array1);
     };
+    // console.log("procedd data : ", categoryProductList);
+    // const handleChangeFilter = (e) => {
+    //     const { name, value, checked } = e.target;
+    //     console.log("filter : ", name, value, checked);
+    //     // console.log("AAAAAAAAAAAAA : ", e.target.value, categoryProductList);
+    //     // categoryProductList.map((a) => {
+    //     //     console.log("loop : ", a);
+    //     //     if (checked) {
+
+    //     //     }
+    //     // })
+    //     const { filters, brand, category, size } = filterArray;
+    //     // if (name === "filter" && checked) {
+    //     //     filterArray = [...filterArray.filters,value]
+    //     // }else {
+    //     //     filterArray = ((filterArray.filters).filter((f) => f !== value))
+    //     // }
+    //     console.log("AAAAAAAAAAAAA : ", filterArray);
+
+    //     // if (name === "price") {
+    //     //     console.log("value price : ", value);
+    //     //     setFiltersArray({ price: value });
+    //     // }
+    //     // if (name === "brand" && checked) {
+    //     //     setFiltersArray({ brand: [...brand, value] });
+    //     // }else {
+    //     //     setFiltersArray((filtersArray.brand).filter((f) => f !== value))
+    //     // }
+    //     // if (name === "category" && checked) {
+    //     //     setFiltersArray({ category: [...category, value] });
+    //     // }else {
+    //     //     setFiltersArray((filtersArray.category).filter((f) => f !== value))
+    //     // }
+    //     // if (name === "size" && checked) {
+    //     //     setFiltersArray({ size: [...size, value] });
+    //     // }else {
+    //     //     setFiltersArray((filtersArray.category).filter((f) => f !== value))
+    //     // }
+    // };
     const navigate = useNavigate();
     const [value, setValue] = useState([100, 300]);
     const [page, setPage] = useState(1);
@@ -75,6 +131,10 @@ export const CategroyDetails = () => {
         categoryProductList,
         PER_PAGE
     );
+
+    // useEffect(() => {
+    //   console.log("filtersArray : ",filterArray);
+    // }, [filterArray]);
 
     const handleChangePagination = (e, p) => {
         setPage(p);
@@ -87,7 +147,6 @@ export const CategroyDetails = () => {
         return `$${value}`;
     }
     const handleProductClick = (productDetail) => {
-        console.log("productdetail : ", productDetail);
         navigate("/itemdetailview", {
             state: { productDetail: productDetail },
         });
@@ -479,6 +538,174 @@ export const CategroyDetails = () => {
                             }}
                         >
                             <Grid container columnSpacing={2}>
+                                {/* {Object.keys(showCategoryProductList).map(
+                                    (fitler) => {
+                                        showCategoryProductList[fitler].map(
+                                            (product, index) => {
+                                                console.log(
+                                                    "product : ",
+                                                    product
+                                                );
+                                                return (
+                                                    <Grid
+                                                        key={index}
+                                                        item
+                                                        sm={4}
+                                                        sx={{
+                                                            position:
+                                                                "relative",
+                                                        }}
+                                                    >
+                                                        <img
+                                                            src={
+                                                                product.imageSource
+                                                            }
+                                                            alt="productimg"
+                                                            width="100%"
+                                                            key={index}
+                                                            onClick={(e) =>
+                                                                handleProductClick(
+                                                                    product
+                                                                )
+                                                            }
+                                                        />
+                                                        {product.isNewArrival && (
+                                                            <Box
+                                                                // className="newArrival"
+                                                                sx={{
+                                                                    backgroundColor:
+                                                                        "#111827",
+                                                                    width: "fit-content",
+                                                                    padding:
+                                                                        "2px 10px",
+                                                                    position:
+                                                                        "absolute",
+                                                                    top: "0%",
+                                                                }}
+                                                            >
+                                                                <Typography
+                                                                    sx={{
+                                                                        fontFamily:
+                                                                            "Jost",
+                                                                        fontStyle:
+                                                                            "normal",
+                                                                        fontWeight:
+                                                                            "400",
+                                                                        fontSize:
+                                                                            "12px",
+                                                                        lineHeight:
+                                                                            "17px",
+                                                                        color: "#FFFFFF",
+                                                                    }}
+                                                                >
+                                                                    New Arrivals
+                                                                </Typography>
+                                                            </Box>
+                                                        )}
+                                                        <Box
+                                                            // className="likeiconsection"
+                                                            sx={{
+                                                                background:
+                                                                    "rgba(0, 0, 0, 0.3)",
+                                                                width: "fit-content",
+                                                                padding:
+                                                                    "5px 8px",
+                                                                position:
+                                                                    "absolute",
+                                                                paddingTop:
+                                                                    "10px",
+                                                                top: "3%",
+                                                                left: "85.5%",
+                                                            }}
+                                                        >
+                                                            <img
+                                                                src={
+                                                                    ImageConfig.whitelike
+                                                                }
+                                                                alt="productimg"
+                                                                width="25px"
+                                                                height="22px"
+                                                            />
+                                                        </Box>
+                                                        <Box
+                                                            sx={{
+                                                                padding: "10px",
+                                                            }}
+                                                        >
+                                                            <Box
+                                                                // className="productlistdesc"
+                                                                sx={{
+                                                                    display:
+                                                                        "flex",
+                                                                    justifyContent:
+                                                                        "space-between",
+                                                                    alignItems:
+                                                                        "flex-end",
+                                                                }}
+                                                            >
+                                                                <Typography
+                                                                    // className="productname"
+                                                                    sx={{
+                                                                        width: "80%",
+                                                                        fontFamily:
+                                                                            "Inter",
+                                                                        fontStyle:
+                                                                            "normal",
+                                                                        fontWeight:
+                                                                            "400",
+                                                                        fontSize:
+                                                                            "18px",
+                                                                        lineHeight:
+                                                                            "23px",
+                                                                        color: "#000000",
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        product.productName
+                                                                    }
+                                                                </Typography>
+                                                                <img
+                                                                    src={
+                                                                        ImageConfig.womenproductcart
+                                                                    }
+                                                                    alt="productimg"
+                                                                    // className="carticon"
+                                                                    // width="20%"
+                                                                    height="22px"
+                                                                    width="32px"
+                                                                />
+                                                            </Box>
+                                                            <Typography
+                                                                // className="productprice"
+                                                                sx={{
+                                                                    width: "80%",
+                                                                    fontFamily:
+                                                                        "Inter",
+                                                                    fontStyle:
+                                                                        "normal",
+                                                                    fontWeight:
+                                                                        "400",
+                                                                    fontSize:
+                                                                        "20px",
+                                                                    lineHeight:
+                                                                        "41px",
+                                                                    color: "#1B2437",
+                                                                    alignItems:
+                                                                        "flex-start",
+                                                                }}
+                                                            >
+                                                                ${" "}
+                                                                {
+                                                                    product.productPrice
+                                                                }
+                                                            </Typography>
+                                                        </Box>
+                                                    </Grid>
+                                                );
+                                            }
+                                        );
+                                    }
+                                )} */}
                                 {showCategoryProductList
                                     .currentData()
                                     .map((product, index) => {

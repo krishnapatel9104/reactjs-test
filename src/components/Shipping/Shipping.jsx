@@ -6,14 +6,15 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ImageConfig } from "../../images";
 import { StepperComp } from "../common/StepperComp";
 import { YourOrder } from "../common/YourOrder";
-import { setUserDetails } from "../redux/userDetailsSlice";
-import { updateUserSelectedProductList } from "../redux/userSelectedProductListSlice";
+import { setUserDetails } from "../../store/reducers/userDetailsSlice";
+import { updateUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
+import { useFormik } from "formik";
 
 export const Shipping = () => {
     const navigate = useNavigate();
@@ -31,9 +32,12 @@ export const Shipping = () => {
     });
 
     const productDetails = useSelector(
-        (state) => state.userSelectedProductLists.userSelectedProductLists
+        (state) =>
+            state.rootReducer.userSelectedProductListSlice
+                .userSelectedProductLists
     );
     const [productData, setProductData] = useState(productDetails);
+    console.log("productDetails shipping : ", productDetails, productData);
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === "First Name")
@@ -64,6 +68,68 @@ export const Shipping = () => {
         dispatch(updateUserSelectedProductList(productData));
         navigate("/checkout");
     };
+    // const validate = (values) => {
+    //     const errors = {};
+    //     if (!values.firstName) {
+    //         errors.firstName = "Required";
+    //     }
+
+    //     if (!values.lastName) {
+    //         errors.lastName = "Required";
+    //     }
+
+    //     if (!values.emailAddress) {
+    //         errors.emailAddress = "Required";
+    //     } else if (
+    //         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(
+    //             values.emailAddress
+    //         )
+    //     ) {
+    //         errors.emailAddress = "Invalid email address";
+    //     }
+
+    //     if (!values.phoneNumber) {
+    //         errors.phoneNumber = "Required";
+    //     } else if (!/^[987]{1}[0-9]{9}$/i.test(values.phoneNumber)) {
+    //         errors.phoneNumber = "Invalid phone number";
+    //     }
+
+    //     if (!values.city) {
+    //         errors.city = "Required";
+    //     } else if (values.city === 0) {
+    //         errors.city = "Please select city";
+    //     }
+
+    //     if (!values.address) {
+    //         errors.address = "Required";
+    //     }
+
+    //     if (!values.zipCode) {
+    //         errors.zipCode = "Required";
+    //     } else if (!/^[0-9]{7}$/i.test(values.zipCode)) {
+    //         errors.zipCode = "Invalid zip code";
+    //     }
+    //     console.log("error: ", errors);
+    //     return errors;
+    // };
+    // const formik = useFormik({
+    //     initialValues: {
+    //         firstName: "",
+    //         lastName: "",
+    //         emailAddress: "",
+    //         phoneNumber: "",
+    //         deliveryDate: "",
+    //         convenientTime: "",
+    //         city: "",
+    //         address: "",
+    //         zipCode: "",
+    //     },
+    //     // handleChange,
+    //     validate,
+    //     onSubmit: (values) => {
+    //         console.log("btn clicked : ", values);
+    //     },
+    // });
     return (
         <Box
             sx={{
@@ -96,6 +162,7 @@ export const Shipping = () => {
                     >
                         Contact Information
                     </Typography>
+                    {/* <form onSubmit={formik.handleSubmit}> */}
                     <Box
                         sx={{
                             display: "flex",
@@ -111,8 +178,15 @@ export const Shipping = () => {
                                 shrink: true,
                             }}
                             name="First Name"
+                            // value={formik.values.firstName}
+                            // onChange={formik.handleChange}
                             onChange={handleChange}
                             variant="standard"
+                            // helperText={
+                            //     formik.errors.firstName ? (
+                            //         <div>{formik.errors.firstName}</div>
+                            //     ) : null
+                            // }
                             placeholder="First Name e.g John,Mary"
                             sx={{
                                 fontSize: "22px",
@@ -125,6 +199,9 @@ export const Shipping = () => {
                                     {
                                         marginTop: "30px !important",
                                     },
+                                "& .MuiFormHelperText-root": {
+                                    color: "red",
+                                },
                             }}
                         />
                         <TextField
@@ -134,7 +211,14 @@ export const Shipping = () => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
+                            // helperText={
+                            //     formik.errors.lastName ? (
+                            //         <div>{formik.errors.lastName}</div>
+                            //     ) : null
+                            // }
                             name="Last Name"
+                            // value={formik.values.lastName}
+                            // onChange={formik.handleChange}
                             onChange={handleChange}
                             variant="standard"
                             placeholder="Last Name e.g John,Mary"
@@ -149,6 +233,9 @@ export const Shipping = () => {
                                     {
                                         marginTop: "30px !important",
                                     },
+                                "& .MuiFormHelperText-root": {
+                                    color: "red",
+                                },
                             }}
                         />
                     </Box>
@@ -166,8 +253,15 @@ export const Shipping = () => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
+                            // helperText={
+                            //     formik.errors.emailAddress ? (
+                            //         <div>{formik.errors.emailAddress}</div>
+                            //     ) : null
+                            // }
                             name="Email Address"
                             onChange={handleChange}
+                            // value={formik.values.emailAddress}
+                            // onChange={formik.handleChange}
                             variant="standard"
                             placeholder="Your email@gmail.com"
                             sx={{
@@ -181,6 +275,9 @@ export const Shipping = () => {
                                     {
                                         marginTop: "30px !important",
                                     },
+                                "& .MuiFormHelperText-root": {
+                                    color: "red",
+                                },
                             }}
                         />
                         <TextField
@@ -191,7 +288,14 @@ export const Shipping = () => {
                                 shrink: true,
                             }}
                             name="Phone Number"
+                            // helperText={
+                            //     formik.errors.phoneNumber ? (
+                            //         <div>{formik.errors.phoneNumber}</div>
+                            //     ) : null
+                            // }
                             onChange={handleChange}
+                            // value={formik.values.phoneNumber}
+                            // onChange={formik.handleChange}
                             variant="standard"
                             placeholder="+1-(0000 000 0000)"
                             sx={{
@@ -205,6 +309,9 @@ export const Shipping = () => {
                                     {
                                         marginTop: "30px !important",
                                     },
+                                "& .MuiFormHelperText-root": {
+                                    color: "red",
+                                },
                             }}
                         />
                     </Box>
@@ -234,6 +341,7 @@ export const Shipping = () => {
                             }}
                             name="Delivery Date"
                             onChange={handleChange}
+                            // onChange={formik.handleChange}
                             variant="standard"
                             placeholder="DD/MM/YYYY"
                             sx={{
@@ -257,6 +365,7 @@ export const Shipping = () => {
                                 shrink: true,
                             }}
                             name="Convenient Time"
+                            // onChange={formik.handleChange}
                             onChange={handleChange}
                             variant="standard"
                             placeholder="1pm-9pm"
@@ -291,13 +400,21 @@ export const Shipping = () => {
                                 City
                             </InputLabel>
                             <NativeSelect
+                                required
                                 defaultValue={0}
                                 inputProps={{
                                     // name: "city",
                                     id: "uncontrolled-native",
                                 }}
                                 name="City"
+                                // helperText={
+                                //     formik.errors.city ? (
+                                //         <div>{formik.errors.city}</div>
+                                //     ) : null
+                                // }
                                 onChange={handleChange}
+                                // value={formik.values.city}
+                                // onChange={formik.handleChange}
                                 sx={{
                                     width: "150px",
                                     marginTop: "10px",
@@ -318,7 +435,14 @@ export const Shipping = () => {
                                 shrink: true,
                             }}
                             name="Address"
+                            // helperText={
+                            //     formik.errors.address ? (
+                            //         <div>{formik.errors.address}</div>
+                            //     ) : null
+                            // }
                             onChange={handleChange}
+                            // value={formik.values.address}
+                            // onChange={formik.handleChange}
                             variant="standard"
                             placeholder="Click to find Address"
                             sx={{
@@ -331,6 +455,9 @@ export const Shipping = () => {
                                     {
                                         marginTop: "30px !important",
                                     },
+                                "& .MuiFormHelperText-root": {
+                                    color: "red",
+                                },
                             }}
                         />
                         <img
@@ -349,8 +476,15 @@ export const Shipping = () => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
+                            // helperText={
+                            //     formik.errors.zipCode ? (
+                            //         <div>{formik.errors.firstName}</div>
+                            //     ) : null
+                            // }
                             name="zipCode"
                             onChange={handleChange}
+                            // value={formik.values.zipCode}
+                            // onChange={formik.handleChange}
                             variant="standard"
                             placeholder="00000"
                             sx={{
@@ -363,6 +497,9 @@ export const Shipping = () => {
                                     {
                                         marginTop: "30px !important",
                                     },
+                                "& .MuiFormHelperText-root": {
+                                    color: "red",
+                                },
                             }}
                         />
                     </Box>
@@ -393,10 +530,12 @@ export const Shipping = () => {
                                 textTransform: "inherit",
                             }}
                             onClick={handleClick}
+                            // type="submit"
                         >
                             Proceed to Payment
                         </Button>
                     </Box>
+                    {/* </form> */}
                 </Box>
             </Box>
             <Box

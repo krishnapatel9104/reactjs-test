@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { StepperComp } from "./common/StepperComp";
+import { StepperComp } from "../common/StepperComp";
 
 export const ConfirmationPage = () => {
     const navigate = useNavigate();

@@ -13,8 +13,8 @@ import React, { useEffect, useState } from "react";
 import { StepperComp } from "../common/StepperComp";
 import { YourOrder } from "../common/YourOrder";
 import { useDispatch, useSelector } from "react-redux";
-import { setPaymentDetails } from "../redux/paymentDetailsSlice";
-import { updateUserSelectedProductList } from "../redux/userSelectedProductListSlice";
+import { setPaymentDetails } from "../../store/reducers/paymentDetailsSlice";
+import { updateUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
 
 export const Checkout = () => {
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ export const Checkout = () => {
         cvvCode: "",
     });
     const reduxProductDetail = useSelector(
-        (state) => state.userSelectedProductLists.userSelectedProductLists
+        (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
     );
     const [productData, setProductData] = useState(reduxProductDetail);
 
@@ -45,7 +45,6 @@ export const Checkout = () => {
             setPaymentData({ ...paymentData, cvvCode: value });
     };
     useEffect(() => {
-        console.log("checkout useeffect : ", productData);
     }, [productData]);
 
     const handleClick = () => {

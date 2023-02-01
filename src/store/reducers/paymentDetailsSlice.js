@@ -7,7 +7,6 @@ export const paymentDetailsSlice = createSlice({
     initialState: initialState,
     reducers: {
         setPaymentDetails: (state, action) => {
-            console.log("payment data : ", action.payload);
             state.paymentDetails = action.payload;
         },
     },

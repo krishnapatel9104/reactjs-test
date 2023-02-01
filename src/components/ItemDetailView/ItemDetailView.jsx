@@ -21,8 +21,8 @@ import {
     Mousewheel,
     Keyboard,
 } from "swiper";
-import { setUserSelectedProductList } from "./../redux/userSelectedProductListSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { setUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
+import { useDispatch } from "react-redux";
 export const ItemDetailView = () => {
     const [value, setValue] = React.useState("1");
     const handleChange = (event, newValue) => {
@@ -32,22 +32,16 @@ export const ItemDetailView = () => {
     const { state } = useLocation();
     const dispatch = useDispatch();
     const changeSizeHandler = (size) => {
-        console.log("size : ", size);
         setProductDetail({ ...productDetail, size: size });
     };
     const [productDetail, setProductDetail] = useState(state.productDetail);
 
-    const reduxProductDetail = useSelector(
-        (state) => state.userSelectedProductLists.userSelectedProductLists
-    );
-    console.log("reduxProductDetail : ", reduxProductDetail);
     const handleShopNow = () => {
         dispatch(setUserSelectedProductList(productDetail));
         navigate("/shipping");
     };
     const handleAddToCart = () => {
         dispatch(setUserSelectedProductList(productDetail));
-        // navigate("/shipping");
     };
     return (
         <>

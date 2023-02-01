@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import { Home } from "./components/Home";
+import { Home } from "./components/Home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CategroyDetails } from "./components/CategroyDetails";
+import { CategroyDetails } from "./components/CategoryDetails/CategroyDetails";
 import { ItemDetailView } from "./components/ItemDetailView/ItemDetailView";
 import { Shipping } from "./components/Shipping/Shipping";
 import { Checkout } from "./components/Checkout/Checkout";
-import { ConfirmationPage } from "./components/ConfirmationPage";
+import { ConfirmationPage } from "./components/ConfirmationPage/ConfirmationPage";
 
 function App() {
     return (
