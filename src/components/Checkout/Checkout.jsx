@@ -2,9 +2,9 @@ import {
     Box,
     Button,
     FormControlLabel,
-    Input,
     Radio,
     RadioGroup,
+    TextField,
     Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,8 @@ import { updateUserSelectedProductList } from "../../store/reducers/userSelected
 export const Checkout = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [errors, setErrors] = useState({});
+
     const [paymentData, setPaymentData] = useState({
         paymentMethod: "creditcard",
         cardName: "",
@@ -27,7 +29,9 @@ export const Checkout = () => {
         cvvCode: "",
     });
     const reduxProductDetail = useSelector(
-        (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
+        (state) =>
+            state.rootReducer.userSelectedProductListSlice
+                .userSelectedProductLists
     );
     const [productData, setProductData] = useState(reduxProductDetail);
 
@@ -35,22 +39,82 @@ export const Checkout = () => {
         const { name, value } = e.target;
         if (name === "paymentMethod")
             setPaymentData({ ...paymentData, paymentMethod: value });
-        if (name === "cardName")
-            setPaymentData({ ...paymentData, cardName: value });
-        if (name === "cardNumber")
-            setPaymentData({ ...paymentData, cardNumber: value });
+        if (name === "cardName") {
+            if (value === "") {
+                setErrors({ ...errors, [name]: "Required" });
+            } else if (!/^[A-Za-z ]*$/i.test(value)) {
+                setErrors({
+                    ...errors,
+                    [name]: "Card name should contain only alphabet",
+                });
+            } else {
+                setErrors((current) => {
+                    const { cardName, ...rest } = current;
+                    return rest;
+                });
+                setPaymentData({ ...paymentData, cardName: value });
+            }
+        }
+        if (name === "cardNumber") {
+            if (value === "") {
+                setErrors({ ...errors, [name]: "Required" });
+            } else if (!/^[0-9]{14}$/i.test(value)) {
+                setErrors({
+                    ...errors,
+                    [name]: "Card number should be 14 digit only",
+                });
+            } else {
+                setErrors((current) => {
+                    const { cardNumber, ...rest } = current;
+                    return rest;
+                });
+                setPaymentData({ ...paymentData, cardNumber: value });
+            }
+        }
+        if (name === "cvvCode") {
+            if (value === "") {
+                setErrors({ ...errors, [name]: "Required" });
+            } else if (!/^[0-9]{3}$/i.test(value)) {
+                setErrors({
+                    ...errors,
+                    [name]: "CVV Code should be 3 digit only",
+                });
+            } else {
+                setErrors((current) => {
+                    const { cvvCode, ...rest } = current;
+                    return rest;
+                });
+                setPaymentData({ ...paymentData, cvvCode: value });
+            }
+        }
+        // if (name === "cardName")
+        //     setPaymentData({ ...paymentData, cardName: value });
+        // if (name === "cardNumber")
+        //     setPaymentData({ ...paymentData, cardNumber: value });
         if (name === "expiration")
             setPaymentData({ ...paymentData, expiration: value });
-        if (name === "cvvCode")
-            setPaymentData({ ...paymentData, cvvCode: value });
+        // if (name === "cvvCode")
+        //     setPaymentData({ ...paymentData, cvvCode: value });
     };
-    useEffect(() => {
-    }, [productData]);
+    useEffect(() => {}, [productData]);
 
+    const isValidate = () => {
+        if (
+            paymentData.paymentMethod &&
+            paymentData.cardName &&
+            paymentData.cardNumber &&
+            paymentData.expiration &&
+            paymentData.cvvCode
+        )
+            return true;
+        else return false;
+    };
     const handleClick = () => {
-        dispatch(setPaymentDetails(paymentData));
-        dispatch(updateUserSelectedProductList(productData));
-        navigate("/confirmation");
+        if (isValidate()) {
+            dispatch(setPaymentDetails(paymentData));
+            dispatch(updateUserSelectedProductList(productData));
+            navigate("/confirmation");
+        }
     };
     return (
         <Box
@@ -143,7 +207,7 @@ export const Checkout = () => {
                         Payment Details
                     </Typography>
                     <Box sx={{ marginTop: "20px" }}>
-                        <Input
+                        {/* <Input
                             placeholder="Enter Name Card"
                             inputProps={""}
                             name="cardName"
@@ -151,10 +215,46 @@ export const Checkout = () => {
                                 width: "80%",
                             }}
                             onChange={handleChange}
+                            error={errors?.cardName ? true : false}
+                            helperText={
+                                errors?.cardName ? errors?.cardName : null
+                            }
+                        /> */}
+                        <TextField
+                            id="standard-number"
+                            type="text"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            name="cardName"
+                            error={errors?.cardName ? true : false}
+                            helperText={
+                                errors?.cardName ? errors?.cardName : null
+                            }
+                            // value={formik.values.firstName}
+                            // onChange={formik.handleChange}
+                            onChange={handleChange}
+                            variant="standard"
+                            placeholder="Enter Name Card"
+                            sx={{
+                                fontSize: "22px",
+                                width: "80%",
+                                "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
+                                    {
+                                        fontSize: "22px",
+                                    },
+                                "& label+.css-v4u5dn-MuiInputBase-root-MuiInput-root":
+                                    {
+                                        marginTop: "30px !important",
+                                    },
+                                "& .MuiFormHelperText-root": {
+                                    color: "red",
+                                },
+                            }}
                         />
                     </Box>
                     <Box sx={{ marginTop: "50px", position: "relative" }}>
-                        <Input
+                        {/* <Input
                             placeholder="Card Number"
                             inputProps={""}
                             name="cardNumber"
@@ -162,6 +262,38 @@ export const Checkout = () => {
                                 width: "80%",
                             }}
                             onChange={handleChange}
+                        /> */}
+                        <TextField
+                            id="standard-number"
+                            type="text"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            name="cardNumber"
+                            error={errors?.cardNumber ? true : false}
+                            helperText={
+                                errors?.cardNumber ? errors?.cardNumber : null
+                            }
+                            // value={formik.values.firstName}
+                            // onChange={formik.handleChange}
+                            onChange={handleChange}
+                            variant="standard"
+                            placeholder="Card Number"
+                            sx={{
+                                fontSize: "22px",
+                                width: "80%",
+                                "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
+                                    {
+                                        fontSize: "22px",
+                                    },
+                                "& label+.css-v4u5dn-MuiInputBase-root-MuiInput-root":
+                                    {
+                                        marginTop: "30px !important",
+                                    },
+                                "& .MuiFormHelperText-root": {
+                                    color: "red",
+                                },
+                            }}
                         />
                         <img
                             src={ImageConfig.visa}
@@ -190,17 +322,82 @@ export const Checkout = () => {
                             width: "80%",
                         }}
                     >
-                        <Input
+                        {/* <Input
                             placeholder="Expiration"
                             inputProps={""}
                             name="expiration"
                             onChange={handleChange}
+                            // type="date"
+                        /> */}
+                        <TextField
+                            id="standard-number"
+                            type="text"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            name="expiration"
+                            // error={errors?.cardName ? true : false}
+                            // helperText={
+                            //     errors?.cardName ? errors?.cardName : null
+                            // }
+                            // value={formik.values.firstName}
+                            // onChange={formik.handleChange}
+                            onChange={handleChange}
+                            variant="standard"
+                            placeholder="Expiration"
+                            sx={{
+                                fontSize: "22px",
+                                width: "45%",
+                                "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
+                                    {
+                                        fontSize: "22px",
+                                    },
+                                "& label+.css-v4u5dn-MuiInputBase-root-MuiInput-root":
+                                    {
+                                        marginTop: "30px !important",
+                                    },
+                                "& .MuiFormHelperText-root": {
+                                    color: "red",
+                                },
+                            }}
                         />
-                        <Input
+                        {/* <Input
                             placeholder="CVV Code"
                             inputProps={""}
                             name="cvvCode"
                             onChange={handleChange}
+                        /> */}
+                        <TextField
+                            id="standard-number"
+                            type="text"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            name="cvvCode"
+                            error={errors?.cvvCode ? true : false}
+                            helperText={
+                                errors?.cvvCode ? errors?.cvvCode : null
+                            }
+                            // value={formik.values.firstName}
+                            // onChange={formik.handleChange}
+                            onChange={handleChange}
+                            variant="standard"
+                            placeholder="CVV Code"
+                            sx={{
+                                fontSize: "22px",
+                                width: "45%",
+                                "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
+                                    {
+                                        fontSize: "22px",
+                                    },
+                                "& label+.css-v4u5dn-MuiInputBase-root-MuiInput-root":
+                                    {
+                                        marginTop: "30px !important",
+                                    },
+                                "& .MuiFormHelperText-root": {
+                                    color: "red",
+                                },
+                            }}
                         />
                     </Box>
                     <Box
@@ -269,6 +466,7 @@ export const Checkout = () => {
                                 backgroundColor: "#111827",
                             }}
                             onClick={handleClick}
+                            disabled={!isValidate()}
                         >
                             Confirm Payment of: $131.95
                         </Button>

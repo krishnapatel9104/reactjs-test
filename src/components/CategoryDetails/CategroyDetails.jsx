@@ -159,7 +159,7 @@ export const CategroyDetails = () => {
                     product.productPrice <= allFiltersArray.priceFilters[1])
             ) {
                 return product;
-            }
+            } else return 0;
         });
         setTemp(newProductList);
     }, [allFiltersArray]);

@@ -6,7 +6,7 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ImageConfig } from "../../images";
@@ -14,7 +14,7 @@ import { StepperComp } from "../common/StepperComp";
 import { YourOrder } from "../common/YourOrder";
 import { setUserDetails } from "../../store/reducers/userDetailsSlice";
 import { updateUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
-import { useFormik } from "formik";
+// import { useFormik } from "formik";
 
 export const Shipping = () => {
     const navigate = useNavigate();
@@ -37,36 +37,142 @@ export const Shipping = () => {
                 .userSelectedProductLists
     );
     const [productData, setProductData] = useState(productDetails);
-    console.log("productDetails shipping : ", productDetails, productData);
+    const [errors, setErrors] = useState({});
     const handleChange = (e) => {
+        e.persist();
         const { name, value } = e.target;
-        if (name === "First Name")
-            setUserData({ ...userData, firstName: value });
-        if (name === "Last Name") setUserData({ ...userData, lastName: value });
-        if (name === "Email Address")
-            setUserData({ ...userData, emailAddress: value });
-        if (name === "Phone Number")
-            setUserData({ ...userData, phoneNumber: value });
-        if (name === "Delivery Date")
+        if (name === "firstName") {
+            if (value === "") {
+                setErrors({ ...errors, [name]: "Required" });
+            } else if (!/^[A-Za-z ]*$/i.test(value)) {
+                setErrors({
+                    ...errors,
+                    [name]: "FirstName should contain only alphabet",
+                });
+            } else {
+                setErrors((current) => {
+                    const { firstName, ...rest } = current;
+                    return rest;
+                });
+                setUserData({ ...userData, firstName: value });
+            }
+        }
+
+        if (name === "lastName") {
+            if (value === "") {
+                setErrors({ ...errors, [name]: "Required" });
+            } else if (!/^[A-Za-z ]*$/i.test(value)) {
+                setErrors({
+                    ...errors,
+                    [name]: "LastName should contain only alphabet",
+                });
+            } else {
+                setErrors({
+                    ...errors,
+                    [name]: "",
+                });
+                setUserData({ ...userData, lastName: value });
+            }
+        }
+        if (name === "emailAddress") {
+            if (value === "") {
+                setErrors({ ...errors, [name]: "Required" });
+            } else if (
+                !/^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$/i.test(value)
+            ) {
+                setErrors({
+                    ...errors,
+                    [name]: "Invalid Email",
+                });
+            } else {
+                setErrors({
+                    ...errors,
+                    [name]: "",
+                });
+                setUserData({ ...userData, emailAddress: value });
+            }
+        }
+        if (name === "phoneNumber") {
+            if (value === "") {
+                setErrors({ ...errors, [name]: "Required" });
+            } else if (!/^[987]{1}[0-9]{9}$/i.test(value)) {
+                setErrors({
+                    ...errors,
+                    [name]: "Invalid Phone Number",
+                });
+            } else {
+                setErrors({
+                    ...errors,
+                    [name]: "",
+                });
+                setUserData({ ...userData, phoneNumber: value });
+            }
+        }
+        if (name === "deliveryDate")
             setUserData({ ...userData, deliveryDate: value });
-        if (name === "Convenient Time")
+        if (name === "convenientTime")
             setUserData({ ...userData, convenientTime: value });
-        if (name === "City") setUserData({ ...userData, city: value });
-        if (name === "Address")
-            setUserData({
-                ...userData,
-                address: value,
-            });
-        if (name === "zipCode")
-            setUserData({
-                ...userData,
-                zipCode: value,
-            });
+        if (name === "city") {
+            if (value === 0) {
+                setErrors({
+                    ...errors,
+                    [name]: "Please select city",
+                });
+            } else {
+                setErrors({
+                    ...errors,
+                    [name]: "",
+                });
+                setUserData({ ...userData, [name]: value });
+            }
+        }
+        if (name === "address") {
+            if (value === "") {
+                setErrors({ ...errors, [name]: "Required" });
+            } else {
+                setErrors({
+                    ...errors,
+                    [name]: "",
+                });
+                setUserData({ ...userData, address: value });
+            }
+        }
+        if (name === "zipCode") {
+            if (value === "") {
+                setErrors({ ...errors, [name]: "Required" });
+            } else if (!/^[0-9]{7}$/i.test(value)) {
+                setErrors({
+                    ...errors,
+                    [name]: "Invalid Zip Code",
+                });
+            } else {
+                setErrors({
+                    ...errors,
+                    [name]: "",
+                });
+                setUserData({ ...userData, zipCode: value });
+            }
+        }
+    };
+    const isValidate = () => {
+        if (
+            userData.firstName &&
+            userData.lastName &&
+            userData.emailAddress &&
+            userData.phoneNumber &&
+            userData.city &&
+            userData.address &&
+            userData.zipCode
+        )
+            return true;
+        else return false;
     };
     const handleClick = () => {
-        dispatch(setUserDetails(userData));
-        dispatch(updateUserSelectedProductList(productData));
-        navigate("/checkout");
+        if (isValidate()) {
+            dispatch(setUserDetails(userData));
+            dispatch(updateUserSelectedProductList(productData));
+            navigate("/checkout");
+        }
     };
     // const validate = (values) => {
     //     const errors = {};
@@ -177,16 +283,15 @@ export const Shipping = () => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            name="First Name"
+                            name="firstName"
+                            error={errors?.firstName ? true : false}
+                            helperText={
+                                errors?.firstName ? errors?.firstName : null
+                            }
                             // value={formik.values.firstName}
                             // onChange={formik.handleChange}
                             onChange={handleChange}
                             variant="standard"
-                            // helperText={
-                            //     formik.errors.firstName ? (
-                            //         <div>{formik.errors.firstName}</div>
-                            //     ) : null
-                            // }
                             placeholder="First Name e.g John,Mary"
                             sx={{
                                 fontSize: "22px",
@@ -211,12 +316,16 @@ export const Shipping = () => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
+                            error={errors?.lastName ? true : false}
+                            helperText={
+                                errors?.lastName ? errors?.lastName : null
+                            }
                             // helperText={
                             //     formik.errors.lastName ? (
                             //         <div>{formik.errors.lastName}</div>
                             //     ) : null
                             // }
-                            name="Last Name"
+                            name="lastName"
                             // value={formik.values.lastName}
                             // onChange={formik.handleChange}
                             onChange={handleChange}
@@ -253,12 +362,18 @@ export const Shipping = () => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
+                            error={errors?.emailAddress ? true : false}
+                            helperText={
+                                errors?.emailAddress
+                                    ? errors?.emailAddress
+                                    : null
+                            }
                             // helperText={
                             //     formik.errors.emailAddress ? (
                             //         <div>{formik.errors.emailAddress}</div>
                             //     ) : null
                             // }
-                            name="Email Address"
+                            name="emailAddress"
                             onChange={handleChange}
                             // value={formik.values.emailAddress}
                             // onChange={formik.handleChange}
@@ -287,7 +402,11 @@ export const Shipping = () => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            name="Phone Number"
+                            name="phoneNumber"
+                            error={errors?.phoneNumber ? true : false}
+                            helperText={
+                                errors?.phoneNumber ? errors?.phoneNumber : null
+                            }
                             // helperText={
                             //     formik.errors.phoneNumber ? (
                             //         <div>{formik.errors.phoneNumber}</div>
@@ -339,7 +458,7 @@ export const Shipping = () => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            name="Delivery Date"
+                            name="deliveryDate"
                             onChange={handleChange}
                             // onChange={formik.handleChange}
                             variant="standard"
@@ -364,7 +483,7 @@ export const Shipping = () => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            name="Convenient Time"
+                            name="convenientTime"
                             // onChange={formik.handleChange}
                             onChange={handleChange}
                             variant="standard"
@@ -406,7 +525,10 @@ export const Shipping = () => {
                                     // name: "city",
                                     id: "uncontrolled-native",
                                 }}
-                                name="City"
+                                name="city"
+                                value={userData.city}
+                                error={errors?.city ? true : false}
+                                helperText={errors?.city ? errors?.city : null}
                                 // helperText={
                                 //     formik.errors.city ? (
                                 //         <div>{formik.errors.city}</div>
@@ -429,17 +551,21 @@ export const Shipping = () => {
                         </Box>
                         <TextField
                             id="standard-number"
-                            label="Address"
+                            label="address"
                             type="text"
                             InputLabelProps={{
                                 shrink: true,
                             }}
-                            name="Address"
+                            name="address"
                             // helperText={
                             //     formik.errors.address ? (
                             //         <div>{formik.errors.address}</div>
                             //     ) : null
                             // }
+                            error={errors?.address ? true : false}
+                            helperText={
+                                errors?.address ? errors?.address : null
+                            }
                             onChange={handleChange}
                             // value={formik.values.address}
                             // onChange={formik.handleChange}
@@ -476,6 +602,10 @@ export const Shipping = () => {
                             InputLabelProps={{
                                 shrink: true,
                             }}
+                            error={errors?.zipCode ? true : false}
+                            helperText={
+                                errors?.zipCode ? errors?.zipCode : null
+                            }
                             // helperText={
                             //     formik.errors.zipCode ? (
                             //         <div>{formik.errors.firstName}</div>
@@ -530,6 +660,7 @@ export const Shipping = () => {
                                 textTransform: "inherit",
                             }}
                             onClick={handleClick}
+                            disabled={!isValidate()}
                             // type="submit"
                         >
                             Proceed to Payment

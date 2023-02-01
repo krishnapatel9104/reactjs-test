@@ -6,7 +6,6 @@ import AddSharpIcon from "@mui/icons-material/AddSharp";
 import { useSelector } from "react-redux";
 
 export const YourOrder = (props) => {
-    console.log("YOUR ORDER : ", props);
     const colourList = ["Red", "Pink", "Yellow", "Black"];
     const sizeList = ["M", "L", "S", "XS"];
     let total = 0;
