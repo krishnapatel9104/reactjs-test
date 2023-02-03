@@ -177,11 +177,17 @@ export const CategroyDetails = () => {
                     marginTop: "150px",
                 }}
             >
-                <Navbar />
+                {/* <Navbar /> */}
                 <Box
                     // className="categorydetailsection"
                     sx={{
-                        padding: "0 290px",
+                        padding: {
+                            xl: "0 290px",
+                            // lg: "0 140px",
+                            md: "0 140px",
+                            sm: "0 40px",
+                            xs: "0 30px",
+                        },
                         display: "flex",
                         gap: "60px",
                     }}
@@ -529,7 +535,11 @@ export const CategroyDetails = () => {
                                     fontFamily: "Jost",
                                     fontStyle: "normal",
                                     fontWeight: "700",
-                                    fontSize: "50px",
+                                    fontSize: {
+                                        lg: "50px",
+                                        md: "32px",
+                                        xs: "25px",
+                                    },
                                     lineHeight: "72px",
                                     textAlign: "center",
                                     color: "#212121",
@@ -565,9 +575,10 @@ export const CategroyDetails = () => {
                                     .map((product, index) => {
                                         return (
                                             <Grid
-                                                key={index}
                                                 item
-                                                sm={4}
+                                                key={index}
+                                                sm={6}
+                                                lg={4}
                                                 sx={{ position: "relative" }}
                                             >
                                                 <img
@@ -623,7 +634,7 @@ export const CategroyDetails = () => {
                                                         position: "absolute",
                                                         paddingTop: "10px",
                                                         top: "3%",
-                                                        left: "85.5%",
+                                                        right: 0,
                                                     }}
                                                 >
                                                     <img
@@ -635,7 +646,13 @@ export const CategroyDetails = () => {
                                                         height="22px"
                                                     />
                                                 </Box>
-                                                <Box sx={{ padding: "10px" }}>
+
+                                                <Box
+                                                    sx={{
+                                                        padding: "10px",
+                                                        display: "flex",
+                                                    }}
+                                                >
                                                     <Box
                                                         // className="productlistdesc"
                                                         sx={{
@@ -667,34 +684,35 @@ export const CategroyDetails = () => {
                                                                 product.productName
                                                             }
                                                         </Typography>
-                                                        <img
-                                                            src={
-                                                                ImageConfig.womenproductcart
-                                                            }
-                                                            alt="productimg"
-                                                            // className="carticon"
-                                                            // width="20%"
-                                                            height="22px"
-                                                            width="32px"
-                                                        />
                                                     </Box>
-                                                    <Typography
-                                                        // className="productprice"
-                                                        sx={{
-                                                            width: "80%",
-                                                            fontFamily: "Inter",
-                                                            fontStyle: "normal",
-                                                            fontWeight: "400",
-                                                            fontSize: "20px",
-                                                            lineHeight: "41px",
-                                                            color: "#1B2437",
-                                                            alignItems:
-                                                                "flex-start",
-                                                        }}
-                                                    >
-                                                        $ {product.productPrice}
-                                                    </Typography>
+                                                    <img
+                                                        src={
+                                                            ImageConfig.womenproductcart
+                                                        }
+                                                        alt="productimg"
+                                                        // className="carticon"
+                                                        // width="20%"
+                                                        height="22px"
+                                                        width="32px"
+                                                    />
                                                 </Box>
+                                                <Typography
+                                                    // className="productprice"
+                                                    sx={{
+                                                        width: "80%",
+                                                        fontFamily: "Inter",
+                                                        fontStyle: "normal",
+                                                        fontWeight: "400",
+                                                        fontSize: "20px",
+                                                        lineHeight: "41px",
+                                                        color: "#1B2437",
+                                                        alignItems:
+                                                            "flex-start",
+                                                    }}
+                                                >
+                                                    $ {product.productPrice}
+                                                </Typography>
+                                                {/* </Box> */}
                                             </Grid>
                                         );
                                     })}

@@ -46,9 +46,23 @@ export const ItemDetailView = () => {
     return (
         <>
             <Box className="itemdetailviewwrapper">
-                <Navbar />
-                <Box className="itemdetailviewsection">
-                    <Box className="imageSection">
+                {/* <Navbar /> */}
+                <Box
+                    className="itemdetailviewsection"
+                    sx={{
+                        padding: {
+                            lg: "0 145px",
+                            md: "0 5px",
+                            xs: "0 25px",
+                        },
+                        flexDirection: { xs: "column", md: "row" },
+                        justifyContent: "center",
+                    }}
+                >
+                    <Box
+                        className="imageSection"
+                        sx={{ width: { xs: "100%", md: "45%" } }}
+                    >
                         <Swiper
                             cssMode={true}
                             navigation={true}
@@ -112,35 +126,60 @@ export const ItemDetailView = () => {
                             </Swiper>
                         </Box>
                     </Box>
-                    <Box className="imagedescsection">
+                    <Box
+                        className="imagedescsection"
+                        sx={{ width: { xs: "100%", md: "40%" } }}
+                    >
                         <Box
-                            className="imagecontent"
+                            // className="imagecontent"
                             sx={{
-                                width: "fit-content",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
                             }}
                         >
-                            <Button
-                                variant="contained"
-                                sx={{
-                                    fontFamily: "Inter",
-                                    fontStyle: "normal",
-                                    fontWeight: 700,
-                                    fontSize: "14px",
-                                    lineHeight: "17px",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    textAlign: "center",
-                                    color: "#1B2437",
-                                    backgroundColor: "#E5E5EA",
-                                }}
-                            >
-                                Popular
-                            </Button>
+                            <Box>
+                                <Button
+                                    variant="contained"
+                                    sx={{
+                                        fontFamily: "Inter",
+                                        fontStyle: "normal",
+                                        fontWeight: 700,
+                                        fontSize: "14px",
+                                        lineHeight: "17px",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        textAlign: "center",
+                                        color: "#1B2437",
+                                        backgroundColor: "#E5E5EA",
+                                    }}
+                                >
+                                    Popular
+                                </Button>
+                            </Box>
+                            <Box className="imagelikeicon">
+                                <img src={ImageConfig.like} alt="likeicon" />
+                            </Box>
                         </Box>
-                        <Typography className="producttitle">
+                        <Typography
+                            className="producttitle"
+                            sx={{
+                                fontSize: {
+                                    lg: "44px",
+                                    sm: "35px",
+                                    xs: "26px",
+                                },
+                            }}
+                        >
                             {productDetail.productName}
                         </Typography>
-                        <Box className="reviewsection">
+                        <Box
+                            className="reviewsection"
+                            sx={{
+                                flexDirection: { xs: "column", lg: "row" },
+                                alignItems: { xs: "flex-start", lg: "center" },
+                            }}
+                        >
                             <Box className="reviewicons">
                                 {Array.from(
                                     Array(productDetail.reviewRate),
@@ -201,9 +240,22 @@ export const ItemDetailView = () => {
                                 <TabPanel value="3">Item Three</TabPanel>
                             </TabContext>
                         </Box>
-                        <Box className="mainoptionlist">
+                        <Box
+                            className="mainoptionlist"
+                            sx={{
+                                flexDirection: {
+                                    xs: "column",
+                                    md: "column",
+                                    sm: "row",
+                                    lg: "row",
+                                },
+                            }}
+                        >
                             <Box className="optionlist">
-                                <Box className="optionheading">
+                                <Box
+                                    className="optionheading"
+                                    sx={{ gap: { xs: "110px" } }}
+                                >
                                     <Typography>Size</Typography>
                                     <Typography
                                         sx={{
@@ -214,7 +266,13 @@ export const ItemDetailView = () => {
                                         Size Guide
                                     </Typography>
                                 </Box>
-                                <Box className="optionlistvalue">
+                                <Box
+                                    className="optionlistvalue"
+                                    sx={{
+                                        gap: { xs: "20px" },
+                                        marginTop: { xs: "25px", lg: "50px" },
+                                    }}
+                                >
                                     <Button
                                         className={`${
                                             productDetail.size === "XS"
@@ -247,7 +305,10 @@ export const ItemDetailView = () => {
                                     </Button>
                                 </Box>
                             </Box>
-                            <Box className="colorsection">
+                            <Box
+                                className="colorsection"
+                                sx={{ gap: { lg: "45px", xs: "20px" } }}
+                            >
                                 <Typography>Color</Typography>
                                 <Box className="coloroption">
                                     <Box className="coloroption1">
@@ -273,7 +334,13 @@ export const ItemDetailView = () => {
                         >
                             $ {productDetail.productPrice}
                         </Typography>
-                        <Box className="btns">
+                        <Box
+                            className="btns"
+                            sx={{
+                                flexDirection: { xs: "column", sm: "row" },
+                                gap: { xs: "25px", sm: "50px" },
+                            }}
+                        >
                             <Button
                                 variant="contained"
                                 className="shopnowbtn"
@@ -290,9 +357,9 @@ export const ItemDetailView = () => {
                             </Button>
                         </Box>
                     </Box>
-                    <Box className="imagelikeicon">
+                    {/* <Box className="imagelikeicon">
                         <img src={ImageConfig.like} alt="likeicon" />
-                    </Box>
+                    </Box> */}
                 </Box>
             </Box>
         </>

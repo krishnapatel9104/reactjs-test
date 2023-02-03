@@ -241,8 +241,15 @@ export const Shipping = () => {
             sx={{
                 marginTop: "50px",
                 display: "flex",
-                padding: "0 125px 0 50px",
-                gap: "10px",
+                padding: {
+                    xs: "0 20px",
+                    sm: "0 50px",
+                    md: "0 90px",
+                    lg: "0 60px",
+                    xl: "0 150px",
+                },
+                gap: { xs: "10px", lg: "40px" },
+                flexDirection: { xs: "column", lg: "row" },
             }}
         >
             <Box
@@ -256,7 +263,7 @@ export const Shipping = () => {
                 <StepperComp activeStep={0} />
                 <Box
                     sx={{
-                        padding: "0 140px",
+                        padding: { xs: "0", md: "0" },
                     }}
                 >
                     <Typography
@@ -274,6 +281,11 @@ export const Shipping = () => {
                             display: "flex",
                             justifyContent: "space-between",
                             marginTop: "20px",
+                            marginBottom: { md: "50px" },
+                            flexDirection: { xs: "column", sm: "row" },
+                            alignItems: { xs: "flex-start" },
+                            width: { sm: "100%" },
+                            gap: { sm: "100px" },
                         }}
                     >
                         <TextField
@@ -295,7 +307,8 @@ export const Shipping = () => {
                             placeholder="First Name e.g John,Mary"
                             sx={{
                                 fontSize: "22px",
-                                width: "45%",
+                                width: { xs: "100%", md: "45%" },
+                                marginBottom: { xs: "50px", md: "0" },
                                 "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
                                     {
                                         fontSize: "22px",
@@ -333,7 +346,8 @@ export const Shipping = () => {
                             placeholder="Last Name e.g John,Mary"
                             sx={{
                                 fontSize: "22px",
-                                width: "45%",
+                                width: { xs: "100%", md: "45%" },
+                                marginBottom: { xs: "50px", md: "0" },
                                 "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
                                     {
                                         fontSize: "22px",
@@ -352,7 +366,12 @@ export const Shipping = () => {
                         sx={{
                             display: "flex",
                             justifyContent: "space-between",
-                            marginTop: "50px",
+                            // marginTop: "50px",
+                            flexDirection: { xs: "column", sm: "row" },
+                            alignItems: { xs: "flex-start" },
+                            width: { sm: "100%" },
+                            gap: { sm: "100px" },
+                            marginBottom: { md: "50px" },
                         }}
                     >
                         <TextField
@@ -381,7 +400,8 @@ export const Shipping = () => {
                             placeholder="Your email@gmail.com"
                             sx={{
                                 fontSize: "22px",
-                                width: "45%",
+                                width: { xs: "100%", md: "45%" },
+                                marginBottom: { xs: "50px", md: "0" },
                                 "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
                                     {
                                         fontSize: "22px",
@@ -419,7 +439,7 @@ export const Shipping = () => {
                             placeholder="+1-(0000 000 0000)"
                             sx={{
                                 fontSize: "22px",
-                                width: "45%",
+                                width: { xs: "100%", md: "45%" },
                                 "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
                                     {
                                         fontSize: "22px",
@@ -439,7 +459,7 @@ export const Shipping = () => {
                         sx={{
                             fontSize: "22px",
                             fontWeight: "700",
-                            marginTop: "80px",
+                            marginTop: "50px",
                         }}
                     >
                         Delivery Information
@@ -449,6 +469,11 @@ export const Shipping = () => {
                             display: "flex",
                             justifyContent: "space-between",
                             marginTop: "20px",
+                            flexDirection: { xs: "column", sm: "row" },
+                            alignItems: { xs: "flex-start" },
+                            width: { sm: "100%" },
+                            gap: { sm: "100px" },
+                            marginBottom: { md: "50px" },
                         }}
                     >
                         <TextField
@@ -465,7 +490,8 @@ export const Shipping = () => {
                             placeholder="DD/MM/YYYY"
                             sx={{
                                 fontSize: "22px",
-                                width: "45%",
+                                width: { xs: "100%", md: "45%" },
+                                marginBottom: { xs: "50px", md: "0" },
                                 "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
                                     {
                                         fontSize: "22px",
@@ -490,7 +516,8 @@ export const Shipping = () => {
                             placeholder="1pm-9pm"
                             sx={{
                                 fontSize: "22px",
-                                width: "45%",
+                                width: { xs: "100%", md: "45%" },
+                                marginBottom: { xs: "50px", md: "0" },
                                 "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
                                     {
                                         fontSize: "22px",
@@ -506,12 +533,19 @@ export const Shipping = () => {
                         sx={{
                             display: "flex",
                             justifyContent: "space-between",
-                            marginTop: "50px",
-                            alignItems: "center",
-                            position: "relative",
+                            // marginTop: "50px",
+                            alignItems: { xs: "flex-start", sm: "center" },
+                            flexDirection: { xs: "column", sm: "row" },
+                            // width: { sm: "100%" },
+                            gap: { sm: "20px" },
                         }}
                     >
-                        <Box>
+                        <Box
+                            sx={{
+                                width: { xs: "100%", lg: "inherit" },
+                                marginBottom: { xs: "50px", sm: "0" },
+                            }}
+                        >
                             <InputLabel
                                 variant="standard"
                                 htmlFor="uncontrolled-native"
@@ -538,7 +572,7 @@ export const Shipping = () => {
                                 // value={formik.values.city}
                                 // onChange={formik.handleChange}
                                 sx={{
-                                    width: "150px",
+                                    width: { xs: "100%", lg: "inherit" },
                                     marginTop: "10px",
                                     color: "gray",
                                 }}
@@ -549,55 +583,70 @@ export const Shipping = () => {
                                 <option value={"Mumbai"}>Mumbai</option>
                             </NativeSelect>
                         </Box>
-                        <TextField
-                            id="standard-number"
-                            label="address"
-                            type="text"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            name="address"
-                            // helperText={
-                            //     formik.errors.address ? (
-                            //         <div>{formik.errors.address}</div>
-                            //     ) : null
-                            // }
-                            error={errors?.address ? true : false}
-                            helperText={
-                                errors?.address ? errors?.address : null
-                            }
-                            onChange={handleChange}
-                            // value={formik.values.address}
-                            // onChange={formik.handleChange}
-                            variant="standard"
-                            placeholder="Click to find Address"
+                        <Box
                             sx={{
-                                fontSize: "22px",
-                                "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
-                                    {
-                                        fontSize: "22px",
-                                    },
-                                "& label+.css-v4u5dn-MuiInputBase-root-MuiInput-root":
-                                    {
-                                        marginTop: "30px !important",
-                                    },
-                                "& .MuiFormHelperText-root": {
-                                    color: "red",
-                                },
+                                position: "relative",
+                                width: { xs: "100%", lg: "inherit" },
                             }}
-                        />
-                        <img
-                            src={ImageConfig.searchgrayicon}
-                            alt="searchicon"
-                            style={{
-                                position: "absolute",
-                                top: "60%",
-                                left: "58%",
-                            }}
-                        />
+                        >
+                            <TextField
+                                id="standard-number"
+                                label="Address"
+                                type="text"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                name="address"
+                                // helperText={
+                                //     formik.errors.address ? (
+                                //         <div>{formik.errors.address}</div>
+                                //     ) : null
+                                // }
+                                error={errors?.address ? true : false}
+                                helperText={
+                                    errors?.address ? errors?.address : null
+                                }
+                                onChange={handleChange}
+                                // value={formik.values.address}
+                                // onChange={formik.handleChange}
+                                variant="standard"
+                                placeholder="Click to find Address"
+                                sx={{
+                                    fontSize: "22px",
+                                    width: { xs: "100%", lg: "inherit" }, // md: "150px"
+                                    marginBottom: { xs: "50px", sm: "0" },
+                                    "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
+                                        {
+                                            fontSize: "22px",
+                                        },
+                                    "& label+.css-v4u5dn-MuiInputBase-root-MuiInput-root":
+                                        {
+                                            marginTop: "30px !important",
+                                        },
+                                    "& .MuiFormHelperText-root": {
+                                        color: "red",
+                                    },
+                                }}
+                            />
+                            <Box
+                                sx={{
+                                    position: "absolute",
+                                    top: {
+                                        xs: "32%",
+                                        sm: "55%",
+                                    },
+                                    right: { xs: "0" },
+                                }}
+                            >
+                                <img
+                                    src={ImageConfig.searchgrayicon}
+                                    alt="searchicon"
+                                />
+                            </Box>
+                        </Box>
                         <TextField
                             id="standard-number"
-                            label="Zip code"
+                            label="Zip Code"
                             type="text"
                             InputLabelProps={{
                                 shrink: true,
@@ -619,6 +668,7 @@ export const Shipping = () => {
                             placeholder="00000"
                             sx={{
                                 fontSize: "22px",
+                                width: { xs: "100%", lg: "inherit" }, // sm: "340px", md: "150px"
                                 "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
                                     {
                                         fontSize: "22px",
@@ -635,8 +685,8 @@ export const Shipping = () => {
                     </Box>
                     <Box
                         sx={{
-                            marginTop: "90px",
-                            marginBottom: "150px",
+                            marginTop: { xs: "50px", md: "90px" },
+                            marginBottom: { xs: "100px", md: "150px" },
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -655,8 +705,8 @@ export const Shipping = () => {
                                 textAlign: "center",
                                 color: "#FFFFFF",
                                 backgroundColor: "#111827",
-                                width: "objectFit",
-                                padding: "15px 100px",
+                                width: { xs: "100%", md: "objectFit" },
+                                padding: { xs: "20px", md: "15px 100px" },
                                 textTransform: "inherit",
                             }}
                             onClick={handleClick}
@@ -671,8 +721,7 @@ export const Shipping = () => {
             </Box>
             <Box
                 sx={{
-                    borderRadius: "34px",
-                    width: "70%",
+                    width: { xs: "100%", md: "100%" },
                     paddingTop: "40px",
                 }}
             >

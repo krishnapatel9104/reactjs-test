@@ -10,6 +10,7 @@ export const ConfirmationPage = () => {
             sx={{
                 textAlign: "center",
                 marginTop: "50px",
+                // padding: { xs: "40px", sm: "0" },
             }}
         >
             <Box>
@@ -38,7 +39,7 @@ export const ConfirmationPage = () => {
                 }}
             >
                 Thank you for shopping with us Your order will
-                <br /> reach you on 18 Jan 2022.
+                <br /> reach you on {new Date().toLocaleDateString()}
             </Typography>
             <Box
                 sx={{
@@ -55,7 +56,7 @@ export const ConfirmationPage = () => {
                         fontFamily: "Nunito",
                         fontSyle: "normal",
                         fontWeight: "700",
-                        fontSize: "30px",
+                        fontSize: { xs: "20px", sm: "30px" },
                         lineHeight: "35px",
                         display: "flex",
                         alignItems: "center",
@@ -63,7 +64,7 @@ export const ConfirmationPage = () => {
                         color: "#FFFFFF",
                         backgroundColor: "#111827",
                         width: "objectFit",
-                        padding: "15px 100px",
+                        padding: { xs: "10px 50px", sm: "15px 100px" },
                         textTransform: "inherit",
                     }}
                     onClick={() => navigate("/")}

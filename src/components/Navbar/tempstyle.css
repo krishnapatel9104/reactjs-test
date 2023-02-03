@@ -18,20 +18,24 @@
 .navWrapper{
     display: flex;
     justify-content: space-around;
-    position: absolute !important;
+    position: absolute;
     top: 0;
     padding: 30px 0px;
     color: black;
     align-items: center;
     width: 100%;
-    z-index: 1 !important;
+    /* padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    cursor: pointer; */
 }
 .menuWrapper{
     display: flex;
     gap: 32px;
     align-items: center;
 }
-.menuWrapper a{
+.menuWrapper Button{
     font-family: 'Josefin Sans';
     font-style: normal;
     font-weight: 700;

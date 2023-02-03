@@ -62,8 +62,9 @@ export const YourOrder = (props) => {
         <Box
             sx={{
                 color: "#616161",
-                padding: "50px",
+                padding: { xs: "20px", md: "50px" },
                 backgroundColor: "#EFEFF4",
+                borderRadius: "34px",
             }}
         >
             <Typography
@@ -82,8 +83,10 @@ export const YourOrder = (props) => {
                             sx={{
                                 display: "flex",
                                 justifyContent: "space-between",
-                                marginTop: "50px",
-                                alignItems: "center",
+                                marginTop: { xs: "30px", md: "50px" },
+                                alignItems: { xs: "flex-start", sm: "center" },
+                                flexDirection: { xs: "row" },
+                                gap: { xs: "20px", md: "0" },
                             }}
                         >
                             <Box
@@ -107,8 +110,11 @@ export const YourOrder = (props) => {
                             sx={{
                                 display: "flex",
                                 justifyContent: "space-between",
-                                marginTop: "20px",
-                                alignItems: "center",
+                                margin: "20px 0",
+                                alignItems: { xs: "flex-start", md: "center" },
+                                flexDirection: { xs: "column", sm: "row" },
+                                gap: { xs: "20px", md: "0" },
+                                marginRight: "40px",
                             }}
                         >
                             <Box>
@@ -185,8 +191,13 @@ export const YourOrder = (props) => {
                             sx={{
                                 display: "flex",
                                 justifyContent: "space-between",
-                                alignItems: "flex-end",
                                 marginTop: "20px",
+                                alignItems: {
+                                    xs: "flex-start",
+                                    md: "flex-end",
+                                },
+                                flexDirection: { xs: "column", sm: "row" },
+                                gap: { xs: "20px", md: "0" },
                             }}
                         >
                             <Box>

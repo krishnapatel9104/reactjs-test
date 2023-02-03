@@ -121,8 +121,15 @@ export const Checkout = () => {
             sx={{
                 marginTop: "50px",
                 display: "flex",
-                padding: "0 125px 0 50px",
-                gap: "10px",
+                padding: {
+                    xs: "0 40px",
+                    sm: "0 50px",
+                    md: "0 90px",
+                    lg: "0 60px",
+                    xl: "0 150px",
+                },
+                gap: { xs: "10px", lg: "40px" },
+                flexDirection: { xs: "column", lg: "row" },
             }}
         >
             <Box
@@ -136,7 +143,7 @@ export const Checkout = () => {
                 <StepperComp activeStep={1} />
                 <Box
                     sx={{
-                        padding: "0 140px",
+                        padding: { xs: "0", md: "0" },
                     }}
                 >
                     <Typography
@@ -155,7 +162,11 @@ export const Checkout = () => {
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
-                            gap: "50px",
+                            gap: { sm: "50px" },
+                            justifyContent: {
+                                xs: "space-between",
+                                sm: "inherit",
+                            },
                         }}
                         onChange={handleChange}
                         value={paymentData.paymentMethod}
@@ -206,7 +217,19 @@ export const Checkout = () => {
                     >
                         Payment Details
                     </Typography>
-                    <Box sx={{ marginTop: "20px" }}>
+                    <Box
+                        sx={{
+                            marginTop: "20px",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            // marginTop: "50px",
+                            flexDirection: { xs: "column", sm: "row" },
+                            alignItems: { xs: "flex-start" },
+                            width: { sm: "100%" },
+                            gap: { sm: "100px" },
+                            marginBottom: { md: "50px" },
+                        }}
+                    >
                         {/* <Input
                             placeholder="Enter Name Card"
                             inputProps={""}
@@ -238,7 +261,7 @@ export const Checkout = () => {
                             placeholder="Enter Name Card"
                             sx={{
                                 fontSize: "22px",
-                                width: "80%",
+                                width: "100%",
                                 "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
                                     {
                                         fontSize: "22px",
@@ -281,7 +304,8 @@ export const Checkout = () => {
                             placeholder="Card Number"
                             sx={{
                                 fontSize: "22px",
-                                width: "80%",
+                                width: "100%",
+                                // width: { xs: "100%" },
                                 "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
                                     {
                                         fontSize: "22px",
@@ -301,7 +325,8 @@ export const Checkout = () => {
                             style={{
                                 position: "absolute",
                                 top: "20%",
-                                left: "487px",
+                                right: "4%",
+                                // left: "487px",
                             }}
                         />
                         <img
@@ -310,7 +335,7 @@ export const Checkout = () => {
                             style={{
                                 position: "absolute",
                                 top: "30%",
-                                left: "540px",
+                                right: 0,
                             }}
                         />
                     </Box>
@@ -319,7 +344,8 @@ export const Checkout = () => {
                             display: "flex",
                             justifyContent: "space-between",
                             marginTop: "50px",
-                            width: "80%",
+                            width: "100%",
+                            // width: { xs: "100%", lg: "80%" },
                         }}
                     >
                         {/* <Input
@@ -418,11 +444,18 @@ export const Checkout = () => {
                     <Box
                         sx={{
                             marginTop: "90px",
-                            marginBottom: "150px",
+                            marginBottom: { xs: "90px", xl: "150px" },
                             display: "flex",
                             gap: "20px",
+                            flexFlow: {
+                                xs: "column-reverse",
+                                sm: "column-reverse",
+                                md: "column-reverse",
+                                xl: "inherit",
+                            },
                             alignItems: "center",
                             justifyContent: "space-between",
+                            flexDirection: { xs: "column", xl: "row" },
                         }}
                     >
                         <Button
@@ -437,7 +470,7 @@ export const Checkout = () => {
                                 alignItems: "center",
                                 textAlign: "center",
                                 color: "#111827",
-                                width: "45px",
+                                width: { xs: "100%", xl: "45px" },
                                 height: "60px",
                                 padding: "15px 100px",
                                 textTransform: "inherit",
@@ -460,7 +493,7 @@ export const Checkout = () => {
                                 alignItems: "center",
                                 textAlign: "center",
                                 color: "#FFFFFF",
-                                width: "objectFit",
+                                width: { xs: "100%" },
                                 padding: "20px 80px",
                                 textTransform: "inherit",
                                 backgroundColor: "#111827",
@@ -468,15 +501,14 @@ export const Checkout = () => {
                             onClick={handleClick}
                             disabled={!isValidate()}
                         >
-                            Confirm Payment of: $131.95
+                            Confirm Payment
                         </Button>
                     </Box>
                 </Box>
             </Box>
             <Box
                 sx={{
-                    borderRadius: "34px",
-                    width: "70%",
+                    width: { xs: "100%", md: "100%" },
                     paddingTop: "40px",
                 }}
             >
