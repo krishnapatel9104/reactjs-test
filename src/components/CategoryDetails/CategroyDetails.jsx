@@ -14,30 +14,126 @@ import { ImageConfig } from "../../images/index";
 import { categoryProductList } from "../../data/categoryProductList";
 import { useNavigate } from "react-router-dom";
 import { usePagination } from "../common/Pagination";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const CategroyDetails = () => {
-    const maincategoryfilterList = ["women", "Ladies", "Girls", "Babies"];
-    const brandfilterList = [
-        "H&M",
-        "Mark & Spencer",
-        "Victoria’s Secret",
-        "Dior",
-        "Gucci",
-        "Fendi",
-        "Prada",
-        "Chanel",
-        "Versace",
-        "Dolce & Gabbana",
-        "Zara",
-    ];
-    const categoryfilterList = [
-        "Dresses",
-        "Tops",
-        "Lingerie & Lounge Wear",
-        "Blouse",
-        "Vintage",
-    ];
-    const sizefilterList = ["Medium", "Large", "Plus Size", "Sexy Plus Size"];
+    const [isOpen, setIsOpen] = useState(false);
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up("md"));
+    if (matches && isOpen) setIsOpen(false);
+    const [maincategoryfilterList, setMaincategoryfilterList] = useState([
+        { id: 1, value: "women", isChecked: false },
+        { id: 2, value: "Ladies", isChecked: false },
+        { id: 3, value: "Girls", isChecked: false },
+        { id: 4, value: "Babies", isChecked: false },
+    ]);
+    const [brandfilterList, setBrandfilterList] = useState([
+        {
+            id: 1,
+            value: "H&M",
+            isChecked: false,
+        },
+        {
+            id: 2,
+            value: "Mark & Spencer",
+            isChecked: false,
+        },
+        {
+            id: 3,
+            value: "Victoria’s Secret",
+            isChecked: false,
+        },
+        {
+            id: 4,
+            value: "Dior",
+            isChecked: false,
+        },
+        {
+            id: 5,
+            value: "Gucci",
+            isChecked: false,
+        },
+        {
+            id: 6,
+            value: "Fendi",
+            isChecked: false,
+        },
+        {
+            id: 7,
+            value: "Prada",
+            isChecked: false,
+        },
+        {
+            id: 8,
+            value: "Chanel",
+            isChecked: false,
+        },
+        {
+            id: 9,
+            value: "Versace",
+            isChecked: false,
+        },
+        {
+            id: 10,
+            value: "Dolce & Gabbana",
+            isChecked: false,
+        },
+        {
+            id: 11,
+            value: "Zara",
+            isChecked: false,
+        },
+    ]);
+    const [categoryfilterList, setCategoryfilterList] = useState([
+        {
+            id: 1,
+            value: "Dresses",
+            isChecked: false,
+        },
+        {
+            id: 2,
+            value: "Tops",
+            isChecked: false,
+        },
+        {
+            id: 3,
+            value: "Lingerie & Lounge Wear",
+            isChecked: false,
+        },
+        {
+            id: 4,
+            value: "Blouse",
+            isChecked: false,
+        },
+        {
+            id: 5,
+            value: "Vintage",
+            isChecked: false,
+        },
+    ]);
+    const [sizefilterList, setSizefilterList] = useState([
+        {
+            id: 1,
+            value: "Medium",
+            isChecked: false,
+        },
+        {
+            id: 2,
+            value: "Large",
+            isChecked: false,
+        },
+        {
+            id: 3,
+            value: "Plus Size",
+            isChecked: false,
+        },
+        {
+            id: 4,
+            value: "Sexy Plus Size",
+            isChecked: false,
+        },
+    ]);
     const [allFiltersArray, setAllFiltersArray] = useState({
         mainFilter: [],
         brandFitler: [],
@@ -52,7 +148,33 @@ export const CategroyDetails = () => {
     const PER_PAGE = 9;
     const count = Math.ceil(categoryProductList.length / PER_PAGE);
     const handleChangeFilter = (e) => {
+        e.preventDefault();
         const { name, value, checked } = e.target;
+        let changedList = maincategoryfilterList.map((s) => {
+            if (s.value.toLowerCase() === value)
+                return { ...s, isChecked: checked };
+            return s;
+        });
+        setMaincategoryfilterList(changedList);
+
+        changedList = brandfilterList.map((s) => {
+            if (s.value.toLowerCase() === value)
+                return { ...s, isChecked: checked };
+            return s;
+        });
+        setBrandfilterList(changedList);
+        changedList = categoryfilterList.map((s) => {
+            if (s.value.toLowerCase() === value)
+                return { ...s, isChecked: checked };
+            return s;
+        });
+        setCategoryfilterList(changedList);
+        changedList = sizefilterList.map((s) => {
+            if (s.value.toLowerCase() === value)
+                return { ...s, isChecked: checked };
+            return s;
+        });
+        setSizefilterList(changedList);
         // mainCategoryFilter
         if (name === "filter" && checked) {
             let newArray = {
@@ -69,7 +191,6 @@ export const CategroyDetails = () => {
             };
             setAllFiltersArray(newArray);
         }
-
         //brand
         if (name === "brand" && checked) {
             let newArray = {
@@ -130,6 +251,7 @@ export const CategroyDetails = () => {
             setAllFiltersArray(newArray);
         }
     };
+
     const handleChangePagination = (e, p) => {
         setPage(p);
         showCategoryProductList.jump(p);
@@ -192,13 +314,418 @@ export const CategroyDetails = () => {
                         gap: "60px",
                     }}
                 >
+                    {isOpen ? (
+                        <Box
+                            // className="filtersidebar"
+                            sx={{
+                                width: { xs: "40%", sm: "30%" },
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "40px",
+                                position: "absolute",
+                                top: "14.5%",
+                                left: 0,
+                                zIndex: 1,
+                                backgroundColor: "white",
+                                padding: "0 30px",
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    marginTop: "50px",
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                }}
+                            >
+                                <Typography
+                                    // className="filterheading"
+                                    sx={{
+                                        fontFamily: "Jost",
+                                        fontStyle: "normal",
+                                        fontWeight: "600",
+                                        fontSize: "16px",
+                                        lineHeight: "23px",
+                                        letterSpacing: "0.02em",
+                                        textTransform: "uppercase",
+                                        color: "#1F2937",
+                                        marginBottom: "10px",
+                                    }}
+                                >
+                                    Filter
+                                </Typography>
+                                <img
+                                    src={"/assests/closeicon.png"}
+                                    alt="closeicon"
+                                    height="20px"
+                                    width="20px"
+                                    onClick={() => setIsOpen(!isOpen)}
+                                />
+                            </Box>
+                            <Box>
+                                <Typography
+                                    // className="filterheading"
+                                    sx={{
+                                        fontFamily: "Jost",
+                                        fontStyle: "normal",
+                                        fontWeight: "600",
+                                        fontSize: "16px",
+                                        lineHeight: "23px",
+                                        letterSpacing: "0.02em",
+                                        textTransform: "uppercase",
+                                        color: "#1F2937",
+                                        marginBottom: "10px",
+                                    }}
+                                >
+                                    PRICES
+                                </Typography>
+                                <Box
+                                    // className="rangepricefilter"
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                    }}
+                                >
+                                    <Typography
+                                        id="range-slider"
+                                        gutterBottom
+                                        // className="rangetxt"
+                                        sx={{
+                                            fontFamily: "Jost",
+                                            fontStyle: "normal",
+                                            fontWeight: "400",
+                                            fontSize: "20px",
+                                            lineHeight: "29px",
+                                            letterSpacing: "0.02em",
+                                            color: "#4B5563",
+                                        }}
+                                    >
+                                        Range
+                                    </Typography>
+                                    <Typography
+                                        id="range-slider"
+                                        gutterBottom
+                                        // className="pricerangevalue"
+                                        sx={{
+                                            fontFamily: "Jost",
+                                            fontStyle: "normal",
+                                            fontWeight: "500",
+                                            fontSize: "20px",
+                                            lineHeight: "29px",
+                                            letterSpacing: "0.02em",
+                                            color: "#1F2937",
+                                        }}
+                                    >
+                                        ${allFiltersArray.priceFilters[0]}-$
+                                        {allFiltersArray.priceFilters[1]}
+                                    </Typography>
+                                </Box>
+                                <Slider
+                                    // className="sliderpricerange"
+                                    sx={{
+                                        color: "#EB5757",
+                                    }}
+                                    value={allFiltersArray.priceFilters}
+                                    onChange={(e) => handleChangeFilter(e)}
+                                    valueLabelDisplay="auto"
+                                    aria-labelledby="range-slider"
+                                    max={2000}
+                                    min={1}
+                                    name="price"
+                                />
+                            </Box>
+                            <Box>
+                                <Typography
+                                    // className="filterheading"
+                                    sx={{
+                                        fontFamily: "Jost",
+                                        fontStyle: "normal",
+                                        fontWeight: "600",
+                                        fontSize: "16px",
+                                        lineHeight: "23px",
+                                        letterSpacing: "0.02em",
+                                        textTransform: "uppercase",
+                                        color: "#1F2937",
+                                        marginBottom: "10px",
+                                    }}
+                                >
+                                    FILTERS
+                                </Typography>
+                                {maincategoryfilterList.map((filter, index) => {
+                                    return (
+                                        <FormGroup
+                                            // className="filteritem"
+                                            sx={{
+                                                fontFamily: "Jost",
+                                                fontStyle: "normal",
+                                                fontWeight: "400",
+                                                fontSize: "20px",
+                                                lineHeight: "29px",
+                                                letterSpacing: "0.02em",
+                                                color: "#1F2937",
+                                            }}
+                                        >
+                                            <FormControlLabel
+                                                key={index}
+                                                control={
+                                                    <Checkbox
+                                                        key={index}
+                                                        checked={
+                                                            filter.isChecked
+                                                        }
+                                                        // name={filter.value.toLowerCase()}
+                                                        value={filter.value.toLowerCase()}
+                                                        name="filter"
+                                                        onChange={(e) =>
+                                                            handleChangeFilter(
+                                                                e
+                                                            )
+                                                        }
+                                                    />
+                                                }
+                                                label={filter.value}
+                                                // onChange={(e) =>
+                                                //     handleChangeFilter(e)
+                                                // }
+                                            />
+                                        </FormGroup>
+                                    );
+                                })}
+                            </Box>
+                            <Box>
+                                <Typography
+                                    // className="filterheading"
+                                    sx={{
+                                        fontFamily: "Jost",
+                                        fontStyle: "normal",
+                                        fontWeight: "600",
+                                        fontSize: "16px",
+                                        lineHeight: "23px",
+                                        letterSpacing: "0.02em",
+                                        textTransform: "uppercase",
+                                        color: "#1F2937",
+                                        marginBottom: "10px",
+                                    }}
+                                >
+                                    BRANDS
+                                </Typography>
+                                {brandfilterList.map((filter, index) => {
+                                    return (
+                                        <>
+                                            {index < 10 ? (
+                                                <FormGroup
+                                                    // className="filteritem"
+                                                    sx={{
+                                                        fontFamily: "Jost",
+                                                        fontStyle: "normal",
+                                                        fontWeight: "400",
+                                                        fontSize: "20px",
+                                                        lineHeight: "29px",
+                                                        letterSpacing: "0.02em",
+                                                        color: "#1F2937",
+                                                    }}
+                                                >
+                                                    <FormControlLabel
+                                                        key={index}
+                                                        control={
+                                                            <Checkbox
+                                                                key={index}
+                                                                checked={
+                                                                    filter.isChecked
+                                                                }
+                                                                // name={filter.value.toLowerCase()}
+                                                                value={filter.value.toLowerCase()}
+                                                                name="brand"
+                                                                onChange={(e) =>
+                                                                    handleChangeFilter(
+                                                                        e
+                                                                    )
+                                                                }
+                                                                // value={filter.toLowerCase()}
+                                                                // name={"brand"}
+                                                            />
+                                                        }
+                                                        label={filter.value}
+                                                        // onChange={(e) =>
+                                                        //     handleChangeFilter(
+                                                        //         e
+                                                        //     )
+                                                        // }
+                                                    />
+                                                </FormGroup>
+                                            ) : (
+                                                <></>
+                                            )}
+                                        </>
+                                    );
+                                })}
+                                {brandfilterList.length > 10 ? (
+                                    <Typography className="moreoption">
+                                        +10 more
+                                    </Typography>
+                                ) : (
+                                    <div>jkbjkkjkk</div>
+                                )}
+                            </Box>
+                            <Box className="categoryfilter">
+                                <Typography
+                                    // className="filterheading"
+                                    sx={{
+                                        fontFamily: "Jost",
+                                        fontStyle: "normal",
+                                        fontWeight: "600",
+                                        fontSize: "16px",
+                                        lineHeight: "23px",
+                                        letterSpacing: "0.02em",
+                                        textTransform: "uppercase",
+                                        color: "#1F2937",
+                                        marginBottom: "10px",
+                                    }}
+                                >
+                                    CATEGORIES
+                                </Typography>
+                                {categoryfilterList.map((filter, index) => {
+                                    return (
+                                        <>
+                                            {index < 4 ? (
+                                                <FormGroup
+                                                    // className="filteritem"
+                                                    sx={{
+                                                        fontFamily: "Jost",
+                                                        fontStyle: "normal",
+                                                        fontWeight: "400",
+                                                        fontSize: "20px",
+                                                        lineHeight: "29px",
+                                                        letterSpacing: "0.02em",
+                                                        color: "#1F2937",
+                                                    }}
+                                                >
+                                                    <FormControlLabel
+                                                        key={index}
+                                                        control={
+                                                            <Checkbox
+                                                                key={index}
+                                                                checked={
+                                                                    filter.isChecked
+                                                                }
+                                                                // name={filter.value.toLowerCase()}
+                                                                value={filter.value.toLowerCase()}
+                                                                name="category"
+                                                                onChange={(e) =>
+                                                                    handleChangeFilter(
+                                                                        e
+                                                                    )
+                                                                }
+                                                                // value={filter.toLowerCase()}
+                                                                // name={
+                                                                //     "category"
+                                                                // }
+                                                            />
+                                                        }
+                                                        label={filter.value}
+                                                        // onChange={(e) =>
+                                                        //     handleChangeFilter(
+                                                        //         e
+                                                        //     )
+                                                        // }
+                                                    />
+                                                </FormGroup>
+                                            ) : (
+                                                <></>
+                                            )}
+                                        </>
+                                    );
+                                })}
+                                {categoryfilterList.length > 4 ? (
+                                    <Typography
+                                        // className="moreoption"
+                                        sx={{
+                                            marginTop: "20px",
+                                        }}
+                                    >
+                                        +10 more
+                                    </Typography>
+                                ) : (
+                                    <></>
+                                )}
+                            </Box>
+                            <Box>
+                                <Typography
+                                    // className="filterheading"
+                                    sx={{
+                                        fontFamily: "Jost",
+                                        fontStyle: "normal",
+                                        fontWeight: "600",
+                                        fontSize: "16px",
+                                        lineHeight: "23px",
+                                        letterSpacing: "0.02em",
+                                        textTransform: "uppercase",
+                                        color: "#1F2937",
+                                        marginBottom: "10px",
+                                    }}
+                                >
+                                    SIZE
+                                </Typography>
+                                {sizefilterList.map((filter, index) => {
+                                    return (
+                                        <FormGroup
+                                            // className="filteritem"
+                                            sx={{
+                                                fontFamily: "Jost",
+                                                fontStyle: "normal",
+                                                fontWeight: "400",
+                                                fontSize: "20px",
+                                                lineHeight: "29px",
+                                                letterSpacing: "0.02em",
+                                                color: "#1F2937",
+                                            }}
+                                        >
+                                            <FormControlLabel
+                                                key={index}
+                                                control={
+                                                    <Checkbox
+                                                        key={index}
+                                                        checked={
+                                                            filter.isChecked
+                                                        }
+                                                        // name={filter.value.toLowerCase()}
+                                                        value={filter.value.toLowerCase()}
+                                                        name="size"
+                                                        onChange={(e) =>
+                                                            handleChangeFilter(
+                                                                e
+                                                            )
+                                                        }
+                                                        // value={filter.toLowerCase()}
+                                                        // name={"size"}
+                                                    />
+                                                }
+                                                label={filter.value}
+                                                // onChange={(e) =>
+                                                //     handleChangeFilter(e)
+                                                // }
+                                            />
+                                        </FormGroup>
+                                    );
+                                })}
+                            </Box>
+                        </Box>
+                    ) : (
+                        <></>
+                    )}
                     <Box
                         // className="filtersidebar"
                         sx={{
                             width: "30%",
-                            display: "flex",
+                            // display: "flex",
+                            display: { md: "flex", xs: "none" },
                             flexDirection: "column",
                             gap: "40px",
+                            // position: isMobile && "absolute",
+                            // top: isMobile && "20%",
+                            // left: isMobile && 0,
+                            // zIndex: isMobile && 1,
+                            // backgroundColor: isMobile && "white",
+                            // padding: isMobile && "0 30px",
                         }}
                     >
                         <Box sx={{ marginTop: "70px" }}>
@@ -326,14 +853,19 @@ export const CategroyDetails = () => {
                                             key={index}
                                             control={
                                                 <Checkbox
-                                                    value={filter.toLowerCase()}
-                                                    name={"filter"}
+                                                    value={filter.value.toLowerCase()}
+                                                    name="filter"
+                                                    checked={filter.isChecked}
+                                                    //name={filter.value.toLowerCase()}
+                                                    onChange={(e) =>
+                                                        handleChangeFilter(e)
+                                                    }
                                                 />
                                             }
-                                            label={filter}
-                                            onChange={(e) =>
-                                                handleChangeFilter(e)
-                                            }
+                                            label={filter.value}
+                                            // onChange={(e) =>
+                                            //     handleChangeFilter(e)
+                                            // }
                                         />
                                     </FormGroup>
                                 );
@@ -376,14 +908,26 @@ export const CategroyDetails = () => {
                                                     key={index}
                                                     control={
                                                         <Checkbox
-                                                            value={filter.toLowerCase()}
-                                                            name={"brand"}
+                                                            key={index}
+                                                            checked={
+                                                                filter.isChecked
+                                                            }
+                                                            // name={filter.value.toLowerCase()}
+                                                            value={filter.value.toLowerCase()}
+                                                            name="brand"
+                                                            onChange={(e) =>
+                                                                handleChangeFilter(
+                                                                    e
+                                                                )
+                                                            }
+                                                            // value={filter.toLowerCase()}
+                                                            // name={"brand"}
                                                         />
                                                     }
-                                                    label={filter}
-                                                    onChange={(e) =>
-                                                        handleChangeFilter(e)
-                                                    }
+                                                    label={filter.value}
+                                                    // onChange={(e) =>
+                                                    //     handleChangeFilter(e)
+                                                    // }
                                                 />
                                             </FormGroup>
                                         ) : (
@@ -437,14 +981,26 @@ export const CategroyDetails = () => {
                                                     key={index}
                                                     control={
                                                         <Checkbox
-                                                            value={filter.toLowerCase()}
-                                                            name={"category"}
+                                                            // value={filter.toLowerCase()}
+                                                            // name={"category"}
+                                                            key={index}
+                                                            checked={
+                                                                filter.isChecked
+                                                            }
+                                                            // name={filter.value.toLowerCase()}
+                                                            value={filter.value.toLowerCase()}
+                                                            name="category"
+                                                            onChange={(e) =>
+                                                                handleChangeFilter(
+                                                                    e
+                                                                )
+                                                            }
                                                         />
                                                     }
-                                                    label={filter}
-                                                    onChange={(e) =>
-                                                        handleChangeFilter(e)
-                                                    }
+                                                    label={filter.value}
+                                                    // onChange={(e) =>
+                                                    //     handleChangeFilter(e)
+                                                    // }
                                                 />
                                             </FormGroup>
                                         ) : (
@@ -501,19 +1057,48 @@ export const CategroyDetails = () => {
                                             key={index}
                                             control={
                                                 <Checkbox
-                                                    value={filter.toLowerCase()}
-                                                    name={"size"}
+                                                    key={index}
+                                                    checked={filter.isChecked}
+                                                    // name={filter.value.toLowerCase()}
+                                                    value={filter.value.toLowerCase()}
+                                                    name="size"
+                                                    onChange={(e) =>
+                                                        handleChangeFilter(e)
+                                                    }
+                                                    // value={filter.toLowerCase()}
+                                                    // name={"size"}
                                                 />
                                             }
-                                            label={filter}
-                                            onChange={(e) =>
-                                                handleChangeFilter(e)
-                                            }
+                                            label={filter.value}
+                                            // onChange={(e) =>
+                                            //     handleChangeFilter(e)
+                                            // }
                                         />
                                     </FormGroup>
                                 );
                             })}
                         </Box>
+                    </Box>
+                    <Box
+                        sx={{
+                            width: "10%",
+                            display: {
+                                xs: "flex",
+                                md: "none",
+                            },
+                            flexDirection: "column",
+                            gap: "40px",
+                            marginTop: "20px",
+                            position: "relative",
+                        }}
+                    >
+                        <img
+                            src={"/assests/menu.png"}
+                            alt="menuicon"
+                            height="30px"
+                            width="30px"
+                            onClick={() => setIsOpen(!isOpen)}
+                        />
                     </Box>
                     <Box
                         // className="filterproductsection"

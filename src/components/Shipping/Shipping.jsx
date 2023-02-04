@@ -140,7 +140,7 @@ export const Shipping = () => {
         if (name === "zipCode") {
             if (value === "") {
                 setErrors({ ...errors, [name]: "Required" });
-            } else if (!/^[0-9]{7}$/i.test(value)) {
+            } else if (!/^[0-9]{6}$/i.test(value)) {
                 setErrors({
                     ...errors,
                     [name]: "Invalid Zip Code",

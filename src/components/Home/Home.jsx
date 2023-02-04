@@ -23,8 +23,8 @@ export const Home = () => {
     // }, [toggleCategory, isOpen]);
 
     return (
-        <Box>
-            {/* <Navbar /> */}
+        <>
+            <Navbar />
             <Header />
             <BestDeal />
             <BeExclusive />
@@ -37,6 +37,6 @@ export const Home = () => {
             <CardFooterSection />
             <FooterSliderSection />
             <Footer />
-        </Box>
+        </>
     );
 };

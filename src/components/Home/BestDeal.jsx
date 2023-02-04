@@ -5,7 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper";
+import "swiper/css/scrollbar";
+
+import { Keyboard, Scrollbar, Pagination, Navigation } from "swiper";
 import { bestDealProductDetails } from "../../data/bestDeal";
 
 export const BestDeal = () => {
@@ -38,7 +40,14 @@ export const BestDeal = () => {
             </Typography>
             <Box
                 sx={{
-                    margin: "0 290px",
+                    // margin: "0 290px",
+                    margin: {
+                        xl: "0 240px",
+                        lg: "0 230px",
+                        md: "0 200px",
+                        sm: "0 40px",
+                        xs: "0 30px",
+                    },
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
@@ -47,14 +56,33 @@ export const BestDeal = () => {
             >
                 <Swiper
                     slidesPerView={4}
-                    spaceBetween={30}
-                    pagination={false}
-                    navigation={true}
-                    modules={[Pagination, Navigation]}
-                    className="mySwiper"
-                    sx={{
-                        marginLeft: "20px",
+                    centeredSlides={false}
+                    slidesPerGroupSkip={1}
+                    grabCursor={true}
+                    keyboard={{
+                        enabled: true,
                     }}
+                    breakpoints={{
+                        1280: {
+                            slidesPerView: 4,
+                            slidesPerGroup: 1,
+                        },
+                        960: {
+                            slidesPerView: 3,
+                            slidesPerGroup: 1,
+                        },
+                        600: {
+                            slidesPerView: 2,
+                            slidesPerGroup: 1,
+                        },
+                        0: {
+                            slidesPerView: 1,
+                            slidesPerGroup: 1,
+                        },
+                    }}
+                    navigation={true}
+                    modules={[Keyboard, Scrollbar, Navigation, Pagination]}
+                    className="mySwiper"
                 >
                     {bestDealProductDetails.map((product) => {
                         return (
@@ -78,8 +106,16 @@ export const BestDeal = () => {
                                     >
                                         <Box
                                             sx={{
-                                                width: "300px",
-                                                height: "300px",
+                                                width: {
+                                                    xs: "150px",
+                                                    lg: "200px",
+                                                    xl: "300px",
+                                                },
+                                                height: {
+                                                    xs: "150px",
+                                                    lg: "200px",
+                                                    xl: "300px",
+                                                },
                                                 gap: "30px",
                                                 display: "flex",
                                                 flexDirection: "column",
@@ -101,21 +137,27 @@ export const BestDeal = () => {
                                                     fontFamily: "Jost",
                                                     fontStyle: "normal",
                                                     fontWeight: "700",
-                                                    fontSize: "25px",
-                                                    lineHeight: "36px",
+                                                    // fontSize: "25px",
+                                                    fontSize: {
+                                                        lg: "22px",
+                                                        md: "20px",
+                                                        xs: "18px",
+                                                    },
                                                     color: "#212121",
+                                                    // textAlign: "center",
                                                 }}
                                             >
                                                 {product.productName}
                                             </Typography>
-                                            <Typography>
+                                            <Typography
+                                            // sx={{ textAlign: "center" }}
+                                            >
                                                 <span
                                                     style={{
                                                         fontFamily: "Jost",
                                                         fontStyle: "normal",
                                                         fontWeight: "400",
                                                         fontSize: "20px",
-                                                        lineHeight: "29px",
                                                         textDecorationLine:
                                                             "line-through",
                                                         color: "#9E9E9E",
