@@ -1,6 +1,5 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
-import { ImageConfig } from "../../images";
 
 export const GentleFormalLookSection = () => {
     return (
@@ -107,7 +106,7 @@ export const GentleFormalLookSection = () => {
                     }}
                 >
                     <img
-                        src={ImageConfig.imagemen}
+                        src={"/images/Imagemen.png"}
                         alt={"imageGirl"}
                         height="100%"
                         width="100%"

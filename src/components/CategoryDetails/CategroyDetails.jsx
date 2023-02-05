@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import { ImageConfig } from "../../images/index";
 import { categoryProductList } from "../../data/categoryProductList";
 import { useNavigate } from "react-router-dom";
 import { usePagination } from "../common/Pagination";
@@ -257,7 +256,8 @@ export const CategroyDetails = () => {
         showCategoryProductList.jump(p);
     };
     const handleProductClick = (productDetail) => {
-        navigate("/itemdetailview", {
+        setIsOpen(!isOpen);
+        navigate("/product", {
             state: { productDetail: productDetail },
         });
     };
@@ -296,10 +296,10 @@ export const CategroyDetails = () => {
             <Box
                 // className="categorydetailwrapper"
                 sx={{
-                    marginTop: "150px",
+                    marginTop: { xs: "0", md: "150px" },
                 }}
             >
-                {/* <Navbar /> */}
+                <Navbar />
                 <Box
                     // className="categorydetailsection"
                     sx={{
@@ -323,7 +323,7 @@ export const CategroyDetails = () => {
                                 flexDirection: "column",
                                 gap: "40px",
                                 position: "absolute",
-                                top: "14.5%",
+                                top: "9%",
                                 left: 0,
                                 zIndex: 1,
                                 backgroundColor: "white",
@@ -354,7 +354,7 @@ export const CategroyDetails = () => {
                                     Filter
                                 </Typography>
                                 <img
-                                    src={"/assests/closeicon.png"}
+                                    src={"/images/closeicon.png"}
                                     alt="closeicon"
                                     height="20px"
                                     width="20px"
@@ -468,7 +468,6 @@ export const CategroyDetails = () => {
                                                 key={index}
                                                 control={
                                                     <Checkbox
-                                                        key={index}
                                                         checked={
                                                             filter.isChecked
                                                         }
@@ -528,7 +527,6 @@ export const CategroyDetails = () => {
                                                         key={index}
                                                         control={
                                                             <Checkbox
-                                                                key={index}
                                                                 checked={
                                                                     filter.isChecked
                                                                 }
@@ -603,7 +601,6 @@ export const CategroyDetails = () => {
                                                         key={index}
                                                         control={
                                                             <Checkbox
-                                                                key={index}
                                                                 checked={
                                                                     filter.isChecked
                                                                 }
@@ -683,7 +680,6 @@ export const CategroyDetails = () => {
                                                 key={index}
                                                 control={
                                                     <Checkbox
-                                                        key={index}
                                                         checked={
                                                             filter.isChecked
                                                         }
@@ -1093,10 +1089,11 @@ export const CategroyDetails = () => {
                         }}
                     >
                         <img
-                            src={"/assests/menu.png"}
+                            src={"/images/arrowicon.png"}
+                            // src={"/assests/menu.png"}
                             alt="menuicon"
-                            height="30px"
-                            width="30px"
+                            height="25px"
+                            width="25px"
                             onClick={() => setIsOpen(!isOpen)}
                         />
                     </Box>
@@ -1144,7 +1141,8 @@ export const CategroyDetails = () => {
                                     color: "#4B5563",
                                 }}
                             >
-                                568 results
+                                {showCategoryProductList.currentData(1).length}{" "}
+                                results
                             </Typography>
                         </Box>
                         <Box
@@ -1161,7 +1159,7 @@ export const CategroyDetails = () => {
                                         return (
                                             <Grid
                                                 item
-                                                key={index}
+                                                key={product.id}
                                                 sm={6}
                                                 lg={4}
                                                 sx={{ position: "relative" }}
@@ -1170,7 +1168,6 @@ export const CategroyDetails = () => {
                                                     src={product.imageSource}
                                                     alt="productimg"
                                                     width="100%"
-                                                    key={index}
                                                     onClick={(e) =>
                                                         handleProductClick(
                                                             product
@@ -1224,7 +1221,7 @@ export const CategroyDetails = () => {
                                                 >
                                                     <img
                                                         src={
-                                                            ImageConfig.whitelike
+                                                            "/images/whitelike.png"
                                                         }
                                                         alt="productimg"
                                                         width="25px"
@@ -1272,7 +1269,7 @@ export const CategroyDetails = () => {
                                                     </Box>
                                                     <img
                                                         src={
-                                                            ImageConfig.womenproductcart
+                                                            "/images/womenproductcart.png"
                                                         }
                                                         alt="productimg"
                                                         // className="carticon"

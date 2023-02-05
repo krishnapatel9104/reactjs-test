@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Box, Link, List, ListItem, Typography } from "@mui/material";
-import { ImageConfig } from "../../images/index";
-import "./style.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
@@ -67,18 +65,47 @@ const Navbar = () => {
     return (
         <>
             <Box
-                className={"navWrapper"}
                 sx={{
                     backgroundColor: isOpen && "white",
                     display: { xs: "none", md: "flex" },
+
+                    justifyContent: "space-around",
+                    position: "absolute",
+                    top: 0,
+                    padding: "30px 0px",
+                    color: "black",
+                    alignItems: "center",
+                    width: "100%",
+                    zIndex: 2,
                 }}
             >
-                <Box className={"menuWrapper"}>
-                    <Box className={"logo"}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        gap: "32px",
+                        alignItems: "center",
+                    }}
+                >
+                    <Box
+                        sx={{
+                            display: "flex",
+                            gap: "6px",
+                            alignItems: "center",
+                            fontFamily: "Josefin Sans",
+                            fontStyle: "normal",
+                            fontWeight: "700",
+                            fontSize: "16px",
+                            lineHeight: "16px",
+                            letterSpacing: "0.085em",
+                            textTransform: "uppercase",
+                            color: "#212121",
+                        }}
+                    >
                         <img
-                            src={ImageConfig.logo}
+                            src={"/images/logo.png"}
                             alt={"Majestic"}
-                            className={"logoimg"}
+                            width="35px"
+                            height="25px"
                         />
                         Majestic
                     </Box>
@@ -93,6 +120,12 @@ const Navbar = () => {
                                         currentSelectedItem === item
                                             ? "underline !important"
                                             : "auto",
+                                    fontFamily: "Josefin Sans",
+                                    fontStyle: "normal",
+                                    fontWeight: "700",
+                                    fontSize: "16px",
+                                    lineHeight: "16px",
+                                    color: "#212121",
                                 }}
                             >
                                 {item}
@@ -100,12 +133,15 @@ const Navbar = () => {
                         );
                     })}
                 </Box>
-                <Box className={"iconWrapper"}>
-                    <img
-                        src={ImageConfig.call}
-                        alt={"call"}
-                        className={"icon"}
-                    />
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        gap: "30px",
+                        alignItems: "center",
+                    }}
+                >
+                    <img src={"/images/Call.png"} alt={"call"} />
                     <Box
                         sx={{
                             display: "flex",
@@ -115,9 +151,8 @@ const Navbar = () => {
                         onClick={handleClick}
                     >
                         <img
-                            src={ImageConfig.cart}
+                            src={"/images/Cart.png"}
                             alt={"cart"}
-                            className={"icon"}
                             style={{ position: "relative" }}
                         />
                         <Box
@@ -136,27 +171,14 @@ const Navbar = () => {
                             </Typography>
                         </Box>
                     </Box>
-                    <img
-                        src={ImageConfig.search}
-                        alt={"search"}
-                        className={"icon"}
-                    />
-                    <img
-                        src={ImageConfig.login}
-                        alt={"login"}
-                        className={"icon"}
-                    />
-                    <img
-                        src={ImageConfig.like}
-                        alt={"like"}
-                        className={"icon"}
-                    />
+                    <img src={"/images/Search.png"} alt={"search"} />
+                    <img src={"/images/Login.png"} alt={"login"} />
+                    <img src={"/images/Like.png"} alt={"like"} />
                 </Box>
             </Box>
 
             {/* mobile */}
             <Box
-                // className={"navWrapper"}
                 sx={{
                     backgroundColor: isOpen && "white",
                     display: { md: "none", xs: "flex" },
@@ -165,17 +187,32 @@ const Navbar = () => {
                     padding: "30px 30px",
                 }}
             >
-                <Box className={"logo"}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        gap: "6px",
+                        alignItems: "center",
+                        fontFamily: "Josefin Sans",
+                        fontStyle: "normal",
+                        fontWeight: "700",
+                        fontSize: "16px",
+                        lineHeight: "16px",
+                        letterSpacing: "0.085em",
+                        textTransform: "uppercase",
+                        color: "#212121",
+                    }}
+                >
                     <img
-                        src={ImageConfig.logo}
+                        src={"/images/logo.png"}
                         alt={"Majestic"}
-                        className={"logoimg"}
+                        width="35px"
+                        height="25px"
                     />
                     Majestic
                 </Box>
                 <Box>
                     <img
-                        src={"/assests/menu.png"}
+                        src={"/images/menu.png"}
                         alt="menuicon"
                         onClick={handleClickMobile}
                     />
@@ -194,7 +231,7 @@ const Navbar = () => {
                                 width: "100%",
                                 right: "0",
                                 backgroundColor: "white",
-                                zIndex: 1,
+                                zIndex: 2,
                             }}
                         >
                             {["Women", "Men", "Collection", "Outlet"].map(
@@ -221,6 +258,12 @@ const Navbar = () => {
                                                             item
                                                                 ? "underline !important"
                                                                 : "auto",
+                                                        fontFamily:
+                                                            "Josefin Sans",
+                                                        fontStyle: "normal",
+                                                        fontWeight: "700",
+                                                        fontSize: "16px",
+                                                        lineHeight: "16px",
                                                     }}
                                                 >
                                                     {item}
@@ -256,7 +299,6 @@ const Navbar = () => {
                                                                 }}
                                                             >
                                                                 <Box
-                                                                    // className="menucolumn"
                                                                     sx={{
                                                                         display:
                                                                             "flex",
@@ -266,7 +308,6 @@ const Navbar = () => {
                                                                     }}
                                                                 >
                                                                     <Typography
-                                                                        // className="categoryheading"
                                                                         sx={{
                                                                             fontFamily:
                                                                                 "Inter",
@@ -295,7 +336,6 @@ const Navbar = () => {
                                                                                         textDecoration:
                                                                                             "none",
                                                                                     }}
-                                                                                    // className="categoryitem"
                                                                                     sx={{
                                                                                         fontFamily:
                                                                                             "Inter",
@@ -315,7 +355,7 @@ const Navbar = () => {
                                                                                         index
                                                                                     }
                                                                                     href={
-                                                                                        "/categorydetails"
+                                                                                        "/allProducts"
                                                                                     }
                                                                                 >
                                                                                     {
@@ -327,7 +367,6 @@ const Navbar = () => {
                                                                     )}
                                                                 </Box>
                                                                 <Box
-                                                                    // className="menucolumn"
                                                                     sx={{
                                                                         display:
                                                                             "flex",
@@ -337,7 +376,6 @@ const Navbar = () => {
                                                                     }}
                                                                 >
                                                                     <Typography
-                                                                        // className="categoryheading"
                                                                         sx={{
                                                                             fontFamily:
                                                                                 "Inter",
@@ -366,7 +404,6 @@ const Navbar = () => {
                                                                                         textDecoration:
                                                                                             "none",
                                                                                     }}
-                                                                                    // className="categoryitem"
                                                                                     sx={{
                                                                                         fontFamily:
                                                                                             "Inter",
@@ -398,7 +435,6 @@ const Navbar = () => {
                                                                     )}
                                                                 </Box>
                                                                 <Box
-                                                                    // className="menucolumn"
                                                                     sx={{
                                                                         display:
                                                                             "flex",
@@ -408,7 +444,6 @@ const Navbar = () => {
                                                                     }}
                                                                 >
                                                                     <Typography
-                                                                        // className="categoryheading"
                                                                         sx={{
                                                                             fontFamily:
                                                                                 "Inter",
@@ -438,7 +473,6 @@ const Navbar = () => {
                                                                                         textDecoration:
                                                                                             "none",
                                                                                     }}
-                                                                                    // className="categoryitem"
                                                                                     sx={{
                                                                                         fontFamily:
                                                                                             "Inter",
@@ -481,7 +515,6 @@ const Navbar = () => {
                                 }
                             )}
                             <Box
-                                className={"iconWrapper"}
                                 sx={{
                                     display: "flex",
                                     justifyContent: "flex-start",
@@ -490,11 +523,7 @@ const Navbar = () => {
                                     padding: "15px 30px",
                                 }}
                             >
-                                <img
-                                    src={ImageConfig.call}
-                                    alt={"call"}
-                                    className={"icon"}
-                                />
+                                <img src={"/images/Call.png"} alt={"call"} />
                                 <Box
                                     sx={{
                                         display: "flex",
@@ -505,9 +534,8 @@ const Navbar = () => {
                                     onClick={handleClick}
                                 >
                                     <img
-                                        src={ImageConfig.cart}
+                                        src={"/images/Cart.png"}
                                         alt={"cart"}
-                                        className={"icon"}
                                         // style={{ position: "relative" }}
                                     />
                                     <Box
@@ -527,20 +555,11 @@ const Navbar = () => {
                                     </Box>
                                 </Box>
                                 <img
-                                    src={ImageConfig.search}
+                                    src={"/images/Search.png"}
                                     alt={"search"}
-                                    className={"icon"}
                                 />
-                                <img
-                                    src={ImageConfig.login}
-                                    alt={"login"}
-                                    className={"icon"}
-                                />
-                                <img
-                                    src={ImageConfig.like}
-                                    alt={"like"}
-                                    className={"icon"}
-                                />
+                                <img src={"/images/Login.png"} alt={"login"} />
+                                <img src={"/images/Like.png"} alt={"like"} />
                             </Box>
                         </Box>
                     </>
@@ -550,19 +569,17 @@ const Navbar = () => {
             </Box>
             {isOpen ? (
                 <Box
-                    // className="categoryWrapper"
                     sx={{
                         backgroundColor: "white",
                         position: "absolute",
                         top: "7%",
                         textAlign: "left",
-                        zIndex: 1,
+                        zIndex: 2,
                         color: "black",
                         width: "100%",
                     }}
                 >
                     <Box
-                        // className="categorysection"
                         sx={{
                             display: "flex",
                             justifyContent: "space-between",
@@ -576,14 +593,12 @@ const Navbar = () => {
                         }}
                     >
                         <Box
-                            // className="categoryleftside"
                             sx={{
                                 display: "flex",
                                 gap: { md: "100px", xl: "150px" },
                             }}
                         >
                             <Box
-                                // className="menucolumn"
                                 sx={{
                                     display: "flex",
                                     flexDirection: "column",
@@ -591,7 +606,6 @@ const Navbar = () => {
                                 }}
                             >
                                 <Typography
-                                    // className="categoryheading"
                                     sx={{
                                         fontFamily: "Inter",
                                         fontStyle: "normal",
@@ -611,7 +625,6 @@ const Navbar = () => {
                                                 color: "#8E8E93",
                                                 textDecoration: "none",
                                             }}
-                                            // className="categoryitem"
                                             sx={{
                                                 fontFamily: "Inter",
                                                 fontStyle: "normal",
@@ -622,7 +635,7 @@ const Navbar = () => {
                                                 textDecoration: "none",
                                             }}
                                             key={index}
-                                            href={"/categorydetails"}
+                                            href={"/allProducts"}
                                         >
                                             {product}
                                         </a>
@@ -630,7 +643,6 @@ const Navbar = () => {
                                 })}
                             </Box>
                             <Box
-                                // className="menucolumn"
                                 sx={{
                                     display: "flex",
                                     flexDirection: "column",
@@ -638,7 +650,6 @@ const Navbar = () => {
                                 }}
                             >
                                 <Typography
-                                    // className="categoryheading"
                                     sx={{
                                         fontFamily: "Inter",
                                         fontStyle: "normal",
@@ -658,7 +669,6 @@ const Navbar = () => {
                                                 color: "#8E8E93",
                                                 textDecoration: "none",
                                             }}
-                                            // className="categoryitem"
                                             sx={{
                                                 fontFamily: "Inter",
                                                 fontStyle: "normal",
@@ -677,7 +687,6 @@ const Navbar = () => {
                                 })}
                             </Box>
                             <Box
-                                // className="menucolumn"
                                 sx={{
                                     display: "flex",
                                     flexDirection: "column",
@@ -685,7 +694,6 @@ const Navbar = () => {
                                 }}
                             >
                                 <Typography
-                                    // className="categoryheading"
                                     sx={{
                                         fontFamily: "Inter",
                                         fontStyle: "normal",
@@ -706,7 +714,6 @@ const Navbar = () => {
                                                     color: "#8E8E93",
                                                     textDecoration: "none",
                                                 }}
-                                                // className="categoryitem"
                                                 sx={{
                                                     fontFamily: "Inter",
                                                     fontStyle: "normal",
@@ -727,7 +734,6 @@ const Navbar = () => {
                             </Box>
                         </Box>
                         <Box
-                            // className="categoryrightside"
                             sx={{
                                 display: "flex",
                                 flexDirection: "column",
@@ -735,14 +741,13 @@ const Navbar = () => {
                             }}
                         >
                             <Box
-                                // className="categorycontactside"
                                 sx={{
                                     width: "300px",
                                     height: "250px",
                                 }}
                             >
                                 <img
-                                    src={ImageConfig.catgeorymenuimg}
+                                    src={"/images/catgeorymenuimg.png"}
                                     alt="socialIcon"
                                     width="100%"
                                     height="100%"

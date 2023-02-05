@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
-import { ImageConfig } from "../../images/index";
+import React from "react";
 import Navbar from "../Navbar/Navbar";
 import { BestDeal } from "./BestDeal";
 import { BeExclusive } from "./BeExclusive";

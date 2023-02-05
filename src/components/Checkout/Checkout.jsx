@@ -8,7 +8,6 @@ import {
     Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { ImageConfig } from "../../images";
 import React, { useEffect, useState } from "react";
 import { StepperComp } from "../common/StepperComp";
 import { YourOrder } from "../common/YourOrder";
@@ -177,7 +176,7 @@ export const Checkout = () => {
                                 control={<Radio />}
                             />
                             <img
-                                src={ImageConfig.paymenticon1}
+                                src={"/images/paymenticon1.png"}
                                 alt="paymentoption1"
                                 height="34px"
                                 width="46px"
@@ -189,7 +188,7 @@ export const Checkout = () => {
                                 control={<Radio />}
                             />
                             <img
-                                src={ImageConfig.paymenticon2}
+                                src={"/images/paymenticon2.png"}
                                 alt="paymentoption1"
                                 height="80px"
                                 width="100px"
@@ -201,7 +200,7 @@ export const Checkout = () => {
                                 control={<Radio />}
                             />
                             <img
-                                src={ImageConfig.paymenticon3}
+                                src={"/images/paymenticon3.png"}
                                 alt="paymentoption1"
                                 height="34px"
                                 width="46px"
@@ -320,7 +319,7 @@ export const Checkout = () => {
                             }}
                         />
                         <img
-                            src={ImageConfig.visa}
+                            src={"/images/visa.png"}
                             alt="visa"
                             style={{
                                 position: "absolute",
@@ -330,7 +329,7 @@ export const Checkout = () => {
                             }}
                         />
                         <img
-                            src={ImageConfig.visaangle}
+                            src={"/images/visaangle.png"}
                             alt="visaangle"
                             style={{
                                 position: "absolute",

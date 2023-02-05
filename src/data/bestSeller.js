@@ -1,32 +1,30 @@
-import { ImageConfig } from "../images";
-
 export const bestSellerProductDetails = [
     {
-        imageSource: ImageConfig.purse2,
+        imageSource: "/images/purse2.png",
         productName: "Marie Claire Handbag",
         productOriginalPrice: 299,
         productCurrentPrice: 163,
     },
     {
-        imageSource: ImageConfig.earning,
+        imageSource: "/images/earning.png",
         productName: "Red Gem Earrings",
         productOriginalPrice: 299,
         productCurrentPrice: 163,
     },
     {
-        imageSource: ImageConfig.watch1,
+        imageSource: "/images/watch1.png",
         productName: "Brown Leathered Wallet",
         productOriginalPrice: 299,
         productCurrentPrice: 163,
     },
     {
-        imageSource: ImageConfig.tie,
+        imageSource: "/images/tie.png",
         productName: "Red-White Stripped Tie",
         productOriginalPrice: 299,
         productCurrentPrice: 163,
     },
     {
-        imageSource: ImageConfig.earning,
+        imageSource: "/images/earning.png",
         productName: "Red Gem Earrings",
         productOriginalPrice: 299,
         productCurrentPrice: 163,

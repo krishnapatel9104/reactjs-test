@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import { ImageConfig } from "../../images";
 
 export const FooterSliderSection = () => {
     return (
@@ -11,7 +10,7 @@ export const FooterSliderSection = () => {
             }}
         >
             <img
-                src={ImageConfig.footersliderimage}
+                src={"/images/footersliderimage.png"}
                 alt="footerslider"
                 // className="footersliderimage"
                 width="100%"
@@ -26,7 +25,7 @@ export const FooterSliderSection = () => {
                 }}
             >
                 <img
-                    src={ImageConfig.overlay}
+                    src={"/images/overlay.png"}
                     alt="footerslider"
                     // className="footersliderimage"
                     width="100%"
@@ -74,7 +73,7 @@ export const FooterSliderSection = () => {
                 >
                     <Box>
                         <img
-                            src={ImageConfig.vectorleftwhite}
+                            src={"/images/vectorleftwhite.png"}
                             alt="footerslider"
                             width="20px"
                             height="20px"
@@ -102,7 +101,7 @@ export const FooterSliderSection = () => {
                     </Box>
                     <Box>
                         <img
-                            src={ImageConfig.vectorrightwhite}
+                            src={"/images/vectorrightwhite.png"}
                             alt="footerslider"
                             width="20px"
                             height="20px"
@@ -133,7 +132,7 @@ export const FooterSliderSection = () => {
                     >
                         See Addresses
                     </Typography>
-                    <img src={ImageConfig.arrowwhite} alt="footerslider" />
+                    <img src={"/images/arrowwhite.png"} alt="footerslider" />
                 </Box>
             </Box>
         </Box>

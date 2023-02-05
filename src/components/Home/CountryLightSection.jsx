@@ -1,9 +1,11 @@
 import { Box, Grid } from "@mui/material";
 import React from "react";
-import { ImageConfig } from "../../images";
 
 export const CountryLightSection = () => {
-    const CountryLightImagesList = [ImageConfig.card1img, ImageConfig.card2img];
+    const CountryLightImagesList = [
+        "/images/card1img.png",
+        "/images/card2img.png",
+    ];
     return (
         <Box
             // className="countrylightImagesWrapper"

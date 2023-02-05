@@ -1,13 +1,12 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import { ImageConfig } from "../../images";
 
 export const CheckoutNewArrivals = () => {
     const checkoutImagesList = [
-        ImageConfig.card1,
-        ImageConfig.card2,
-        ImageConfig.card3,
-        ImageConfig.card4,
+        "/images/Card1.jpg",
+        "/images/Card2.png",
+        "/images/Card3.png",
+        "/images/Card4.png",
     ];
     return (
         <Box

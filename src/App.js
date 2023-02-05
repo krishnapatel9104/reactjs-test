@@ -13,8 +13,8 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/categorydetails" element={<CategroyDetails />} />
-                <Route path="/itemdetailview" element={<ItemDetailView />} />
+                <Route path="/allProducts" element={<CategroyDetails />} />
+                <Route path="/product" element={<ItemDetailView />} />
                 <Route path="/shipping" element={<Shipping />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/confirmation" element={<ConfirmationPage />} />

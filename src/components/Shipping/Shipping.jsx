@@ -9,7 +9,6 @@ import {
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { ImageConfig } from "../../images";
 import { StepperComp } from "../common/StepperComp";
 import { YourOrder } from "../common/YourOrder";
 import { setUserDetails } from "../../store/reducers/userDetailsSlice";
@@ -639,7 +638,7 @@ export const Shipping = () => {
                                 }}
                             >
                                 <img
-                                    src={ImageConfig.searchgrayicon}
+                                    src={"/images/searchgrayicon.png"}
                                     alt="searchicon"
                                 />
                             </Box>

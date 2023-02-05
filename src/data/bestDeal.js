@@ -1,32 +1,30 @@
-import { ImageConfig } from "../images";
-
 export const bestDealProductDetails = [
     {
-        imageSource: ImageConfig.shandle,
+        imageSource: "/images/shandle.png",
         productName: "Flat Hill Slingback",
         productOriginalPrice: 299,
         productCurrentPrice: 163,
     },
     {
-        imageSource: ImageConfig.bangles,
+        imageSource: "/images/bangles.png",
         productName: "Ocean Blue Ring",
         productOriginalPrice: 299,
         productCurrentPrice: 163,
     },
     {
-        imageSource: ImageConfig.purse,
+        imageSource: "/images/purse.png",
         productName: "Brown Leathered Wallet",
         productOriginalPrice: 299,
         productCurrentPrice: 163,
     },
     {
-        imageSource: ImageConfig.watch,
+        imageSource: "/images/watch.png",
         productName: "Brown Leathered Wallet",
         productOriginalPrice: 299,
         productCurrentPrice: 163,
     },
     {
-        imageSource: ImageConfig.purse,
+        imageSource: "/images/purse.png",
         productName: "Brown Leathered Wallet",
         productOriginalPrice: 299,
         productCurrentPrice: 163,

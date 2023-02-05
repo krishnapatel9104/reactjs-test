@@ -1,6 +1,5 @@
 import { Box, TextField, Typography } from "@mui/material";
 import React from "react";
-import { ImageConfig } from "../../images";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
 export const Footer = () => {
@@ -267,7 +266,7 @@ export const Footer = () => {
                                 variant="outlined"
                             />
                             <img
-                                src={ImageConfig.arrow}
+                                src={"/images/arrow.png"}
                                 alt="arrowIcon"
                                 width="15px"
                                 height="15px"
@@ -303,7 +302,7 @@ export const Footer = () => {
                                 }}
                             >
                                 <img
-                                    src={ImageConfig.call}
+                                    src={"/images/Call.png"}
                                     alt="arrowIcon"
                                     width="15px"
                                     height="15px"
@@ -326,10 +325,10 @@ export const Footer = () => {
                     marginTop: "50px",
                 }}
             >
-                <img src={ImageConfig.fb} alt="socialIcon" />
-                <img src={ImageConfig.instagram} alt="socialIcon" />
-                <img src={ImageConfig.youtube} alt="socialIcon" />
-                <img src={ImageConfig.twitter} alt="socialIcon" />
+                <img src={"/images/fb.png"} alt="socialIcon" />
+                <img src={"/images/instagram.png"} alt="socialIcon" />
+                <img src={"/images/youtube.png"} alt="socialIcon" />
+                <img src={"/images/twitter.png"} alt="socialIcon" />
             </Box>
             <Box
                 sx={{
@@ -385,7 +384,7 @@ export const Footer = () => {
                         color: "#6C7E99",
                     }}
                 >
-                    <img src={ImageConfig.madewithbyicon} alt="socialIcon" />
+                    <img src={"/images/madewithbyicon.png"} alt="socialIcon" />
                     &nbsp; Themewagon
                 </Typography>
             </Box>

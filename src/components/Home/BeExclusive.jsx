@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { ImageConfig } from "../../images";
 
 export const BeExclusive = () => {
     return (
@@ -151,7 +150,7 @@ export const BeExclusive = () => {
                     }}
                 >
                     <img
-                        src={ImageConfig.imageGirl}
+                        src={"/images/Image.png"}
                         alt={"imageGirl"}
                         width="100%"
                         height="100%"
@@ -168,7 +167,7 @@ export const BeExclusive = () => {
                     }}
                 >
                     <img
-                        src={ImageConfig.purse1}
+                        src={"/images/Item1.png"}
                         alt={"purse"}
                         height="100%"
                         width="100%"
@@ -185,7 +184,7 @@ export const BeExclusive = () => {
                     }}
                 >
                     <img
-                        src={ImageConfig.hat}
+                        src={"/images/Item2.png"}
                         alt={"hat"}
                         height="100%"
                         width="100%"
@@ -202,7 +201,7 @@ export const BeExclusive = () => {
                     }}
                 >
                     <img
-                        src={ImageConfig.sandle1}
+                        src={"/images/Item3.png"}
                         alt={"sandle"}
                         height="100%"
                         width="100%"

@@ -14,7 +14,7 @@ export const CoverSection = () => {
                 },
                 width: "100%",
                 position: "relative",
-                backgroundImage: `url("/assests/headerback.png")`,
+                backgroundImage: `url("/images/headerback.png")`,
                 objectFit: "cover",
                 opacity: 0.2,
             }}

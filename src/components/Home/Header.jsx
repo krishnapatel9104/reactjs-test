@@ -80,7 +80,7 @@ export const Header = () => {
                                 xs: "150px",
                             },
                             position: "relative",
-                            backgroundImage: `url("/assests/left.png")`,
+                            backgroundImage: `url("/images/left.png")`,
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "contain",
                         }}
@@ -143,7 +143,7 @@ export const Header = () => {
                                 xs: "150px",
                             },
                             position: "relative",
-                            backgroundImage: `url("/assests/right.png")`,
+                            backgroundImage: `url("/images/right.png")`,
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "contain",
                         }}
@@ -191,60 +191,6 @@ export const Header = () => {
                             For Him
                         </Typography>
                     </Box>
-                    {/* <Box
-                        sx={{
-                            height: {
-                                xl: "600px",
-                                lg: "600px",
-                                md: "450px",
-                                sm: "300px",
-                                xs: "150px",
-                            },
-                            width: {
-                                xl: "600px",
-                                lg: "600px",
-                                md: "450px",
-                                sm: "300px",
-                                xs: "150px",
-                            },
-                            position: "relative",
-                            backgroundImage: `url("/assests/right.png")`,
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "contain",
-                        }}
-                    >
-                        <Box
-                            sx={{
-                                position: "absolute",
-                                width: "100%",
-                                height: "100%",
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}
-                        >
-                            <Typography
-                                sx={{
-                                    fontFamily: "Josefin Sans",
-                                    fontStyle: "normal",
-                                    fontWeight: "700",
-                                    color: "#424242",
-                                    backgroundColor: "white",
-                                    width: "fit-content",
-                                    fontSize: {
-                                        md: "18px",
-                                        xs: "14px",
-                                    },
-                                    padding: {
-                                        md: "18px 80px",
-                                        xs: "12px 50px",
-                                    },
-                                }}
-                            >
-                                For Him
-                            </Typography>
-                        </Box>
-                    </Box> */}
                 </Box>
             </Box>
         </>

@@ -4,7 +4,6 @@ import Stack from "@mui/material/Stack";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import { ImageConfig } from "../../images";
 import StepConnector, {
     stepConnectorClasses,
 } from "@mui/material/StepConnector";
@@ -49,39 +48,39 @@ function ColorlibStepIcon(props) {
     const icons = {
         1: active ? (
             <img
-                src={ImageConfig.currentstep}
+                src={"/images/currentstep.png"}
                 height="20px"
                 width="20px"
                 alt="icon"
             />
         ) : completed ? (
-            <img src={ImageConfig.prevstep} alt="icon" />
+            <img src={"/images/prevstep.png"} alt="icon" />
         ) : (
-            <img src={ImageConfig.nextstep} alt="icon" />
+            <img src={"/images/nextstep.png"} alt="icon" />
         ),
         2: active ? (
             <img
-                src={ImageConfig.currentstep}
+                src={"/images/currentstep.png"}
                 height="20px"
                 width="20px"
                 alt="icon"
             />
         ) : completed ? (
-            <img src={ImageConfig.prevstep} alt="icon" />
+            <img src={"/images/prevstep.png"} alt="icon" />
         ) : (
-            <img src={ImageConfig.nextstep} alt="icon" />
+            <img src={"/images/nextstep.png"} alt="icon" />
         ),
         3: active ? (
             <img
-                src={ImageConfig.currentstep}
+                src={"/images/currentstep.png"}
                 height="20px"
                 width="20px"
                 alt="icon"
             />
         ) : completed ? (
-            <img src={ImageConfig.prevstep} alt="icon" />
+            <img src={"/images/prevstep.png"} alt="icon" />
         ) : (
-            <img src={ImageConfig.nextstep} alt="icon" />
+            <img src={"/images/nextstep.png"} alt="icon" />
         ),
     };
 

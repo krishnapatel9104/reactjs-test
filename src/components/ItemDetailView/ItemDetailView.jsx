@@ -5,8 +5,6 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
-import "./style.css";
-import { ImageConfig } from "../../images/index";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -45,10 +43,13 @@ export const ItemDetailView = () => {
     };
     return (
         <>
-            <Box className="itemdetailviewwrapper">
-                {/* <Navbar /> */}
+            <Box
+                sx={{
+                    marginTop: { xs: "0", md: "150px" },
+                }}
+            >
+                <Navbar />
                 <Box
-                    className="itemdetailviewsection"
                     sx={{
                         padding: {
                             lg: "0 145px",
@@ -57,11 +58,20 @@ export const ItemDetailView = () => {
                         },
                         flexDirection: { xs: "column", md: "row" },
                         justifyContent: "center",
+
+                        display: "flex",
+                        gap: "60px",
                     }}
                 >
                     <Box
-                        className="imageSection"
-                        sx={{ width: { xs: "100%", md: "45%" } }}
+                        sx={{
+                            width: { xs: "100%", md: "45%" },
+                            textAlign: "center",
+                            marginTop: "100px",
+                            "& .swiper-button-next, .swiper-button-prev": {
+                                color: "#D1D1D6",
+                            },
+                        }}
                     >
                         <Swiper
                             cssMode={true}
@@ -75,7 +85,6 @@ export const ItemDetailView = () => {
                                 Mousewheel,
                                 Keyboard,
                             ]}
-                            className="mySwiper"
                         >
                             {[1, 2, 3, 4, 5].map((item) => {
                                 return (
@@ -90,7 +99,14 @@ export const ItemDetailView = () => {
                                 );
                             })}
                         </Swiper>
-                        <Box className="diffangleimage">
+                        <Box
+                            sx={{
+                                marginTop: "70px",
+                                "& .swiper-button-next, .swiper-button-prev": {
+                                    color: "#D1D1D6",
+                                },
+                            }}
+                        >
                             <Swiper
                                 slidesPerView={5}
                                 slidesPerGroupSkip={1}
@@ -107,16 +123,35 @@ export const ItemDetailView = () => {
                                     Navigation,
                                     Pagination,
                                 ]}
-                                className="mySwiper"
+                                sx={{
+                                    width: "100%",
+                                    height: "100%",
+                                }}
                             >
                                 {productDetail.imageDifferentAngle.map(
                                     (item) => {
                                         return (
                                             <>
-                                                <SwiperSlide>
+                                                <SwiperSlide
+                                                    sx={{
+                                                        marginTop: "50px",
+                                                        textAlign: "center",
+                                                        fontSize: "18px",
+                                                        background: "#fff",
+                                                        display: "flex",
+                                                        justifyContent:
+                                                            "center",
+                                                        alignItems: "center",
+                                                    }}
+                                                >
                                                     <img
                                                         src={item}
                                                         alt="likeicon"
+                                                        style={{
+                                                            display: "block",
+                                                        }}
+                                                        height="130px"
+                                                        width="100px"
                                                     />
                                                 </SwiperSlide>
                                             </>
@@ -127,11 +162,14 @@ export const ItemDetailView = () => {
                         </Box>
                     </Box>
                     <Box
-                        className="imagedescsection"
-                        sx={{ width: { xs: "100%", md: "40%" } }}
+                        sx={{
+                            width: { xs: "100%", md: "40%" },
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "20px",
+                        }}
                     >
                         <Box
-                            // className="imagecontent"
                             sx={{
                                 display: "flex",
                                 justifyContent: "space-between",
@@ -157,36 +195,58 @@ export const ItemDetailView = () => {
                                     Popular
                                 </Button>
                             </Box>
-                            <Box className="imagelikeicon">
-                                <img src={ImageConfig.like} alt="likeicon" />
+                            <Box>
+                                <img
+                                    src={"/images/Like.png"}
+                                    alt="likeicon"
+                                    style={{
+                                        width: "26px",
+                                        height: "25px",
+                                        padding: "6px",
+                                        paddingTop: "10px",
+                                        border: "1px solid #E5E5EA",
+                                        borderRadius: "26px",
+                                        backgroundColor: "#E5E5EA",
+                                    }}
+                                />
                             </Box>
                         </Box>
                         <Typography
-                            className="producttitle"
                             sx={{
                                 fontSize: {
                                     lg: "44px",
                                     sm: "35px",
                                     xs: "26px",
                                 },
+                                fontFamily: "Inter",
+                                fontStyle: "normal",
+                                fontWeight: "400",
+                                lineHeight: "58px",
+                                color: "#1B2437",
                             }}
                         >
                             {productDetail.productName}
                         </Typography>
                         <Box
-                            className="reviewsection"
                             sx={{
                                 flexDirection: { xs: "column", lg: "row" },
                                 alignItems: { xs: "flex-start", lg: "center" },
+                                display: "flex",
+                                gap: "20px",
                             }}
                         >
-                            <Box className="reviewicons">
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    gap: "10px",
+                                }}
+                            >
                                 {Array.from(
                                     Array(productDetail.reviewRate),
                                     (e, index) => {
                                         return (
                                             <img
-                                                src={ImageConfig.star}
+                                                src={"/images/star.png"}
                                                 alt="likeicon"
                                                 key={index}
                                             />
@@ -200,7 +260,7 @@ export const ItemDetailView = () => {
                                     (e, index) => {
                                         return (
                                             <img
-                                                src={ImageConfig.graystar}
+                                                src={"/images/graystar.png"}
                                                 alt="likeicon"
                                                 key={index}
                                             />
@@ -208,7 +268,7 @@ export const ItemDetailView = () => {
                                     }
                                 )}
                             </Box>
-                            <Box className="noofreview">132 reviews</Box>
+                            <Box>132 reviews</Box>
                         </Box>
                         <Box sx={{ width: "100%", typography: "body1" }}>
                             <TabContext value={value}>
@@ -228,7 +288,16 @@ export const ItemDetailView = () => {
                                     </TabList>
                                 </Box>
                                 <TabPanel value="1">
-                                    <Typography className="desc">
+                                    <Typography
+                                        sx={{
+                                            fontFamily: "Inter",
+                                            fontStyle: "normal",
+                                            fontWeight: "400",
+                                            fontSize: "16px",
+                                            lineHeight: "19px",
+                                            color: "#8E8E93",
+                                        }}
+                                    >
                                         Dress with tulle and collar Peter Pan
                                         from REDValentino (Red Valentino). Peter
                                         Pan collar, tulle panels, sleeveless
@@ -241,7 +310,6 @@ export const ItemDetailView = () => {
                             </TabContext>
                         </Box>
                         <Box
-                            className="mainoptionlist"
                             sx={{
                                 flexDirection: {
                                     xs: "column",
@@ -249,12 +317,22 @@ export const ItemDetailView = () => {
                                     sm: "row",
                                     lg: "row",
                                 },
+                                display: "flex",
+                                justifyContent: "space-between",
+                                gap: "50px",
                             }}
                         >
-                            <Box className="optionlist">
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                }}
+                            >
                                 <Box
-                                    className="optionheading"
-                                    sx={{ gap: { xs: "110px" } }}
+                                    sx={{
+                                        gap: { xs: "110px" },
+                                        display: "flex",
+                                    }}
                                 >
                                     <Typography>Size</Typography>
                                     <Typography
@@ -267,38 +345,62 @@ export const ItemDetailView = () => {
                                     </Typography>
                                 </Box>
                                 <Box
-                                    className="optionlistvalue"
                                     sx={{
                                         gap: { xs: "20px" },
                                         marginTop: { xs: "25px", lg: "50px" },
+                                        display: "flex",
                                     }}
                                 >
                                     <Button
-                                        className={`${
-                                            productDetail.size === "XS"
-                                                ? "activeoptionlistvalue sizebox"
-                                                : "sizebox"
-                                        }`}
+                                        sx={{
+                                            color:
+                                                productDetail.size === "XS"
+                                                    ? "white"
+                                                    : "black",
+                                            width: "fit-content",
+                                            border: "1px solid #000000",
+                                            padding: "10px 20px",
+                                            background:
+                                                productDetail.size === "XS"
+                                                    ? "#1B2437"
+                                                    : "white",
+                                        }}
                                         onClick={(e) => changeSizeHandler("XS")}
                                     >
                                         XS
                                     </Button>
                                     <Button
-                                        className={`${
-                                            productDetail.size === "S"
-                                                ? "activeoptionlistvalue sizebox"
-                                                : "sizebox"
-                                        }`}
+                                        sx={{
+                                            color:
+                                                productDetail.size === "S"
+                                                    ? "white"
+                                                    : "black",
+                                            width: "fit-content",
+                                            border: "1px solid #000000",
+                                            padding: "10px 20px",
+                                            background:
+                                                productDetail.size === "S"
+                                                    ? "#1B2437"
+                                                    : "white",
+                                        }}
                                         onClick={(e) => changeSizeHandler("S")}
                                     >
                                         S
                                     </Button>
                                     <Button
-                                        className={`${
-                                            productDetail.size === "M"
-                                                ? "activeoptionlistvalue sizebox"
-                                                : "sizebox"
-                                        }`}
+                                        sx={{
+                                            color:
+                                                productDetail.size === "M"
+                                                    ? "white"
+                                                    : "black",
+                                            width: "fit-content",
+                                            border: "1px solid #000000",
+                                            padding: "10px 20px",
+                                            background:
+                                                productDetail.size === "M"
+                                                    ? "#1B2437"
+                                                    : "white",
+                                        }}
                                         onClick={(e) => changeSizeHandler("M")}
                                     >
                                         M
@@ -306,18 +408,43 @@ export const ItemDetailView = () => {
                                 </Box>
                             </Box>
                             <Box
-                                className="colorsection"
-                                sx={{ gap: { lg: "45px", xs: "20px" } }}
+                                sx={{
+                                    gap: { lg: "45px", xs: "20px" },
+                                    display: "flex",
+                                    flexDirection: "column",
+                                }}
                             >
                                 <Typography>Color</Typography>
-                                <Box className="coloroption">
-                                    <Box className="coloroption1">
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        gap: "20px",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <Box
+                                        sx={{
+                                            padding: "20px 6px",
+                                            backgroundColor: "#1B2437",
+                                        }}
+                                    >
                                         <Button></Button>
                                     </Box>
-                                    <Box className="coloroption2">
+                                    <Box
+                                        sx={{
+                                            padding: "15px 0px",
+                                            backgroundColor: "#127681",
+                                        }}
+                                    >
                                         <Button></Button>
                                     </Box>
-                                    <Box className="coloroption3">
+                                    <Box
+                                        sx={{
+                                            padding: "15px 0px",
+                                            backgroundColor: "#32E0C4",
+                                        }}
+                                    >
                                         <Button></Button>
                                     </Box>
                                 </Box>
@@ -335,31 +462,44 @@ export const ItemDetailView = () => {
                             $ {productDetail.productPrice}
                         </Typography>
                         <Box
-                            className="btns"
                             sx={{
                                 flexDirection: { xs: "column", sm: "row" },
                                 gap: { xs: "25px", sm: "50px" },
+                                display: "flex",
+                                marginTop: "25px",
                             }}
                         >
                             <Button
                                 variant="contained"
-                                className="shopnowbtn"
                                 onClick={handleShopNow}
+                                sx={{
+                                    background: "#1B2437",
+                                    fontWeight: "700",
+                                    fontSize: "20px",
+                                    lineHeight: "24px",
+                                    padding: "15px 20px",
+                                    textTransform: "inherit",
+                                }}
                             >
                                 Shop Now
                             </Button>
                             <Button
                                 variant="contained"
-                                className="addtocartbtn"
+                                sx={{
+                                    background: "#F5F5F5",
+                                    color: "black",
+                                    fontWeight: "700",
+                                    fontSize: "20px",
+                                    lineHeight: "24px",
+                                    padding: "15px 20px",
+                                    textTransform: "inherit",
+                                }}
                                 onClick={handleAddToCart}
                             >
                                 Add to cart
                             </Button>
                         </Box>
                     </Box>
-                    {/* <Box className="imagelikeicon">
-                        <img src={ImageConfig.like} alt="likeicon" />
-                    </Box> */}
                 </Box>
             </Box>
         </>
