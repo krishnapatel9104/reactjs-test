@@ -4,7 +4,6 @@ import React from "react";
 export const FooterSliderSection = () => {
     return (
         <Box
-            // className="footerslidersection"
             sx={{
                 position: "relative",
             }}
@@ -12,13 +11,11 @@ export const FooterSliderSection = () => {
             <img
                 src={"/images/footersliderimage.png"}
                 alt="footerslider"
-                // className="footersliderimage"
                 width="100%"
                 height="100%"
                 style={{ objectFit: "cover" }}
             />
             <Box
-                // className="overlayfooterslider"
                 sx={{
                     position: "absolute",
                     top: "0%",
@@ -27,14 +24,12 @@ export const FooterSliderSection = () => {
                 <img
                     src={"/images/overlay.png"}
                     alt="footerslider"
-                    // className="footersliderimage"
                     width="100%"
                     height="100%"
                     style={{ objectFit: "cover" }}
                 />
             </Box>
             <Box
-                // className="footersildercontentwrapper"
                 sx={{
                     position: "absolute",
                     top: { xs: "15%", sm: "20%", md: "20%", lg: "30%" },
@@ -46,7 +41,6 @@ export const FooterSliderSection = () => {
                 }}
             >
                 <Typography
-                    // className="footerslidertext1"
                     sx={{
                         fontFamily: "Jost",
                         fontStyle: "normal",
@@ -64,7 +58,6 @@ export const FooterSliderSection = () => {
                     Visit our outlets in
                 </Typography>
                 <Box
-                    // className="footerslidertext2"
                     sx={{
                         display: "flex",
                         alignItems: "center",
@@ -81,7 +74,6 @@ export const FooterSliderSection = () => {
                     </Box>
                     <Box>
                         <Typography
-                            // className="slidertext2"
                             sx={{
                                 fontFamily: "Jost",
                                 fontStyle: "normal",
@@ -109,7 +101,6 @@ export const FooterSliderSection = () => {
                     </Box>
                 </Box>
                 <Box
-                    // className="seeaddresssection"
                     sx={{
                         display: "flex",
                         gap: "5px",
@@ -117,7 +108,6 @@ export const FooterSliderSection = () => {
                     }}
                 >
                     <Typography
-                        // className="footerslidertext3"
                         sx={{
                             fontFamily: "Jost",
                             fontStyle: "normal",

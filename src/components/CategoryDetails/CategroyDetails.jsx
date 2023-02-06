@@ -294,14 +294,12 @@ export const CategroyDetails = () => {
     return (
         <>
             <Box
-                // className="categorydetailwrapper"
                 sx={{
                     marginTop: { xs: "0", md: "150px" },
                 }}
             >
                 <Navbar />
                 <Box
-                    // className="categorydetailsection"
                     sx={{
                         padding: {
                             xl: "0 290px",
@@ -316,7 +314,6 @@ export const CategroyDetails = () => {
                 >
                     {isOpen ? (
                         <Box
-                            // className="filtersidebar"
                             sx={{
                                 width: { xs: "40%", sm: "30%" },
                                 display: "flex",
@@ -338,7 +335,6 @@ export const CategroyDetails = () => {
                                 }}
                             >
                                 <Typography
-                                    // className="filterheading"
                                     sx={{
                                         fontFamily: "Jost",
                                         fontStyle: "normal",
@@ -363,7 +359,6 @@ export const CategroyDetails = () => {
                             </Box>
                             <Box>
                                 <Typography
-                                    // className="filterheading"
                                     sx={{
                                         fontFamily: "Jost",
                                         fontStyle: "normal",
@@ -379,7 +374,6 @@ export const CategroyDetails = () => {
                                     PRICES
                                 </Typography>
                                 <Box
-                                    // className="rangepricefilter"
                                     sx={{
                                         display: "flex",
                                         justifyContent: "space-between",
@@ -388,7 +382,6 @@ export const CategroyDetails = () => {
                                     <Typography
                                         id="range-slider"
                                         gutterBottom
-                                        // className="rangetxt"
                                         sx={{
                                             fontFamily: "Jost",
                                             fontStyle: "normal",
@@ -404,7 +397,6 @@ export const CategroyDetails = () => {
                                     <Typography
                                         id="range-slider"
                                         gutterBottom
-                                        // className="pricerangevalue"
                                         sx={{
                                             fontFamily: "Jost",
                                             fontStyle: "normal",
@@ -420,7 +412,6 @@ export const CategroyDetails = () => {
                                     </Typography>
                                 </Box>
                                 <Slider
-                                    // className="sliderpricerange"
                                     sx={{
                                         color: "#EB5757",
                                     }}
@@ -435,7 +426,6 @@ export const CategroyDetails = () => {
                             </Box>
                             <Box>
                                 <Typography
-                                    // className="filterheading"
                                     sx={{
                                         fontFamily: "Jost",
                                         fontStyle: "normal",
@@ -453,7 +443,6 @@ export const CategroyDetails = () => {
                                 {maincategoryfilterList.map((filter, index) => {
                                     return (
                                         <FormGroup
-                                            // className="filteritem"
                                             sx={{
                                                 fontFamily: "Jost",
                                                 fontStyle: "normal",
@@ -492,7 +481,6 @@ export const CategroyDetails = () => {
                             </Box>
                             <Box>
                                 <Typography
-                                    // className="filterheading"
                                     sx={{
                                         fontFamily: "Jost",
                                         fontStyle: "normal",
@@ -512,7 +500,6 @@ export const CategroyDetails = () => {
                                         <>
                                             {index < 10 ? (
                                                 <FormGroup
-                                                    // className="filteritem"
                                                     sx={{
                                                         fontFamily: "Jost",
                                                         fontStyle: "normal",
@@ -557,16 +544,13 @@ export const CategroyDetails = () => {
                                     );
                                 })}
                                 {brandfilterList.length > 10 ? (
-                                    <Typography className="moreoption">
-                                        +10 more
-                                    </Typography>
+                                    <Typography>+10 more</Typography>
                                 ) : (
                                     <div>jkbjkkjkk</div>
                                 )}
                             </Box>
-                            <Box className="categoryfilter">
+                            <Box>
                                 <Typography
-                                    // className="filterheading"
                                     sx={{
                                         fontFamily: "Jost",
                                         fontStyle: "normal",
@@ -586,7 +570,6 @@ export const CategroyDetails = () => {
                                         <>
                                             {index < 4 ? (
                                                 <FormGroup
-                                                    // className="filteritem"
                                                     sx={{
                                                         fontFamily: "Jost",
                                                         fontStyle: "normal",
@@ -634,7 +617,6 @@ export const CategroyDetails = () => {
                                 })}
                                 {categoryfilterList.length > 4 ? (
                                     <Typography
-                                        // className="moreoption"
                                         sx={{
                                             marginTop: "20px",
                                         }}
@@ -647,7 +629,6 @@ export const CategroyDetails = () => {
                             </Box>
                             <Box>
                                 <Typography
-                                    // className="filterheading"
                                     sx={{
                                         fontFamily: "Jost",
                                         fontStyle: "normal",
@@ -665,7 +646,6 @@ export const CategroyDetails = () => {
                                 {sizefilterList.map((filter, index) => {
                                     return (
                                         <FormGroup
-                                            // className="filteritem"
                                             sx={{
                                                 fontFamily: "Jost",
                                                 fontStyle: "normal",
@@ -709,7 +689,6 @@ export const CategroyDetails = () => {
                         <></>
                     )}
                     <Box
-                        // className="filtersidebar"
                         sx={{
                             width: "30%",
                             // display: "flex",
@@ -726,7 +705,6 @@ export const CategroyDetails = () => {
                     >
                         <Box sx={{ marginTop: "70px" }}>
                             <Typography
-                                // className="filterheading"
                                 sx={{
                                     fontFamily: "Jost",
                                     fontStyle: "normal",
@@ -744,7 +722,6 @@ export const CategroyDetails = () => {
                         </Box>
                         <Box>
                             <Typography
-                                // className="filterheading"
                                 sx={{
                                     fontFamily: "Jost",
                                     fontStyle: "normal",
@@ -760,7 +737,6 @@ export const CategroyDetails = () => {
                                 PRICES
                             </Typography>
                             <Box
-                                // className="rangepricefilter"
                                 sx={{
                                     display: "flex",
                                     justifyContent: "space-between",
@@ -769,7 +745,6 @@ export const CategroyDetails = () => {
                                 <Typography
                                     id="range-slider"
                                     gutterBottom
-                                    // className="rangetxt"
                                     sx={{
                                         fontFamily: "Jost",
                                         fontStyle: "normal",
@@ -785,7 +760,6 @@ export const CategroyDetails = () => {
                                 <Typography
                                     id="range-slider"
                                     gutterBottom
-                                    // className="pricerangevalue"
                                     sx={{
                                         fontFamily: "Jost",
                                         fontStyle: "normal",
@@ -801,7 +775,6 @@ export const CategroyDetails = () => {
                                 </Typography>
                             </Box>
                             <Slider
-                                // className="sliderpricerange"
                                 sx={{
                                     color: "#EB5757",
                                 }}
@@ -816,7 +789,6 @@ export const CategroyDetails = () => {
                         </Box>
                         <Box>
                             <Typography
-                                // className="filterheading"
                                 sx={{
                                     fontFamily: "Jost",
                                     fontStyle: "normal",
@@ -834,7 +806,6 @@ export const CategroyDetails = () => {
                             {maincategoryfilterList.map((filter, index) => {
                                 return (
                                     <FormGroup
-                                        // className="filteritem"
                                         sx={{
                                             fontFamily: "Jost",
                                             fontStyle: "normal",
@@ -869,7 +840,6 @@ export const CategroyDetails = () => {
                         </Box>
                         <Box>
                             <Typography
-                                // className="filterheading"
                                 sx={{
                                     fontFamily: "Jost",
                                     fontStyle: "normal",
@@ -889,7 +859,6 @@ export const CategroyDetails = () => {
                                     <>
                                         {index < 10 ? (
                                             <FormGroup
-                                                // className="filteritem"
                                                 sx={{
                                                     fontFamily: "Jost",
                                                     fontStyle: "normal",
@@ -933,16 +902,13 @@ export const CategroyDetails = () => {
                                 );
                             })}
                             {brandfilterList.length > 10 ? (
-                                <Typography className="moreoption">
-                                    +10 more
-                                </Typography>
+                                <Typography>+10 more</Typography>
                             ) : (
                                 <div>jkbjkkjkk</div>
                             )}
                         </Box>
-                        <Box className="categoryfilter">
+                        <Box>
                             <Typography
-                                // className="filterheading"
                                 sx={{
                                     fontFamily: "Jost",
                                     fontStyle: "normal",
@@ -962,7 +928,6 @@ export const CategroyDetails = () => {
                                     <>
                                         {index < 4 ? (
                                             <FormGroup
-                                                // className="filteritem"
                                                 sx={{
                                                     fontFamily: "Jost",
                                                     fontStyle: "normal",
@@ -1007,7 +972,6 @@ export const CategroyDetails = () => {
                             })}
                             {categoryfilterList.length > 4 ? (
                                 <Typography
-                                    // className="moreoption"
                                     sx={{
                                         marginTop: "20px",
                                     }}
@@ -1020,7 +984,6 @@ export const CategroyDetails = () => {
                         </Box>
                         <Box>
                             <Typography
-                                // className="filterheading"
                                 sx={{
                                     fontFamily: "Jost",
                                     fontStyle: "normal",
@@ -1038,7 +1001,6 @@ export const CategroyDetails = () => {
                             {sizefilterList.map((filter, index) => {
                                 return (
                                     <FormGroup
-                                        // className="filteritem"
                                         sx={{
                                             fontFamily: "Jost",
                                             fontStyle: "normal",
@@ -1098,13 +1060,11 @@ export const CategroyDetails = () => {
                         />
                     </Box>
                     <Box
-                        // className="filterproductsection"
                         sx={{
                             width: "70%",
                         }}
                     >
                         <Box
-                            // className="rightsideheading"
                             sx={{
                                 display: "flex",
                                 flexDirection: "column",
@@ -1130,7 +1090,6 @@ export const CategroyDetails = () => {
                                 Women Party Dresses
                             </Typography>
                             <Typography
-                                // className="totalresult"
                                 sx={{
                                     fontFamily: "Jost",
                                     fontStyle: "normal",
@@ -1146,7 +1105,6 @@ export const CategroyDetails = () => {
                             </Typography>
                         </Box>
                         <Box
-                            // className="productListSection"
                             sx={{
                                 width: "100%",
                                 objectFit: "contain",
@@ -1176,7 +1134,6 @@ export const CategroyDetails = () => {
                                                 />
                                                 {product.isNewArrival && (
                                                     <Box
-                                                        // className="newArrival"
                                                         sx={{
                                                             backgroundColor:
                                                                 "#111827",
@@ -1207,7 +1164,6 @@ export const CategroyDetails = () => {
                                                     </Box>
                                                 )}
                                                 <Box
-                                                    // className="likeiconsection"
                                                     sx={{
                                                         background:
                                                             "rgba(0, 0, 0, 0.3)",
@@ -1236,7 +1192,6 @@ export const CategroyDetails = () => {
                                                     }}
                                                 >
                                                     <Box
-                                                        // className="productlistdesc"
                                                         sx={{
                                                             display: "flex",
                                                             justifyContent:
@@ -1246,7 +1201,6 @@ export const CategroyDetails = () => {
                                                         }}
                                                     >
                                                         <Typography
-                                                            // className="productname"
                                                             sx={{
                                                                 width: "80%",
                                                                 fontFamily:
@@ -1272,14 +1226,12 @@ export const CategroyDetails = () => {
                                                             "/images/womenproductcart.png"
                                                         }
                                                         alt="productimg"
-                                                        // className="carticon"
                                                         // width="20%"
                                                         height="22px"
                                                         width="32px"
                                                     />
                                                 </Box>
                                                 <Typography
-                                                    // className="productprice"
                                                     sx={{
                                                         width: "80%",
                                                         fontFamily: "Inter",
@@ -1300,7 +1252,6 @@ export const CategroyDetails = () => {
                                     })}
                             </Grid>
                             <Box
-                                // className="paginationsection"
                                 sx={{
                                     display: "flex",
                                     justifyContent: "flex-end",

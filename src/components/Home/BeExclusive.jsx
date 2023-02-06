@@ -4,7 +4,6 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 export const BeExclusive = () => {
     return (
         <Box
-            // className={"beexclusiveWrapper"}
             sx={{
                 // marginTop: "50px",
                 display: "flex",
@@ -27,7 +26,6 @@ export const BeExclusive = () => {
                     item
                     sm={6}
                     xs={6}
-                    // className="imageTextSection"
                     sx={{
                         height: { xs: "350px", md: "500px", xl: "700px" },
                         backgroundColor: "#EEEEEE",
@@ -44,13 +42,11 @@ export const BeExclusive = () => {
                     }}
                 >
                     <Box
-                        // className="textSection1"
                         sx={{
                             padding: { sm: "0 10px", md: "0 30px" },
                         }}
                     >
                         <Typography
-                            // className="exclusiveText"
                             sx={{
                                 fontFamily: "Jost",
                                 fontStyle: "normal",
@@ -69,7 +65,6 @@ export const BeExclusive = () => {
                             Exclusive collection 2021
                         </Typography>
                         <Typography
-                            // className="beexeclusiveText"
                             sx={{
                                 fontFamily: "Jost",
                                 fontStyle: "normal",
@@ -89,7 +84,6 @@ export const BeExclusive = () => {
                             Be exclusive
                         </Typography>
                         <Typography
-                            // className="subtextexeclusive"
                             sx={{
                                 textAlign: "left",
                                 fontFamily: "Lato",
@@ -108,10 +102,7 @@ export const BeExclusive = () => {
                             responsibility to keep you 100 percent stylish. Be
                             smart & trendy with us.
                         </Typography>
-                        <Box
-                            // className={"view-all-btn"}
-                            sx={{ textAlign: "left" }}
-                        >
+                        <Box sx={{ textAlign: "left" }}>
                             <Button
                                 variant="contained"
                                 sx={{
@@ -143,7 +134,6 @@ export const BeExclusive = () => {
                     item
                     sm={6}
                     xs={6}
-                    // className={"imageTextSection"}
                     sx={{
                         height: { xs: "350px", md: "500px", xl: "700px" },
                         paddingTop: 0,
@@ -161,7 +151,6 @@ export const BeExclusive = () => {
                     item
                     sm={4}
                     xs={4}
-                    // className={"imageSection"}
                     sx={{
                         paddingLeft: 0,
                     }}
@@ -178,7 +167,6 @@ export const BeExclusive = () => {
                     item
                     sm={4}
                     xs={4}
-                    // className={"imageSection"}
                     sx={{
                         paddingLeft: 0,
                     }}
@@ -195,7 +183,6 @@ export const BeExclusive = () => {
                     item
                     sm={4}
                     xs={4}
-                    // className={"imageSection"}
                     sx={{
                         paddingLeft: 0,
                     }}

@@ -42,7 +42,6 @@ export const CardFooterSection = () => {
     ];
     return (
         <Box
-            // className="cardfootersection"
             sx={{
                 // padding: "50px 250px",
                 marginTop: "50px",
@@ -75,13 +74,11 @@ export const CardFooterSection = () => {
                                 <img
                                     src={product.imageSource}
                                     alt={"imageGirl"}
-                                    // className="maincardimg"
                                     height="100%"
                                     width="100%"
                                     style={{ objectFit: "cover" }}
                                 />
                                 <Box
-                                    // className="secondtextcontainer"
                                     sx={{
                                         position: "absolute",
                                         top: "90%",
@@ -95,7 +92,6 @@ export const CardFooterSection = () => {
                                     }}
                                 >
                                     <Box
-                                        // className="cover"
                                         sx={{
                                             display: "flex",
                                             gap: "20px",
@@ -114,7 +110,6 @@ export const CardFooterSection = () => {
                                             <img
                                                 src={"/images/view.png"}
                                                 alt={"imageGirl"}
-                                                // className="iconImg"
                                                 width="17px"
                                                 heigh="14px"
                                                 style={{ marginRight: "10px" }}
@@ -125,7 +120,6 @@ export const CardFooterSection = () => {
                                             <img
                                                 src={"/images/Like.png"}
                                                 alt={"imageGirl"}
-                                                // className="iconImg"
                                                 width="17px"
                                                 heigh="14px"
                                                 style={{ marginRight: "10px" }}
@@ -136,7 +130,6 @@ export const CardFooterSection = () => {
                                             <img
                                                 src={"/images/arrow.png"}
                                                 alt={"imageGirl"}
-                                                // className="iconImg"
                                                 width="17px"
                                                 heigh="14px"
                                                 style={{ marginRight: "10px" }}
@@ -145,7 +138,6 @@ export const CardFooterSection = () => {
                                         </Box>
                                     </Box>
                                     <Box
-                                        // className="alltxtsection"
                                         sx={{
                                             display: "flex",
                                             flexDirection: "column",
@@ -154,7 +146,6 @@ export const CardFooterSection = () => {
                                         }}
                                     >
                                         <Typography
-                                            // className="txt1"
                                             sx={{
                                                 fontFamily: "Jost",
                                                 fontStyle: "normal",
@@ -180,7 +171,6 @@ export const CardFooterSection = () => {
                                             </span>
                                         </Typography>
                                         <Typography
-                                            // className="txt2"
                                             sx={{
                                                 fontFamily: "Jost",
                                                 fontStyle: "normal",
@@ -193,7 +183,6 @@ export const CardFooterSection = () => {
                                             {product.question}
                                         </Typography>
                                         <Typography
-                                            // className="txt3"
                                             sx={{
                                                 fontFamily: "Lato",
                                                 fontStyle: "normal",
@@ -206,7 +195,6 @@ export const CardFooterSection = () => {
                                             {product.answer}
                                         </Typography>
                                         <Box
-                                            // className="iconarrow"
                                             sx={{
                                                 display: "flex",
                                                 gap: "15px",

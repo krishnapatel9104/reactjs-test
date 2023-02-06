@@ -20,7 +20,6 @@ export const ShopByCategory = () => {
     return (
         <Box>
             <Typography
-                // className="newArrivalsTitle"
                 sx={{
                     marginBottom: "50px",
                     fontFamily: "Jost",
@@ -41,7 +40,6 @@ export const ShopByCategory = () => {
                 Shop By Category
             </Typography>
             <Box
-                // className="categoryOption"
                 sx={{
                     display: "flex",
                     alignItems: "center",
@@ -66,7 +64,6 @@ export const ShopByCategory = () => {
                 </Link>
                 <Link
                     href="#"
-                    // className="activeCategoryOption"
                     sx={{
                         color: "#212121", //foractive
                         borderBottom: "1px solid #757575", //foractive
@@ -82,7 +79,6 @@ export const ShopByCategory = () => {
                 </Link>
             </Box>
             <Box
-                // className="categoryList"
                 sx={{
                     display: "flex",
                     alignItems: "center",
@@ -276,10 +272,7 @@ export const ShopByCategory = () => {
                     })}
                 </Swiper>
             </Box>
-            <Box
-                // className={"view-all-btn"}
-                sx={{ textAlign: "center" }}
-            >
+            <Box sx={{ textAlign: "center" }}>
                 <Button
                     variant="contained"
                     sx={{

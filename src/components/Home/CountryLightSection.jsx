@@ -8,7 +8,6 @@ export const CountryLightSection = () => {
     ];
     return (
         <Box
-            // className="countrylightImagesWrapper"
             sx={{
                 // padding: "50px 250px",
                 marginTop: { xs: "100px" },
@@ -26,7 +25,6 @@ export const CountryLightSection = () => {
                             item
                             sm={6}
                             xs={6}
-                            // className="countryurbenimages"
                             sx={{
                                 width: "100%",
                                 height: "100%",

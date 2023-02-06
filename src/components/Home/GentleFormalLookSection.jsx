@@ -4,7 +4,6 @@ import React from "react";
 export const GentleFormalLookSection = () => {
     return (
         <Box
-            // className="gentleformallooksection"
             sx={{
                 // padding: "50px 250px",
                 padding: {
@@ -35,13 +34,11 @@ export const GentleFormalLookSection = () => {
                     }}
                 >
                     <Box
-                        // className="textSection1"
                         sx={{
                             padding: "0 40px",
                         }}
                     >
                         <Typography
-                            // className="gentleformalText"
                             sx={{
                                 fontFamily: "Jost",
                                 fontStyle: "normal",
@@ -60,7 +57,6 @@ export const GentleFormalLookSection = () => {
                             Gentle Formal Looks
                         </Typography>
                         <Typography
-                            // className="subtextexeclusive"
                             sx={{
                                 textAlign: "left",
                                 fontFamily: "Lato",
@@ -75,10 +71,7 @@ export const GentleFormalLookSection = () => {
                             your job look confident and comfortable. Stay
                             connect.
                         </Typography>
-                        <Box
-                            // className={"view-all-btn"}
-                            sx={{ textAlign: "left" }}
-                        >
+                        <Box sx={{ textAlign: "left" }}>
                             <Button
                                 variant="contained"
                                 sx={{

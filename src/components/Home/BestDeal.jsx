@@ -13,13 +13,11 @@ import { bestDealProductDetails } from "../../data/bestDeal";
 export const BestDeal = () => {
     return (
         <Box
-            // className={"bestdealWrapper"}
             sx={{
                 marginTop: { xs: "200px", md: "370px" },
             }}
         >
             <Typography
-                // className="bestdealheading"
                 sx={{
                     fontFamily: "Jost",
                     fontStyle: "normal",
@@ -194,10 +192,7 @@ export const BestDeal = () => {
                     })}
                 </Swiper>
             </Box>
-            <Box
-                // className={"view-all-btn"}
-                sx={{ textAlign: "center" }}
-            >
+            <Box sx={{ textAlign: "center" }}>
                 <Button
                     variant="contained"
                     sx={{

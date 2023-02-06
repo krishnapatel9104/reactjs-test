@@ -10,7 +10,6 @@ export const CheckoutNewArrivals = () => {
     ];
     return (
         <Box
-            // className="newarrivalsWrapper"
             sx={{
                 // padding: "50px 250px",
                 padding: {
@@ -22,7 +21,6 @@ export const CheckoutNewArrivals = () => {
             }}
         >
             <Typography
-                // className="newArrivalsTitle"
                 sx={{
                     marginBottom: { md: "30px", lg: "50px" },
                     fontFamily: "Jost",
@@ -49,7 +47,6 @@ export const CheckoutNewArrivals = () => {
                             item
                             sm={3}
                             xs={6}
-                            // className="newArrivalsItem"
                             sx={{ width: "100%", height: "100%" }}
                         >
                             <img

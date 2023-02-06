@@ -10,7 +10,6 @@ export const SummerSection = () => {
     ];
     return (
         <Box
-            // className="summarImageWrapper"
             sx={{
                 // padding: "50px 250px",
                 marginTop: "50px",
