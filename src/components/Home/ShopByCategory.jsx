@@ -116,7 +116,6 @@ export const ShopByCategory = () => {
 
             <Box
                 sx={{
-                    // margin: "0 290px",
                     margin: {
                         xl: "0 240px",
                         lg: "0 230px",
@@ -182,8 +181,6 @@ export const ShopByCategory = () => {
                                     >
                                         <Box
                                             sx={{
-                                                // width: "389px",
-                                                // height: "389px",
                                                 width: {
                                                     xs: "150px",
                                                     lg: "170px",
@@ -215,21 +212,17 @@ export const ShopByCategory = () => {
                                                     fontFamily: "Jost",
                                                     fontStyle: "normal",
                                                     fontWeight: "700",
-                                                    // fontSize: "25px",
                                                     fontSize: {
                                                         lg: "22px",
                                                         md: "20px",
                                                         xs: "18px",
                                                     },
                                                     color: "#212121",
-                                                    // textAlign: "center",
                                                 }}
                                             >
                                                 {product.productName}
                                             </Typography>
-                                            <Typography
-                                            // sx={{ textAlign: "center" }}
-                                            >
+                                            <Typography>
                                                 <span
                                                     style={{
                                                         fontFamily: "Jost",

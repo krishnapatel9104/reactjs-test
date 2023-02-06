@@ -536,7 +536,6 @@ const Navbar = () => {
                                     <img
                                         src={"/images/Cart.png"}
                                         alt={"cart"}
-                                        // style={{ position: "relative" }}
                                     />
                                     <Box
                                         sx={{

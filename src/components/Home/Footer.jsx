@@ -334,12 +334,9 @@ export const Footer = () => {
                 sx={{
                     border: "1px solid #9E9E9E",
                     padding: "0",
-                    // marginTop: "30px",
-                    // marginBottom: "17px",
                     marginLeft: { md: "80px", lg: "170px" },
                     width: { xs: "68%", sm: "82%" },
                     margin: "30px auto 17px auto",
-                    // width: { md: "90%", lg: "82%" },
                 }}
             ></Box>
             <Box

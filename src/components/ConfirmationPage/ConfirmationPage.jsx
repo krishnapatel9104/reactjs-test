@@ -10,7 +10,6 @@ export const ConfirmationPage = () => {
             sx={{
                 textAlign: "center",
                 marginTop: "50px",
-                // padding: { xs: "40px", sm: "0" },
             }}
         >
             <Box>

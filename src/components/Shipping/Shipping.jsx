@@ -532,10 +532,8 @@ export const Shipping = () => {
                         sx={{
                             display: "flex",
                             justifyContent: "space-between",
-                            // marginTop: "50px",
                             alignItems: { xs: "flex-start", sm: "center" },
                             flexDirection: { xs: "column", sm: "row" },
-                            // width: { sm: "100%" },
                             gap: { sm: "20px" },
                         }}
                     >
@@ -555,7 +553,6 @@ export const Shipping = () => {
                                 required
                                 defaultValue={0}
                                 inputProps={{
-                                    // name: "city",
                                     id: "uncontrolled-native",
                                 }}
                                 name="city"

@@ -174,7 +174,6 @@ export const CategroyDetails = () => {
             return s;
         });
         setSizefilterList(changedList);
-        // mainCategoryFilter
         if (name === "filter" && checked) {
             let newArray = {
                 ...allFiltersArray,
@@ -190,7 +189,6 @@ export const CategroyDetails = () => {
             };
             setAllFiltersArray(newArray);
         }
-        //brand
         if (name === "brand" && checked) {
             let newArray = {
                 ...allFiltersArray,
@@ -207,7 +205,6 @@ export const CategroyDetails = () => {
             setAllFiltersArray(newArray);
         }
 
-        //category
         if (name === "category" && checked) {
             let newArray = {
                 ...allFiltersArray,
@@ -224,7 +221,6 @@ export const CategroyDetails = () => {
             setAllFiltersArray(newArray);
         }
 
-        //size
         if (name === "size" && checked) {
             let newArray = {
                 ...allFiltersArray,
@@ -241,7 +237,6 @@ export const CategroyDetails = () => {
             setAllFiltersArray(newArray);
         }
 
-        //price
         if (name === "price") {
             let newArray = {
                 ...allFiltersArray,
@@ -303,7 +298,6 @@ export const CategroyDetails = () => {
                     sx={{
                         padding: {
                             xl: "0 290px",
-                            // lg: "0 140px",
                             md: "0 140px",
                             sm: "0 40px",
                             xs: "0 30px",
@@ -460,7 +454,6 @@ export const CategroyDetails = () => {
                                                         checked={
                                                             filter.isChecked
                                                         }
-                                                        // name={filter.value.toLowerCase()}
                                                         value={filter.value.toLowerCase()}
                                                         name="filter"
                                                         onChange={(e) =>
@@ -471,9 +464,6 @@ export const CategroyDetails = () => {
                                                     />
                                                 }
                                                 label={filter.value}
-                                                // onChange={(e) =>
-                                                //     handleChangeFilter(e)
-                                                // }
                                             />
                                         </FormGroup>
                                     );
@@ -517,7 +507,6 @@ export const CategroyDetails = () => {
                                                                 checked={
                                                                     filter.isChecked
                                                                 }
-                                                                // name={filter.value.toLowerCase()}
                                                                 value={filter.value.toLowerCase()}
                                                                 name="brand"
                                                                 onChange={(e) =>
@@ -525,16 +514,9 @@ export const CategroyDetails = () => {
                                                                         e
                                                                     )
                                                                 }
-                                                                // value={filter.toLowerCase()}
-                                                                // name={"brand"}
                                                             />
                                                         }
                                                         label={filter.value}
-                                                        // onChange={(e) =>
-                                                        //     handleChangeFilter(
-                                                        //         e
-                                                        //     )
-                                                        // }
                                                     />
                                                 </FormGroup>
                                             ) : (
@@ -587,7 +569,6 @@ export const CategroyDetails = () => {
                                                                 checked={
                                                                     filter.isChecked
                                                                 }
-                                                                // name={filter.value.toLowerCase()}
                                                                 value={filter.value.toLowerCase()}
                                                                 name="category"
                                                                 onChange={(e) =>
@@ -595,18 +576,9 @@ export const CategroyDetails = () => {
                                                                         e
                                                                     )
                                                                 }
-                                                                // value={filter.toLowerCase()}
-                                                                // name={
-                                                                //     "category"
-                                                                // }
                                                             />
                                                         }
                                                         label={filter.value}
-                                                        // onChange={(e) =>
-                                                        //     handleChangeFilter(
-                                                        //         e
-                                                        //     )
-                                                        // }
                                                     />
                                                 </FormGroup>
                                             ) : (
@@ -663,7 +635,6 @@ export const CategroyDetails = () => {
                                                         checked={
                                                             filter.isChecked
                                                         }
-                                                        // name={filter.value.toLowerCase()}
                                                         value={filter.value.toLowerCase()}
                                                         name="size"
                                                         onChange={(e) =>
@@ -671,14 +642,9 @@ export const CategroyDetails = () => {
                                                                 e
                                                             )
                                                         }
-                                                        // value={filter.toLowerCase()}
-                                                        // name={"size"}
                                                     />
                                                 }
                                                 label={filter.value}
-                                                // onChange={(e) =>
-                                                //     handleChangeFilter(e)
-                                                // }
                                             />
                                         </FormGroup>
                                     );
@@ -691,16 +657,9 @@ export const CategroyDetails = () => {
                     <Box
                         sx={{
                             width: "30%",
-                            // display: "flex",
                             display: { md: "flex", xs: "none" },
                             flexDirection: "column",
                             gap: "40px",
-                            // position: isMobile && "absolute",
-                            // top: isMobile && "20%",
-                            // left: isMobile && 0,
-                            // zIndex: isMobile && 1,
-                            // backgroundColor: isMobile && "white",
-                            // padding: isMobile && "0 30px",
                         }}
                     >
                         <Box sx={{ marginTop: "70px" }}>
@@ -823,16 +782,12 @@ export const CategroyDetails = () => {
                                                     value={filter.value.toLowerCase()}
                                                     name="filter"
                                                     checked={filter.isChecked}
-                                                    //name={filter.value.toLowerCase()}
                                                     onChange={(e) =>
                                                         handleChangeFilter(e)
                                                     }
                                                 />
                                             }
                                             label={filter.value}
-                                            // onChange={(e) =>
-                                            //     handleChangeFilter(e)
-                                            // }
                                         />
                                     </FormGroup>
                                 );
@@ -877,7 +832,6 @@ export const CategroyDetails = () => {
                                                             checked={
                                                                 filter.isChecked
                                                             }
-                                                            // name={filter.value.toLowerCase()}
                                                             value={filter.value.toLowerCase()}
                                                             name="brand"
                                                             onChange={(e) =>
@@ -885,14 +839,9 @@ export const CategroyDetails = () => {
                                                                     e
                                                                 )
                                                             }
-                                                            // value={filter.toLowerCase()}
-                                                            // name={"brand"}
                                                         />
                                                     }
                                                     label={filter.value}
-                                                    // onChange={(e) =>
-                                                    //     handleChangeFilter(e)
-                                                    // }
                                                 />
                                             </FormGroup>
                                         ) : (
@@ -942,13 +891,10 @@ export const CategroyDetails = () => {
                                                     key={index}
                                                     control={
                                                         <Checkbox
-                                                            // value={filter.toLowerCase()}
-                                                            // name={"category"}
                                                             key={index}
                                                             checked={
                                                                 filter.isChecked
                                                             }
-                                                            // name={filter.value.toLowerCase()}
                                                             value={filter.value.toLowerCase()}
                                                             name="category"
                                                             onChange={(e) =>
@@ -959,9 +905,6 @@ export const CategroyDetails = () => {
                                                         />
                                                     }
                                                     label={filter.value}
-                                                    // onChange={(e) =>
-                                                    //     handleChangeFilter(e)
-                                                    // }
                                                 />
                                             </FormGroup>
                                         ) : (
@@ -1017,20 +960,14 @@ export const CategroyDetails = () => {
                                                 <Checkbox
                                                     key={index}
                                                     checked={filter.isChecked}
-                                                    // name={filter.value.toLowerCase()}
                                                     value={filter.value.toLowerCase()}
                                                     name="size"
                                                     onChange={(e) =>
                                                         handleChangeFilter(e)
                                                     }
-                                                    // value={filter.toLowerCase()}
-                                                    // name={"size"}
                                                 />
                                             }
                                             label={filter.value}
-                                            // onChange={(e) =>
-                                            //     handleChangeFilter(e)
-                                            // }
                                         />
                                     </FormGroup>
                                 );
@@ -1052,7 +989,6 @@ export const CategroyDetails = () => {
                     >
                         <img
                             src={"/images/arrowicon.png"}
-                            // src={"/assests/menu.png"}
                             alt="menuicon"
                             height="25px"
                             width="25px"
@@ -1226,7 +1162,6 @@ export const CategroyDetails = () => {
                                                             "/images/womenproductcart.png"
                                                         }
                                                         alt="productimg"
-                                                        // width="20%"
                                                         height="22px"
                                                         width="32px"
                                                     />

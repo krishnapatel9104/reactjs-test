@@ -11,7 +11,6 @@ export const CheckoutNewArrivals = () => {
     return (
         <Box
             sx={{
-                // padding: "50px 250px",
                 padding: {
                     xs: "0px 30px",
                     sm: "50px 65px",

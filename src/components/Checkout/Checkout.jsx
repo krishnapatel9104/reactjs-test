@@ -86,14 +86,8 @@ export const Checkout = () => {
                 setPaymentData({ ...paymentData, cvvCode: value });
             }
         }
-        // if (name === "cardName")
-        //     setPaymentData({ ...paymentData, cardName: value });
-        // if (name === "cardNumber")
-        //     setPaymentData({ ...paymentData, cardNumber: value });
         if (name === "expiration")
             setPaymentData({ ...paymentData, expiration: value });
-        // if (name === "cvvCode")
-        //     setPaymentData({ ...paymentData, cvvCode: value });
     };
     useEffect(() => {}, [productData]);
 
@@ -221,7 +215,6 @@ export const Checkout = () => {
                             marginTop: "20px",
                             display: "flex",
                             justifyContent: "space-between",
-                            // marginTop: "50px",
                             flexDirection: { xs: "column", sm: "row" },
                             alignItems: { xs: "flex-start" },
                             width: { sm: "100%" },
@@ -229,19 +222,6 @@ export const Checkout = () => {
                             marginBottom: { md: "50px" },
                         }}
                     >
-                        {/* <Input
-                            placeholder="Enter Name Card"
-                            inputProps={""}
-                            name="cardName"
-                            sx={{
-                                width: "80%",
-                            }}
-                            onChange={handleChange}
-                            error={errors?.cardName ? true : false}
-                            helperText={
-                                errors?.cardName ? errors?.cardName : null
-                            }
-                        /> */}
                         <TextField
                             id="standard-number"
                             type="text"
@@ -253,8 +233,6 @@ export const Checkout = () => {
                             helperText={
                                 errors?.cardName ? errors?.cardName : null
                             }
-                            // value={formik.values.firstName}
-                            // onChange={formik.handleChange}
                             onChange={handleChange}
                             variant="standard"
                             placeholder="Enter Name Card"
@@ -276,15 +254,6 @@ export const Checkout = () => {
                         />
                     </Box>
                     <Box sx={{ marginTop: "50px", position: "relative" }}>
-                        {/* <Input
-                            placeholder="Card Number"
-                            inputProps={""}
-                            name="cardNumber"
-                            sx={{
-                                width: "80%",
-                            }}
-                            onChange={handleChange}
-                        /> */}
                         <TextField
                             id="standard-number"
                             type="text"
@@ -296,15 +265,12 @@ export const Checkout = () => {
                             helperText={
                                 errors?.cardNumber ? errors?.cardNumber : null
                             }
-                            // value={formik.values.firstName}
-                            // onChange={formik.handleChange}
                             onChange={handleChange}
                             variant="standard"
                             placeholder="Card Number"
                             sx={{
                                 fontSize: "22px",
                                 width: "100%",
-                                // width: { xs: "100%" },
                                 "& .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root":
                                     {
                                         fontSize: "22px",
@@ -325,7 +291,6 @@ export const Checkout = () => {
                                 position: "absolute",
                                 top: "20%",
                                 right: "4%",
-                                // left: "487px",
                             }}
                         />
                         <img
@@ -344,16 +309,8 @@ export const Checkout = () => {
                             justifyContent: "space-between",
                             marginTop: "50px",
                             width: "100%",
-                            // width: { xs: "100%", lg: "80%" },
                         }}
                     >
-                        {/* <Input
-                            placeholder="Expiration"
-                            inputProps={""}
-                            name="expiration"
-                            onChange={handleChange}
-                            // type="date"
-                        /> */}
                         <TextField
                             id="standard-number"
                             type="text"
@@ -361,12 +318,6 @@ export const Checkout = () => {
                                 shrink: true,
                             }}
                             name="expiration"
-                            // error={errors?.cardName ? true : false}
-                            // helperText={
-                            //     errors?.cardName ? errors?.cardName : null
-                            // }
-                            // value={formik.values.firstName}
-                            // onChange={formik.handleChange}
                             onChange={handleChange}
                             variant="standard"
                             placeholder="Expiration"
@@ -386,12 +337,6 @@ export const Checkout = () => {
                                 },
                             }}
                         />
-                        {/* <Input
-                            placeholder="CVV Code"
-                            inputProps={""}
-                            name="cvvCode"
-                            onChange={handleChange}
-                        /> */}
                         <TextField
                             id="standard-number"
                             type="text"
@@ -403,8 +348,6 @@ export const Checkout = () => {
                             helperText={
                                 errors?.cvvCode ? errors?.cvvCode : null
                             }
-                            // value={formik.values.firstName}
-                            // onChange={formik.handleChange}
                             onChange={handleChange}
                             variant="standard"
                             placeholder="CVV Code"

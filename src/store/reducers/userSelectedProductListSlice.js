@@ -1,21 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    userSelectedProductLists: [
-        // {
-        //     imageSource: "",
-        //     productName: "",
-        //     productPrice: 0,
-        //     isLike: false,
-        //     isNewArrival: false,
-        //     filter: "",
-        //     brand: "",
-        //     category: "",
-        //     size: "",
-        //     productDesc: [],
-        //     reviewRate: 0,
-        //     imageDifferentAngle: [],
-        // },
-    ],
+    userSelectedProductLists: [],
     otherDetails: {
         Shipping: 64,
         vatAndTax: 64,

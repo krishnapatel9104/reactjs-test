@@ -11,7 +11,6 @@ export const Header = () => {
                     width: "100%",
                     position: "absolute",
                     marginTop: {
-                        // xs: "-348px",
                         xs: "-220px",
                         md: "-370px",
                         lg: "-390px",

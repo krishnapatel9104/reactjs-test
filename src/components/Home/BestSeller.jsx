@@ -38,7 +38,6 @@ export const BestSeller = () => {
             </Typography>
             <Box
                 sx={{
-                    // margin: "0 290px",
                     margin: {
                         xl: "0 190px",
                         lg: "0 230px",
@@ -135,21 +134,17 @@ export const BestSeller = () => {
                                                     fontFamily: "Jost",
                                                     fontStyle: "normal",
                                                     fontWeight: "700",
-                                                    // fontSize: "25px",
                                                     fontSize: {
                                                         lg: "22px",
                                                         md: "20px",
                                                         xs: "18px",
                                                     },
                                                     color: "#212121",
-                                                    // textAlign: "center",
                                                 }}
                                             >
                                                 {product.productName}
                                             </Typography>
-                                            <Typography
-                                            // sx={{ textAlign: "center" }}
-                                            >
+                                            <Typography>
                                                 <span
                                                     style={{
                                                         fontFamily: "Jost",

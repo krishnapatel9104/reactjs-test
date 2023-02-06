@@ -5,7 +5,6 @@ export const BeExclusive = () => {
     return (
         <Box
             sx={{
-                // marginTop: "50px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -36,9 +35,6 @@ export const BeExclusive = () => {
                         paddingLeft: 0,
                         paddingTop: 0,
                         padding: { xs: "0 10px" },
-                        // paddingLeft: "40px",
-                        // paddingTop: "65px",
-                        // gap: "10px",
                     }}
                 >
                     <Box
@@ -57,8 +53,6 @@ export const BeExclusive = () => {
                                     md: "20px",
                                     lg: "36px",
                                     xl: "42px",
-                                    // sm: "15px",
-                                    // xs: "12px",
                                 },
                             }}
                         >
@@ -70,14 +64,11 @@ export const BeExclusive = () => {
                                 fontStyle: "normal",
                                 fontWeight: "700",
                                 color: "#212121",
-                                // fontSize: "61px",
                                 fontSize: {
                                     xs: "24px",
                                     md: "28px",
                                     lg: "44px",
                                     xl: "48px",
-                                    // sm: "15px",
-                                    // xs: "12px",
                                 },
                             }}
                         >

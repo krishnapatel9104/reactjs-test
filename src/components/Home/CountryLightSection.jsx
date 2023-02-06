@@ -9,7 +9,6 @@ export const CountryLightSection = () => {
     return (
         <Box
             sx={{
-                // padding: "50px 250px",
                 marginTop: { xs: "100px" },
                 padding: {
                     xs: "0px 30px",

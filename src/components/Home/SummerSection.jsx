@@ -11,7 +11,6 @@ export const SummerSection = () => {
     return (
         <Box
             sx={{
-                // padding: "50px 250px",
                 marginTop: "50px",
                 padding: {
                     xs: "0px 30px",

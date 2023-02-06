@@ -5,7 +5,6 @@ export const GentleFormalLookSection = () => {
     return (
         <Box
             sx={{
-                // padding: "50px 250px",
                 padding: {
                     xs: "0px 30px",
                     sm: "50px 65px",
@@ -48,8 +47,6 @@ export const GentleFormalLookSection = () => {
                                     md: "36px",
                                     lg: "40px",
                                     xl: "42px",
-                                    // sm: "15px",
-                                    // xs: "12px",
                                 },
                                 color: "#212121",
                             }}
