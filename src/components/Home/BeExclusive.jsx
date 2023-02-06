@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import theme from "../../theme";
 
 export const BeExclusive = () => {
     return (
@@ -44,8 +45,8 @@ export const BeExclusive = () => {
                     >
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "700",
                                 color: "#616161",
                                 fontSize: {
@@ -60,10 +61,10 @@ export const BeExclusive = () => {
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "700",
-                                color: "#212121",
+                                color: theme.palette.primary.main,
                                 fontSize: {
                                     xs: "24px",
                                     md: "28px",
@@ -77,15 +78,14 @@ export const BeExclusive = () => {
                         <Typography
                             sx={{
                                 textAlign: "left",
-                                fontFamily: "Lato",
-                                fontStyle: "normal",
+                                fontFamily: theme.typography.desc.fontFamily,
                                 fontWeight: "400",
                                 fontSize: {
                                     xs: "12px",
                                     md: "18px",
                                 },
                                 lineHeight: "140%",
-                                color: "#424242",
+                                color: theme.palette.secondary.main,
                             }}
                         >
                             The best everyday option in a Super Saver range
@@ -104,8 +104,9 @@ export const BeExclusive = () => {
                                         md: "10px 40px",
                                     },
                                     background: "#212121",
-                                    fontFamily: "Jost",
-                                    fontStyle: "normal",
+                                    fontFamily:
+                                        theme.typography.titleHeading
+                                            .fontFamily,
                                     fontWeight: "700",
                                     fontSize: {
                                         xs: "15px",

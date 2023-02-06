@@ -372,10 +372,8 @@ export const Checkout = () => {
                         sx={{
                             marginTop: "50px",
                             fontFamily: "Nunito",
-                            fontStyle: "normal",
                             fontWeight: "400",
                             fontSize: "18px",
-                            lineHeight: "25px",
                             color: "#C4C4C4",
                             letterSpacing: "1.5px",
                         }}

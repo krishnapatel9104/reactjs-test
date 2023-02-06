@@ -4,10 +4,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import theme from "../../theme";
 
 const Navbar = () => {
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down("md"));
+    const themes = useTheme();
+    const matches = useMediaQuery(themes.breakpoints.down("md"));
     const productList = [
         { id: 1, value: "Clothes" },
         { id: 2, value: "Bags" },
@@ -47,9 +48,13 @@ const Navbar = () => {
 
     if (matches && isOpen) setIsOpen(false);
     const handleClick = () => {
-        navigate("/shipping", {
-            state: { productDetail: productDetails },
-        });
+        if (productDetails.length > 0) {
+            navigate("/shipping", {
+                state: { productDetail: productDetails },
+            });
+        } else {
+            navigate("/allProducts");
+        }
     };
 
     const handleClickNavbar = (e, item) => {
@@ -90,11 +95,10 @@ const Navbar = () => {
                             display: "flex",
                             gap: "6px",
                             alignItems: "center",
-                            fontFamily: "Josefin Sans",
-                            fontStyle: "normal",
+                            fontFamily:
+                                theme.typography.headerNavbarLink.fontFamily,
                             fontWeight: "700",
                             fontSize: "16px",
-                            lineHeight: "16px",
                             letterSpacing: "0.085em",
                             textTransform: "uppercase",
                             color: "#212121",
@@ -121,12 +125,12 @@ const Navbar = () => {
                                             currentSelectedItem === item
                                                 ? "underline !important"
                                                 : "auto",
-                                        fontFamily: "Josefin Sans",
-                                        fontStyle: "normal",
+                                        fontFamily:
+                                            theme.typography.headerNavbarLink
+                                                .fontFamily,
                                         fontWeight: "700",
                                         fontSize: "16px",
-                                        lineHeight: "16px",
-                                        color: "#212121",
+                                        color: theme.palette.primary.main,
                                     }}
                                 >
                                     {item}
@@ -194,11 +198,10 @@ const Navbar = () => {
                         display: "flex",
                         gap: "6px",
                         alignItems: "center",
-                        fontFamily: "Josefin Sans",
-                        fontStyle: "normal",
+                        fontFamily:
+                            theme.typography.headerNavbarLink.fontFamily,
                         fontWeight: "700",
                         fontSize: "16px",
-                        lineHeight: "16px",
                         letterSpacing: "0.085em",
                         textTransform: "uppercase",
                         color: "#212121",
@@ -253,7 +256,8 @@ const Navbar = () => {
                                                     name={item}
                                                     sx={{
                                                         cursor: "pointer",
-                                                        color: "black",
+                                                        color: theme.palette
+                                                            .primary.main,
                                                         position: "relative",
                                                         textDecoration:
                                                             currentSelectedItem ===
@@ -261,11 +265,11 @@ const Navbar = () => {
                                                                 ? "underline !important"
                                                                 : "auto",
                                                         fontFamily:
-                                                            "Josefin Sans",
-                                                        fontStyle: "normal",
+                                                            theme.typography
+                                                                .headerNavbarLink
+                                                                .fontFamily,
                                                         fontWeight: "700",
                                                         fontSize: "16px",
-                                                        lineHeight: "16px",
                                                     }}
                                                 >
                                                     {item}
@@ -285,7 +289,6 @@ const Navbar = () => {
                                                             backgroundColor:
                                                                 "#EFEFEF",
                                                             width: "max-content",
-                                                            color: "white",
                                                             padding:
                                                                 "10px 10px",
                                                         }}
@@ -312,14 +315,18 @@ const Navbar = () => {
                                                                     <Typography
                                                                         sx={{
                                                                             fontFamily:
-                                                                                "Inter",
-                                                                            fontStyle:
-                                                                                "normal",
+                                                                                theme
+                                                                                    .typography
+                                                                                    .headerNavbarSubLink
+                                                                                    .fontFamily,
                                                                             fontWeight:
                                                                                 "400",
                                                                             fontSize:
                                                                                 "20px",
-                                                                            color: "#1B2437",
+                                                                            color: theme
+                                                                                .palette
+                                                                                .navbarLink
+                                                                                .color,
                                                                             marginBottom:
                                                                                 "25px",
                                                                         }}
@@ -331,24 +338,29 @@ const Navbar = () => {
                                                                             product
                                                                         ) => {
                                                                             return (
-                                                                                <a
+                                                                                <Link
                                                                                     style={{
-                                                                                        color: "#8E8E93",
+                                                                                        color: theme
+                                                                                            .palette
+                                                                                            .navbarSubLink
+                                                                                            .color,
                                                                                         textDecoration:
                                                                                             "none",
                                                                                     }}
                                                                                     sx={{
                                                                                         fontFamily:
-                                                                                            "Inter",
-                                                                                        fontStyle:
-                                                                                            "normal",
+                                                                                            theme
+                                                                                                .typography
+                                                                                                .headerNavbarSubLink
+                                                                                                .fontFamily,
                                                                                         fontWeight:
                                                                                             "400",
                                                                                         fontSize:
                                                                                             "16px",
-                                                                                        lineHeight:
-                                                                                            "19px",
-                                                                                        color: "#8E8E93",
+                                                                                        color: theme
+                                                                                            .palette
+                                                                                            .navbarSubLink
+                                                                                            .color,
                                                                                         textDecoration:
                                                                                             "none",
                                                                                     }}
@@ -362,7 +374,7 @@ const Navbar = () => {
                                                                                     {
                                                                                         product.value
                                                                                     }
-                                                                                </a>
+                                                                                </Link>
                                                                             );
                                                                         }
                                                                     )}
@@ -379,14 +391,18 @@ const Navbar = () => {
                                                                     <Typography
                                                                         sx={{
                                                                             fontFamily:
-                                                                                "Inter",
-                                                                            fontStyle:
-                                                                                "normal",
+                                                                                theme
+                                                                                    .typography
+                                                                                    .headerNavbarSubLink
+                                                                                    .fontFamily,
                                                                             fontWeight:
                                                                                 "400",
                                                                             fontSize:
                                                                                 "20px",
-                                                                            color: "#1B2437",
+                                                                            color: theme
+                                                                                .palette
+                                                                                .navbarLink
+                                                                                .color,
                                                                             marginBottom:
                                                                                 "25px",
                                                                         }}
@@ -398,24 +414,29 @@ const Navbar = () => {
                                                                             product
                                                                         ) => {
                                                                             return (
-                                                                                <a
+                                                                                <Link
                                                                                     style={{
-                                                                                        color: "#8E8E93",
+                                                                                        color: theme
+                                                                                            .palette
+                                                                                            .navbarSubLink
+                                                                                            .color,
                                                                                         textDecoration:
                                                                                             "none",
                                                                                     }}
                                                                                     sx={{
                                                                                         fontFamily:
-                                                                                            "Inter",
-                                                                                        fontStyle:
-                                                                                            "normal",
+                                                                                            theme
+                                                                                                .typography
+                                                                                                .headerNavbarSubLink
+                                                                                                .fontFamily,
                                                                                         fontWeight:
                                                                                             "400",
                                                                                         fontSize:
                                                                                             "16px",
-                                                                                        lineHeight:
-                                                                                            "19px",
-                                                                                        color: "#8E8E93",
+                                                                                        color: theme
+                                                                                            .palette
+                                                                                            .navbarSubLink
+                                                                                            .color,
                                                                                         textDecoration:
                                                                                             "none",
                                                                                     }}
@@ -429,7 +450,7 @@ const Navbar = () => {
                                                                                     {
                                                                                         product.value
                                                                                     }
-                                                                                </a>
+                                                                                </Link>
                                                                             );
                                                                         }
                                                                     )}
@@ -446,14 +467,18 @@ const Navbar = () => {
                                                                     <Typography
                                                                         sx={{
                                                                             fontFamily:
-                                                                                "Inter",
-                                                                            fontStyle:
-                                                                                "normal",
+                                                                                theme
+                                                                                    .typography
+                                                                                    .headerNavbarSubLink
+                                                                                    .fontFamily,
                                                                             fontWeight:
                                                                                 "400",
                                                                             fontSize:
                                                                                 "20px",
-                                                                            color: "#1B2437",
+                                                                            color: theme
+                                                                                .palette
+                                                                                .navbarLink
+                                                                                .color,
                                                                             marginBottom:
                                                                                 "25px",
                                                                         }}
@@ -466,24 +491,29 @@ const Navbar = () => {
                                                                             product
                                                                         ) => {
                                                                             return (
-                                                                                <a
+                                                                                <Link
                                                                                     style={{
-                                                                                        color: "#8E8E93",
+                                                                                        color: theme
+                                                                                            .palette
+                                                                                            .navbarSubLink
+                                                                                            .color,
                                                                                         textDecoration:
                                                                                             "none",
                                                                                     }}
                                                                                     sx={{
                                                                                         fontFamily:
-                                                                                            "Inter",
-                                                                                        fontStyle:
-                                                                                            "normal",
+                                                                                            theme
+                                                                                                .typography
+                                                                                                .headerNavbarSubLink
+                                                                                                .fontFamily,
                                                                                         fontWeight:
                                                                                             "400",
                                                                                         fontSize:
                                                                                             "16px",
-                                                                                        lineHeight:
-                                                                                            "19px",
-                                                                                        color: "#8E8E93",
+                                                                                        color: theme
+                                                                                            .palette
+                                                                                            .navbarSubLink
+                                                                                            .color,
                                                                                         textDecoration:
                                                                                             "none",
                                                                                     }}
@@ -497,7 +527,7 @@ const Navbar = () => {
                                                                                     {
                                                                                         product.value
                                                                                     }
-                                                                                </a>
+                                                                                </Link>
                                                                             );
                                                                         }
                                                                     )}
@@ -605,12 +635,12 @@ const Navbar = () => {
                             >
                                 <Typography
                                     sx={{
-                                        fontFamily: "Inter",
-                                        fontStyle: "normal",
+                                        fontFamily:
+                                            theme.typography.headerNavbarSubLink
+                                                .fontFamily,
                                         fontWeight: "400",
                                         fontSize: "24px",
-                                        lineHeight: "29px",
-                                        color: "#1B2437",
+                                        color: theme.palette.navbarLink.color,
                                         marginBottom: "25px",
                                     }}
                                 >
@@ -618,25 +648,28 @@ const Navbar = () => {
                                 </Typography>
                                 {productList.map((product) => {
                                     return (
-                                        <a
+                                        <Link
                                             style={{
-                                                color: "#8E8E93",
+                                                color: theme.palette
+                                                    .navbarSubLink.color,
                                                 textDecoration: "none",
                                             }}
                                             sx={{
-                                                fontFamily: "Inter",
-                                                fontStyle: "normal",
+                                                fontFamily:
+                                                    theme.typography
+                                                        .headerNavbarSubLink
+                                                        .fontFamily,
                                                 fontWeight: "400",
                                                 fontSize: "16px",
-                                                lineHeight: "19px",
-                                                color: "#8E8E93",
+                                                color: theme.palette
+                                                    .navbarSubLink.color,
                                                 textDecoration: "none",
                                             }}
                                             key={product.id}
                                             href={"/allProducts"}
                                         >
                                             {product.value}
-                                        </a>
+                                        </Link>
                                     );
                                 })}
                             </Box>
@@ -649,12 +682,12 @@ const Navbar = () => {
                             >
                                 <Typography
                                     sx={{
-                                        fontFamily: "Inter",
-                                        fontStyle: "normal",
+                                        fontFamily:
+                                            theme.typography.headerNavbarSubLink
+                                                .fontFamily,
                                         fontWeight: "400",
                                         fontSize: "24px",
-                                        lineHeight: "29px",
-                                        color: "#1B2437",
+                                        color: theme.palette.navbarLink.color,
                                         marginBottom: "25px",
                                     }}
                                 >
@@ -662,25 +695,28 @@ const Navbar = () => {
                                 </Typography>
                                 {designersList.map((product) => {
                                     return (
-                                        <a
+                                        <Link
                                             style={{
-                                                color: "#8E8E93",
+                                                color: theme.palette
+                                                    .navbarSubLink.color,
                                                 textDecoration: "none",
                                             }}
                                             sx={{
-                                                fontFamily: "Inter",
-                                                fontStyle: "normal",
+                                                fontFamily:
+                                                    theme.typography
+                                                        .headerNavbarSubLink
+                                                        .fontFamily,
                                                 fontWeight: "400",
                                                 fontSize: "16px",
-                                                lineHeight: "19px",
-                                                color: "#8E8E93",
+                                                color: theme.palette
+                                                    .navbarSubLink.color,
                                                 textDecoration: "none",
                                             }}
                                             key={product.id}
                                             href={" "}
                                         >
                                             {product.value}
-                                        </a>
+                                        </Link>
                                     );
                                 })}
                             </Box>
@@ -693,12 +729,12 @@ const Navbar = () => {
                             >
                                 <Typography
                                     sx={{
-                                        fontFamily: "Inter",
-                                        fontStyle: "normal",
+                                        fontFamily:
+                                            theme.typography.headerNavbarSubLink
+                                                .fontFamily,
                                         fontWeight: "400",
                                         fontSize: "24px",
-                                        lineHeight: "29px",
-                                        color: "#1B2437",
+                                        color: theme.palette.navbarLink.color,
                                         marginBottom: "25px",
                                     }}
                                 >
@@ -706,17 +742,18 @@ const Navbar = () => {
                                 </Typography>
                                 {archivedCollectionsList.map((product) => {
                                     return (
-                                        <a
+                                        <Link
                                             style={{
                                                 color: "#8E8E93",
                                                 textDecoration: "none",
                                             }}
                                             sx={{
-                                                fontFamily: "Inter",
-                                                fontStyle: "normal",
+                                                fontFamily:
+                                                    theme.typography
+                                                        .headerNavbarSubLink
+                                                        .fontFamily,
                                                 fontWeight: "400",
                                                 fontSize: "16px",
-                                                lineHeight: "19px",
                                                 color: "#8E8E93",
                                                 textDecoration: "none",
                                             }}
@@ -724,7 +761,7 @@ const Navbar = () => {
                                             href={" "}
                                         >
                                             {product.value}
-                                        </a>
+                                        </Link>
                                     );
                                 })}
                             </Box>
@@ -749,7 +786,11 @@ const Navbar = () => {
                                     height="100%"
                                     style={{ objectFit: "cover" }}
                                 />
-                                <Typography>
+                                <Typography
+                                    sx={{
+                                        color: theme.palette.navbarLink.color,
+                                    }}
+                                >
                                     Sales on ChanelAccessories
                                 </Typography>
                             </Box>

@@ -1,5 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import theme from "../../theme";
 
 export const CardFooterSection = () => {
     const cardFooterInformation = [
@@ -153,24 +154,28 @@ export const CardFooterSection = () => {
                                     >
                                         <Typography
                                             sx={{
-                                                fontFamily: "Jost",
-                                                fontStyle: "normal",
+                                                fontFamily:
+                                                    theme.typography
+                                                        .titleHeading
+                                                        .fontFamily,
                                                 fontWeight: "700",
                                                 fontSize: "16px",
-                                                lineHeight: "23px",
-                                                color: "#424242",
+                                                color: theme.palette.secondary
+                                                    .main,
                                                 textAlign: "left",
                                             }}
                                         >
                                             {product.title} .
                                             <span
                                                 style={{
-                                                    fontFamily: "Jost",
-                                                    fontStyle: "normal",
+                                                    fontFamily:
+                                                        theme.typography
+                                                            .titleHeading
+                                                            .fontFamily,
                                                     fontWeight: "400",
                                                     fontSize: "16px",
-                                                    lineHeight: "23px",
-                                                    color: "#424242",
+                                                    color: theme.palette
+                                                        .secondary.main,
                                                 }}
                                             >
                                                 {product.subTitle}
@@ -178,24 +183,27 @@ export const CardFooterSection = () => {
                                         </Typography>
                                         <Typography
                                             sx={{
-                                                fontFamily: "Jost",
-                                                fontStyle: "normal",
+                                                fontFamily:
+                                                    theme.typography
+                                                        .titleHeading
+                                                        .fontFamily,
                                                 fontWeight: "700",
                                                 fontSize: "25px",
-                                                lineHeight: "120%",
-                                                color: "#212121",
+                                                color: theme.palette.primary
+                                                    .main,
                                             }}
                                         >
                                             {product.question}
                                         </Typography>
                                         <Typography
                                             sx={{
-                                                fontFamily: "Lato",
-                                                fontStyle: "normal",
+                                                fontFamily:
+                                                    theme.typography.desc
+                                                        .fontFamily,
                                                 fontWeight: "400",
                                                 fontSize: "16px",
-                                                lineHeight: "140%",
-                                                color: "#424242",
+                                                color: theme.palette.secondary
+                                                    .main,
                                             }}
                                         >
                                             {product.answer}

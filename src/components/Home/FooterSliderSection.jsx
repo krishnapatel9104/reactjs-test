@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
+import theme from "../../theme";
 
 export const FooterSliderSection = () => {
     return (
@@ -42,8 +43,7 @@ export const FooterSliderSection = () => {
             >
                 <Typography
                     sx={{
-                        fontFamily: "Jost",
-                        fontStyle: "normal",
+                        fontFamily: theme.typography.titleHeading.fontFamily,
                         fontWeight: "400",
                         fontSize: {
                             lg: "39px",
@@ -75,8 +75,8 @@ export const FooterSliderSection = () => {
                     <Box>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: {
                                     lg: "95px",
@@ -109,8 +109,8 @@ export const FooterSliderSection = () => {
                 >
                     <Typography
                         sx={{
-                            fontFamily: "Jost",
-                            fontStyle: "normal",
+                            fontFamily:
+                                theme.typography.titleHeading.fontFamily,
                             fontWeight: "700",
                             fontSize: {
                                 lg: "20px",

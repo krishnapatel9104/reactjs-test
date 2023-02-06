@@ -38,7 +38,7 @@ export const CountryLightSection = () => {
                             }}
                         >
                             <img
-                                src={product}
+                                src={product.productImage}
                                 alt={"card3"}
                                 width="100%"
                                 height="100%"

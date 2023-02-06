@@ -2,6 +2,8 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import { CoverSection } from "./CoverSection";
 
+import theme from "../../theme";
+
 export const Header = () => {
     return (
         <>
@@ -21,9 +23,8 @@ export const Header = () => {
                 <Typography
                     sx={{
                         margin: 0,
-                        fontFamily: "Jost",
-                        fontStyle: "normal",
                         fontWeight: "400",
+                        fontFamily: theme.typography.titleHeading.fontFamily,
                         fontSize: {
                             xl: "39px",
                             lg: "36px",
@@ -31,7 +32,7 @@ export const Header = () => {
                             sm: "25px",
                             xs: "21px",
                         },
-                        color: "#424242",
+                        color: theme.palette.secondary.main,
                         textAlign: "center",
                     }}
                 >
@@ -40,8 +41,7 @@ export const Header = () => {
                 <Typography
                     sx={{
                         margin: 0,
-                        fontFamily: "Jost",
-                        fontStyle: "normal",
+                        fontFamily: theme.typography.titleHeading.fontFamily,
                         fontWeight: "700",
                         fontSize: {
                             xl: "95px",
@@ -51,7 +51,7 @@ export const Header = () => {
                             xs: "25px",
                         },
                         textAlign: "center",
-                        color: "#212121",
+                        color: theme.palette.primary.main,
                     }}
                 >
                     Exclusively designed for you
@@ -86,11 +86,11 @@ export const Header = () => {
                     >
                         <Typography
                             sx={{
-                                fontFamily: "Josefin Sans",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.headerNavbarLink
+                                        .fontFamily,
                                 fontWeight: "700",
-                                lineHeight: "20px",
-                                color: "#424242",
+                                color: theme.palette.secondary.main,
                                 gap: "10px",
                                 fontSize: {
                                     xl: "20px",
@@ -149,11 +149,11 @@ export const Header = () => {
                     >
                         <Typography
                             sx={{
-                                fontFamily: "Josefin Sans",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.headerNavbarLink
+                                        .fontFamily,
                                 fontWeight: "700",
-                                lineHeight: "20px",
-                                color: "#424242",
+                                color: theme.palette.secondary.main,
                                 gap: "10px",
                                 fontSize: {
                                     xl: "20px",

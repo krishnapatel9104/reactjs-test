@@ -333,10 +333,8 @@ export const CategroyDetails = () => {
                                 <Typography
                                     sx={{
                                         fontFamily: "Jost",
-                                        fontStyle: "normal",
                                         fontWeight: "600",
                                         fontSize: "16px",
-                                        lineHeight: "23px",
                                         letterSpacing: "0.02em",
                                         textTransform: "uppercase",
                                         color: "#1F2937",
@@ -357,10 +355,8 @@ export const CategroyDetails = () => {
                                 <Typography
                                     sx={{
                                         fontFamily: "Jost",
-                                        fontStyle: "normal",
                                         fontWeight: "600",
                                         fontSize: "16px",
-                                        lineHeight: "23px",
                                         letterSpacing: "0.02em",
                                         textTransform: "uppercase",
                                         color: "#1F2937",
@@ -380,10 +376,8 @@ export const CategroyDetails = () => {
                                         gutterBottom
                                         sx={{
                                             fontFamily: "Jost",
-                                            fontStyle: "normal",
                                             fontWeight: "400",
                                             fontSize: "20px",
-                                            lineHeight: "29px",
                                             letterSpacing: "0.02em",
                                             color: "#4B5563",
                                         }}
@@ -395,10 +389,8 @@ export const CategroyDetails = () => {
                                         gutterBottom
                                         sx={{
                                             fontFamily: "Jost",
-                                            fontStyle: "normal",
                                             fontWeight: "500",
                                             fontSize: "20px",
-                                            lineHeight: "29px",
                                             letterSpacing: "0.02em",
                                             color: "#1F2937",
                                         }}
@@ -424,10 +416,8 @@ export const CategroyDetails = () => {
                                 <Typography
                                     sx={{
                                         fontFamily: "Jost",
-                                        fontStyle: "normal",
                                         fontWeight: "600",
                                         fontSize: "16px",
-                                        lineHeight: "23px",
                                         letterSpacing: "0.02em",
                                         textTransform: "uppercase",
                                         color: "#1F2937",
@@ -442,10 +432,8 @@ export const CategroyDetails = () => {
                                             key={index}
                                             sx={{
                                                 fontFamily: "Jost",
-                                                fontStyle: "normal",
                                                 fontWeight: "400",
                                                 fontSize: "20px",
-                                                lineHeight: "29px",
                                                 letterSpacing: "0.02em",
                                                 color: "#1F2937",
                                             }}
@@ -475,10 +463,8 @@ export const CategroyDetails = () => {
                                 <Typography
                                     sx={{
                                         fontFamily: "Jost",
-                                        fontStyle: "normal",
                                         fontWeight: "600",
                                         fontSize: "16px",
-                                        lineHeight: "23px",
                                         letterSpacing: "0.02em",
                                         textTransform: "uppercase",
                                         color: "#1F2937",
@@ -494,10 +480,8 @@ export const CategroyDetails = () => {
                                                 <FormGroup
                                                     sx={{
                                                         fontFamily: "Jost",
-                                                        fontStyle: "normal",
                                                         fontWeight: "400",
                                                         fontSize: "20px",
-                                                        lineHeight: "29px",
                                                         letterSpacing: "0.02em",
                                                         color: "#1F2937",
                                                     }}
@@ -536,10 +520,8 @@ export const CategroyDetails = () => {
                                 <Typography
                                     sx={{
                                         fontFamily: "Jost",
-                                        fontStyle: "normal",
                                         fontWeight: "600",
                                         fontSize: "16px",
-                                        lineHeight: "23px",
                                         letterSpacing: "0.02em",
                                         textTransform: "uppercase",
                                         color: "#1F2937",
@@ -555,10 +537,8 @@ export const CategroyDetails = () => {
                                                 <FormGroup
                                                     sx={{
                                                         fontFamily: "Jost",
-                                                        fontStyle: "normal",
                                                         fontWeight: "400",
                                                         fontSize: "20px",
-                                                        lineHeight: "29px",
                                                         letterSpacing: "0.02em",
                                                         color: "#1F2937",
                                                     }}
@@ -603,10 +583,8 @@ export const CategroyDetails = () => {
                                 <Typography
                                     sx={{
                                         fontFamily: "Jost",
-                                        fontStyle: "normal",
                                         fontWeight: "600",
                                         fontSize: "16px",
-                                        lineHeight: "23px",
                                         letterSpacing: "0.02em",
                                         textTransform: "uppercase",
                                         color: "#1F2937",
@@ -621,10 +599,8 @@ export const CategroyDetails = () => {
                                             key={index}
                                             sx={{
                                                 fontFamily: "Jost",
-                                                fontStyle: "normal",
                                                 fontWeight: "400",
                                                 fontSize: "20px",
-                                                lineHeight: "29px",
                                                 letterSpacing: "0.02em",
                                                 color: "#1F2937",
                                             }}
@@ -666,10 +642,8 @@ export const CategroyDetails = () => {
                             <Typography
                                 sx={{
                                     fontFamily: "Jost",
-                                    fontStyle: "normal",
                                     fontWeight: "600",
                                     fontSize: "16px",
-                                    lineHeight: "23px",
                                     letterSpacing: "0.02em",
                                     textTransform: "uppercase",
                                     color: "#1F2937",
@@ -683,10 +657,8 @@ export const CategroyDetails = () => {
                             <Typography
                                 sx={{
                                     fontFamily: "Jost",
-                                    fontStyle: "normal",
                                     fontWeight: "600",
                                     fontSize: "16px",
-                                    lineHeight: "23px",
                                     letterSpacing: "0.02em",
                                     textTransform: "uppercase",
                                     color: "#1F2937",
@@ -706,10 +678,8 @@ export const CategroyDetails = () => {
                                     gutterBottom
                                     sx={{
                                         fontFamily: "Jost",
-                                        fontStyle: "normal",
                                         fontWeight: "400",
                                         fontSize: "20px",
-                                        lineHeight: "29px",
                                         letterSpacing: "0.02em",
                                         color: "#4B5563",
                                     }}
@@ -721,10 +691,8 @@ export const CategroyDetails = () => {
                                     gutterBottom
                                     sx={{
                                         fontFamily: "Jost",
-                                        fontStyle: "normal",
                                         fontWeight: "500",
                                         fontSize: "20px",
-                                        lineHeight: "29px",
                                         letterSpacing: "0.02em",
                                         color: "#1F2937",
                                     }}
@@ -750,10 +718,8 @@ export const CategroyDetails = () => {
                             <Typography
                                 sx={{
                                     fontFamily: "Jost",
-                                    fontStyle: "normal",
                                     fontWeight: "600",
                                     fontSize: "16px",
-                                    lineHeight: "23px",
                                     letterSpacing: "0.02em",
                                     textTransform: "uppercase",
                                     color: "#1F2937",
@@ -768,10 +734,8 @@ export const CategroyDetails = () => {
                                         key={index}
                                         sx={{
                                             fontFamily: "Jost",
-                                            fontStyle: "normal",
                                             fontWeight: "400",
                                             fontSize: "20px",
-                                            lineHeight: "29px",
                                             letterSpacing: "0.02em",
                                             color: "#1F2937",
                                         }}
@@ -797,10 +761,8 @@ export const CategroyDetails = () => {
                             <Typography
                                 sx={{
                                     fontFamily: "Jost",
-                                    fontStyle: "normal",
                                     fontWeight: "600",
                                     fontSize: "16px",
-                                    lineHeight: "23px",
                                     letterSpacing: "0.02em",
                                     textTransform: "uppercase",
                                     color: "#1F2937",
@@ -816,10 +778,8 @@ export const CategroyDetails = () => {
                                             <FormGroup
                                                 sx={{
                                                     fontFamily: "Jost",
-                                                    fontStyle: "normal",
                                                     fontWeight: "400",
                                                     fontSize: "20px",
-                                                    lineHeight: "29px",
                                                     letterSpacing: "0.02em",
                                                     color: "#1F2937",
                                                 }}
@@ -859,10 +819,8 @@ export const CategroyDetails = () => {
                             <Typography
                                 sx={{
                                     fontFamily: "Jost",
-                                    fontStyle: "normal",
                                     fontWeight: "600",
                                     fontSize: "16px",
-                                    lineHeight: "23px",
                                     letterSpacing: "0.02em",
                                     textTransform: "uppercase",
                                     color: "#1F2937",
@@ -878,10 +836,8 @@ export const CategroyDetails = () => {
                                             <FormGroup
                                                 sx={{
                                                     fontFamily: "Jost",
-                                                    fontStyle: "normal",
                                                     fontWeight: "400",
                                                     fontSize: "20px",
-                                                    lineHeight: "29px",
                                                     letterSpacing: "0.02em",
                                                     color: "#1F2937",
                                                 }}
@@ -927,10 +883,8 @@ export const CategroyDetails = () => {
                             <Typography
                                 sx={{
                                     fontFamily: "Jost",
-                                    fontStyle: "normal",
                                     fontWeight: "600",
                                     fontSize: "16px",
-                                    lineHeight: "23px",
                                     letterSpacing: "0.02em",
                                     textTransform: "uppercase",
                                     color: "#1F2937",
@@ -945,10 +899,8 @@ export const CategroyDetails = () => {
                                         key={index}
                                         sx={{
                                             fontFamily: "Jost",
-                                            fontStyle: "normal",
                                             fontWeight: "400",
                                             fontSize: "20px",
-                                            lineHeight: "29px",
                                             letterSpacing: "0.02em",
                                             color: "#1F2937",
                                         }}
@@ -1009,14 +961,12 @@ export const CategroyDetails = () => {
                             <Typography
                                 sx={{
                                     fontFamily: "Jost",
-                                    fontStyle: "normal",
                                     fontWeight: "700",
                                     fontSize: {
                                         lg: "50px",
                                         md: "32px",
                                         xs: "25px",
                                     },
-                                    lineHeight: "72px",
                                     textAlign: "center",
                                     color: "#212121",
                                 }}
@@ -1026,10 +976,8 @@ export const CategroyDetails = () => {
                             <Typography
                                 sx={{
                                     fontFamily: "Jost",
-                                    fontStyle: "normal",
                                     fontWeight: "400",
                                     fontSize: "20px",
-                                    lineHeight: "29px",
                                     letterSpacing: "0.02em",
                                     color: "#4B5563",
                                 }}
@@ -1086,14 +1034,10 @@ export const CategroyDetails = () => {
                                                             sx={{
                                                                 fontFamily:
                                                                     "Jost",
-                                                                fontStyle:
-                                                                    "normal",
                                                                 fontWeight:
                                                                     "400",
                                                                 fontSize:
                                                                     "12px",
-                                                                lineHeight:
-                                                                    "17px",
                                                                 color: "#FFFFFF",
                                                             }}
                                                         >
@@ -1143,14 +1087,10 @@ export const CategroyDetails = () => {
                                                                 width: "80%",
                                                                 fontFamily:
                                                                     "Inter",
-                                                                fontStyle:
-                                                                    "normal",
                                                                 fontWeight:
                                                                     "400",
                                                                 fontSize:
                                                                     "18px",
-                                                                lineHeight:
-                                                                    "23px",
                                                                 color: "#000000",
                                                             }}
                                                         >
@@ -1172,10 +1112,8 @@ export const CategroyDetails = () => {
                                                     sx={{
                                                         width: "80%",
                                                         fontFamily: "Inter",
-                                                        fontStyle: "normal",
                                                         fontWeight: "400",
                                                         fontSize: "20px",
-                                                        lineHeight: "41px",
                                                         color: "#1B2437",
                                                         alignItems:
                                                             "flex-start",

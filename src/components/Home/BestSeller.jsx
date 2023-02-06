@@ -9,6 +9,7 @@ import "swiper/css/scrollbar";
 
 import { Keyboard, Scrollbar, Pagination, Navigation } from "swiper";
 import { bestSellerProductDetails } from "../../data/bestSeller";
+import theme from "../../theme";
 
 export const BestSeller = () => {
     return (
@@ -19,8 +20,7 @@ export const BestSeller = () => {
         >
             <Typography
                 sx={{
-                    fontFamily: "Jost",
-                    fontStyle: "normal",
+                    fontFamily: theme.typography.titleHeading.fontFamily,
                     fontWeight: "700",
                     fontSize: {
                         xl: "42px",
@@ -28,8 +28,7 @@ export const BestSeller = () => {
                         sm: "28px",
                         xs: "22px",
                     },
-                    lineHeight: "56px",
-                    color: "#212121",
+                    color: theme.palette.primary.main,
                     textAlign: "center",
                     marginBottom: { xs: "30px", md: "100px" },
                 }}
@@ -90,7 +89,6 @@ export const BestSeller = () => {
                                 <SwiperSlide
                                     style={{
                                         fontSize: "18px",
-                                        background: "#fff",
                                         display: "flex",
                                         justifyContent: "center",
                                         alignItems: "center",
@@ -134,15 +132,18 @@ export const BestSeller = () => {
                                         <Box>
                                             <Typography
                                                 sx={{
-                                                    fontFamily: "Jost",
-                                                    fontStyle: "normal",
+                                                    fontFamily:
+                                                        theme.typography
+                                                            .titleHeading
+                                                            .fontFamily,
                                                     fontWeight: "700",
                                                     fontSize: {
                                                         lg: "22px",
                                                         md: "20px",
                                                         xs: "18px",
                                                     },
-                                                    color: "#212121",
+                                                    color: theme.palette.primary
+                                                        .main,
                                                 }}
                                             >
                                                 {product.productName}
@@ -150,13 +151,17 @@ export const BestSeller = () => {
                                             <Typography>
                                                 <span
                                                     style={{
-                                                        fontFamily: "Jost",
-                                                        fontStyle: "normal",
+                                                        fontFamily:
+                                                            theme.typography
+                                                                .titleHeading
+                                                                .fontFamily,
                                                         fontWeight: "400",
                                                         fontSize: "20px",
                                                         textDecorationLine:
                                                             "line-through",
-                                                        color: "#9E9E9E",
+                                                        color: theme.palette
+                                                            .originalPrice
+                                                            .color,
                                                     }}
                                                 >
                                                     $
@@ -168,12 +173,14 @@ export const BestSeller = () => {
                                                 <span
                                                     className="currentprice"
                                                     style={{
-                                                        fontFamily: "Jost",
-                                                        fontStyle: "normal",
+                                                        fontFamily:
+                                                            theme.typography
+                                                                .titleHeading
+                                                                .fontFamily,
                                                         fontWeight: "400",
                                                         fontSize: "20px",
-                                                        lineHeight: "29px",
-                                                        color: "#FF705C",
+                                                        color: theme.palette
+                                                            .currentPrice.color,
                                                     }}
                                                 >
                                                     $
@@ -198,11 +205,9 @@ export const BestSeller = () => {
                         marginBottom: { xs: "0", md: "70px" },
                         padding: "10px 40px",
                         background: "#212121",
-                        fontFamily: "Jost",
-                        fontStyle: "normal",
+                        fontFamily: theme.typography.titleHeading.fontFamily,
                         fontWeight: "700",
                         fontSize: "20px",
-                        lineHeight: "29px",
                         color: "#FFFFFF",
                     }}
                 >

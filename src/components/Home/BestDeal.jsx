@@ -10,6 +10,8 @@ import "swiper/css/scrollbar";
 import { Keyboard, Scrollbar, Pagination, Navigation } from "swiper";
 import { bestDealProductDetails } from "../../data/bestDeal";
 
+import theme from "../../theme";
+
 export const BestDeal = () => {
     return (
         <Box
@@ -18,9 +20,9 @@ export const BestDeal = () => {
             }}
         >
             <Typography
+                // variant="titleHeading"
                 sx={{
-                    fontFamily: "Jost",
-                    fontStyle: "normal",
+                    fontFamily: theme.typography.titleHeading.fontFamily,
                     fontWeight: "700",
                     fontSize: {
                         xl: "42px",
@@ -28,7 +30,6 @@ export const BestDeal = () => {
                         sm: "28px",
                         xs: "22px",
                     },
-                    lineHeight: "56px",
                     color: "#212121",
                     textAlign: "center",
                     marginBottom: "100px",
@@ -36,6 +37,7 @@ export const BestDeal = () => {
             >
                 Best Deals
             </Typography>
+
             <Box
                 sx={{
                     margin: {
@@ -91,7 +93,6 @@ export const BestDeal = () => {
                                     key={product.id}
                                     style={{
                                         fontSize: "18px",
-                                        background: "#fff",
                                         display: "flex",
                                         justifyContent: "center",
                                         alignItems: "center",
@@ -135,8 +136,10 @@ export const BestDeal = () => {
                                         <Box>
                                             <Typography
                                                 sx={{
-                                                    fontFamily: "Jost",
-                                                    fontStyle: "normal",
+                                                    fontFamily:
+                                                        theme.typography
+                                                            .titleHeading
+                                                            .fontFamily,
                                                     fontWeight: "700",
                                                     fontSize: {
                                                         lg: "22px",
@@ -151,13 +154,17 @@ export const BestDeal = () => {
                                             <Typography>
                                                 <span
                                                     style={{
-                                                        fontFamily: "Jost",
-                                                        fontStyle: "normal",
+                                                        fontFamily:
+                                                            theme.typography
+                                                                .titleHeading
+                                                                .fontFamily,
                                                         fontWeight: "400",
                                                         fontSize: "20px",
                                                         textDecorationLine:
                                                             "line-through",
-                                                        color: "#9E9E9E",
+                                                        color: theme.palette
+                                                            .originalPrice
+                                                            .color,
                                                     }}
                                                 >
                                                     $
@@ -169,12 +176,14 @@ export const BestDeal = () => {
                                                 <span
                                                     className="currentprice"
                                                     style={{
-                                                        fontFamily: "Jost",
-                                                        fontStyle: "normal",
+                                                        fontFamily:
+                                                            theme.typography
+                                                                .titleHeading
+                                                                .fontFamily,
                                                         fontWeight: "400",
                                                         fontSize: "20px",
-                                                        lineHeight: "29px",
-                                                        color: "#FF705C",
+                                                        color: theme.palette
+                                                            .currentPrice.color,
                                                     }}
                                                 >
                                                     $
@@ -199,11 +208,9 @@ export const BestDeal = () => {
                         marginBottom: "70px",
                         padding: "10px 40px",
                         background: "#212121",
-                        fontFamily: "Jost",
-                        fontStyle: "normal",
+                        fontFamily: theme.typography.titleHeading.fontFamily,
                         fontWeight: "700",
                         fontSize: "20px",
-                        lineHeight: "29px",
                         color: "#FFFFFF",
                     }}
                 >

@@ -12,6 +12,8 @@ import { CardFooterSection } from "./CardFooterSection";
 import { FooterSliderSection } from "./FooterSliderSection";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { Box } from "@mui/material";
+import theme from "../../theme";
 
 export const Home = () => {
     // const [toggleCategory, setToggleCategory] = useState(1);
@@ -21,7 +23,7 @@ export const Home = () => {
     // }, [toggleCategory, isOpen]);
 
     return (
-        <>
+        <Box sx={{ backgroundColor: theme.palette.backgroundColor.default }}>
             <Navbar />
             <Header />
             <BestDeal />
@@ -35,6 +37,6 @@ export const Home = () => {
             <CardFooterSection />
             <FooterSliderSection />
             <Footer />
-        </>
+        </Box>
     );
 };

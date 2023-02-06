@@ -29,10 +29,11 @@ export const ItemDetailView = () => {
     const navigate = useNavigate();
     const { state } = useLocation();
     const dispatch = useDispatch();
+    const [productDetail, setProductDetail] = useState(state.productDetail);
     const changeSizeHandler = (size) => {
         setProductDetail({ ...productDetail, size: size });
     };
-    const [productDetail, setProductDetail] = useState(state.productDetail);
+    console.log("productdetail : ", productDetail);
 
     const handleShopNow = () => {
         dispatch(setUserSelectedProductList(productDetail));
@@ -181,10 +182,8 @@ export const ItemDetailView = () => {
                                     variant="contained"
                                     sx={{
                                         fontFamily: "Inter",
-                                        fontStyle: "normal",
                                         fontWeight: 700,
                                         fontSize: "14px",
-                                        lineHeight: "17px",
                                         display: "flex",
                                         alignItems: "center",
                                         textAlign: "center",
@@ -219,9 +218,7 @@ export const ItemDetailView = () => {
                                     xs: "26px",
                                 },
                                 fontFamily: "Inter",
-                                fontStyle: "normal",
                                 fontWeight: "400",
-                                lineHeight: "58px",
                                 color: "#1B2437",
                             }}
                         >
@@ -291,10 +288,8 @@ export const ItemDetailView = () => {
                                     <Typography
                                         sx={{
                                             fontFamily: "Inter",
-                                            fontStyle: "normal",
                                             fontWeight: "400",
                                             fontSize: "16px",
-                                            lineHeight: "19px",
                                             color: "#8E8E93",
                                         }}
                                     >
@@ -351,60 +346,32 @@ export const ItemDetailView = () => {
                                         display: "flex",
                                     }}
                                 >
-                                    <Button
-                                        sx={{
-                                            color:
-                                                productDetail.size === "XS"
-                                                    ? "white"
-                                                    : "black",
-                                            width: "fit-content",
-                                            border: "1px solid #000000",
-                                            padding: "10px 20px",
-                                            background:
-                                                productDetail.size === "XS"
-                                                    ? "#1B2437"
-                                                    : "white",
-                                        }}
-                                        onClick={(e) => changeSizeHandler("XS")}
-                                    >
-                                        XS
-                                    </Button>
-                                    <Button
-                                        sx={{
-                                            color:
-                                                productDetail.size === "S"
-                                                    ? "white"
-                                                    : "black",
-                                            width: "fit-content",
-                                            border: "1px solid #000000",
-                                            padding: "10px 20px",
-                                            background:
-                                                productDetail.size === "S"
-                                                    ? "#1B2437"
-                                                    : "white",
-                                        }}
-                                        onClick={(e) => changeSizeHandler("S")}
-                                    >
-                                        S
-                                    </Button>
-                                    <Button
-                                        sx={{
-                                            color:
-                                                productDetail.size === "M"
-                                                    ? "white"
-                                                    : "black",
-                                            width: "fit-content",
-                                            border: "1px solid #000000",
-                                            padding: "10px 20px",
-                                            background:
-                                                productDetail.size === "M"
-                                                    ? "#1B2437"
-                                                    : "white",
-                                        }}
-                                        onClick={(e) => changeSizeHandler("M")}
-                                    >
-                                        M
-                                    </Button>
+                                    {["XS", "S", "M"].map((size) => {
+                                        return (
+                                            <Button
+                                                sx={{
+                                                    color:
+                                                        productDetail.size ===
+                                                        size
+                                                            ? "white"
+                                                            : "black",
+                                                    width: "fit-content",
+                                                    border: "1px solid #000000",
+                                                    padding: "10px 20px",
+                                                    backgroundColor:
+                                                        productDetail.size ===
+                                                        size
+                                                            ? "#1B2437 !important"
+                                                            : "white",
+                                                }}
+                                                onClick={(e) =>
+                                                    changeSizeHandler(size)
+                                                }
+                                            >
+                                                {size}
+                                            </Button>
+                                        );
+                                    })}
                                 </Box>
                             </Box>
                             <Box
@@ -454,7 +421,6 @@ export const ItemDetailView = () => {
                             sx={{
                                 fontWeight: 400,
                                 fontSize: "34px",
-                                lineHeight: "41px",
                                 color: "#1B2437",
                                 marginTop: "20px",
                             }}
@@ -476,7 +442,6 @@ export const ItemDetailView = () => {
                                     background: "#1B2437",
                                     fontWeight: "700",
                                     fontSize: "20px",
-                                    lineHeight: "24px",
                                     padding: "15px 20px",
                                     textTransform: "inherit",
                                 }}
@@ -490,7 +455,6 @@ export const ItemDetailView = () => {
                                     color: "black",
                                     fontWeight: "700",
                                     fontSize: "20px",
-                                    lineHeight: "24px",
                                     padding: "15px 20px",
                                     textTransform: "inherit",
                                 }}

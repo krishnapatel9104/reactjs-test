@@ -18,10 +18,8 @@ export const ConfirmationPage = () => {
             <Typography
                 sx={{
                     fontFamily: "Roboto",
-                    fontStyle: "normal",
                     fontWeight: "700",
                     fontSize: "24px",
-                    lineHeight: "28px",
                     marginTop: "50px",
                 }}
             >
@@ -30,10 +28,8 @@ export const ConfirmationPage = () => {
             <Typography
                 sx={{
                     fontFamily: "Roboto",
-                    fontStyle: "normal",
                     fontWeight: "400",
                     fontSize: "18px",
-                    lineHeight: "21px",
                     marginTop: "50px",
                 }}
             >

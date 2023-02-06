@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
+import theme from "../../theme";
 
 export const CheckoutNewArrivals = () => {
     const checkoutImagesList = [
@@ -34,8 +35,7 @@ export const CheckoutNewArrivals = () => {
             <Typography
                 sx={{
                     marginBottom: { md: "30px", lg: "50px" },
-                    fontFamily: "Jost",
-                    fontStyle: "normal",
+                    fontFamily: theme.typography.titleHeading.fontFamily,
                     fontWeight: "700",
                     fontSize: {
                         xl: "42px",
@@ -43,7 +43,6 @@ export const CheckoutNewArrivals = () => {
                         sm: "28px",
                         xs: "22px",
                     },
-                    lineHeight: "56px",
                     color: "#212121",
                     marginTop: "20px",
                     textAlign: "center",

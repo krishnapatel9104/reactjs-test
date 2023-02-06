@@ -1,5 +1,6 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
+import theme from "../../theme";
 
 export const GentleFormalLookSection = () => {
     return (
@@ -39,8 +40,8 @@ export const GentleFormalLookSection = () => {
                     >
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "700",
                                 fontSize: {
                                     xs: "22px",
@@ -48,7 +49,7 @@ export const GentleFormalLookSection = () => {
                                     lg: "40px",
                                     xl: "42px",
                                 },
-                                color: "#212121",
+                                color: theme.palette.primary.main,
                             }}
                         >
                             Gentle Formal Looks
@@ -56,12 +57,10 @@ export const GentleFormalLookSection = () => {
                         <Typography
                             sx={{
                                 textAlign: "left",
-                                fontFamily: "Lato",
-                                fontStyle: "normal",
+                                fontFamily: theme.typography.desc.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "140%",
-                                color: "#424242",
+                                color: theme.palette.secondary.main,
                             }}
                         >
                             We provide the top formal apparel package to make
@@ -75,11 +74,11 @@ export const GentleFormalLookSection = () => {
                                     marginTop: "50px",
                                     padding: "10px 40px",
                                     background: "#212121",
-                                    fontFamily: "Jost",
-                                    fontStyle: "normal",
+                                    fontFamily:
+                                        theme.typography.titleHeading
+                                            .fontFamily,
                                     fontWeight: "700",
                                     fontSize: "20px",
-                                    lineHeight: "29px",
                                     color: "#FFFFFF",
                                 }}
                             >

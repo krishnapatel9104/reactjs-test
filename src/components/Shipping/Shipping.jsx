@@ -6,7 +6,7 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { StepperComp } from "../common/StepperComp";
@@ -166,6 +166,13 @@ export const Shipping = () => {
             return true;
         else return false;
     };
+    useEffect(() => {
+        dispatch(updateUserSelectedProductList(productData));
+        if (productData.length === 0) {
+            navigate("/allProducts");
+        }
+    });
+
     const handleClick = () => {
         if (isValidate()) {
             dispatch(setUserDetails(userData));

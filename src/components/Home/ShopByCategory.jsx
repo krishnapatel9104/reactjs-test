@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/scrollbar";
 import { Keyboard, Scrollbar, Pagination, Navigation } from "swiper";
 import { shopByCategoryList } from "../../data/shopByCategoryList";
+import theme from "../../theme";
 
 export const ShopByCategory = () => {
     const shopByCategory = [
@@ -40,8 +41,7 @@ export const ShopByCategory = () => {
             <Typography
                 sx={{
                     marginBottom: "50px",
-                    fontFamily: "Jost",
-                    fontStyle: "normal",
+                    fontFamily: theme.typography.titleHeading.fontFamily,
                     fontWeight: "700",
                     fontSize: {
                         xl: "42px",
@@ -49,8 +49,7 @@ export const ShopByCategory = () => {
                         sm: "28px",
                         xs: "22px",
                     },
-                    lineHeight: "56px",
-                    color: "#212121",
+                    color: theme.palette.primary.main,
                     marginTop: "20px",
                     textAlign: "center",
                 }}
@@ -70,11 +69,9 @@ export const ShopByCategory = () => {
                     href="#"
                     sx={{
                         textDecoration: "none",
-                        fontFamily: "Jost",
-                        fontStyle: "normal",
+                        fontFamily: theme.typography.titleHeading.fontFamily,
                         fontWeight: "400",
                         fontSize: "25px",
-                        lineHeight: "36px",
                         color: "#757575",
                     }}
                 >
@@ -83,14 +80,12 @@ export const ShopByCategory = () => {
                 <Link
                     href="#"
                     sx={{
-                        color: "#212121", //foractive
+                        color: theme.palette.primary.main, //foractive
                         borderBottom: "1px solid #757575", //foractive
                         textDecoration: "none",
-                        fontFamily: "Jost",
-                        fontStyle: "normal",
+                        fontFamily: theme.typography.titleHeading.fontFamily,
                         fontWeight: "400",
                         fontSize: "25px",
-                        lineHeight: "36px",
                     }}
                 >
                     For Men
@@ -113,11 +108,10 @@ export const ShopByCategory = () => {
                             key={category.id}
                             href="#"
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "20px",
-                                lineHeight: "29px",
                                 textDecoration: "none",
                                 color: "#000000",
                                 padding:
@@ -188,7 +182,6 @@ export const ShopByCategory = () => {
                                 <SwiperSlide
                                     style={{
                                         fontSize: "18px",
-                                        background: "#fff",
                                         display: "flex",
                                         justifyContent: "center",
                                         alignItems: "center",
@@ -232,15 +225,18 @@ export const ShopByCategory = () => {
                                         <Box>
                                             <Typography
                                                 sx={{
-                                                    fontFamily: "Jost",
-                                                    fontStyle: "normal",
+                                                    fontFamily:
+                                                        theme.typography
+                                                            .headerNavbarLink
+                                                            .fontFamily,
                                                     fontWeight: "700",
                                                     fontSize: {
                                                         lg: "22px",
                                                         md: "20px",
                                                         xs: "18px",
                                                     },
-                                                    color: "#212121",
+                                                    color: theme.palette.primary
+                                                        .main,
                                                 }}
                                             >
                                                 {product.productName}
@@ -248,13 +244,17 @@ export const ShopByCategory = () => {
                                             <Typography>
                                                 <span
                                                     style={{
-                                                        fontFamily: "Jost",
-                                                        fontStyle: "normal",
+                                                        fontFamily:
+                                                            theme.typography
+                                                                .headerNavbarLink
+                                                                .fontFamily,
                                                         fontWeight: "400",
                                                         fontSize: "20px",
                                                         textDecorationLine:
                                                             "line-through",
-                                                        color: "#9E9E9E",
+                                                        color: theme.palette
+                                                            .originalPrice
+                                                            .color,
                                                     }}
                                                 >
                                                     $
@@ -266,12 +266,14 @@ export const ShopByCategory = () => {
                                                 <span
                                                     className="currentprice"
                                                     style={{
-                                                        fontFamily: "Jost",
-                                                        fontStyle: "normal",
+                                                        fontFamily:
+                                                            theme.typography
+                                                                .headerNavbarLink
+                                                                .fontFamily,
                                                         fontWeight: "400",
                                                         fontSize: "20px",
-                                                        lineHeight: "29px",
-                                                        color: "#FF705C",
+                                                        color: theme.palette
+                                                            .currentPrice.color,
                                                     }}
                                                 >
                                                     $
@@ -295,11 +297,9 @@ export const ShopByCategory = () => {
                         marginTop: "50px",
                         padding: "10px 40px",
                         background: "#212121",
-                        fontFamily: "Jost",
-                        fontStyle: "normal",
+                        fontFamily: theme.typography.titleHeading.fontFamily,
                         fontWeight: "700",
                         fontSize: "20px",
-                        lineHeight: "29px",
                         color: "#FFFFFF",
                     }}
                 >

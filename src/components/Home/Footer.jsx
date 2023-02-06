@@ -1,6 +1,7 @@
 import { Box, TextField, Typography } from "@mui/material";
 import React from "react";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import theme from "../../theme";
 
 export const Footer = () => {
     return (
@@ -46,48 +47,44 @@ export const Footer = () => {
                     >
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "700",
                                 fontSize: { xs: "17px", md: "20px" },
-                                lineHeight: "29px",
-                                color: "#212121",
+                                color: theme.palette.primary.main,
                             }}
                         >
                             Company Info
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             About Us
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             Affliate
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             Fashion Blogger
@@ -102,72 +99,66 @@ export const Footer = () => {
                     >
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "700",
                                 fontSize: { xs: "17px", md: "20px" },
-                                lineHeight: "29px",
-                                color: "#212121",
+                                color: theme.palette.primary.main,
                             }}
                         >
                             Help & Support
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             Shipping Info
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             Refunds
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             How to Order
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             How to Track
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             Size Guides
@@ -182,48 +173,44 @@ export const Footer = () => {
                     >
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "700",
                                 fontSize: { xs: "17px", md: "20px" },
-                                lineHeight: "29px",
-                                color: "#212121",
+                                color: theme.palette.primary.main,
                             }}
                         >
                             Customer Care
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             Contact Us
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             Payment Methods
                         </Typography>
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "400",
                                 fontSize: "16px",
-                                lineHeight: "23px",
-                                color: "#616161",
+                                color: theme.palette.footerSubLink.color,
                             }}
                         >
                             Bonus Point
@@ -245,11 +232,11 @@ export const Footer = () => {
                     >
                         <Typography
                             sx={{
-                                fontFamily: "Jost",
-                                fontStyle: "normal",
+                                fontFamily:
+                                    theme.typography.titleHeading.fontFamily,
                                 fontWeight: "700",
                                 fontSize: { xs: "17px", md: "20px" },
-                                color: "#212121",
+                                color: theme.palette.primary.main,
                             }}
                         >
                             Signup For The Latest News
@@ -286,7 +273,8 @@ export const Footer = () => {
                         >
                             <Typography
                                 sx={{
-                                    fontSize: { xs: "14px", md: "20px" },
+                                    fontSize: { xs: "14px", md: "16px" },
+                                    color: theme.palette.footerSubLink.color,
                                 }}
                             >
                                 <EmailOutlinedIcon
@@ -298,7 +286,8 @@ export const Footer = () => {
                             </Typography>
                             <Typography
                                 sx={{
-                                    fontSize: { xs: "14px", md: "20px" },
+                                    fontSize: { xs: "14px", md: "16px" },
+                                    color: theme.palette.footerSubLink.color,
                                 }}
                             >
                                 <img
@@ -349,8 +338,7 @@ export const Footer = () => {
             >
                 <Typography
                     sx={{
-                        fontFamily: "Jost",
-                        fontStyle: "normal",
+                        fontFamily: theme.typography.titleHeading.fontFamily,
                         fontWeight: "700",
                         fontSize: "14px",
                         color: "#6C7E99",
@@ -358,8 +346,8 @@ export const Footer = () => {
                 >
                     <span
                         style={{
-                            fontFamily: "Jost",
-                            fontStyle: "normal",
+                            fontFamily:
+                                theme.typography.titleHeading.fontFamily,
                             fontWeight: "400",
                             fontSize: "14px",
                             color: "#7E92B3",
@@ -373,11 +361,9 @@ export const Footer = () => {
                     sx={{
                         display: "flex",
                         alignItems: "center",
-                        fontFamily: "Jost",
-                        fontStyle: "normal",
+                        fontFamily: theme.typography.titleHeading.fontFamily,
                         fontWeight: "700",
                         fontSize: "14px",
-                        lineHeight: "140%",
                         color: "#6C7E99",
                     }}
                 >
