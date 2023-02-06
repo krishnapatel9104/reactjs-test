@@ -86,16 +86,16 @@ export const ItemDetailView = () => {
                                 Keyboard,
                             ]}
                         >
-                            {[1, 2, 3, 4, 5].map((item) => {
+                            {[1, 2, 3, 4, 5].map((item, index) => {
                                 return (
-                                    <>
+                                    <Box key={index}>
                                         <SwiperSlide>
                                             <img
                                                 src={productDetail.imageSource}
                                                 alt="likeicon"
                                             />
                                         </SwiperSlide>
-                                    </>
+                                    </Box>
                                 );
                             })}
                         </Swiper>
@@ -129,9 +129,9 @@ export const ItemDetailView = () => {
                                 }}
                             >
                                 {productDetail.imageDifferentAngle.map(
-                                    (item) => {
+                                    (item, index) => {
                                         return (
-                                            <>
+                                            <Box key={index}>
                                                 <SwiperSlide
                                                     sx={{
                                                         marginTop: "50px",
@@ -154,7 +154,7 @@ export const ItemDetailView = () => {
                                                         width="100px"
                                                     />
                                                 </SwiperSlide>
-                                            </>
+                                            </Box>
                                         );
                                     }
                                 )}

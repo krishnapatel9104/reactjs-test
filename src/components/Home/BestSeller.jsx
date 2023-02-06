@@ -49,6 +49,9 @@ export const BestSeller = () => {
                     justifyContent: "space-between",
                     alignItems: "center",
                     gap: "50px",
+                    "& .swiper-button-next, .swiper-button-prev": {
+                        color: "#D1D1D6",
+                    },
                 }}
             >
                 <Swiper
@@ -83,7 +86,7 @@ export const BestSeller = () => {
                 >
                     {bestSellerProductDetails.map((product) => {
                         return (
-                            <>
+                            <Box key={product.id}>
                                 <SwiperSlide
                                     style={{
                                         fontSize: "18px",
@@ -182,7 +185,7 @@ export const BestSeller = () => {
                                         </Box>
                                     </Box>
                                 </SwiperSlide>
-                            </>
+                            </Box>
                         );
                     })}
                 </Swiper>

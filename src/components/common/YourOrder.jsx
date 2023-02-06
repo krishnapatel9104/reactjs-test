@@ -75,10 +75,10 @@ export const YourOrder = (props) => {
             >
                 Your Order
             </Typography>
-            {props.productDetails.map((order) => {
+            {props.productDetails.map((order, index) => {
                 total += order.quantity * order.productPrice;
                 return (
-                    <>
+                    <Box key={index}>
                         <Box
                             sx={{
                                 display: "flex",
@@ -130,8 +130,12 @@ export const YourOrder = (props) => {
                                     opacity: "0.8",
                                 }}
                             >
-                                {order.productDesc.map((desc) => {
-                                    return <Typography>-{desc}</Typography>;
+                                {order.productDesc.map((desc, index) => {
+                                    return (
+                                        <Typography key={index}>
+                                            -{desc}
+                                        </Typography>
+                                    );
                                 })}
                             </Box>
                             <Box
@@ -218,9 +222,9 @@ export const YourOrder = (props) => {
                                         onChange={(e) => handleChange(e, order)}
                                         sx={{ width: "170px" }}
                                     >
-                                        {sizeList.map((s) => (
+                                        {sizeList.map((s, index) => (
                                             <MenuItem
-                                                key={s}
+                                                key={index}
                                                 value={s}
                                                 sx={{ padding: "10px 10px" }}
                                             >
@@ -248,9 +252,9 @@ export const YourOrder = (props) => {
                                         onChange={(e) => handleChange(e, order)}
                                         sx={{ width: "170px" }}
                                     >
-                                        {colourList.map((color) => (
+                                        {colourList.map((color, index) => (
                                             <MenuItem
-                                                key={color}
+                                                key={index}
                                                 value={color}
                                                 sx={{ padding: "10px 10px" }}
                                             >
@@ -272,7 +276,7 @@ export const YourOrder = (props) => {
                                 </Typography>
                             </Box>
                         </Box>
-                    </>
+                    </Box>
                 );
             })}
             <Box

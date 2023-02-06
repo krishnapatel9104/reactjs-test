@@ -49,6 +49,9 @@ export const BestDeal = () => {
                     justifyContent: "space-between",
                     alignItems: "center",
                     gap: "50px",
+                    "& .swiper-button-next, .swiper-button-prev": {
+                        color: "#D1D1D6",
+                    },
                 }}
             >
                 <Swiper
@@ -83,8 +86,9 @@ export const BestDeal = () => {
                 >
                     {bestDealProductDetails.map((product) => {
                         return (
-                            <>
+                            <Box key={product.id}>
                                 <SwiperSlide
+                                    key={product.id}
                                     style={{
                                         fontSize: "18px",
                                         background: "#fff",
@@ -182,7 +186,7 @@ export const BestDeal = () => {
                                         </Box>
                                     </Box>
                                 </SwiperSlide>
-                            </>
+                            </Box>
                         );
                     })}
                 </Swiper>

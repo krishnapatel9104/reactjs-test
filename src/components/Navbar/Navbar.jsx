@@ -9,31 +9,31 @@ const Navbar = () => {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down("md"));
     const productList = [
-        "Clothes",
-        "Bags",
-        "Accessories",
-        "Shoes",
-        "Beauty",
-        "Denim",
-        "Coats & Jackets",
+        { id: 1, value: "Clothes" },
+        { id: 2, value: "Bags" },
+        { id: 3, value: "Accessories" },
+        { id: 4, value: "Shoes" },
+        { id: 5, value: "Beauty" },
+        { id: 6, value: "Denim" },
+        { id: 7, value: "Coats & Jackets" },
     ];
     const designersList = [
-        "Balenciaga",
-        "Balmain",
-        "Bottega Veneta",
-        "Burbery",
-        "Dolce & Gabbana",
-        "Fendi",
-        "Off-White",
+        { id: 1, value: "Balenciaga" },
+        { id: 2, value: "Balmain" },
+        { id: 3, value: "Bottega Veneta" },
+        { id: 4, value: "Burbery" },
+        { id: 5, value: "Dolce & Gabbana" },
+        { id: 6, value: "Fendi" },
+        { id: 7, value: "Off-White" },
     ];
     const archivedCollectionsList = [
-        "All Products",
-        "Accessories",
-        "Bags",
-        "Coats",
-        "Dresses",
-        "Shoes",
-        "Suits",
+        { id: 1, value: "All Products" },
+        { id: 2, value: "Accessories" },
+        { id: 3, value: "Bags" },
+        { id: 4, value: "Coats" },
+        { id: 5, value: "Dresses" },
+        { id: 6, value: "Shoes" },
+        { id: 7, value: "Suits" },
     ];
     const navigate = useNavigate();
     const productDetails = useSelector(
@@ -45,7 +45,6 @@ const Navbar = () => {
     const [isMobile, setIsMobile] = useState(false);
     const [currentSelectedItem, setCurrentSelectedItem] = useState("");
 
-    console.log("matched and isopen : ", matches, isOpen);
     if (matches && isOpen) setIsOpen(false);
     const handleClick = () => {
         navigate("/shipping", {
@@ -109,29 +108,32 @@ const Navbar = () => {
                         />
                         Majestic
                     </Box>
-                    {["Women", "Men", "Collection", "Outlet"].map((item) => {
-                        return (
-                            <Link
-                                name={item}
-                                onClick={handleClickNavbar}
-                                sx={{
-                                    cursor: "pointer",
-                                    textDecoration:
-                                        currentSelectedItem === item
-                                            ? "underline !important"
-                                            : "auto",
-                                    fontFamily: "Josefin Sans",
-                                    fontStyle: "normal",
-                                    fontWeight: "700",
-                                    fontSize: "16px",
-                                    lineHeight: "16px",
-                                    color: "#212121",
-                                }}
-                            >
-                                {item}
-                            </Link>
-                        );
-                    })}
+                    {["Women", "Men", "Collection", "Outlet"].map(
+                        (item, index) => {
+                            return (
+                                <Link
+                                    key={index}
+                                    name={item}
+                                    onClick={handleClickNavbar}
+                                    sx={{
+                                        cursor: "pointer",
+                                        textDecoration:
+                                            currentSelectedItem === item
+                                                ? "underline !important"
+                                                : "auto",
+                                        fontFamily: "Josefin Sans",
+                                        fontStyle: "normal",
+                                        fontWeight: "700",
+                                        fontSize: "16px",
+                                        lineHeight: "16px",
+                                        color: "#212121",
+                                    }}
+                                >
+                                    {item}
+                                </Link>
+                            );
+                        }
+                    )}
                 </Box>
                 <Box
                     sx={{
@@ -235,9 +237,9 @@ const Navbar = () => {
                             }}
                         >
                             {["Women", "Men", "Collection", "Outlet"].map(
-                                (item) => {
+                                (item, index) => {
                                     return (
-                                        <List>
+                                        <List key={index}>
                                             <ListItem
                                                 sx={{
                                                     paddingLeft: "30px",
@@ -326,8 +328,7 @@ const Navbar = () => {
                                                                     </Typography>
                                                                     {productList.map(
                                                                         (
-                                                                            product,
-                                                                            index
+                                                                            product
                                                                         ) => {
                                                                             return (
                                                                                 <a
@@ -352,14 +353,14 @@ const Navbar = () => {
                                                                                             "none",
                                                                                     }}
                                                                                     key={
-                                                                                        index
+                                                                                        product.id
                                                                                     }
                                                                                     href={
                                                                                         "/allProducts"
                                                                                     }
                                                                                 >
                                                                                     {
-                                                                                        product
+                                                                                        product.value
                                                                                     }
                                                                                 </a>
                                                                             );
@@ -394,8 +395,7 @@ const Navbar = () => {
                                                                     </Typography>
                                                                     {designersList.map(
                                                                         (
-                                                                            product,
-                                                                            index
+                                                                            product
                                                                         ) => {
                                                                             return (
                                                                                 <a
@@ -420,14 +420,14 @@ const Navbar = () => {
                                                                                             "none",
                                                                                     }}
                                                                                     key={
-                                                                                        index
+                                                                                        product.id
                                                                                     }
                                                                                     href={
                                                                                         " "
                                                                                     }
                                                                                 >
                                                                                     {
-                                                                                        product
+                                                                                        product.value
                                                                                     }
                                                                                 </a>
                                                                             );
@@ -463,8 +463,7 @@ const Navbar = () => {
                                                                     </Typography>
                                                                     {archivedCollectionsList.map(
                                                                         (
-                                                                            product,
-                                                                            index
+                                                                            product
                                                                         ) => {
                                                                             return (
                                                                                 <a
@@ -489,14 +488,14 @@ const Navbar = () => {
                                                                                             "none",
                                                                                     }}
                                                                                     key={
-                                                                                        index
+                                                                                        product.id
                                                                                     }
                                                                                     href={
                                                                                         " "
                                                                                     }
                                                                                 >
                                                                                     {
-                                                                                        product
+                                                                                        product.value
                                                                                     }
                                                                                 </a>
                                                                             );
@@ -617,7 +616,7 @@ const Navbar = () => {
                                 >
                                     Products
                                 </Typography>
-                                {productList.map((product, index) => {
+                                {productList.map((product) => {
                                     return (
                                         <a
                                             style={{
@@ -633,10 +632,10 @@ const Navbar = () => {
                                                 color: "#8E8E93",
                                                 textDecoration: "none",
                                             }}
-                                            key={index}
+                                            key={product.id}
                                             href={"/allProducts"}
                                         >
-                                            {product}
+                                            {product.value}
                                         </a>
                                     );
                                 })}
@@ -661,7 +660,7 @@ const Navbar = () => {
                                 >
                                     Designers
                                 </Typography>
-                                {designersList.map((product, index) => {
+                                {designersList.map((product) => {
                                     return (
                                         <a
                                             style={{
@@ -677,10 +676,10 @@ const Navbar = () => {
                                                 color: "#8E8E93",
                                                 textDecoration: "none",
                                             }}
-                                            key={index}
+                                            key={product.id}
                                             href={" "}
                                         >
-                                            {product}
+                                            {product.value}
                                         </a>
                                     );
                                 })}
@@ -705,31 +704,29 @@ const Navbar = () => {
                                 >
                                     Archived collections
                                 </Typography>
-                                {archivedCollectionsList.map(
-                                    (product, index) => {
-                                        return (
-                                            <a
-                                                style={{
-                                                    color: "#8E8E93",
-                                                    textDecoration: "none",
-                                                }}
-                                                sx={{
-                                                    fontFamily: "Inter",
-                                                    fontStyle: "normal",
-                                                    fontWeight: "400",
-                                                    fontSize: "16px",
-                                                    lineHeight: "19px",
-                                                    color: "#8E8E93",
-                                                    textDecoration: "none",
-                                                }}
-                                                key={index}
-                                                href={" "}
-                                            >
-                                                {product}
-                                            </a>
-                                        );
-                                    }
-                                )}
+                                {archivedCollectionsList.map((product) => {
+                                    return (
+                                        <a
+                                            style={{
+                                                color: "#8E8E93",
+                                                textDecoration: "none",
+                                            }}
+                                            sx={{
+                                                fontFamily: "Inter",
+                                                fontStyle: "normal",
+                                                fontWeight: "400",
+                                                fontSize: "16px",
+                                                lineHeight: "19px",
+                                                color: "#8E8E93",
+                                                textDecoration: "none",
+                                            }}
+                                            key={product.id}
+                                            href={" "}
+                                        >
+                                            {product.value}
+                                        </a>
+                                    );
+                                })}
                             </Box>
                         </Box>
                         <Box

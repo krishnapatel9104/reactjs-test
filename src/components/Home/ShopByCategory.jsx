@@ -10,12 +10,30 @@ import { shopByCategoryList } from "../../data/shopByCategoryList";
 
 export const ShopByCategory = () => {
     const shopByCategory = [
-        "TShirt",
-        "Shirt",
-        "Shoes",
-        "Watch",
-        "Sunglasses",
-        "Bagpacks",
+        {
+            id: 1,
+            value: "TShirt",
+        },
+        {
+            id: 2,
+            value: "Shirt",
+        },
+        {
+            id: 3,
+            value: "Shoes",
+        },
+        {
+            id: 4,
+            value: "Watch",
+        },
+        {
+            id: 5,
+            value: "Sunglasses",
+        },
+        {
+            id: 6,
+            value: "Bagpacks",
+        },
     ];
     return (
         <Box>
@@ -89,9 +107,10 @@ export const ShopByCategory = () => {
                     overflow: { xs: "scroll", sm: "hidden" },
                 }}
             >
-                {shopByCategory.map((category, index) => {
+                {shopByCategory.map((category) => {
                     return (
                         <Link
+                            key={category.id}
                             href="#"
                             sx={{
                                 fontFamily: "Jost",
@@ -102,13 +121,14 @@ export const ShopByCategory = () => {
                                 textDecoration: "none",
                                 color: "#000000",
                                 padding:
-                                    index === 2
+                                    category.id === 2
                                         ? { xs: "7px 10px", sm: "14px 24px" }
                                         : 0,
-                                background: index === 2 ? "#E0E0E0" : "white",
+                                background:
+                                    category.id === 2 ? "#E0E0E0" : "white",
                             }}
                         >
-                            {category}
+                            {category.value}
                         </Link>
                     );
                 })}
@@ -127,6 +147,9 @@ export const ShopByCategory = () => {
                     justifyContent: "space-between",
                     alignItems: "center",
                     gap: "50px",
+                    "& .swiper-button-next, .swiper-button-prev": {
+                        color: "#D1D1D6",
+                    },
                 }}
             >
                 <Swiper
@@ -159,9 +182,9 @@ export const ShopByCategory = () => {
                     modules={[Keyboard, Scrollbar, Navigation, Pagination]}
                     className="mySwiper"
                 >
-                    {shopByCategoryList.map((product) => {
+                    {shopByCategoryList.map((product, index) => {
                         return (
-                            <>
+                            <Box key={product.id}>
                                 <SwiperSlide
                                     style={{
                                         fontSize: "18px",
@@ -260,7 +283,7 @@ export const ShopByCategory = () => {
                                         </Box>
                                     </Box>
                                 </SwiperSlide>
-                            </>
+                            </Box>
                         );
                     })}
                 </Swiper>

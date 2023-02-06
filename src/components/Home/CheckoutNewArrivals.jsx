@@ -3,10 +3,22 @@ import { Box, Grid, Typography } from "@mui/material";
 
 export const CheckoutNewArrivals = () => {
     const checkoutImagesList = [
-        "/images/Card1.jpg",
-        "/images/Card2.png",
-        "/images/Card3.png",
-        "/images/Card4.png",
+        {
+            id: 1,
+            productImage: "/images/Card1.jpg",
+        },
+        {
+            id: 2,
+            productImage: "/images/Card2.png",
+        },
+        {
+            id: 3,
+            productImage: "/images/Card3.png",
+        },
+        {
+            id: 4,
+            productImage: "/images/Card4.png",
+        },
     ];
     return (
         <Box
@@ -43,13 +55,14 @@ export const CheckoutNewArrivals = () => {
                 {checkoutImagesList.map((product) => {
                     return (
                         <Grid
+                            key={product.id}
                             item
                             sm={3}
                             xs={6}
                             sx={{ width: "100%", height: "100%" }}
                         >
                             <img
-                                src={product}
+                                src={product.productImage}
                                 height="100%"
                                 width="100%"
                                 alt={"card1"}

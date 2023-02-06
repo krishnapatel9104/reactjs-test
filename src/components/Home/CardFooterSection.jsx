@@ -4,7 +4,7 @@ import React from "react";
 export const CardFooterSection = () => {
     const cardFooterInformation = [
         {
-            id: "1",
+            id: 1,
             imageSource: "/images/cardimg1.png",
             secondaryImageSource: "/images/cardimg4.png",
             views: 35,
@@ -16,7 +16,7 @@ export const CardFooterSection = () => {
             answer: "Is it possible to assess a person just on the basis of their footwear? Obviously, nobody should criticize, but certainly, shoes say a lot about someone. It matters for the outsiders that we meet every day...",
         },
         {
-            id: "2",
+            id: 2,
             imageSource: "/images/cardimg2.png",
             secondaryImageSource: "/images/cardimg4.png",
             views: 35,
@@ -28,7 +28,7 @@ export const CardFooterSection = () => {
             answer: "Is it possible to assess a person just on the basis of their footwear? Obviously, nobody should criticize, but certainly, shoes say a lot about someone. It matters for the outsiders that we meet every day...",
         },
         {
-            id: "3",
+            id: 3,
             imageSource: "/images/cardimg3.png",
             secondaryImageSource: "/images/cardimg4.png",
             views: 35,
@@ -59,7 +59,14 @@ export const CardFooterSection = () => {
             >
                 {cardFooterInformation.map((product) => {
                     return (
-                        <Grid item xs={12} sm={6} lg={4} xl={4}>
+                        <Grid
+                            item
+                            xs={12}
+                            sm={6}
+                            lg={4}
+                            xl={4}
+                            key={product.id}
+                        >
                             <Box
                                 sx={{
                                     position: "relative",

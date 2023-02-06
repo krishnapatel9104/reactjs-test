@@ -437,6 +437,7 @@ export const CategroyDetails = () => {
                                 {maincategoryfilterList.map((filter, index) => {
                                     return (
                                         <FormGroup
+                                            key={index}
                                             sx={{
                                                 fontFamily: "Jost",
                                                 fontStyle: "normal",
@@ -448,7 +449,6 @@ export const CategroyDetails = () => {
                                             }}
                                         >
                                             <FormControlLabel
-                                                key={index}
                                                 control={
                                                     <Checkbox
                                                         checked={
@@ -487,7 +487,7 @@ export const CategroyDetails = () => {
                                 </Typography>
                                 {brandfilterList.map((filter, index) => {
                                     return (
-                                        <>
+                                        <Box key={index}>
                                             {index < 10 ? (
                                                 <FormGroup
                                                     sx={{
@@ -501,7 +501,6 @@ export const CategroyDetails = () => {
                                                     }}
                                                 >
                                                     <FormControlLabel
-                                                        key={index}
                                                         control={
                                                             <Checkbox
                                                                 checked={
@@ -522,7 +521,7 @@ export const CategroyDetails = () => {
                                             ) : (
                                                 <></>
                                             )}
-                                        </>
+                                        </Box>
                                     );
                                 })}
                                 {brandfilterList.length > 10 ? (
@@ -549,7 +548,7 @@ export const CategroyDetails = () => {
                                 </Typography>
                                 {categoryfilterList.map((filter, index) => {
                                     return (
-                                        <>
+                                        <Box key={index}>
                                             {index < 4 ? (
                                                 <FormGroup
                                                     sx={{
@@ -563,7 +562,6 @@ export const CategroyDetails = () => {
                                                     }}
                                                 >
                                                     <FormControlLabel
-                                                        key={index}
                                                         control={
                                                             <Checkbox
                                                                 checked={
@@ -584,7 +582,7 @@ export const CategroyDetails = () => {
                                             ) : (
                                                 <></>
                                             )}
-                                        </>
+                                        </Box>
                                     );
                                 })}
                                 {categoryfilterList.length > 4 ? (
@@ -618,6 +616,7 @@ export const CategroyDetails = () => {
                                 {sizefilterList.map((filter, index) => {
                                     return (
                                         <FormGroup
+                                            key={index}
                                             sx={{
                                                 fontFamily: "Jost",
                                                 fontStyle: "normal",
@@ -629,7 +628,6 @@ export const CategroyDetails = () => {
                                             }}
                                         >
                                             <FormControlLabel
-                                                key={index}
                                                 control={
                                                     <Checkbox
                                                         checked={
@@ -765,6 +763,7 @@ export const CategroyDetails = () => {
                             {maincategoryfilterList.map((filter, index) => {
                                 return (
                                     <FormGroup
+                                        key={index}
                                         sx={{
                                             fontFamily: "Jost",
                                             fontStyle: "normal",
@@ -776,7 +775,6 @@ export const CategroyDetails = () => {
                                         }}
                                     >
                                         <FormControlLabel
-                                            key={index}
                                             control={
                                                 <Checkbox
                                                     value={filter.value.toLowerCase()}
@@ -811,7 +809,7 @@ export const CategroyDetails = () => {
                             </Typography>
                             {brandfilterList.map((filter, index) => {
                                 return (
-                                    <>
+                                    <Box key={index}>
                                         {index < 10 ? (
                                             <FormGroup
                                                 sx={{
@@ -825,7 +823,6 @@ export const CategroyDetails = () => {
                                                 }}
                                             >
                                                 <FormControlLabel
-                                                    key={index}
                                                     control={
                                                         <Checkbox
                                                             key={index}
@@ -847,7 +844,7 @@ export const CategroyDetails = () => {
                                         ) : (
                                             <></>
                                         )}
-                                    </>
+                                    </Box>
                                 );
                             })}
                             {brandfilterList.length > 10 ? (
@@ -874,7 +871,7 @@ export const CategroyDetails = () => {
                             </Typography>
                             {categoryfilterList.map((filter, index) => {
                                 return (
-                                    <>
+                                    <Box key={index}>
                                         {index < 4 ? (
                                             <FormGroup
                                                 sx={{
@@ -888,7 +885,6 @@ export const CategroyDetails = () => {
                                                 }}
                                             >
                                                 <FormControlLabel
-                                                    key={index}
                                                     control={
                                                         <Checkbox
                                                             key={index}
@@ -910,7 +906,7 @@ export const CategroyDetails = () => {
                                         ) : (
                                             <></>
                                         )}
-                                    </>
+                                    </Box>
                                 );
                             })}
                             {categoryfilterList.length > 4 ? (
@@ -944,6 +940,7 @@ export const CategroyDetails = () => {
                             {sizefilterList.map((filter, index) => {
                                 return (
                                     <FormGroup
+                                        key={index}
                                         sx={{
                                             fontFamily: "Jost",
                                             fontStyle: "normal",
@@ -955,7 +952,6 @@ export const CategroyDetails = () => {
                                         }}
                                     >
                                         <FormControlLabel
-                                            key={index}
                                             control={
                                                 <Checkbox
                                                     key={index}
@@ -1049,7 +1045,7 @@ export const CategroyDetails = () => {
                             <Grid container columnSpacing={2}>
                                 {showCategoryProductList
                                     .currentData()
-                                    .map((product, index) => {
+                                    .map((product) => {
                                         return (
                                             <Grid
                                                 item

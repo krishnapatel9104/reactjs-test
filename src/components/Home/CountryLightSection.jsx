@@ -3,8 +3,14 @@ import React from "react";
 
 export const CountryLightSection = () => {
     const CountryLightImagesList = [
-        "/images/card1img.png",
-        "/images/card2img.png",
+        {
+            id: 1,
+            productImage: "/images/card1img.png",
+        },
+        {
+            id: 2,
+            productImage: "/images/card2img.png",
+        },
     ];
     return (
         <Box
@@ -21,6 +27,7 @@ export const CountryLightSection = () => {
                 {CountryLightImagesList.map((product) => {
                     return (
                         <Grid
+                            key={product.id}
                             item
                             sm={6}
                             xs={6}

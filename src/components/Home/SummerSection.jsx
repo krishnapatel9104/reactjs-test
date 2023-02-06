@@ -3,10 +3,22 @@ import React from "react";
 
 export const SummerSection = () => {
     const summerSectionImageList = [
-        "/images/goggles.png",
-        "/images/shoes1card.png",
-        "/images/hats.png",
-        "/images/watches.png",
+        {
+            id: 1,
+            productImage: "/images/goggles.png",
+        },
+        {
+            id: 2,
+            productImage: "/images/shoes1card.png",
+        },
+        {
+            id: 3,
+            productImage: "/images/hats.png",
+        },
+        {
+            id: 4,
+            productImage: "/images/watches.png",
+        },
     ];
     return (
         <Box
@@ -33,9 +45,9 @@ export const SummerSection = () => {
                     <Grid container>
                         {summerSectionImageList.map((product) => {
                             return (
-                                <Grid item sm={6} xs={6}>
+                                <Grid item sm={6} xs={6} key={product.id}>
                                     <img
-                                        src={product}
+                                        src={product.productImage}
                                         alt={"card3"}
                                         height="100%"
                                         width="100%"
