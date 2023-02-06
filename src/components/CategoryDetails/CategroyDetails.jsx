@@ -12,7 +12,6 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { categoryProductList } from "../../data/categoryProductList";
 import { useNavigate } from "react-router-dom";
-import { usePagination } from "../common/Pagination";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -142,10 +141,14 @@ export const CategroyDetails = () => {
     });
 
     const navigate = useNavigate();
-    const [temp, setTemp] = useState([]);
+    const [filterCategoryData, setFilterCategoryData] =
+        useState(categoryProductList);
     const [page, setPage] = useState(1);
     const PER_PAGE = 9;
-    const count = Math.ceil(categoryProductList.length / PER_PAGE);
+    const count = Math.ceil(filterCategoryData.length / PER_PAGE);
+    const indexOfLastRecord = page * PER_PAGE;
+    const indexOfFirstRecord = indexOfLastRecord - PER_PAGE;
+
     const handleChangeFilter = (e) => {
         e.preventDefault();
         const { name, value, checked } = e.target;
@@ -246,10 +249,6 @@ export const CategroyDetails = () => {
         }
     };
 
-    const handleChangePagination = (e, p) => {
-        setPage(p);
-        showCategoryProductList.jump(p);
-    };
     const handleProductClick = (productDetail) => {
         setIsOpen(!isOpen);
         navigate("/product", {
@@ -258,7 +257,7 @@ export const CategroyDetails = () => {
     };
 
     useEffect(() => {
-        let newProductList = categoryProductList.filter((product) => {
+        const newProductList = categoryProductList.filter((product) => {
             if (
                 allFiltersArray.mainFilter.includes(
                     product.filter.toLowerCase()
@@ -278,14 +277,17 @@ export const CategroyDetails = () => {
                 return product;
             } else return 0;
         });
-        setTemp(newProductList);
+        if (newProductList.length > 0) setFilterCategoryData(newProductList);
     }, [allFiltersArray]);
 
-    const showCategoryProductList = usePagination(
-        temp.length ? temp : categoryProductList,
-        PER_PAGE
-    );
+    useEffect(() => {
+        setPage(1);
+    }, [filterCategoryData]);
 
+    const handleChangePagination = () => {
+        if (page !== count) setPage(page + 1);
+        if (page !== 1) setPage(page - 1);
+    };
     return (
         <>
             <Box
@@ -1032,8 +1034,7 @@ export const CategroyDetails = () => {
                                     color: "#4B5563",
                                 }}
                             >
-                                {showCategoryProductList.currentData(1).length}{" "}
-                                results
+                                {filterCategoryData.length}&nbsp;results
                             </Typography>
                         </Box>
                         <Box
@@ -1043,8 +1044,11 @@ export const CategroyDetails = () => {
                             }}
                         >
                             <Grid container columnSpacing={2}>
-                                {showCategoryProductList
-                                    .currentData()
+                                {filterCategoryData
+                                    .slice(
+                                        indexOfFirstRecord,
+                                        indexOfLastRecord
+                                    )
                                     .map((product) => {
                                         return (
                                             <Grid
@@ -1052,7 +1056,9 @@ export const CategroyDetails = () => {
                                                 key={product.id}
                                                 sm={6}
                                                 lg={4}
-                                                sx={{ position: "relative" }}
+                                                sx={{
+                                                    position: "relative",
+                                                }}
                                             >
                                                 <img
                                                     src={product.imageSource}
