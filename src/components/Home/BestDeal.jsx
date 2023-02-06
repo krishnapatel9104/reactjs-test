@@ -16,7 +16,12 @@ export const BestDeal = () => {
     return (
         <Box
             sx={{
-                marginTop: { xs: "200px", md: "370px" },
+                marginTop: {
+                    xs: "450px",
+                    sm: "250px",
+                    md: "300px",
+                    lg: "400px",
+                },
             }}
         >
             <Typography
@@ -32,7 +37,7 @@ export const BestDeal = () => {
                     },
                     color: "#212121",
                     textAlign: "center",
-                    marginBottom: "100px",
+                    marginBottom: { xs: "50px", sm: "100px" },
                 }}
             >
                 Best Deals

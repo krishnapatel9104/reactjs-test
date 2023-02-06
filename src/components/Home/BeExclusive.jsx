@@ -25,7 +25,7 @@ export const BeExclusive = () => {
                 <Grid
                     item
                     sm={6}
-                    xs={6}
+                    xs={12}
                     sx={{
                         height: { xs: "350px", md: "500px", xl: "700px" },
                         backgroundColor: "#EEEEEE",
@@ -125,7 +125,7 @@ export const BeExclusive = () => {
                 <Grid
                     item
                     sm={6}
-                    xs={6}
+                    xs={12}
                     sx={{
                         height: { xs: "350px", md: "500px", xl: "700px" },
                         paddingTop: 0,

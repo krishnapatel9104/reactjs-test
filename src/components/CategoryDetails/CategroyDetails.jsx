@@ -17,8 +17,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const CategroyDetails = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.up("md"));
+    const themes = useTheme();
+    const matches = useMediaQuery(themes.breakpoints.up("md"));
     if (matches && isOpen) setIsOpen(false);
     const [maincategoryfilterList, setMaincategoryfilterList] = useState([
         { id: 1, value: "women", isChecked: false },

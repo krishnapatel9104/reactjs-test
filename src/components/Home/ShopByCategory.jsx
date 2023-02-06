@@ -50,7 +50,7 @@ export const ShopByCategory = () => {
                         xs: "22px",
                     },
                     color: theme.palette.primary.main,
-                    marginTop: "20px",
+                    marginTop: { xs: "40px", sm: "20px" },
                     textAlign: "center",
                 }}
             >

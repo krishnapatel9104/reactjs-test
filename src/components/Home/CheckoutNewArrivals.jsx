@@ -34,7 +34,7 @@ export const CheckoutNewArrivals = () => {
         >
             <Typography
                 sx={{
-                    marginBottom: { md: "30px", lg: "50px" },
+                    marginBottom: { xs: "40px", md: "30px", lg: "50px" },
                     fontFamily: theme.typography.titleHeading.fontFamily,
                     fontWeight: "700",
                     fontSize: {
@@ -44,7 +44,7 @@ export const CheckoutNewArrivals = () => {
                         xs: "22px",
                     },
                     color: "#212121",
-                    marginTop: "20px",
+                    marginTop: { xs: "40px", sm: "0px" },
                     textAlign: "center",
                 }}
             >
