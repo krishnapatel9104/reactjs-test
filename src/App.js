@@ -16,8 +16,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/allProducts" element={<CategroyDetails />} />
-          <Route path="/product" element={<ItemDetailView />} />
+          <Route path="/:maincategory/:category/:subcategory" element={<CategroyDetails />} />
+          <Route
+            path={"/:maincategory/:category/:subcategory/:productname"}
+            element={<ItemDetailView />}
+          />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/confirmation" element={<ConfirmationPage />} />

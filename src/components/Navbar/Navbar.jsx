@@ -12,23 +12,31 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 const Navbar = () => {
   const themes = useTheme();
   const matches = useMediaQuery(themes.breakpoints.down("md"));
+  const navigate = useNavigate();
+  const productDetails = useSelector(
+    (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
+  );
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [currentSelectedItem, setCurrentSelectedItem] = useState("");
+
   const productList = [
-    { id: 1, value: "Clothes" },
-    { id: 2, value: "Bags" },
-    { id: 3, value: "Accessories" },
-    { id: 4, value: "Shoes" },
-    { id: 5, value: "Beauty" },
-    { id: 6, value: "Denim" },
-    { id: 7, value: "Coats & Jackets" },
+    { id: 1, value: "Clothes", slug: `/${currentSelectedItem}/products/clothes` },
+    { id: 2, value: "Bags", slug: `/${currentSelectedItem}/products/bags` },
+    { id: 3, value: "Accessories", slug: `/${currentSelectedItem}/products/accessories` },
+    { id: 4, value: "Shoes", slug: `/${currentSelectedItem}/products/shoes` },
+    { id: 5, value: "Beauty", slug: `/${currentSelectedItem}/products/beauty` },
+    { id: 6, value: "Denim", slug: `/${currentSelectedItem}/products/denim` },
+    { id: 7, value: "Coats & Jackets", slug: `/${currentSelectedItem}/products/coatsandjackets` },
   ];
   const designersList = [
-    { id: 1, value: "Balenciaga" },
-    { id: 2, value: "Balmain" },
-    { id: 3, value: "Bottega Veneta" },
-    { id: 4, value: "Burbery" },
-    { id: 5, value: "Dolce & Gabbana" },
-    { id: 6, value: "Fendi" },
-    { id: 7, value: "Off-White" },
+    { id: 1, value: "Balenciaga", slug: `/${currentSelectedItem}/designers/balenciaga` },
+    { id: 2, value: "Balmain", slug: `/${currentSelectedItem}/designers/balmain` },
+    { id: 3, value: "Bottega Veneta", slug: `/${currentSelectedItem}/designers/bottegaveneta` },
+    { id: 4, value: "Burbery", slug: `/${currentSelectedItem}/designers/burbery` },
+    { id: 5, value: "Dolce & Gabbana", slug: `/${currentSelectedItem}/designers/dolceandgabbana` },
+    { id: 6, value: "Fendi", slug: `/${currentSelectedItem}/designers/fendi` },
+    { id: 7, value: "Off-White", slug: `/${currentSelectedItem}/designers/offwhite` },
   ];
   const archivedCollectionsList = [
     { id: 1, value: "All Products" },
@@ -39,13 +47,6 @@ const Navbar = () => {
     { id: 6, value: "Shoes" },
     { id: 7, value: "Suits" },
   ];
-  const navigate = useNavigate();
-  const productDetails = useSelector(
-    (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
-  );
-  const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [currentSelectedItem, setCurrentSelectedItem] = useState("");
 
   if (matches && isOpen) setIsOpen(false);
   const handleClick = () => {
@@ -59,12 +60,13 @@ const Navbar = () => {
   };
 
   const handleClickNavbar = (e, item) => {
-    setCurrentSelectedItem(isOpen ? "" : e.target.name);
+    console.log("");
+    setCurrentSelectedItem(isOpen ? "" : e.target.name.toLowerCase());
     if (!item) setIsOpen(!isOpen);
   };
   const handleClickMobile = (e) => {
     setIsMobile(!isMobile);
-    setCurrentSelectedItem(isOpen ? "" : e.target.name);
+    setCurrentSelectedItem(isOpen ? "" : e.target.name.toLowerCase());
     if (!isOpen) setIsOpen(!isOpen);
   };
   return (
@@ -443,6 +445,7 @@ const Navbar = () => {
                   Products
                 </Typography>
                 {productList.map((product) => {
+                  console.log("slug product : ", product.slug);
                   return (
                     <Link
                       style={{
@@ -457,7 +460,7 @@ const Navbar = () => {
                         textDecoration: "none",
                       }}
                       key={product.id}
-                      href={"/allProducts"}
+                      href={product.slug}
                     >
                       {product.value}
                     </Link>
@@ -497,7 +500,7 @@ const Navbar = () => {
                         textDecoration: "none",
                       }}
                       key={product.id}
-                      href={" "}
+                      href={product.slug}
                     >
                       {product.value}
                     </Link>

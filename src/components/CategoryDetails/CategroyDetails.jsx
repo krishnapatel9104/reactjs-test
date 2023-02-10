@@ -12,7 +12,7 @@ import {
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import { categoryProductList } from "../../data/categoryProductList";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -147,12 +147,42 @@ export const CategroyDetails = () => {
   });
 
   const navigate = useNavigate();
-  const [filterCategoryData, setFilterCategoryData] = useState(categoryProductList);
+  const location = useLocation();
+  const [filterCategoryData, setFilterCategoryData] = useState([]);
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(filterCategoryData.length / PER_PAGE);
   const indexOfLastRecord = page * PER_PAGE;
   const indexOfFirstRecord = indexOfLastRecord - PER_PAGE;
+
+  useEffect(() => {
+    console.log("location pathname : ", location.pathname);
+    let mainCatName = location.pathname.split("/")[1];
+    let identifier = location.pathname.split("/")[2];
+    let categoryName = location.pathname.split("/")[3];
+    console.log("maincatname : ", mainCatName);
+    console.log("identifier : ", identifier);
+    console.log("categoryName : ", categoryName);
+    const newProductList = categoryProductList.filter((product) => {
+      if (
+        product.filter === mainCatName &&
+        product.category === categoryName &&
+        identifier === "products"
+      ) {
+        console.log("right product : ", product);
+        return product;
+      } else if (
+        product.filter === mainCatName &&
+        product?.designers === categoryName &&
+        identifier === "designers"
+      ) {
+        console.log("right product : ", product);
+        return product;
+      } else return 0;
+    });
+    console.log("newproductlist : ", newProductList);
+    if (newProductList.length > 0) setFilterCategoryData(newProductList);
+  }, [location.pathname]);
 
   const handleChangeFilter = (e) => {
     e.preventDefault();
@@ -244,7 +274,7 @@ export const CategroyDetails = () => {
 
   const handleProductClick = (productDetail) => {
     setIsOpen(!isOpen);
-    navigate("/product", {
+    navigate(`${productDetail.productName.toLowerCase()}`, {
       state: { productDetail: productDetail },
     });
   };
@@ -406,7 +436,7 @@ export const CategroyDetails = () => {
                   getAriaLabel={() => "Minimum distance"}
                 />
               </Box>
-              <Box>
+              {/* <Box>
                 <Typography
                   sx={{
                     fontFamily: "Jost",
@@ -446,7 +476,7 @@ export const CategroyDetails = () => {
                     </FormGroup>
                   );
                 })}
-              </Box>
+              </Box> */}
               <Box>
                 <Typography
                   sx={{
@@ -461,61 +491,37 @@ export const CategroyDetails = () => {
                 >
                   BRANDS
                 </Typography>
-                {isBrandExtend
-                  ? brandfilterList.map((filter) => {
-                      return (
-                        <FormGroup
-                          key={filter.id}
-                          sx={{
-                            fontFamily: "Jost",
-                            fontWeight: "400",
-                            fontSize: "20px",
-                            letterSpacing: "0.02em",
-                            color: "#1F2937",
-                          }}
-                        >
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={filter.isChecked}
-                                value={filter.value.toLowerCase()}
-                                name="brand"
-                                onChange={(e) => handleChangeFilter(e)}
-                              />
-                            }
-                            label={filter.value}
-                          />
-                        </FormGroup>
-                      );
-                    })
-                  : brandfilterList.map((filter, index) => {
-                      if (index < 10) {
-                        return (
-                          <FormGroup
-                            key={filter.id}
-                            sx={{
-                              fontFamily: "Jost",
-                              fontWeight: "400",
-                              fontSize: "20px",
-                              letterSpacing: "0.02em",
-                              color: "#1F2937",
-                            }}
-                          >
-                            <FormControlLabel
-                              control={
-                                <Checkbox
-                                  checked={filter.isChecked}
-                                  value={filter.value.toLowerCase()}
-                                  name="brand"
-                                  onChange={(e) => handleChangeFilter(e)}
-                                />
-                              }
-                              label={filter.value}
+                {brandfilterList.map((filter, index) => {
+                  if (
+                    (isBrandExtend && index < brandfilterList.length) ||
+                    (!isBrandExtend && index < 10)
+                  ) {
+                    return (
+                      <FormGroup
+                        key={filter.id}
+                        sx={{
+                          fontFamily: "Jost",
+                          fontWeight: "400",
+                          fontSize: "20px",
+                          letterSpacing: "0.02em",
+                          color: "#1F2937",
+                        }}
+                      >
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={filter.isChecked}
+                              value={filter.value.toLowerCase()}
+                              name="brand"
+                              onChange={(e) => handleChangeFilter(e)}
                             />
-                          </FormGroup>
-                        );
-                      }
-                    })}
+                          }
+                          label={filter.value}
+                        />
+                      </FormGroup>
+                    );
+                  }
+                })}
                 {brandfilterList.length > 10 ? (
                   !isBrandExtend ? (
                     <Button onClick={() => handlerExtendFilters("brand")}>
@@ -533,7 +539,7 @@ export const CategroyDetails = () => {
                   <></>
                 )}
               </Box>
-              <Box>
+              {/* <Box>
                 <Typography
                   sx={{
                     fontFamily: "Jost",
@@ -547,61 +553,37 @@ export const CategroyDetails = () => {
                 >
                   CATEGORIES
                 </Typography>
-                {isCategorydExtend
-                  ? categoryFilterList.map((filter) => {
-                      return (
-                        <FormGroup
-                          key={filter.id}
-                          sx={{
-                            fontFamily: "Jost",
-                            fontWeight: "400",
-                            fontSize: "20px",
-                            letterSpacing: "0.02em",
-                            color: "#1F2937",
-                          }}
-                        >
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={filter.isChecked}
-                                value={filter.value.toLowerCase()}
-                                name="brand"
-                                onChange={(e) => handleChangeFilter(e)}
-                              />
-                            }
-                            label={filter.value}
-                          />
-                        </FormGroup>
-                      );
-                    })
-                  : categoryFilterList.map((filter, index) => {
-                      if (index < 4) {
-                        return (
-                          <FormGroup
-                            key={filter.id}
-                            sx={{
-                              fontFamily: "Jost",
-                              fontWeight: "400",
-                              fontSize: "20px",
-                              letterSpacing: "0.02em",
-                              color: "#1F2937",
-                            }}
-                          >
-                            <FormControlLabel
-                              control={
-                                <Checkbox
-                                  checked={filter.isChecked}
-                                  value={filter.value.toLowerCase()}
-                                  name="brand"
-                                  onChange={(e) => handleChangeFilter(e)}
-                                />
-                              }
-                              label={filter.value}
+                {categoryFilterList.map((filter, index) => {
+                  if (
+                    (isCategorydExtend && index < categoryFilterList.length) ||
+                    (!isCategorydExtend && index < 10)
+                  ) {
+                    return (
+                      <FormGroup
+                        key={filter.id}
+                        sx={{
+                          fontFamily: "Jost",
+                          fontWeight: "400",
+                          fontSize: "20px",
+                          letterSpacing: "0.02em",
+                          color: "#1F2937",
+                        }}
+                      >
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={filter.isChecked}
+                              value={filter.value.toLowerCase()}
+                              name="brand"
+                              onChange={(e) => handleChangeFilter(e)}
                             />
-                          </FormGroup>
-                        );
-                      }
-                    })}
+                          }
+                          label={filter.value}
+                        />
+                      </FormGroup>
+                    );
+                  }
+                })}
                 {categoryFilterList.length > 4 ? (
                   !isCategorydExtend ? (
                     <Button onClick={() => handlerExtendFilters("category")}>
@@ -618,7 +600,7 @@ export const CategroyDetails = () => {
                 ) : (
                   <></>
                 )}
-              </Box>
+              </Box> */}
               <Box>
                 <Typography
                   sx={{
@@ -750,7 +732,7 @@ export const CategroyDetails = () => {
                 getAriaLabel={() => "Minimum distance"}
               />
             </Box>
-            <Box>
+            {/* <Box>
               <Typography
                 sx={{
                   fontFamily: "Jost",
@@ -790,7 +772,7 @@ export const CategroyDetails = () => {
                   </FormGroup>
                 );
               })}
-            </Box>
+            </Box> */}
             <Box>
               <Typography
                 sx={{
@@ -805,61 +787,37 @@ export const CategroyDetails = () => {
               >
                 BRANDS
               </Typography>
-              {isBrandExtend
-                ? brandfilterList.map((filter) => {
-                    return (
-                      <FormGroup
-                        key={filter.id}
-                        sx={{
-                          fontFamily: "Jost",
-                          fontWeight: "400",
-                          fontSize: "20px",
-                          letterSpacing: "0.02em",
-                          color: "#1F2937",
-                        }}
-                      >
-                        <FormControlLabel
-                          control={
-                            <Checkbox
-                              checked={filter.isChecked}
-                              value={filter.value.toLowerCase()}
-                              name="brand"
-                              onChange={(e) => handleChangeFilter(e)}
-                            />
-                          }
-                          label={filter.value}
-                        />
-                      </FormGroup>
-                    );
-                  })
-                : brandfilterList.map((filter, index) => {
-                    if (index < 10) {
-                      return (
-                        <FormGroup
-                          key={filter.id}
-                          sx={{
-                            fontFamily: "Jost",
-                            fontWeight: "400",
-                            fontSize: "20px",
-                            letterSpacing: "0.02em",
-                            color: "#1F2937",
-                          }}
-                        >
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={filter.isChecked}
-                                value={filter.value.toLowerCase()}
-                                name="brand"
-                                onChange={(e) => handleChangeFilter(e)}
-                              />
-                            }
-                            label={filter.value}
+              {brandfilterList.map((filter, index) => {
+                if (
+                  (isBrandExtend && index < brandfilterList.length) ||
+                  (!isBrandExtend && index < 10)
+                ) {
+                  return (
+                    <FormGroup
+                      key={filter.id}
+                      sx={{
+                        fontFamily: "Jost",
+                        fontWeight: "400",
+                        fontSize: "20px",
+                        letterSpacing: "0.02em",
+                        color: "#1F2937",
+                      }}
+                    >
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={filter.isChecked}
+                            value={filter.value.toLowerCase()}
+                            name="brand"
+                            onChange={(e) => handleChangeFilter(e)}
                           />
-                        </FormGroup>
-                      );
-                    }
-                  })}
+                        }
+                        label={filter.value}
+                      />
+                    </FormGroup>
+                  );
+                }
+              })}
               {brandfilterList.length > 10 ? (
                 !isBrandExtend ? (
                   <Button onClick={() => handlerExtendFilters("brand")}>
@@ -877,7 +835,7 @@ export const CategroyDetails = () => {
                 <></>
               )}
             </Box>
-            <Box>
+            {/* <Box>
               <Typography
                 sx={{
                   fontFamily: "Jost",
@@ -891,61 +849,37 @@ export const CategroyDetails = () => {
               >
                 CATEGORIES
               </Typography>
-              {isCategorydExtend
-                ? categoryFilterList.map((filter) => {
-                    return (
-                      <FormGroup
-                        key={filter.id}
-                        sx={{
-                          fontFamily: "Jost",
-                          fontWeight: "400",
-                          fontSize: "20px",
-                          letterSpacing: "0.02em",
-                          color: "#1F2937",
-                        }}
-                      >
-                        <FormControlLabel
-                          control={
-                            <Checkbox
-                              checked={filter.isChecked}
-                              value={filter.value.toLowerCase()}
-                              name="brand"
-                              onChange={(e) => handleChangeFilter(e)}
-                            />
-                          }
-                          label={filter.value}
-                        />
-                      </FormGroup>
-                    );
-                  })
-                : categoryFilterList.map((filter, index) => {
-                    if (index < 4) {
-                      return (
-                        <FormGroup
-                          key={filter.id}
-                          sx={{
-                            fontFamily: "Jost",
-                            fontWeight: "400",
-                            fontSize: "20px",
-                            letterSpacing: "0.02em",
-                            color: "#1F2937",
-                          }}
-                        >
-                          <FormControlLabel
-                            control={
-                              <Checkbox
-                                checked={filter.isChecked}
-                                value={filter.value.toLowerCase()}
-                                name="brand"
-                                onChange={(e) => handleChangeFilter(e)}
-                              />
-                            }
-                            label={filter.value}
+              {categoryFilterList.map((filter, index) => {
+                if (
+                  (isCategorydExtend && index < categoryFilterList.length) ||
+                  (!isCategorydExtend && index < 10)
+                ) {
+                  return (
+                    <FormGroup
+                      key={filter.id}
+                      sx={{
+                        fontFamily: "Jost",
+                        fontWeight: "400",
+                        fontSize: "20px",
+                        letterSpacing: "0.02em",
+                        color: "#1F2937",
+                      }}
+                    >
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={filter.isChecked}
+                            value={filter.value.toLowerCase()}
+                            name="brand"
+                            onChange={(e) => handleChangeFilter(e)}
                           />
-                        </FormGroup>
-                      );
-                    }
-                  })}
+                        }
+                        label={filter.value}
+                      />
+                    </FormGroup>
+                  );
+                }
+              })}
               {categoryFilterList.length > 4 ? (
                 !isCategorydExtend ? (
                   <Button onClick={() => handlerExtendFilters("category")}>
@@ -962,7 +896,7 @@ export const CategroyDetails = () => {
               ) : (
                 <></>
               )}
-            </Box>
+            </Box> */}
             <Box>
               <Typography
                 sx={{
@@ -1074,139 +1008,152 @@ export const CategroyDetails = () => {
               }}
             >
               <Grid container columnSpacing={2}>
-                {filterCategoryData.slice(indexOfFirstRecord, indexOfLastRecord).map((product) => {
-                  return (
-                    <Grid
-                      item
-                      key={product.id}
-                      sm={6}
-                      lg={4}
-                      sx={{
-                        position: "relative",
-                      }}
-                    >
-                      <img
-                        src={product.imageSource}
-                        alt="productimg"
-                        width="100%"
-                        onClick={(e) => handleProductClick(product)}
-                      />
-                      {product.isNewArrival && (
+                {filterCategoryData.length > 0 ? (
+                  filterCategoryData.slice(indexOfFirstRecord, indexOfLastRecord).map((product) => {
+                    return (
+                      <Grid
+                        item
+                        key={product.id}
+                        sm={6}
+                        lg={4}
+                        sx={{
+                          position: "relative",
+                        }}
+                      >
+                        <img
+                          src={product.imageSource}
+                          alt="productimg"
+                          width="100%"
+                          onClick={(e) => handleProductClick(product)}
+                        />
+                        {product.isNewArrival && (
+                          <Box
+                            sx={{
+                              backgroundColor: "#111827",
+                              width: "fit-content",
+                              padding: "2px 10px",
+                              position: "absolute",
+                              top: "0%",
+                            }}
+                          >
+                            <Typography
+                              sx={{
+                                fontFamily: "Jost",
+                                fontWeight: "400",
+                                fontSize: "12px",
+                                color: "#FFFFFF",
+                              }}
+                            >
+                              New Arrivals
+                            </Typography>
+                          </Box>
+                        )}
                         <Box
                           sx={{
-                            backgroundColor: "#111827",
+                            background: "rgba(0, 0, 0, 0.3)",
                             width: "fit-content",
-                            padding: "2px 10px",
+                            padding: "5px 8px",
                             position: "absolute",
-                            top: "0%",
+                            paddingTop: "10px",
+                            top: "3%",
+                            right: 0,
                           }}
                         >
-                          <Typography
-                            sx={{
-                              fontFamily: "Jost",
-                              fontWeight: "400",
-                              fontSize: "12px",
-                              color: "#FFFFFF",
-                            }}
-                          >
-                            New Arrivals
-                          </Typography>
+                          <img
+                            src={"/images/whitelike.png"}
+                            alt="productimg"
+                            width="25px"
+                            height="22px"
+                          />
                         </Box>
-                      )}
-                      <Box
-                        sx={{
-                          background: "rgba(0, 0, 0, 0.3)",
-                          width: "fit-content",
-                          padding: "5px 8px",
-                          position: "absolute",
-                          paddingTop: "10px",
-                          top: "3%",
-                          right: 0,
-                        }}
-                      >
-                        <img
-                          src={"/images/whitelike.png"}
-                          alt="productimg"
-                          width="25px"
-                          height="22px"
-                        />
-                      </Box>
 
-                      <Box
-                        sx={{
-                          padding: "10px",
-                          display: "flex",
-                        }}
-                      >
                         <Box
                           sx={{
+                            padding: "10px",
                             display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "flex-end",
                           }}
                         >
-                          <Typography
+                          <Box
                             sx={{
-                              width: "80%",
-                              fontFamily: "Inter",
-                              fontWeight: "400",
-                              fontSize: "18px",
-                              color: "#000000",
+                              display: "flex",
+                              justifyContent: "space-between",
+                              alignItems: "flex-end",
                             }}
                           >
-                            {product.productName}
-                          </Typography>
+                            <Typography
+                              sx={{
+                                width: "80%",
+                                fontFamily: "Inter",
+                                fontWeight: "400",
+                                fontSize: "18px",
+                                color: "#000000",
+                              }}
+                            >
+                              {product.productName}
+                            </Typography>
+                          </Box>
+                          <img
+                            src={"/images/womenproductcart.png"}
+                            alt="productimg"
+                            height="22px"
+                            width="32px"
+                          />
                         </Box>
-                        <img
-                          src={"/images/womenproductcart.png"}
-                          alt="productimg"
-                          height="22px"
-                          width="32px"
-                        />
-                      </Box>
-                      <Typography
-                        sx={{
-                          width: "80%",
-                          fontFamily: "Inter",
-                          fontWeight: "400",
-                          fontSize: "20px",
-                          color: "#1B2437",
-                          alignItems: "flex-start",
-                        }}
-                      >
-                        $ {product.productPrice}
-                      </Typography>
-                      {/* </Box> */}
-                    </Grid>
-                  );
-                })}
+                        <Typography
+                          sx={{
+                            width: "80%",
+                            fontFamily: "Inter",
+                            fontWeight: "400",
+                            fontSize: "20px",
+                            color: "#1B2437",
+                            alignItems: "flex-start",
+                          }}
+                        >
+                          $ {product.productPrice}
+                        </Typography>
+                        {/* </Box> */}
+                      </Grid>
+                    );
+                  })
+                ) : (
+                  <img
+                    src="/images/data-not-found.jpg"
+                    alt="data not found"
+                    height="300px"
+                    width="300px"
+                  />
+                )}
               </Grid>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  marginTop: "70px",
-                  marginBottom: "70px",
-                  "& .MuiButtonBase-root": {
-                    backgroundColor: "#D1D5DB",
-                  },
-                  "& .MuiPagination-ul> li:first-child > button": {
-                    backgroundColor: "#D1D5DB",
-                  },
-                  "& .MuiPagination-ul>li:last-child > button": {
-                    backgroundColor: "#1F2937",
-                    color: "white",
-                  },
-                }}
-              >
-                <Pagination
-                  count={count}
-                  variant="outlined"
-                  shape="rounded"
-                  page={page}
-                  onChange={handleChangePagination}
-                />
-              </Box>
+              {filterCategoryData.length > 0 ? (
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    marginTop: "70px",
+                    marginBottom: "70px",
+                    "& .MuiButtonBase-root": {
+                      backgroundColor: "#D1D5DB",
+                    },
+                    "& .MuiPagination-ul> li:first-child > button": {
+                      backgroundColor: "#D1D5DB",
+                    },
+                    "& .MuiPagination-ul>li:last-child > button": {
+                      backgroundColor: "#1F2937",
+                      color: "white",
+                    },
+                  }}
+                >
+                  <Pagination
+                    count={count}
+                    variant="outlined"
+                    shape="rounded"
+                    page={page}
+                    onChange={handleChangePagination}
+                  />
+                </Box>
+              ) : (
+                <></>
+              )}
             </Box>
           </Box>
         </Box>
