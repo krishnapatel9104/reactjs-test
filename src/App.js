@@ -11,23 +11,20 @@ import { ThemeProvider } from "@material-ui/styles";
 import theme from "./theme";
 
 function App() {
-    return (
-        <ThemeProvider theme={theme}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/allProducts" element={<CategroyDetails />} />
-                    <Route path="/product" element={<ItemDetailView />} />
-                    <Route path="/shipping" element={<Shipping />} />
-                    <Route path="/checkout" element={<Checkout />} />
-                    <Route
-                        path="/confirmation"
-                        element={<ConfirmationPage />}
-                    />
-                </Routes>
-            </BrowserRouter>
-        </ThemeProvider>
-    );
+  return (
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/allProducts" element={<CategroyDetails />} />
+          <Route path="/product" element={<ItemDetailView />} />
+          <Route path="/shipping" element={<Shipping />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/confirmation" element={<ConfirmationPage />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
 }
 
 export default App;
