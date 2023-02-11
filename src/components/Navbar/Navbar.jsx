@@ -21,13 +21,25 @@ const Navbar = () => {
   const [currentSelectedItem, setCurrentSelectedItem] = useState("");
 
   const productList = [
-    { id: 1, value: "Clothes", slug: `/${currentSelectedItem}/products/clothes` },
+    {
+      id: 1,
+      value: "Clothes",
+      slug: `/${currentSelectedItem}/products/clothes`,
+    },
     { id: 2, value: "Bags", slug: `/${currentSelectedItem}/products/bags` },
-    { id: 3, value: "Accessories", slug: `/${currentSelectedItem}/products/accessories` },
+    {
+      id: 3,
+      value: "Accessories",
+      slug: `/${currentSelectedItem}/products/accessories`,
+    },
     { id: 4, value: "Shoes", slug: `/${currentSelectedItem}/products/shoes` },
     { id: 5, value: "Beauty", slug: `/${currentSelectedItem}/products/beauty` },
     { id: 6, value: "Denim", slug: `/${currentSelectedItem}/products/denim` },
-    { id: 7, value: "Coats & Jackets", slug: `/${currentSelectedItem}/products/coatsandjackets` },
+    {
+      id: 7,
+      value: "Coats & Jackets",
+      slug: `/${currentSelectedItem}/products/coatsandjackets`,
+    },
   ];
   const designersList = [
     { id: 1, value: "Balenciaga", slug: `/${currentSelectedItem}/designers/balenciaga` },
@@ -55,20 +67,22 @@ const Navbar = () => {
         state: { productDetail: productDetails },
       });
     } else {
-      navigate("/allProducts");
+      navigate("/");
     }
   };
 
-  const handleClickNavbar = (e, item) => {
-    console.log("");
-    setCurrentSelectedItem(isOpen ? "" : e.target.name.toLowerCase());
-    if (!item) setIsOpen(!isOpen);
+  const handleClickNavbar = (e) => {
+    if (!matches) {
+      setIsOpen(!isOpen);
+      setCurrentSelectedItem(e.target.name.toLowerCase());
+    } else {
+      setIsMobile(!isMobile);
+    }
   };
-  const handleClickMobile = (e) => {
-    setIsMobile(!isMobile);
-    setCurrentSelectedItem(isOpen ? "" : e.target.name.toLowerCase());
-    if (!isOpen) setIsOpen(!isOpen);
+  const handleClickMobile = (item) => {
+    setCurrentSelectedItem(item);
   };
+
   return (
     <Box>
       <Box
@@ -105,6 +119,7 @@ const Navbar = () => {
               textTransform: "uppercase",
               color: "#212121",
             }}
+            onClick={() => navigate("/")}
           >
             <img src={"/images/logo.png"} alt={"Majestic"} width="35px" height="25px" />
             Majestic
@@ -189,15 +204,16 @@ const Navbar = () => {
             textTransform: "uppercase",
             color: "#212121",
           }}
+          onClick={() => navigate("/")}
         >
           <img src={"/images/logo.png"} alt={"Majestic"} width="35px" height="25px" />
           Majestic
         </Box>
         <Box>
-          <img src={"/images/menu.png"} alt="menuicon" onClick={handleClickMobile} />
+          <img src={"/images/menu.png"} alt="menuicon" onClick={handleClickNavbar} />
         </Box>
 
-        {isMobile && !isOpen ? (
+        {isMobile ? (
           <>
             <Box
               sx={{
@@ -215,7 +231,10 @@ const Navbar = () => {
             >
               {["Women", "Men", "Collection", "Outlet"].map((item, index) => {
                 return (
-                  <Accordion sx={{ backgroundColor: theme.palette.backgroundColor.default }}>
+                  <Accordion
+                    sx={{ backgroundColor: theme.palette.backgroundColor.default }}
+                    onClick={() => handleClickMobile(item.toLowerCase())}
+                  >
                     <AccordionSummary
                       sx={{ backgroundColor: theme.palette.backgroundColor.default }}
                       expandIcon={<ExpandMoreIcon />}
@@ -258,7 +277,7 @@ const Navbar = () => {
                                     textDecoration: "none",
                                   }}
                                   key={product.id}
-                                  href={"/allProducts"}
+                                  href={product.slug}
                                 >
                                   {product.value}
                                 </Link>
@@ -283,7 +302,7 @@ const Navbar = () => {
                               gap: "30px",
                             }}
                           >
-                            {productList.map((product) => {
+                            {designersList.map((product) => {
                               return (
                                 <Link
                                   style={{
@@ -298,7 +317,7 @@ const Navbar = () => {
                                     textDecoration: "none",
                                   }}
                                   key={product.id}
-                                  href={"/allProducts"}
+                                  href={product.slug}
                                 >
                                   {product.value}
                                 </Link>
@@ -338,7 +357,7 @@ const Navbar = () => {
                                     textDecoration: "none",
                                   }}
                                   key={product.id}
-                                  href={"/allProducts"}
+                                  href={product.slug}
                                 >
                                   {product.value}
                                 </Link>
@@ -445,7 +464,6 @@ const Navbar = () => {
                   Products
                 </Typography>
                 {productList.map((product) => {
-                  console.log("slug product : ", product.slug);
                   return (
                     <Link
                       style={{

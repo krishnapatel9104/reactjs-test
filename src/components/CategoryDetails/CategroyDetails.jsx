@@ -21,12 +21,6 @@ export const CategroyDetails = () => {
   const themes = useTheme();
   const matches = useMediaQuery(themes.breakpoints.up("md"));
   if (matches && isOpen) setIsOpen(false);
-  const [maincategoryfilterList, setMaincategoryfilterList] = useState([
-    { id: 1, value: "women", isChecked: false },
-    { id: 2, value: "Ladies", isChecked: false },
-    { id: 3, value: "Girls", isChecked: false },
-    { id: 4, value: "Babies", isChecked: false },
-  ]);
   const [brandfilterList, setBrandfilterList] = useState([
     {
       id: 1,
@@ -89,52 +83,35 @@ export const CategroyDetails = () => {
       isChecked: false,
     },
   ]);
-  const [categoryFilterList, setCategoryFilterList] = useState([
+  const [sizefilterList, setSizefilterList] = useState([
     {
       id: 1,
-      value: "Dresses",
+      name: "Small",
+      value: "S",
       isChecked: false,
     },
     {
       id: 2,
-      value: "Tops",
+      name: "Medium",
+      value: "M",
       isChecked: false,
     },
     {
       id: 3,
-      value: "Lingerie & Lounge Wear",
+      name: "Large",
+      value: "L",
       isChecked: false,
     },
     {
       id: 4,
-      value: "Blouse",
+      name: "Extra Large",
+      value: "XL",
       isChecked: false,
     },
     {
       id: 5,
-      value: "Vintage",
-      isChecked: false,
-    },
-  ]);
-  const [sizefilterList, setSizefilterList] = useState([
-    {
-      id: 1,
-      value: "Medium",
-      isChecked: false,
-    },
-    {
-      id: 2,
-      value: "Large",
-      isChecked: false,
-    },
-    {
-      id: 3,
-      value: "Plus Size",
-      isChecked: false,
-    },
-    {
-      id: 4,
-      value: "Sexy Plus Size",
+      name: "Double Extra Large",
+      value: "XXL",
       isChecked: false,
     },
   ]);
@@ -143,12 +120,13 @@ export const CategroyDetails = () => {
     brandFitler: [],
     categoryFilter: [],
     sizeFilter: [],
-    priceFilters: [100, 300],
+    priceFilters: [100, 500],
   });
 
   const navigate = useNavigate();
   const location = useLocation();
   const [filterCategoryData, setFilterCategoryData] = useState([]);
+  const [filterDataByRoute, setFilterDataByRoute] = useState([]);
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(filterCategoryData.length / PER_PAGE);
@@ -156,70 +134,46 @@ export const CategroyDetails = () => {
   const indexOfFirstRecord = indexOfLastRecord - PER_PAGE;
 
   useEffect(() => {
-    console.log("location pathname : ", location.pathname);
     let mainCatName = location.pathname.split("/")[1];
     let identifier = location.pathname.split("/")[2];
     let categoryName = location.pathname.split("/")[3];
-    console.log("maincatname : ", mainCatName);
-    console.log("identifier : ", identifier);
-    console.log("categoryName : ", categoryName);
     const newProductList = categoryProductList.filter((product) => {
       if (
         product.filter === mainCatName &&
         product.category === categoryName &&
         identifier === "products"
       ) {
-        console.log("right product : ", product);
         return product;
       } else if (
         product.filter === mainCatName &&
         product?.designers === categoryName &&
-        identifier === "designers"
+        identifier === "designers" &&
+        product.productPrice >= allFiltersArray.priceFilters[0] &&
+        product.productPrice <= allFiltersArray.priceFilters[1]
       ) {
-        console.log("right product : ", product);
         return product;
       } else return 0;
     });
-    console.log("newproductlist : ", newProductList);
-    if (newProductList.length > 0) setFilterCategoryData(newProductList);
+    if (newProductList.length > 0) setFilterDataByRoute(newProductList);
   }, [location.pathname]);
 
   const handleChangeFilter = (e) => {
     e.preventDefault();
     const { name, value, checked } = e.target;
-    let changedList = maincategoryfilterList.map((s) => {
-      if (s.value.toLowerCase() === value) return { ...s, isChecked: checked };
-      return s;
-    });
-    setMaincategoryfilterList(changedList);
 
-    changedList = brandfilterList.map((s) => {
-      if (s.value.toLowerCase() === value) return { ...s, isChecked: checked };
-      return s;
-    });
-    setBrandfilterList(changedList);
-    changedList = categoryFilterList.map((s) => {
-      if (s.value.toLowerCase() === value) return { ...s, isChecked: checked };
-      return s;
-    });
-    setCategoryFilterList(changedList);
-    changedList = sizefilterList.map((s) => {
-      if (s.value.toLowerCase() === value) return { ...s, isChecked: checked };
-      return s;
-    });
-    setSizefilterList(changedList);
-    if (name === "filter" && checked) {
-      let newArray = {
-        ...allFiltersArray,
-        mainFilter: [...allFiltersArray.mainFilter, value],
-      };
-      setAllFiltersArray(newArray);
-    } else if (name === "filter" && !checked) {
-      let newArray = {
-        ...allFiltersArray,
-        mainFilter: allFiltersArray.mainFilter.filter((v) => v !== value),
-      };
-      setAllFiltersArray(newArray);
+    if (name === "brand") {
+      let changedList = brandfilterList.map((s) => {
+        if (s.value.toLowerCase() === value) return { ...s, isChecked: checked };
+        return s;
+      });
+      setBrandfilterList(changedList);
+    }
+    if (name === "size") {
+      let changedList = sizefilterList.map((s) => {
+        if (s.value === value) return { ...s, isChecked: checked };
+        return s;
+      });
+      setSizefilterList(changedList);
     }
     if (name === "brand" && checked) {
       let newArray = {
@@ -234,21 +188,6 @@ export const CategroyDetails = () => {
       };
       setAllFiltersArray(newArray);
     }
-
-    if (name === "category" && checked) {
-      let newArray = {
-        ...allFiltersArray,
-        categoryFilter: [...allFiltersArray.categoryFilter, value],
-      };
-      setAllFiltersArray(newArray);
-    } else if (name === "category" && !checked) {
-      let newArray = {
-        ...allFiltersArray,
-        categoryFilter: allFiltersArray.categoryFilter.filter((v) => v !== value),
-      };
-      setAllFiltersArray(newArray);
-    }
-
     if (name === "size" && checked) {
       let newArray = {
         ...allFiltersArray,
@@ -262,7 +201,6 @@ export const CategroyDetails = () => {
       };
       setAllFiltersArray(newArray);
     }
-
     if (name === "price") {
       let newArray = {
         ...allFiltersArray,
@@ -271,6 +209,17 @@ export const CategroyDetails = () => {
       setAllFiltersArray(newArray);
     }
   };
+
+  useEffect(() => {
+    let arrayObj = filterDataByRoute.filter((product) => {
+      if (
+        product.productPrice >= allFiltersArray.priceFilters[0] &&
+        product.productPrice <= allFiltersArray.priceFilters[1]
+      )
+        return product;
+    });
+    setFilterCategoryData(arrayObj);
+  }, [filterDataByRoute]);
 
   const handleProductClick = (productDetail) => {
     setIsOpen(!isOpen);
@@ -287,19 +236,19 @@ export const CategroyDetails = () => {
     else if (type === "category") setIsCategoryExtend(!isCategorydExtend);
   };
   useEffect(() => {
-    const newProductList = categoryProductList.filter((product) => {
+    const newProductList = filterDataByRoute.filter((product) => {
       if (
         allFiltersArray.mainFilter.includes(product.filter.toLowerCase()) ||
         allFiltersArray.brandFitler.includes(product.brand.toLowerCase()) ||
         allFiltersArray.categoryFilter.includes(product.category.toLowerCase()) ||
-        allFiltersArray.sizeFilter.includes(product.size.toLowerCase()) ||
+        allFiltersArray.sizeFilter.includes(product.size) ||
         (product.productPrice >= allFiltersArray.priceFilters[0] &&
           product.productPrice <= allFiltersArray.priceFilters[1])
       ) {
         return product;
-      } else return 0;
+      }
     });
-    if (newProductList.length > 0) setFilterCategoryData(newProductList);
+    setFilterCategoryData(newProductList);
   }, [allFiltersArray]);
 
   useEffect(() => {
@@ -436,47 +385,6 @@ export const CategroyDetails = () => {
                   getAriaLabel={() => "Minimum distance"}
                 />
               </Box>
-              {/* <Box>
-                <Typography
-                  sx={{
-                    fontFamily: "Jost",
-                    fontWeight: "600",
-                    fontSize: "16px",
-                    letterSpacing: "0.02em",
-                    textTransform: "uppercase",
-                    color: "#1F2937",
-                    marginBottom: "10px",
-                  }}
-                >
-                  FILTERS
-                </Typography>
-                {maincategoryfilterList.map((filter, index) => {
-                  return (
-                    <FormGroup
-                      key={index}
-                      sx={{
-                        fontFamily: "Jost",
-                        fontWeight: "400",
-                        fontSize: "20px",
-                        letterSpacing: "0.02em",
-                        color: "#1F2937",
-                      }}
-                    >
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={filter.isChecked}
-                            value={filter.value.toLowerCase()}
-                            name="filter"
-                            onChange={(e) => handleChangeFilter(e)}
-                          />
-                        }
-                        label={filter.value}
-                      />
-                    </FormGroup>
-                  );
-                })}
-              </Box> */}
               <Box>
                 <Typography
                   sx={{
@@ -539,68 +447,6 @@ export const CategroyDetails = () => {
                   <></>
                 )}
               </Box>
-              {/* <Box>
-                <Typography
-                  sx={{
-                    fontFamily: "Jost",
-                    fontWeight: "600",
-                    fontSize: "16px",
-                    letterSpacing: "0.02em",
-                    textTransform: "uppercase",
-                    color: "#1F2937",
-                    marginBottom: "10px",
-                  }}
-                >
-                  CATEGORIES
-                </Typography>
-                {categoryFilterList.map((filter, index) => {
-                  if (
-                    (isCategorydExtend && index < categoryFilterList.length) ||
-                    (!isCategorydExtend && index < 10)
-                  ) {
-                    return (
-                      <FormGroup
-                        key={filter.id}
-                        sx={{
-                          fontFamily: "Jost",
-                          fontWeight: "400",
-                          fontSize: "20px",
-                          letterSpacing: "0.02em",
-                          color: "#1F2937",
-                        }}
-                      >
-                        <FormControlLabel
-                          control={
-                            <Checkbox
-                              checked={filter.isChecked}
-                              value={filter.value.toLowerCase()}
-                              name="brand"
-                              onChange={(e) => handleChangeFilter(e)}
-                            />
-                          }
-                          label={filter.value}
-                        />
-                      </FormGroup>
-                    );
-                  }
-                })}
-                {categoryFilterList.length > 4 ? (
-                  !isCategorydExtend ? (
-                    <Button onClick={() => handlerExtendFilters("category")}>
-                      +{categoryFilterList.length - 4} more
-                    </Button>
-                  ) : (
-                    <Button
-                      onClick={() => handlerExtendFilters("category")}
-                      sx={{ textTransform: "capitalize" }}
-                    >
-                      See Less
-                    </Button>
-                  )
-                ) : (
-                  <></>
-                )}
-              </Box> */}
               <Box>
                 <Typography
                   sx={{
@@ -631,12 +477,12 @@ export const CategroyDetails = () => {
                         control={
                           <Checkbox
                             checked={filter.isChecked}
-                            value={filter.value.toLowerCase()}
+                            value={filter.value}
                             name="size"
                             onChange={(e) => handleChangeFilter(e)}
                           />
                         }
-                        label={filter.value}
+                        label={filter.name}
                       />
                     </FormGroup>
                   );
@@ -732,47 +578,6 @@ export const CategroyDetails = () => {
                 getAriaLabel={() => "Minimum distance"}
               />
             </Box>
-            {/* <Box>
-              <Typography
-                sx={{
-                  fontFamily: "Jost",
-                  fontWeight: "600",
-                  fontSize: "16px",
-                  letterSpacing: "0.02em",
-                  textTransform: "uppercase",
-                  color: "#1F2937",
-                  marginBottom: "10px",
-                }}
-              >
-                FILTERS
-              </Typography>
-              {maincategoryfilterList.map((filter, index) => {
-                return (
-                  <FormGroup
-                    key={index}
-                    sx={{
-                      fontFamily: "Jost",
-                      fontWeight: "400",
-                      fontSize: "20px",
-                      letterSpacing: "0.02em",
-                      color: "#1F2937",
-                    }}
-                  >
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          value={filter.value.toLowerCase()}
-                          name="filter"
-                          checked={filter.isChecked}
-                          onChange={(e) => handleChangeFilter(e)}
-                        />
-                      }
-                      label={filter.value}
-                    />
-                  </FormGroup>
-                );
-              })}
-            </Box> */}
             <Box>
               <Typography
                 sx={{
@@ -835,68 +640,6 @@ export const CategroyDetails = () => {
                 <></>
               )}
             </Box>
-            {/* <Box>
-              <Typography
-                sx={{
-                  fontFamily: "Jost",
-                  fontWeight: "600",
-                  fontSize: "16px",
-                  letterSpacing: "0.02em",
-                  textTransform: "uppercase",
-                  color: "#1F2937",
-                  marginBottom: "10px",
-                }}
-              >
-                CATEGORIES
-              </Typography>
-              {categoryFilterList.map((filter, index) => {
-                if (
-                  (isCategorydExtend && index < categoryFilterList.length) ||
-                  (!isCategorydExtend && index < 10)
-                ) {
-                  return (
-                    <FormGroup
-                      key={filter.id}
-                      sx={{
-                        fontFamily: "Jost",
-                        fontWeight: "400",
-                        fontSize: "20px",
-                        letterSpacing: "0.02em",
-                        color: "#1F2937",
-                      }}
-                    >
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={filter.isChecked}
-                            value={filter.value.toLowerCase()}
-                            name="brand"
-                            onChange={(e) => handleChangeFilter(e)}
-                          />
-                        }
-                        label={filter.value}
-                      />
-                    </FormGroup>
-                  );
-                }
-              })}
-              {categoryFilterList.length > 4 ? (
-                !isCategorydExtend ? (
-                  <Button onClick={() => handlerExtendFilters("category")}>
-                    +{categoryFilterList.length - 4} more
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={() => handlerExtendFilters("category")}
-                    sx={{ textTransform: "capitalize" }}
-                  >
-                    See Less
-                  </Button>
-                )
-              ) : (
-                <></>
-              )}
-            </Box> */}
             <Box>
               <Typography
                 sx={{
@@ -928,12 +671,12 @@ export const CategroyDetails = () => {
                         <Checkbox
                           key={index}
                           checked={filter.isChecked}
-                          value={filter.value.toLowerCase()}
+                          value={filter.value}
                           name="size"
                           onChange={(e) => handleChangeFilter(e)}
                         />
                       }
-                      label={filter.value}
+                      label={filter.name}
                     />
                   </FormGroup>
                 );
@@ -1020,12 +763,20 @@ export const CategroyDetails = () => {
                           position: "relative",
                         }}
                       >
-                        <img
-                          src={product.imageSource}
-                          alt="productimg"
-                          width="100%"
-                          onClick={(e) => handleProductClick(product)}
-                        />
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                          }}
+                        >
+                          <img
+                            src={product.imageSource}
+                            alt="productimg"
+                            width="100%"
+                            onClick={(e) => handleProductClick(product)}
+                          />
+                        </Box>
                         {product.isNewArrival && (
                           <Box
                             sx={{
@@ -1071,6 +822,7 @@ export const CategroyDetails = () => {
                           sx={{
                             padding: "10px",
                             display: "flex",
+                            justifyContent: "space-between",
                           }}
                         >
                           <Box
