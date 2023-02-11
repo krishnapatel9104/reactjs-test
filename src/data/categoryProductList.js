@@ -629,4 +629,172 @@ export const categoryProductList = [
       },
     ],
   },
+  {
+    id: 16,
+    imageSource: "/images/purse2.png",
+    productName: "Marie Claire Handbag",
+    productPrice: 830,
+    isLike: false,
+    isNewArrival: false,
+    filter: "women",
+    brand: "fendi",
+    category: "bags",
+    size: "M",
+    quantity: 1,
+    color: "Red",
+    productDesc: ["Product description 1", "Product desc 2"],
+    reviewRate: 3,
+    imageDifferentAngle: [
+      {
+        id: 1,
+        imagePath: "/images/blackdress1.png",
+      },
+      {
+        id: 2,
+        imagePath: "/images/blackdress2.png",
+      },
+      {
+        id: 3,
+        imagePath: "/images/blackdress3.png",
+      },
+      {
+        id: 4,
+        imagePath: "/images/blackdress4.png",
+      },
+      {
+        id: 5,
+        imagePath: "/images/blackdress5.png",
+      },
+      {
+        id: 6,
+        imagePath: "/images/blackdress2.png",
+      },
+    ],
+  },
+  {
+    id: 17,
+    imageSource: "/images/earning.png",
+    productName: "Red Gem Earrings",
+    productPrice: 340,
+    isLike: false,
+    isNewArrival: false,
+    filter: "women",
+    brand: "fendi",
+    category: "accessories",
+    size: "M",
+    quantity: 1,
+    color: "Red",
+    productDesc: ["Product description 1", "Product desc 2"],
+    reviewRate: 3,
+    imageDifferentAngle: [
+      {
+        id: 1,
+        imagePath: "/images/blackdress1.png",
+      },
+      {
+        id: 2,
+        imagePath: "/images/blackdress2.png",
+      },
+      {
+        id: 3,
+        imagePath: "/images/blackdress3.png",
+      },
+      {
+        id: 4,
+        imagePath: "/images/blackdress4.png",
+      },
+      {
+        id: 5,
+        imagePath: "/images/blackdress5.png",
+      },
+      {
+        id: 6,
+        imagePath: "/images/blackdress2.png",
+      },
+    ],
+  },
+  {
+    id: 18,
+    imageSource: "/images/watch1.png",
+    productName: "Brown Leathered Wallet",
+    productPrice: 830,
+    isLike: false,
+    isNewArrival: false,
+    filter: "men",
+    brand: "Dior",
+    category: "watches",
+    size: "M",
+    quantity: 1,
+    color: "Red",
+    productDesc: ["Product description 1", "Product desc 2"],
+    reviewRate: 3,
+    imageDifferentAngle: [
+      {
+        id: 1,
+        imagePath: "/images/blackdress1.png",
+      },
+      {
+        id: 2,
+        imagePath: "/images/blackdress2.png",
+      },
+      {
+        id: 3,
+        imagePath: "/images/blackdress3.png",
+      },
+      {
+        id: 4,
+        imagePath: "/images/blackdress4.png",
+      },
+      {
+        id: 5,
+        imagePath: "/images/blackdress5.png",
+      },
+      {
+        id: 6,
+        imagePath: "/images/blackdress2.png",
+      },
+    ],
+  },
+  {
+    id: 19,
+    imageSource: "/images/tie.png",
+    productName: "Red Gem Earrings",
+    productPrice: 830,
+    isLike: false,
+    isNewArrival: false,
+    filter: "men",
+    brand: "Gucci",
+    category: "accessories",
+    size: "M",
+    quantity: 1,
+    color: "Red",
+    productDesc: ["Product description 1", "Product desc 2"],
+    reviewRate: 3,
+    imageDifferentAngle: [
+      {
+        id: 1,
+        imagePath: "/images/blackdress1.png",
+      },
+      {
+        id: 2,
+        imagePath: "/images/blackdress2.png",
+      },
+      {
+        id: 3,
+        imagePath: "/images/blackdress3.png",
+      },
+      {
+        id: 4,
+        imagePath: "/images/blackdress4.png",
+      },
+      {
+        id: 5,
+        imagePath: "/images/blackdress5.png",
+      },
+      {
+        id: 6,
+        imagePath: "/images/blackdress2.png",
+      },
+    ],
+  },
 ];

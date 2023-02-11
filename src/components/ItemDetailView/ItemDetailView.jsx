@@ -64,51 +64,76 @@ export const ItemDetailView = () => {
             gap: "60px",
           }}
         >
+          {/* left box */}
           <Box
             sx={{
               width: { xs: "100%", md: "45%" },
               textAlign: "center",
-              //   marginTop: "100px",
               "& .swiper-button-next, .swiper-button-prev": {
                 color: "#D1D1D6",
               },
             }}
           >
-            <Swiper
-              cssMode={true}
-              navigation={true}
-              pagination={false}
-              mousewheel={true}
-              keyboard={true}
-              modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-              ref={swiperRef}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
             >
-              {productDetail.imageDifferentAngle.map((item, index) => {
-                return (
-                  <Box key={index}>
-                    <SwiperSlide>
-                      <img
-                        src={item.imagePath}
-                        alt="likeicon"
-                        style={{
-                          height: "550px",
-                          width: "500px",
-                          objectFit: "contain",
-                        }}
-                      />
-                    </SwiperSlide>
-                  </Box>
-                );
-              })}
-            </Swiper>
+              <Box className="swiper-button image-swiper-button-prev">
+                <img src={"/images/vectorLeft.png"} alt="left" height="20px" />
+              </Box>
+              <Swiper
+                cssMode={true}
+                navigation={{
+                  nextEl: ".image-swiper-button-next",
+                  prevEl: ".image-swiper-button-prev",
+                  disabledClass: "swiper-button-disabled",
+                }}
+                pagination={false}
+                mousewheel={true}
+                keyboard={true}
+                modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+                ref={swiperRef}
+              >
+                {productDetail.imageDifferentAngle.map((item, index) => {
+                  return (
+                    <Box key={index}>
+                      <SwiperSlide>
+                        <img
+                          src={item.imagePath}
+                          alt="likeicon"
+                          style={{
+                            height: "550px",
+                            width: "500px",
+                            objectFit: "contain",
+                          }}
+                        />
+                      </SwiperSlide>
+                    </Box>
+                  );
+                })}
+              </Swiper>
+              <Box className="swiper-button image-swiper-button-next">
+                <img src={"/images/vectorRight.png"} alt="left" height="20px" />
+              </Box>
+            </Box>
             <Box
               sx={{
                 marginTop: "50px",
                 "& .swiper-button-next, .swiper-button-prev": {
                   color: "#D1D1D6",
                 },
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "50px",
               }}
             >
+              <Box className="swiper-button image-swiper-button-prev">
+                <img src={"/images/vectorLeft.png"} alt="left" height="20px" />
+              </Box>
               <Swiper
                 slidesPerView={5}
                 slidesPerGroupSkip={1}
@@ -117,7 +142,11 @@ export const ItemDetailView = () => {
                   enabled: true,
                 }}
                 scrollbar={false}
-                navigation={true}
+                navigation={{
+                  nextEl: ".image-swiper-button-next",
+                  prevEl: ".image-swiper-button-prev",
+                  disabledClass: "swiper-button-disabled",
+                }}
                 pagination={false}
                 modules={[Keyboard, Scrollbar, Navigation, Pagination]}
                 sx={{
@@ -154,8 +183,12 @@ export const ItemDetailView = () => {
                   );
                 })}
               </Swiper>
+              <Box className="swiper-button image-swiper-button-next">
+                <img src={"/images/vectorRight.png"} alt="left" height="20px" />
+              </Box>
             </Box>
           </Box>
+          {/* right side */}
           <Box
             sx={{
               width: { xs: "100%", md: "40%" },
