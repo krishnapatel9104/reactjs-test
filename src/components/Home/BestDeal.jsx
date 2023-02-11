@@ -114,6 +114,7 @@ export const BestDeal = () => {
                     justifyContent: "center",
                     alignItems: "center",
                   }}
+                  onClick={handleClick}
                 >
                   <Box
                     sx={{

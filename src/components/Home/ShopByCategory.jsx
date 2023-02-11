@@ -194,6 +194,7 @@ export const ShopByCategory = () => {
                     justifyContent: "center",
                     alignItems: "center",
                   }}
+                  onClick={handleClick}
                 >
                   <Box
                     sx={{
