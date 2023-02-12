@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Typography, Box, Link } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -13,35 +13,51 @@ import { useNavigate } from "react-router-dom";
 export const ShopByCategory = () => {
   const navigator = useNavigate();
   const handleClick = () => {
-    console.log("btn clicked");
     navigator("/men/products/shoes");
   };
+  const genderCategoryList = [
+    { id: 1, name: "Women" },
+    { id: 2, name: "Men" },
+  ];
   const shopByCategory = [
     {
       id: 1,
-      value: "TShirt",
+      name: "Shirt",
+      value: "Both",
     },
     {
       id: 2,
-      value: "Shirt",
+      name: "TShirt",
+      value: "Both",
     },
     {
       id: 3,
-      value: "Shoes",
+      name: "Shoes",
+      value: "Both",
     },
     {
       id: 4,
-      value: "Watch",
+      name: "Watch",
+      value: "Men",
     },
     {
       id: 5,
-      value: "Sunglasses",
+      name: "Earning",
+      value: "Women",
     },
     {
       id: 6,
-      value: "Bagpacks",
+      name: "Tie",
+      value: "Men",
+    },
+    {
+      id: 7,
+      name: "Purse",
+      value: "Both",
     },
   ];
+  const [genderCategory, setGenderCategory] = useState(genderCategoryList[0].name.toLowerCase());
+  const [category, setCategory] = useState(shopByCategory[1].name.toLowerCase());
   return (
     <Box>
       <Typography
@@ -71,31 +87,27 @@ export const ShopByCategory = () => {
           marginBottom: "40px",
         }}
       >
-        <Link
-          href="#"
-          sx={{
-            textDecoration: "none",
-            fontFamily: theme.typography.titleHeading.fontFamily,
-            fontWeight: "400",
-            fontSize: "25px",
-            color: "#757575",
-          }}
-        >
-          For Women
-        </Link>
-        <Link
-          href="#"
-          sx={{
-            color: theme.palette.primary.main, //foractive
-            borderBottom: "1px solid #757575", //foractive
-            textDecoration: "none",
-            fontFamily: theme.typography.titleHeading.fontFamily,
-            fontWeight: "400",
-            fontSize: "25px",
-          }}
-        >
-          For Men
-        </Link>
+        {genderCategoryList.map((gender) => {
+          return (
+            <Link
+              sx={{
+                textDecoration: "none",
+                fontFamily: theme.typography.titleHeading.fontFamily,
+                fontWeight: "400",
+                fontSize: "25px",
+                color:
+                  genderCategory === gender.name.toLowerCase()
+                    ? theme.palette.primary.main
+                    : "#757575",
+                borderBottom:
+                  genderCategory === gender.name.toLowerCase() ? "1px solid #757575" : "none", //foractive
+              }}
+              onClick={() => setGenderCategory(gender.name.toLowerCase())}
+            >
+              For {gender.name}
+            </Link>
+          );
+        })}
       </Box>
       <Box
         sx={{
@@ -108,24 +120,32 @@ export const ShopByCategory = () => {
           overflow: { xs: "scroll", sm: "hidden" },
         }}
       >
-        {shopByCategory.map((category) => {
-          return (
-            <Link
-              key={category.id}
-              href="#"
-              sx={{
-                fontFamily: theme.typography.titleHeading.fontFamily,
-                fontWeight: "400",
-                fontSize: "20px",
-                textDecoration: "none",
-                color: "#000000",
-                padding: category.id === 2 ? { xs: "7px 10px", sm: "14px 24px" } : 0,
-                background: category.id === 2 ? "#E0E0E0" : "white",
-              }}
-            >
-              {category.value}
-            </Link>
-          );
+        {shopByCategory.map((categoryObj) => {
+          if (categoryObj.value.toLowerCase() === genderCategory || categoryObj.value === "Both") {
+            return (
+              <Link
+                key={categoryObj.id}
+                sx={{
+                  fontFamily: theme.typography.titleHeading.fontFamily,
+                  fontWeight: "400",
+                  fontSize: "20px",
+                  textDecoration: "none",
+                  color: "#000000",
+                  padding:
+                    categoryObj.name.toLowerCase() === category
+                      ? { xs: "7px 10px", sm: "14px 24px" }
+                      : 0,
+                  background:
+                    category === categoryObj.name.toLowerCase()
+                      ? "#E0E0E0"
+                      : theme.palette.backgroundColor.default,
+                }}
+                onClick={() => setCategory(categoryObj.name.toLowerCase())}
+              >
+                {categoryObj.name}
+              </Link>
+            );
+          }
         })}
       </Box>
 
@@ -185,97 +205,102 @@ export const ShopByCategory = () => {
           className="mySwiper"
         >
           {shopByCategoryList.map((product, index) => {
-            return (
-              <Box key={product.id}>
-                <SwiperSlide
-                  style={{
-                    fontSize: "18px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                  onClick={handleClick}
-                >
-                  <Box
-                    sx={{
-                      marginLeft: "10px",
-                      gap: "50px",
+            if (
+              product.category.toLowerCase() === category &&
+              (product.gender.toLowerCase() === genderCategory || product.gender === "Both")
+            ) {
+              return (
+                <Box key={product.id}>
+                  <SwiperSlide
+                    style={{
+                      fontSize: "18px",
                       display: "flex",
-                      flexDirection: "column",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
+                    onClick={handleClick}
                   >
                     <Box
                       sx={{
-                        width: {
-                          xs: "150px",
-                          lg: "170px",
-                          xl: "300px",
-                        },
-                        height: {
-                          xs: "150px",
-                          lg: "170px",
-                          xl: "300px",
-                        },
-                        gap: "30px",
+                        marginLeft: "10px",
+                        gap: "50px",
                         display: "flex",
                         flexDirection: "column",
                       }}
                     >
-                      <img
-                        src={product.imageSource}
-                        alt="shandle"
-                        height="100%"
-                        width="200px"
-                        style={{
-                          objectFit: "scale-down",
-                        }}
-                      />
-                    </Box>
-                    <Box>
-                      <Typography
+                      <Box
                         sx={{
-                          fontFamily: theme.typography.headerNavbarLink.fontFamily,
-                          fontWeight: "700",
-                          fontSize: {
-                            lg: "22px",
-                            md: "20px",
-                            xs: "18px",
+                          width: {
+                            xs: "150px",
+                            lg: "170px",
+                            xl: "300px",
                           },
-                          color: theme.palette.primary.main,
+                          height: {
+                            xs: "150px",
+                            lg: "170px",
+                            xl: "300px",
+                          },
+                          gap: "30px",
+                          display: "flex",
+                          flexDirection: "column",
                         }}
                       >
-                        {product.productName}
-                      </Typography>
-                      <Typography>
-                        <span
+                        <img
+                          src={product.imageSource}
+                          alt="shandle"
+                          height="100%"
+                          width="200px"
                           style={{
+                            objectFit: "scale-down",
+                          }}
+                        />
+                      </Box>
+                      <Box>
+                        <Typography
+                          sx={{
                             fontFamily: theme.typography.headerNavbarLink.fontFamily,
-                            fontWeight: "400",
-                            fontSize: "20px",
-                            textDecorationLine: "line-through",
-                            color: theme.palette.originalPrice.color,
+                            fontWeight: "700",
+                            fontSize: {
+                              lg: "22px",
+                              md: "20px",
+                              xs: "18px",
+                            },
+                            color: theme.palette.primary.main,
                           }}
                         >
-                          ${product.productOriginalPrice}
-                        </span>
-                        &nbsp;&nbsp;
-                        <span
-                          className="currentprice"
-                          style={{
-                            fontFamily: theme.typography.headerNavbarLink.fontFamily,
-                            fontWeight: "400",
-                            fontSize: "20px",
-                            color: theme.palette.currentPrice.color,
-                          }}
-                        >
-                          ${product.productCurrentPrice}
-                        </span>
-                      </Typography>
+                          {product.productName}
+                        </Typography>
+                        <Typography>
+                          <span
+                            style={{
+                              fontFamily: theme.typography.headerNavbarLink.fontFamily,
+                              fontWeight: "400",
+                              fontSize: "20px",
+                              textDecorationLine: "line-through",
+                              color: theme.palette.originalPrice.color,
+                            }}
+                          >
+                            ${product.productOriginalPrice}
+                          </span>
+                          &nbsp;&nbsp;
+                          <span
+                            className="currentprice"
+                            style={{
+                              fontFamily: theme.typography.headerNavbarLink.fontFamily,
+                              fontWeight: "400",
+                              fontSize: "20px",
+                              color: theme.palette.currentPrice.color,
+                            }}
+                          >
+                            ${product.productCurrentPrice}
+                          </span>
+                        </Typography>
+                      </Box>
                     </Box>
-                  </Box>
-                </SwiperSlide>
-              </Box>
-            );
+                  </SwiperSlide>
+                </Box>
+              );
+            }
           })}
         </Swiper>
         <Box className="swiper-button image-swiper-button-next">
