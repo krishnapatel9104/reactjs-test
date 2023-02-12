@@ -9,21 +9,63 @@ import { Checkout } from "./components/Checkout/Checkout";
 import { ConfirmationPage } from "./components/ConfirmationPage/ConfirmationPage";
 import { ThemeProvider } from "@material-ui/styles";
 import theme from "./theme";
+import { Login } from "./components/Login/Login";
+import { ProtectedRoute } from "./utils/ProtectedRoute";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:maincategory/:category/:subcategory" element={<CategroyDetails />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/:maincategory/:category/:subcategory"
+            element={
+              <ProtectedRoute>
+                <CategroyDetails />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path={"/:maincategory/:category/:subcategory/:productname"}
-            element={<ItemDetailView />}
+            element={
+              <ProtectedRoute>
+                <ItemDetailView />
+              </ProtectedRoute>
+            }
           />
-          <Route path="/shipping" element={<Shipping />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/confirmation" element={<ConfirmationPage />} />
+          <Route
+            path="/shipping"
+            element={
+              <ProtectedRoute>
+                <Shipping />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <ProtectedRoute>
+                <Checkout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/confirmation"
+            element={
+              <ProtectedRoute>
+                <ConfirmationPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
