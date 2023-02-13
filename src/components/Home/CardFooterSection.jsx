@@ -69,7 +69,7 @@ export const CardFooterSection = () => {
                   position: "relative",
                   marginBottom: {
                     xs: "500px",
-                    sm: "400px",
+                    sm: "500px",
                     md: "450px",
                   },
                 }}
@@ -87,7 +87,7 @@ export const CardFooterSection = () => {
                     top: "90%",
                     padding: {
                       xs: "0 20px",
-                      sm: "0 70px",
+                      sm: "0 15px",
                       md: "0 50px",
                       lg: "0 15px",
                       xl: "0 65px",

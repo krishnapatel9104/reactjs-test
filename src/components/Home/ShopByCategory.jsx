@@ -337,12 +337,12 @@ export const ShopByCategory = () => {
         <Button
           variant="contained"
           sx={{
-            marginTop: { md: "50px" },
-            padding: "10px 40px",
+            marginTop: { xs: "50px", sm: "0", md: "100px" },
+            padding: { xs: "5px 20px", sm: "10px 40px" },
             background: "#212121",
             fontFamily: theme.typography.titleHeading.fontFamily,
             fontWeight: "700",
-            fontSize: "20px",
+            fontSize: { xs: "10px", sm: "20px" },
             color: "#FFFFFF",
           }}
           onClick={handleClick}

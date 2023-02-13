@@ -21,23 +21,23 @@ export const categoryProductList = [
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -63,23 +63,23 @@ export const categoryProductList = [
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct1.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -101,27 +101,27 @@ export const categoryProductList = [
     imageDifferentAngle: [
       {
         id: 1,
-        imagePath: "/images/womenproduc8.png",
+        imagePath: "/images/womenproduct8.png",
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -147,23 +147,23 @@ export const categoryProductList = [
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -189,23 +189,23 @@ export const categoryProductList = [
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct8.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -227,27 +227,27 @@ export const categoryProductList = [
     imageDifferentAngle: [
       {
         id: 1,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct7.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -273,23 +273,23 @@ export const categoryProductList = [
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -315,23 +315,23 @@ export const categoryProductList = [
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -357,23 +357,23 @@ export const categoryProductList = [
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -399,23 +399,23 @@ export const categoryProductList = [
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -441,23 +441,23 @@ export const categoryProductList = [
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
@@ -483,29 +483,29 @@ export const categoryProductList = [
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/womenproduct1.png",
       },
     ],
   },
   {
     id: 13,
-    imageSource: "/images/shoes3.png",
+    imageSource: "/images/womenproduct7.png",
     productName: "Shoes A1",
     productPrice: 460,
     isLike: false,
@@ -521,33 +521,33 @@ export const categoryProductList = [
     imageDifferentAngle: [
       {
         id: 1,
-        imagePath: "/images/shoes3.png",
+        imagePath: "/images/womenproduct7.png",
       },
       {
         id: 2,
-        imagePath: "/images/shoes2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/shoes2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 4,
-        imagePath: "/images/shoes3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 5,
-        imagePath: "/images/shoes2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 6,
-        imagePath: "/images/shoes3.png",
+        imagePath: "/images/womenproduct3.png",
       },
     ],
   },
   {
     id: 14,
-    imageSource: "/images/shoes2.png",
+    imageSource: "/images/womenproduct9.png",
     productName: "Shoes Nike",
     productPrice: 560,
     isLike: false,
@@ -563,33 +563,33 @@ export const categoryProductList = [
     imageDifferentAngle: [
       {
         id: 1,
-        imagePath: "/images/shoes3.png",
+        imagePath: "/images/womenproduct9.png",
       },
       {
         id: 2,
-        imagePath: "/images/shoes2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/shoes3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/shoes2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 5,
-        imagePath: "/images/shoes2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 6,
-        imagePath: "/images/shoes3.png",
+        imagePath: "/images/womenproduct3.png",
       },
     ],
   },
   {
     id: 15,
-    imageSource: "/images/shoes3.png",
+    imageSource: "/images/womenproduct2.png",
     productName: "Shoes Lona",
     productPrice: 830,
     isLike: false,
@@ -605,27 +605,27 @@ export const categoryProductList = [
     imageDifferentAngle: [
       {
         id: 1,
-        imagePath: "/images/shoes3.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 2,
-        imagePath: "/images/shoes2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/shoes3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/shoes2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 5,
-        imagePath: "/images/shoes2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 6,
-        imagePath: "/images/shoes3.png",
+        imagePath: "/images/womenproduct3.png",
       },
     ],
   },
@@ -633,7 +633,7 @@ export const categoryProductList = [
     id: 16,
     imageSource: "/images/purse2.png",
     productName: "Marie Claire Handbag",
-    productPrice: 830,
+    productPrice: 450,
     isLike: false,
     isNewArrival: false,
     filter: "women",
@@ -647,27 +647,27 @@ export const categoryProductList = [
     imageDifferentAngle: [
       {
         id: 1,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/purse2.png",
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
     ],
   },
@@ -689,27 +689,27 @@ export const categoryProductList = [
     imageDifferentAngle: [
       {
         id: 1,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/earning.png",
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
     ],
   },
@@ -731,27 +731,27 @@ export const categoryProductList = [
     imageDifferentAngle: [
       {
         id: 1,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/watch1.png",
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
     ],
   },
@@ -773,27 +773,27 @@ export const categoryProductList = [
     imageDifferentAngle: [
       {
         id: 1,
-        imagePath: "/images/blackdress1.png",
+        imagePath: "/images/tie.png",
       },
       {
         id: 2,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
       {
         id: 3,
-        imagePath: "/images/blackdress3.png",
+        imagePath: "/images/womenproduct3.png",
       },
       {
         id: 4,
-        imagePath: "/images/blackdress4.png",
+        imagePath: "/images/womenproduct4.png",
       },
       {
         id: 5,
-        imagePath: "/images/blackdress5.png",
+        imagePath: "/images/womenproduct5.png",
       },
       {
         id: 6,
-        imagePath: "/images/blackdress2.png",
+        imagePath: "/images/womenproduct2.png",
       },
     ],
   },

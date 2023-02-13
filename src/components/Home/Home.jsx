@@ -14,29 +14,32 @@ import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Box } from "@mui/material";
 import theme from "../../theme";
+import { ProtectedRoute } from "../../utils/ProtectedRoute";
 
 export const Home = () => {
-    // const [toggleCategory, setToggleCategory] = useState(1);
+  // const [toggleCategory, setToggleCategory] = useState(1);
 
-    // useEffect(() => {
-    //     document.getElementById("mainWrapper").style.opacity = toggleCategory;
-    // }, [toggleCategory, isOpen]);
+  // useEffect(() => {
+  //     document.getElementById("mainWrapper").style.opacity = toggleCategory;
+  // }, [toggleCategory, isOpen]);
 
-    return (
-        <Box sx={{ backgroundColor: theme.palette.backgroundColor.default }}>
-            <Navbar />
-            <Header />
-            <BestDeal />
-            <BeExclusive />
-            <CheckoutNewArrivals />
-            <ShopByCategory />
-            <CountryLightSection />
-            <BestSeller />
-            <SummerSection />
-            <GentleFormalLookSection />
-            <CardFooterSection />
-            <FooterSliderSection />
-            <Footer />
-        </Box>
-    );
+  return (
+    <ProtectedRoute>
+      <Box sx={{ backgroundColor: theme.palette.backgroundColor.default }}>
+        <Navbar />
+        <Header />
+        <BestDeal />
+        <BeExclusive />
+        <CheckoutNewArrivals />
+        <ShopByCategory />
+        <CountryLightSection />
+        <BestSeller />
+        <SummerSection />
+        <GentleFormalLookSection />
+        <CardFooterSection />
+        <FooterSliderSection />
+        <Footer />
+      </Box>
+    </ProtectedRoute>
+  );
 };

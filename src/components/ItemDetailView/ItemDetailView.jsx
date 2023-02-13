@@ -77,14 +77,19 @@ export const ItemDetailView = () => {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: "center",
                 alignItems: "center",
+                gap: { xs: "30px", sm: "180px", md: "60px", lg: "60px", xl: "100px" },
               }}
             >
               <Box className="swiper-button image-swiper-button-prev">
                 <img src={"/images/vectorLeft.png"} alt="left" height="20px" />
               </Box>
               <Swiper
+                slidesPerView={1}
+                spaceBetween={30}
+                centeredSlides={false}
+                slidesPerGroupSkip={1}
                 cssMode={true}
                 navigation={{
                   nextEl: ".image-swiper-button-next",
@@ -99,14 +104,20 @@ export const ItemDetailView = () => {
               >
                 {productDetail.imageDifferentAngle.map((item, index) => {
                   return (
-                    <Box key={index}>
+                    <Box
+                      key={index}
+                      sx={{
+                        height: { xs: "450px", md: "550px" },
+                        width: { xs: "250px", md: "500px" },
+                      }}
+                    >
                       <SwiperSlide>
                         <img
                           src={item.imagePath}
                           alt="likeicon"
                           style={{
-                            height: "550px",
-                            width: "500px",
+                            height: "100%",
+                            width: "100%",
                             objectFit: "contain",
                           }}
                         />
@@ -136,10 +147,49 @@ export const ItemDetailView = () => {
               </Box>
               <Swiper
                 slidesPerView={5}
+                spaceBetween={30}
                 slidesPerGroupSkip={1}
                 grabCursor={true}
                 keyboard={{
                   enabled: true,
+                }}
+                breakpoints={{
+                  1500: {
+                    slidesPerView: 5,
+                    slidesPerGroup: 1,
+                  },
+                  1280: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 1,
+                  },
+                  900: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 1,
+                  },
+                  600: {
+                    slidesPerView: 5,
+                    slidesPerGroup: 1,
+                  },
+                  500: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 1,
+                  },
+                  400: {
+                    slidesPerView: 3,
+                    slidesPerGroup: 1,
+                  },
+                  380: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 1,
+                  },
+                  300: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 1,
+                  },
+                  0: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                  },
                 }}
                 scrollbar={false}
                 navigation={{
@@ -149,10 +199,6 @@ export const ItemDetailView = () => {
                 }}
                 pagination={false}
                 modules={[Keyboard, Scrollbar, Navigation, Pagination]}
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                }}
               >
                 {productDetail.imageDifferentAngle.map((item, index) => {
                   return (
@@ -272,7 +318,7 @@ export const ItemDetailView = () => {
                   return <img src={"/images/graystar.png"} alt="likeicon" key={index} />;
                 })}
               </Box>
-              <Box>{productDetail.reviewRate}</Box>
+              <Box>{productDetail.reviewRate} reviews</Box>
             </Box>
             <Box sx={{ width: "100%", typography: "body1" }}>
               <TabContext value={value}>

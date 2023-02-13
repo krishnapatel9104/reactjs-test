@@ -15,6 +15,7 @@ import { categoryProductList } from "../../data/categoryProductList";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { ProtectedRoute } from "../../utils/ProtectedRoute";
 
 export const CategroyDetails = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -260,7 +261,7 @@ export const CategroyDetails = () => {
     if (page !== 1) setPage(page - 1);
   };
   return (
-    <>
+    <ProtectedRoute>
       <Box
         sx={{
           marginTop: { xs: "0", md: "150px" },
@@ -910,6 +911,6 @@ export const CategroyDetails = () => {
           </Box>
         </Box>
       </Box>
-    </>
+    </ProtectedRoute>
   );
 };
