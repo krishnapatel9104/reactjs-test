@@ -1,5 +1,5 @@
 import { Box, Button, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
@@ -8,12 +8,19 @@ export const Login = () => {
   const navigate = useNavigate();
   const handleClick = (e) => {
     e.preventDefault();
-    console.log("userData : ", userData);
-    localStorage.setItem("userCredentials", userData);
+    localStorage.setItem("userCredentials", JSON.stringify(userData));
     setTimeout(() => {
       navigate("/");
     }, 500);
   };
+  useEffect(() => {
+    const userData = localStorage.getItem("userCredentials");
+    const obj = JSON.parse(userData);
+    if (obj.userName !== "" && obj.password !== "") {
+      navigate("/");
+    }
+  });
+
   const handleChange = (e) => {
     if (
       e.target.name === "userName" &&

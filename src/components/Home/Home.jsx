@@ -15,8 +15,15 @@ import { Header } from "./Header";
 import { Box } from "@mui/material";
 import theme from "../../theme";
 import { ProtectedRoute } from "../../utils/ProtectedRoute";
+import { useSelector } from "react-redux";
 
 export const Home = () => {
+  const details = useSelector(
+    (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
+  );
+  const payment = useSelector((state) => state.rootReducer.paymentDetailsSlice.paymentDetails);
+  const user = useSelector((state) => state.rootReducer.userAllDetailsSlice.userDetails);
+  console.log("productlist & payment & user details : ", details, payment, user);
   // const [toggleCategory, setToggleCategory] = useState(1);
 
   // useEffect(() => {

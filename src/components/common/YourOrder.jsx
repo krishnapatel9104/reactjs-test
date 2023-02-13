@@ -153,15 +153,16 @@ export const YourOrder = (props) => {
                 >
                   <Button
                     sx={{
-                      border: "2px solid red",
+                      border: order.quantity === 1 ? "2px solid #bbacac" : "2px solid red",
                       color: "red",
                       minWidth: 0,
                       padding: 0,
                     }}
                     name="less"
+                    disabled={order.quantity === 1}
                     onClick={(e) => handleQuantityChange("less", order)}
                   >
-                    <RemoveSharpIcon />
+                    <RemoveSharpIcon style={{ color: order.quantity === 1 ? "#bbacac" : "red" }} />
                   </Button>
                   {order.quantity}
                   <Button
@@ -209,7 +210,7 @@ export const YourOrder = (props) => {
                     value={order.size}
                     onChange={(e) => handleChange(e, order)}
                     sx={{
-                      width: { md: "140px", lg: "170px" },
+                      width: { xs: "170px", md: "140px", lg: "170px" },
                     }}
                   >
                     {sizeList.map((s, index) => (
@@ -237,7 +238,7 @@ export const YourOrder = (props) => {
                     value={order.color}
                     onChange={(e) => handleChange(e, order)}
                     sx={{
-                      width: { md: "140px", lg: "170px" },
+                      width: { xs: "170px", md: "140px", lg: "170px" },
                     }}
                   >
                     {colourList.map((color, index) => (

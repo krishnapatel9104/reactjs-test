@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Link, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -14,8 +14,21 @@ const Navbar = () => {
   const matches = useMediaQuery(themes.breakpoints.down("md"));
   const navigate = useNavigate();
   const productDetails = useSelector(
-    (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
+    (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductList
   );
+  const [totalItems, setTotalItems] = useState(0);
+  // useEffect(() => {
+  //   let total = 0;
+  //   console.log("useeffect of productdetails : ", productDetails);
+  //   total = productDetails?.forEach((product) => {
+  //     console.log("product quanttiy : ", product);
+  //     total += product.quantity;
+  //     setTotalItems(totalItems);
+  //   });
+  //   console.log("total : ", total);
+  // }, [productDetails]);
+
+  console.log("totalItems : ", totalItems, productDetails);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [currentSelectedItem, setCurrentSelectedItem] = useState("");
@@ -89,7 +102,6 @@ const Navbar = () => {
         sx={{
           backgroundColor: isOpen && "white",
           display: { xs: "none", md: "flex" },
-
           justifyContent: "space-around",
           position: "absolute",
           top: 0,
@@ -173,7 +185,7 @@ const Navbar = () => {
                 textAlign: "center",
               }}
             >
-              <Typography sx={{ color: "white" }}>{productDetails?.length}</Typography>
+              <Typography sx={{ color: "white" }}>{totalItems}</Typography>
             </Box>
           </Box>
           <img src={"/images/Search.png"} alt={"search"} />
@@ -222,7 +234,7 @@ const Navbar = () => {
                 flexDirection: "column",
                 gap: "21px",
                 position: "absolute",
-                top: "6%",
+                top: "60px",
                 width: "100%",
                 right: "0",
                 backgroundColor: "white",
@@ -401,7 +413,7 @@ const Navbar = () => {
                       textAlign: "center",
                     }}
                   >
-                    <Typography sx={{ color: "white" }}>{productDetails?.length}</Typography>
+                    <Typography sx={{ color: "white" }}>{totalItems}</Typography>
                   </Box>
                 </Box>
                 <img src={"/images/Search.png"} alt={"search"} />
@@ -419,7 +431,7 @@ const Navbar = () => {
           sx={{
             backgroundColor: "white",
             position: "absolute",
-            top: "6%",
+            top: "85px",
             textAlign: "left",
             zIndex: 2,
             color: "black",

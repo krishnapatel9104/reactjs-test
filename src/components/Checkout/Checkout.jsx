@@ -15,6 +15,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPaymentDetails } from "../../store/reducers/paymentDetailsSlice";
 import { updateUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
 import { ProtectedRoute } from "../../utils/ProtectedRoute";
+// import { DatePicker, LocalizationProvider } from "@mui/lab";
+// import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
 export const Checkout = () => {
   const navigate = useNavigate();
@@ -35,6 +37,7 @@ export const Checkout = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log("expiration changes : ", name, value);
     if (name === "paymentMethod") setPaymentData({ ...paymentData, paymentMethod: value });
     if (name === "cardName") {
       if (value === "") {
@@ -55,10 +58,10 @@ export const Checkout = () => {
     if (name === "cardNumber") {
       if (value === "") {
         setErrors({ ...errors, [name]: "Required" });
-      } else if (!/^[0-9]{14}$/i.test(value)) {
+      } else if (!/^[0-9]{12}$/i.test(value)) {
         setErrors({
           ...errors,
-          [name]: "Card number should be 14 digit only",
+          [name]: "Card number should be 12 digit only",
         });
       } else {
         setErrors((current) => {
@@ -294,6 +297,19 @@ export const Checkout = () => {
                 width: "100%",
               }}
             >
+              {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DatePicker
+                  views={["year", "month"]}
+                  label="Year only"
+                  name="expiration"
+                  inputFormat="MM/yyyy"
+                  mask="__/____"
+                  // value={selectedDate}
+                  onChange={handleChange}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider> */}
+
               <TextField
                 id="standard-number"
                 type="text"
@@ -303,7 +319,8 @@ export const Checkout = () => {
                 name="expiration"
                 onChange={handleChange}
                 variant="standard"
-                placeholder="Expiration"
+                // format="yy/MM"
+                placeholder="yy/MM"
                 sx={{
                   fontSize: "22px",
                   width: "45%",

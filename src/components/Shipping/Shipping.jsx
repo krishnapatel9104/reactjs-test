@@ -7,6 +7,7 @@ import { YourOrder } from "../common/YourOrder";
 import { setUserDetails } from "../../store/reducers/userDetailsSlice";
 import { updateUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
 import { ProtectedRoute } from "../../utils/ProtectedRoute";
+import { format } from "date-fns";
 // import { useFormik } from "formik";
 
 export const Shipping = () => {
@@ -38,7 +39,7 @@ export const Shipping = () => {
       } else if (!/^[A-Za-z ]*$/i.test(value)) {
         setErrors({
           ...errors,
-          [name]: "FirstName should contain only alphabet",
+          [name]: "First Name should contain only alphabet",
         });
       } else {
         setErrors((current) => {
@@ -55,7 +56,7 @@ export const Shipping = () => {
       } else if (!/^[A-Za-z ]*$/i.test(value)) {
         setErrors({
           ...errors,
-          [name]: "LastName should contain only alphabet",
+          [name]: "Last Name should contain only alphabet",
         });
       } else {
         setErrors({
@@ -160,7 +161,6 @@ export const Shipping = () => {
       navigate("/");
     }
   });
-
   const handleClick = () => {
     if (isValidate()) {
       dispatch(setUserDetails(userData));
@@ -459,6 +459,9 @@ export const Shipping = () => {
                 type="date"
                 InputLabelProps={{
                   shrink: true,
+                }}
+                InputProps={{
+                  inputProps: { min: format(new Date(), "yyyy-MM-dd") },
                 }}
                 name="deliveryDate"
                 onChange={handleChange}

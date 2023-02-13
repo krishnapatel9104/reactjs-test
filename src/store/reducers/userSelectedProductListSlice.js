@@ -37,10 +37,19 @@ export const userSelectedProductListSlice = createSlice({
         userSelectedProductLists: action.payload,
       };
     },
+    resetUserSelectedProductList: (state) => {
+      return {
+        ...state,
+        userSelectedProductLists: [],
+      };
+    },
   },
 });
 
-export const { setUserSelectedProductList, updateUserSelectedProductList } =
-  userSelectedProductListSlice.actions;
+export const {
+  setUserSelectedProductList,
+  updateUserSelectedProductList,
+  resetUserSelectedProductList,
+} = userSelectedProductListSlice.actions;
 
 export default userSelectedProductListSlice.reducer;

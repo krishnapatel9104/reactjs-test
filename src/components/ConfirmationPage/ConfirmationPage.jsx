@@ -2,11 +2,15 @@ import { Box, Button, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { StepperComp } from "../common/StepperComp";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ProtectedRoute } from "../../utils/ProtectedRoute";
+import { resetPaymentDetails } from "../../store/reducers/paymentDetailsSlice";
+import { resetUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
+import { resetUserDetails } from "../../store/reducers/userDetailsSlice";
 
 export const ConfirmationPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const reduxProductDetail = useSelector(
     (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
   );
@@ -14,6 +18,12 @@ export const ConfirmationPage = () => {
     if (reduxProductDetail.length === 0) navigate("/");
   });
 
+  const handleClick = () => {
+    dispatch(resetUserDetails());
+    dispatch(resetPaymentDetails());
+    dispatch(resetUserSelectedProductList());
+    navigate("/");
+  };
   return (
     <ProtectedRoute>
       <Box
@@ -72,7 +82,7 @@ export const ConfirmationPage = () => {
               padding: { xs: "10px 50px", sm: "15px 100px" },
               textTransform: "inherit",
             }}
-            onClick={() => navigate("/")}
+            onClick={() => handleClick()}
           >
             Continue Shopping
           </Button>
