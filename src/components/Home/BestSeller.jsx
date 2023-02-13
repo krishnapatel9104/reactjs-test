@@ -59,8 +59,21 @@ export const BestSeller = () => {
           },
         }}
       >
-        <Box className="swiper-button image-swiper-button-prev">
-          <img src={"/images/vectorLeft.png"} alt="left" />
+        <Box
+          className="swiper-button image-swiper-button-prev"
+          sx={{
+            height: { xs: "15px", sm: "20px", md: "20px", lg: "30px" },
+            width: { xs: "50px", sm: "30px", md: "25px", lg: "25px" },
+          }}
+        >
+          <img
+            src={"/images/vectorLeft.png"}
+            alt="left"
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+          />
         </Box>
         <Swiper
           slidesPerView={4}
@@ -190,15 +203,28 @@ export const BestSeller = () => {
             );
           })}
         </Swiper>
-        <Box className="swiper-button image-swiper-button-next">
-          <img src={"/images/vectorRight.png"} alt="left" />
+        <Box
+          className="swiper-button image-swiper-button-next"
+          sx={{
+            height: { xs: "15px", sm: "20px", md: "20px", lg: "30px" },
+            width: { xs: "50px", sm: "30px", md: "25px", lg: "25px" },
+          }}
+        >
+          <img
+            src={"/images/vectorRight.png"}
+            alt="left"
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+          />
         </Box>
       </Box>
       <Box sx={{ textAlign: "center" }}>
         <Button
           variant="contained"
           sx={{
-            marginTop: "100px",
+            marginTop: { md: "100px" },
             marginBottom: { xs: "0", md: "70px" },
             padding: "10px 40px",
             background: "#212121",

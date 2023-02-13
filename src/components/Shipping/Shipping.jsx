@@ -156,7 +156,7 @@ export const Shipping = () => {
   useEffect(() => {
     dispatch(updateUserSelectedProductList(productData));
     if (productData.length === 0) {
-      navigate("/allProducts");
+      navigate("/login");
     }
   });
 

@@ -167,8 +167,21 @@ export const ShopByCategory = () => {
           },
         }}
       >
-        <Box className="swiper-button image-swiper-button-prev">
-          <img src={"/images/vectorLeft.png"} alt="left" />
+        <Box
+          className="swiper-button image-swiper-button-prev"
+          sx={{
+            height: { xs: "15px", sm: "20px", md: "20px", lg: "30px" },
+            width: { xs: "50px", sm: "30px", md: "25px", lg: "25px" },
+          }}
+        >
+          <img
+            src={"/images/vectorLeft.png"}
+            alt="left"
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+          />
         </Box>
         <Swiper
           slidesPerView={4}
@@ -303,15 +316,28 @@ export const ShopByCategory = () => {
             }
           })}
         </Swiper>
-        <Box className="swiper-button image-swiper-button-next">
-          <img src={"/images/vectorRight.png"} alt="left" />
+        <Box
+          className="swiper-button image-swiper-button-next"
+          sx={{
+            height: { xs: "15px", sm: "20px", md: "20px", lg: "30px" },
+            width: { xs: "50px", sm: "30px", md: "25px", lg: "25px" },
+          }}
+        >
+          <img
+            src={"/images/vectorRight.png"}
+            alt="left"
+            style={{
+              height: "100%",
+              width: "100%",
+            }}
+          />
         </Box>
       </Box>
       <Box sx={{ textAlign: "center" }}>
         <Button
           variant="contained"
           sx={{
-            marginTop: "50px",
+            marginTop: { md: "50px" },
             padding: "10px 40px",
             background: "#212121",
             fontFamily: theme.typography.titleHeading.fontFamily,
