@@ -14,10 +14,11 @@ export const Login = () => {
     }, 500);
   };
   useEffect(() => {
-    const userData = localStorage.getItem("userCredentials");
-    const obj = JSON.parse(userData);
-    if (obj.userName !== "" && obj.password !== "") {
-      navigate("/");
+    const userData = JSON.parse(localStorage.getItem("userCredentials"));
+    if (userData) {
+      if (userData.userName !== "" && userData.password !== "") {
+        navigate("/");
+      }
     }
   });
 

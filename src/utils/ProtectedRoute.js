@@ -5,7 +5,7 @@ export const ProtectedRoute = (props) => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const checkUserToken = () => {
-    const userData = localStorage.getItem("userCredentials");
+    const userData = JSON.parse(localStorage.getItem("userCredentials"));
     if (!userData || userData === "undefined") {
       setIsLoggedIn(false);
       return navigate("/login");

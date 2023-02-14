@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { StepperComp } from "../common/StepperComp";
 import { YourOrder } from "../common/YourOrder";
 import { setUserDetails } from "../../store/reducers/userDetailsSlice";
-import { updateUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
 import { ProtectedRoute } from "../../utils/ProtectedRoute";
 import { format } from "date-fns";
+import { isFuture } from "date-fns/esm";
 // import { useFormik } from "formik";
 
 export const Shipping = () => {
@@ -28,7 +28,6 @@ export const Shipping = () => {
   const productDetails = useSelector(
     (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
   );
-  const [productData, setProductData] = useState(productDetails);
   const [errors, setErrors] = useState({});
   const handleChange = (e) => {
     e.persist();
@@ -98,7 +97,14 @@ export const Shipping = () => {
         setUserData({ ...userData, phoneNumber: value });
       }
     }
-    if (name === "deliveryDate") setUserData({ ...userData, deliveryDate: value });
+    if (name === "deliveryDate") {
+      if (isFuture(new Date(value))) {
+        setErrors({ ...errors, [name]: "" });
+        setUserData({ ...userData, deliveryDate: value });
+      } else {
+        setErrors({ ...errors, [name]: "Required" });
+      }
+    }
     if (name === "convenientTime") setUserData({ ...userData, convenientTime: value });
     if (name === "city") {
       if (value === 0) {
@@ -150,22 +156,29 @@ export const Shipping = () => {
       userData.phoneNumber &&
       userData.city &&
       userData.address &&
-      userData.zipCode
+      userData.zipCode &&
+      userData.deliveryDate &&
+      userData.convenientTime
     )
       return true;
     else return false;
   };
   useEffect(() => {
-    dispatch(updateUserSelectedProductList(productData));
-    if (productData.length === 0) {
+    if (productDetails.length === 0) {
       navigate("/");
     }
   });
+  console.log("userData : ", userData);
   const handleClick = () => {
-    if (isValidate()) {
-      dispatch(setUserDetails(userData));
-      dispatch(updateUserSelectedProductList(productData));
-      navigate("/checkout");
+    if (!userData.deliveryDate) {
+      setErrors({ ...errors, deliveryDate: "Required" });
+    } else if (!userData.convenientTime) {
+      setErrors({ ...errors, convenientTime: "Required" });
+    } else {
+      if (isValidate()) {
+        dispatch(setUserDetails(userData));
+        navigate("/checkout");
+      }
     }
   };
   // const validate = (values) => {
@@ -466,6 +479,8 @@ export const Shipping = () => {
                 name="deliveryDate"
                 onChange={handleChange}
                 // onChange={formik.handleChange}
+                error={errors?.deliveryDate ? true : false}
+                helperText={errors?.deliveryDate ? errors.deliveryDate : null}
                 variant="standard"
                 placeholder="DD/MM/YYYY"
                 sx={{
@@ -490,6 +505,8 @@ export const Shipping = () => {
                 name="convenientTime"
                 // onChange={formik.handleChange}
                 onChange={handleChange}
+                error={errors?.convenientTime ? true : false}
+                helperText={errors?.convenientTime ? errors.convenientTime : null}
                 variant="standard"
                 placeholder="1pm-9pm"
                 sx={{
@@ -685,7 +702,7 @@ export const Shipping = () => {
             paddingTop: "40px",
           }}
         >
-          <YourOrder productDetails={productData} setProductDetails={setProductData} />
+          <YourOrder />
         </Box>
       </Box>
     </ProtectedRoute>

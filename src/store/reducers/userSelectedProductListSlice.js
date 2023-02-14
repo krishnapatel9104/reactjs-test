@@ -11,6 +11,7 @@ export const userSelectedProductListSlice = createSlice({
   initialState: initialState,
   reducers: {
     setUserSelectedProductList: (state, action) => {
+      console.log("sslice : ", state.userSelectedProductLists, action.payload);
       let alreadyExist = state.userSelectedProductLists.findIndex((product) => {
         return product.id === action.payload.id;
       });
@@ -31,16 +32,53 @@ export const userSelectedProductListSlice = createSlice({
         };
       }
     },
-    updateUserSelectedProductList: (state, action) => {
+    deleteSelectedProductList: (state, action) => {
       return {
         ...state,
-        userSelectedProductLists: action.payload,
+        userSelectedProductLists: state.userSelectedProductLists.filter(
+          (product) => product.id !== action.payload
+        ),
+      };
+    },
+    updateUserSelectedProductList: (state, action) => {
+      let obj = state.userSelectedProductLists.map((product) => {
+        if (product.id === action.payload.orderId) {
+          if (action.payload.quantity) {
+            return {
+              ...product,
+              quantity:
+                action.payload.quantity === "add" ? product.quantity + 1 : product.quantity - 1,
+            };
+          }
+          if (action.payload.size) {
+            return {
+              ...product,
+              size: action.payload.size,
+            };
+          }
+          if (action.payload.color) {
+            return {
+              ...product,
+              color: action.payload.color,
+            };
+          }
+        } else return product;
+      });
+      return {
+        ...state,
+        userSelectedProductLists: obj,
       };
     },
     resetUserSelectedProductList: (state) => {
       return {
         ...state,
         userSelectedProductLists: [],
+      };
+    },
+    restoreUserSelectedProductList: (state, action) => {
+      return {
+        ...state,
+        userSelectedProductLists: action.payload,
       };
     },
   },
@@ -50,6 +88,8 @@ export const {
   setUserSelectedProductList,
   updateUserSelectedProductList,
   resetUserSelectedProductList,
+  deleteSelectedProductList,
+  restoreUserSelectedProductList,
 } = userSelectedProductListSlice.actions;
 
 export default userSelectedProductListSlice.reducer;

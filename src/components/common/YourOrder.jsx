@@ -1,56 +1,47 @@
 import { Box, Button, MenuItem, Select, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import DeleteOutlineSharpIcon from "@mui/icons-material/DeleteOutlineSharp";
 import RemoveSharpIcon from "@mui/icons-material/RemoveSharp";
 import AddSharpIcon from "@mui/icons-material/AddSharp";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  deleteSelectedProductList,
+  updateUserSelectedProductList,
+} from "../../store/reducers/userSelectedProductListSlice";
 
 export const YourOrder = (props) => {
+  const dispatch = useDispatch();
   const colourList = ["Red", "Pink", "Yellow", "Black"];
   const sizeList = ["M", "L", "S", "XS"];
   let total = 0;
   const otherDetails = useSelector(
     (state) => state.rootReducer.userSelectedProductListSlice.otherDetails
   );
-  const handleClick = (order) => {
-    props.setProductDetails(props.productDetails.filter((product) => product.id !== order.id));
+  const productDetails = useSelector(
+    (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
+  );
+  useEffect(() => {
+    localStorage.setItem("userSelectedProductList", JSON.stringify(productDetails));
+  }, [productDetails]);
+
+  const handleClick = (orderId) => {
+    dispatch(deleteSelectedProductList(orderId));
   };
-  const handleQuantityChange = (identifier, order) => {
+  const handleQuantityChange = (identifier, orderId) => {
     if (identifier === "add") {
-      props.setProductDetails(
-        props.productDetails.map((product) => {
-          return product.id === order.id ? { ...product, quantity: product.quantity + 1 } : product;
-        })
-      );
+      dispatch(updateUserSelectedProductList({ orderId: orderId, quantity: "add" }));
     }
     if (identifier === "less") {
-      props.setProductDetails(
-        props.productDetails.map((product) => {
-          if (product.quantity >= 2) {
-            return product.id === order.id
-              ? { ...product, quantity: product.quantity - 1 }
-              : product;
-          }
-          return product;
-        })
-      );
+      dispatch(updateUserSelectedProductList({ orderId: orderId, quantity: "less" }));
     }
   };
-  const handleChange = (e, order) => {
+  const handleChange = (e, orderId) => {
     const { name, value } = e.target;
     if (name === "size") {
-      props.setProductDetails(
-        props.productDetails.map((product) => {
-          return product.id === order.id ? { ...product, size: value } : product;
-        })
-      );
+      dispatch(updateUserSelectedProductList({ orderId: orderId, size: value }));
     }
     if (name === "colour") {
-      props.setProductDetails(
-        props.productDetails.map((product) => {
-          return product.id === order.id ? { ...product, color: value } : product;
-        })
-      );
+      dispatch(updateUserSelectedProductList({ orderId: orderId, color: value }));
     }
   };
   return (
@@ -70,8 +61,7 @@ export const YourOrder = (props) => {
       >
         Your Order
       </Typography>
-      {props.productDetails.map((order, index) => {
-        console.log("inside your order : ", order);
+      {productDetails.map((order, index) => {
         total += order.quantity * order.productPrice;
         return (
           <Box key={index}>
@@ -94,7 +84,7 @@ export const YourOrder = (props) => {
                 {order.productName}
               </Box>
               <Box>
-                <Button sx={{ color: "red" }} onClick={() => handleClick(order)}>
+                <Button sx={{ color: "red" }} onClick={() => handleClick(order.id)}>
                   <DeleteOutlineSharpIcon />
                 </Button>
               </Box>
@@ -160,7 +150,7 @@ export const YourOrder = (props) => {
                     }}
                     name="less"
                     disabled={order.quantity === 1}
-                    onClick={(e) => handleQuantityChange("less", order)}
+                    onClick={(e) => handleQuantityChange("less", order.id)}
                   >
                     <RemoveSharpIcon style={{ color: order.quantity === 1 ? "#bbacac" : "red" }} />
                   </Button>
@@ -173,7 +163,7 @@ export const YourOrder = (props) => {
                       padding: 0,
                     }}
                     name="add"
-                    onClick={(e) => handleQuantityChange("add", order)}
+                    onClick={(e) => handleQuantityChange("add", order.id)}
                   >
                     <AddSharpIcon />
                   </Button>
@@ -208,7 +198,7 @@ export const YourOrder = (props) => {
                     id="demo-multiple-name"
                     name="size"
                     value={order.size}
-                    onChange={(e) => handleChange(e, order)}
+                    onChange={(e) => handleChange(e, order.id)}
                     sx={{
                       width: { xs: "170px", md: "140px", lg: "170px" },
                     }}
@@ -236,7 +226,7 @@ export const YourOrder = (props) => {
                     id="demo-multiple-name"
                     name="colour"
                     value={order.color}
-                    onChange={(e) => handleChange(e, order)}
+                    onChange={(e) => handleChange(e, order.id)}
                     sx={{
                       width: { xs: "170px", md: "140px", lg: "170px" },
                     }}

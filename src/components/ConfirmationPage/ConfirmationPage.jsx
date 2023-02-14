@@ -19,6 +19,7 @@ export const ConfirmationPage = () => {
   });
 
   const handleClick = () => {
+    localStorage.removeItem("userSelectedProductList");
     dispatch(resetUserDetails());
     dispatch(resetPaymentDetails());
     dispatch(resetUserSelectedProductList());

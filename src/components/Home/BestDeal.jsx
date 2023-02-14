@@ -13,6 +13,9 @@ import { bestDealProductDetails } from "../../data/bestDeal";
 import theme from "../../theme";
 import { useNavigate } from "react-router-dom";
 
+// import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+// import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 export const BestDeal = () => {
   const navigator = useNavigate();
   const handleClick = () => {

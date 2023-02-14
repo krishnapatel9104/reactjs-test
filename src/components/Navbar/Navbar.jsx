@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Box, Link, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -9,26 +9,33 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { restoreUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
 const Navbar = () => {
   const themes = useTheme();
   const matches = useMediaQuery(themes.breakpoints.down("md"));
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const productDetails = useSelector(
-    (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductList
+    (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
   );
   const [totalItems, setTotalItems] = useState(0);
-  // useEffect(() => {
-  //   let total = 0;
-  //   console.log("useeffect of productdetails : ", productDetails);
-  //   total = productDetails?.forEach((product) => {
-  //     console.log("product quanttiy : ", product);
-  //     total += product.quantity;
-  //     setTotalItems(totalItems);
-  //   });
-  //   console.log("total : ", total);
-  // }, [productDetails]);
+  useEffect(() => {
+    let total = 0;
+    productDetails?.forEach((product) => {
+      total += product.quantity;
+    });
+    setTotalItems(total);
+  }, [productDetails]);
 
-  console.log("totalItems : ", totalItems, productDetails);
+  useEffect(() => {
+    if (productDetails?.length === 0) {
+      let list = JSON.parse(localStorage.getItem("userSelectedProductList"));
+      if (list !== null) {
+        dispatch(restoreUserSelectedProductList(list));
+      }
+    }
+  });
+
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [currentSelectedItem, setCurrentSelectedItem] = useState("");

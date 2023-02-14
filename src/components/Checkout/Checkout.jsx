@@ -13,7 +13,6 @@ import { StepperComp } from "../common/StepperComp";
 import { YourOrder } from "../common/YourOrder";
 import { useDispatch, useSelector } from "react-redux";
 import { setPaymentDetails } from "../../store/reducers/paymentDetailsSlice";
-import { updateUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
 import { ProtectedRoute } from "../../utils/ProtectedRoute";
 // import { DatePicker, LocalizationProvider } from "@mui/lab";
 // import AdapterDateFns from "@mui/lab/AdapterDateFns";
@@ -33,8 +32,6 @@ export const Checkout = () => {
   const reduxProductDetail = useSelector(
     (state) => state.rootReducer.userSelectedProductListSlice.userSelectedProductLists
   );
-  const [productData, setProductData] = useState(reduxProductDetail);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log("expiration changes : ", name, value);
@@ -107,7 +104,6 @@ export const Checkout = () => {
   const handleClick = () => {
     if (isValidate()) {
       dispatch(setPaymentDetails(paymentData));
-      dispatch(updateUserSelectedProductList(productData));
       navigate("/confirmation");
     }
   };
@@ -446,7 +442,7 @@ export const Checkout = () => {
             paddingTop: "40px",
           }}
         >
-          <YourOrder productDetails={productData} setProductDetails={setProductData} />
+          <YourOrder />
         </Box>
       </Box>
     </ProtectedRoute>

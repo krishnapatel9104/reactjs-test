@@ -14,6 +14,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Navigation, Scrollbar, Pagination, Mousewheel, Keyboard } from "swiper";
 import { setUserSelectedProductList } from "../../store/reducers/userSelectedProductListSlice";
 import { useDispatch } from "react-redux";
+// import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+// import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+
 export const ItemDetailView = () => {
   const [value, setValue] = React.useState("1");
   const handleChange = (event, newValue) => {
@@ -29,16 +32,45 @@ export const ItemDetailView = () => {
     setProductDetail({ ...productDetail, size: size });
   };
   const handleShopNow = () => {
+    setDataInLocalStorage();
     dispatch(setUserSelectedProductList(productDetail));
     navigate("/shipping");
   };
+  const setDataInLocalStorage = () => {
+    let newListItems = [];
+    let list = JSON.parse(localStorage.getItem("userSelectedProductList"));
+    if (list) {
+      let alreadyExist = list.findIndex((product) => {
+        return product.id === productDetail.id;
+      });
+      if (alreadyExist === -1) {
+        newListItems = [...list, productDetail];
+        localStorage.setItem("userSelectedProductList", JSON.stringify(newListItems));
+      } else {
+        let newArrayObj = [...list];
+        newArrayObj[alreadyExist] = {
+          ...newArrayObj[alreadyExist],
+          quantity: newArrayObj[alreadyExist].quantity + 1,
+        };
+        newListItems = [...newArrayObj];
+        localStorage.setItem("userSelectedProductList", JSON.stringify(newListItems));
+      }
+    } else {
+      newListItems.push(productDetail);
+      localStorage.setItem("userSelectedProductList", JSON.stringify(newListItems));
+    }
+    console.log("final new product list : ", newListItems);
+  };
   const handleAddToCart = () => {
+    setDataInLocalStorage();
     dispatch(setUserSelectedProductList(productDetail));
   };
   const changeProductImage = (item) => {
+    console.log("product image clicked : ", item);
     setSelectedImage(item);
   };
   useEffect(() => {
+    console.log("in useeffect when clicked img : ", swiperRef);
     swiperRef.current.swiper.slideTo(selectedImage - 1);
   }, [selectedImage]);
 
@@ -75,6 +107,7 @@ export const ItemDetailView = () => {
             }}
           >
             <Box
+              className="mainSlider"
               sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -84,8 +117,11 @@ export const ItemDetailView = () => {
             >
               <Box className="swiper-button image-swiper-button-prev">
                 <img src={"/images/vectorLeft.png"} alt="left" height="20px" />
+                {/* <KeyboardArrowLeftIcon style={{ color: "#333333", fontSize: "20px" }} /> */}
               </Box>
               <Swiper
+                onSwiper={(swiper) => console.log("1st :", swiper)}
+                onSlideChange={() => console.log("slide change 1st")}
                 slidesPerView={1}
                 spaceBetween={30}
                 centeredSlides={false}
@@ -128,9 +164,11 @@ export const ItemDetailView = () => {
               </Swiper>
               <Box className="swiper-button image-swiper-button-next">
                 <img src={"/images/vectorRight.png"} alt="left" height="20px" />
+                {/* <ChevronRightIcon style={{ color: "#333333" }} /> */}
               </Box>
             </Box>
             <Box
+              className="secondSlider"
               sx={{
                 marginTop: "50px",
                 "& .swiper-button-next, .swiper-button-prev": {
@@ -144,8 +182,11 @@ export const ItemDetailView = () => {
             >
               <Box className="swiper-button image-swiper-button-prev">
                 <img src={"/images/vectorLeft.png"} alt="left" height="20px" />
+                {/* <KeyboardArrowLeftIcon style={{ color: "#333333" }} /> */}
               </Box>
               <Swiper
+                onSwiper={(swiper) => console.log("2nd : ", swiper)}
+                onSlideChange={() => console.log("slide change 2nd")}
                 slidesPerView={5}
                 spaceBetween={30}
                 slidesPerGroupSkip={1}
@@ -231,6 +272,7 @@ export const ItemDetailView = () => {
               </Swiper>
               <Box className="swiper-button image-swiper-button-next">
                 <img src={"/images/vectorRight.png"} alt="left" height="20px" />
+                {/* <ChevronRightIcon style={{ color: "#333333" }} /> */}
               </Box>
             </Box>
           </Box>
